@@ -27,3 +27,8 @@ It is initial from [react-transform-boilerplate](https://github.com/gaearon/reac
 "react-transform",
 
 "PostCSS(FlexBox Polyfill)"
+
+# Quick Start
+use `npm start` to start Develop Server:localhost:3000
+
+use `npm run build` to build the release version
