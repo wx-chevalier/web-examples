@@ -1,6 +1,7 @@
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
+//默认是开发时配置
 var config = require('./webpack.config');
 
 var app = express();
@@ -14,9 +15,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname + "/dist/", 'index.html'));
 });
 
+//监听本地端口
 app.listen(3000, 'localhost', function(err) {
   if (err) {
     console.log(err);
