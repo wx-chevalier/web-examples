@@ -1,6 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+
+//PostCSS plugins
 var autoprefixer = require('autoprefixer');
+
+//webpack plugins
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var DefinePlugin  = require('webpack/lib/DefinePlugin');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
@@ -9,6 +13,8 @@ var HtmlWebpackPlugin  = require('html-webpack-plugin');
 var WebpackMd5Hash    = require('webpack-md5-hash');
 
 var NODE_ENV = process.env.NODE_ENV;//获取命令行变量
+
+//@region 可配置区域
 
 //开发时的入口考虑到热加载，只用数组形式，即每次只会加载一个文件
 var devEntry = [
@@ -20,8 +26,17 @@ var devEntry = [
 //生产环境下考虑到方便编译成不同的文件名，所以使用数组
 var proEntry = {
   "main":"./src/main.js",
-  "vendors":"./src/vendors.js"
+  "vendors":"./src/vendors.js"//存放所有的公共文件
 };
+
+//定义非直接引用依赖
+//定义第三方直接用Script引入而不需要打包的类库
+const externals = {
+  jquery: "jQuery",
+  pageResponse: 'pageResponse'
+};
+
+//@endregion 可配置区域
 
 //基本配置
 var config = {
@@ -55,7 +70,12 @@ var config = {
     new CommonsChunkPlugin({ name: 'vendors', filename: 'vendors_bundle.js', minChunks: Infinity }),
 
     // generating html
-    new HtmlWebpackPlugin({ template: 'src/index.html' })
+    new HtmlWebpackPlugin(
+      {
+        title:"Webpack Boilerplate",
+        template: 'src/index.html',
+        inject: true // 使用自动插入JS脚本
+      })
   ],
   module: {
     loaders: [
@@ -73,13 +93,7 @@ var config = {
             {test: /\.vue$/, loader: 'vue'}
           ]
   },
-  postcss: [ autoprefixer({ browsers: ['last 10 versions',"> 1%"] }) ],
-
-  //定义第三方直接用Script引入而不需要打包的类库
-  externals: {
-    jquery: "jQuery",
-    pageResponse: 'pageResponse'
-  },
+  postcss: [ autoprefixer({ browsers: ['last 10 versions',"> 1%"] }) ],//使用postcss作为默认的CSS编译器
   resolve: {
       alias: {
           libs: path.resolve(__dirname, 'libs'),
@@ -88,6 +102,9 @@ var config = {
       }
   }
 };
+
+//进行脚本组装
+config.externals = externals;
 
 //为开发状态下添加插件
 if(process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop"){
