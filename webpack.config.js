@@ -29,6 +29,16 @@ var proEntry = {
   "vendors":"./src/vendors.js"//存放所有的公共文件
 };
 
+//定义HTML文件入口
+var htmlPages = [
+  {
+    title:"Webpack Boilerplate",
+    template: 'src/index.html',
+    inject: true, // 使用自动插入JS脚本,
+    chunks: ['main',"vendors"]
+  }
+];
+
 //定义非直接引用依赖
 //定义第三方直接用Script引入而不需要打包的类库
 const externals = {
@@ -68,14 +78,6 @@ var config = {
 
     //自动分割Vendor代码
     new CommonsChunkPlugin({ name: 'vendors', filename: 'vendors_bundle.js', minChunks: Infinity }),
-
-    // generating html
-    new HtmlWebpackPlugin(
-      {
-        title:"Webpack Boilerplate",
-        template: 'src/index.html',
-        inject: true // 使用自动插入JS脚本
-      })
   ],
   module: {
     loaders: [
@@ -105,6 +107,12 @@ var config = {
 
 //进行脚本组装
 config.externals = externals;
+
+//自动创建HTML代码
+htmlPages.forEach(function(p){
+  console.log(p);
+  config.plugins.push(new HtmlWebpackPlugin(p));
+});
 
 //为开发状态下添加插件
 if(process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop"){
