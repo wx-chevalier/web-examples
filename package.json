@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/gaearon/react-transform-boilerplate",
   "devDependencies": {
-    "autoprefixer": "^6.1.2",
+    "autoprefixer": "^6.3.1",
     "babel-core": "^6.3.15",
     "babel-eslint": "^5.0.0-beta4",
     "babel-loader": "^6.2.0",
@@ -71,14 +71,18 @@
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
+    "copy-webpack-plugin": "^0.3.3",
     "webpack-md5-hash": "0.0.4"
   },
   "dependencies": {
     "boron": "^0.1.2",
     "es6-promise": "^3.0.2",
     "jquery": "^2.1.4",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-redux": "^4.0.6",
+    "redux": "^3.0.5",
+    "redux-thunk": "^1.0.3",
     "swiper": "^3.1.2",
     "vue": "^1.0.13",
     "whatwg-fetch": "^0.10.1"

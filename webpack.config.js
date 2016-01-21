@@ -16,26 +16,17 @@ var NODE_ENV = process.env.NODE_ENV;//获取命令行变量
 
 //@region 可配置区域
 
-//开发时的入口考虑到热加载，只用数组形式，即每次只会加载一个文件
-var devEntry = [
-  'eventsource-polyfill',
-  'webpack-hot-middleware/client',
-  './src/main.js'//开发时默认的文件名为main_bundle.js
-];
-
-//生产环境下考虑到方便编译成不同的文件名，所以使用数组
-var proEntry = {
-  "main":"./src/main.js",
-  "vendors":"./src/vendors.js"//存放所有的公共文件
-};
-
-//定义HTML文件入口
-var htmlPages = [
+//定义统一的Application，不同的单页面会作为不同的Application
+var apps = [
   {
-    title:"Webpack Boilerplate",
-    template: 'src/index.html',
-    inject: true, // 使用自动插入JS脚本,
-    chunks: ['main',"vendors"]
+    id:"main",//编号
+    title:"Main",//HTML文件标题
+    entry:{
+      name:"main",//该应用的入口名
+      src:"./src/main.js",//该应用对应的入口文件
+    },//入口文件
+    indexPage:"./src/index.html",//主页文件
+    dev:true//判断是否当前正在调试
   }
 ];
 
@@ -45,6 +36,42 @@ const externals = {
   jquery: "jQuery",
   pageResponse: 'pageResponse'
 };
+
+//开发时的入口考虑到热加载，只用数组形式，即每次只会加载一个文件
+var devEntry = [
+  'eventsource-polyfill',
+  'webpack-hot-middleware/client',
+];
+
+//生产环境下考虑到方便编译成不同的文件名，所以使用数组
+var proEntry = {
+  "vendors":"./src/vendors.js",//存放所有的公共文件
+};
+
+//定义HTML文件入口,默认的调试文件为src/index.html
+var htmlPages = [];
+
+//遍历定义好的app进行构造
+apps.forEach(function(app){
+
+  //添加入入口
+  proEntry[app.entry.name] = app.entry.src;
+
+  //构造HTML页面
+  htmlPages.push({
+    filename: app.id + ".html",
+    title:app.title,
+    template: app.indexPage,
+    inject: true, // 使用自动插入JS脚本,
+    chunks: ["vendors",app.entry.name]
+  });
+
+  //判断是否为当前正在调试的
+  if(app.dev === true){
+    //如果是当前正在调试的，则加入到devEntry
+    devEntry.push(app.entry.src);
+  }
+});
 
 //@endregion 可配置区域
 
@@ -77,7 +104,7 @@ var config = {
     }),
 
     //自动分割Vendor代码
-    new CommonsChunkPlugin({ name: 'vendors', filename: 'vendors_bundle.js', minChunks: Infinity }),
+    new CommonsChunkPlugin({ name: 'vendors', filename: 'vendors.bundle.js', minChunks: Infinity }),
   ],
   module: {
     loaders: [
@@ -110,7 +137,6 @@ config.externals = externals;
 
 //自动创建HTML代码
 htmlPages.forEach(function(p){
-  console.log(p);
   config.plugins.push(new HtmlWebpackPlugin(p));
 });
 
