@@ -71,12 +71,12 @@
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
-    "copy-webpack-plugin": "^0.3.3",
     "webpack-md5-hash": "0.0.4"
   },
   "dependencies": {
     "boron": "^0.1.2",
     "es6-promise": "^3.0.2",
+    "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.1.4",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",

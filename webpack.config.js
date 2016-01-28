@@ -32,6 +32,7 @@ var apps = [
 
 //定义非直接引用依赖
 //定义第三方直接用Script引入而不需要打包的类库
+//使用方式即为var $ = require("jquery")
 const externals = {
   jquery: "jQuery",
   pageResponse: 'pageResponse'
