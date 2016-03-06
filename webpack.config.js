@@ -96,10 +96,11 @@ var config = {
         //因为使用热加载，所以在开发状态下可能传入的环境变量为空
         'NODE_ENV': process.env.NODE_ENV === undefined ? JSON.stringify('develop') : JSON.stringify(NODE_ENV)
       },
+      //判断当前是否处于开发状态
       __DEV__:process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop" ? JSON.stringify(true) : JSON.stringify(false)
     }),
 
-    //提供者插件
+    //提供者fetch Polyfill插件
     new webpack.ProvidePlugin({
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
@@ -144,8 +145,10 @@ htmlPages.forEach(function(p){
 //为开发状态下添加插件
 if(process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop"){
 
+  //配置SourceMap
   config.devtool = 'cheap-module-eval-source-map';
 
+  //设置入口为调试入口
   config.entry = devEntry;
 
   //添加插件
@@ -155,6 +158,9 @@ if(process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop"){
 }else {
   //如果是生产环境下
   config.entry = proEntry;
+
+  //如果是生成环境下，将文件名加上hash
+  config.output.filename = '[name].bundle.js.[hash:8]';
 
   //添加代码压缩插件
   config.plugins.push(
