@@ -1,4 +1,6 @@
-# Webpack Boilerplate
+# Webpack React Redux Boilerplate
+
+Page-Driven Webpack Boilerplate For React-Redux Work Flow
 
 It is initial from [react-transform-boilerplate](https://github.com/gaearon/react-transform-boilerplate)
 
