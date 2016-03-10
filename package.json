@@ -1,17 +1,18 @@
 {
   "name": "webpack-boilerplate",
   "version": "1.0.0",
-  "description": "A new Webpack boilerplate with hot reloading React components, and error handling on module and component level.",
+  "description": "Page-Driven Webpack Boilerplate For React-Redux Work Flow",
   "scripts": {
     "clean": "rimraf dist",
     "build:webpack": "NODE_ENV=production webpack -p --config webpack.config.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
+    "deploy" : "npm run build && ./node_modules/.bin/http-server dist",
     "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-transform-boilerplate.git"
+    "url": "https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate"
   },
   "keywords": [
     "react",
@@ -30,9 +31,9 @@
   "author": "Chevalier (http://github.com/gaearon)",
   "license": "CC0-1.0",
   "bugs": {
-    "url": "https://github.com/gaearon/react-transform-boilerplate/issues"
+    "url": "https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/issues"
   },
-  "homepage": "https://github.com/gaearon/react-transform-boilerplate",
+  "homepage": "https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate",
   "devDependencies": {
     "autoprefixer": "^6.3.1",
     "babel-core": "^6.3.15",
@@ -71,7 +72,8 @@
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
-    "webpack-md5-hash": "0.0.4"
+    "webpack-md5-hash": "0.0.4",
+    "http-server":"^0.9.0"
   },
   "dependencies": {
     "boron": "^0.1.2",

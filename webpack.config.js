@@ -17,19 +17,23 @@ var NODE_ENV = process.env.NODE_ENV;//获取命令行变量
 //@region 可配置区域
 
 //定义统一的Application，不同的单页面会作为不同的Application
+/**
+ * @function 开发状态下默认会把JS文本编译为main.bundle.js,然后使用根目录下index.html作为调试文件,
+ * @type {*[]}
+ */
 var apps = [
     {
         //required
-        id: "main",//编号
-        title: "Main",//HTML文件标题
+        id: "index",//编号
+        title: "Index",//HTML文件标题
         entry: {
-            name: "main",//该应用的入口名
-            src: "./src/main.js",//该应用对应的入口文件
+            name: "index",//该应用的入口名
+            src: "./src/index.js",//该应用对应的入口文件
         },//入口文件
         indexPage: "./src/index.html",//主页文件
 
         //optional
-        dev: true,//判断是否当前正在调试,默认为false
+        dev: false,//判断是否当前正在调试,默认为false
         compiled: true//判斷當前是否加入编译,默认为true
     },
     {
@@ -48,7 +52,7 @@ var apps = [
         indexPage: "./src/app/counter/container/counter.html",//主页文件
 
         //optional
-        dev: false,//判断是否当前正在调试,默认为false
+        dev: true,//判断是否当前正在调试,默认为false
         compiled: true//判斷當前是否加入编译,默认为true
     },
 ];
@@ -112,9 +116,8 @@ var config = {
     output: {
         path: path.join(__dirname, 'dist'),//生成目录
         filename: '[name].bundle.js',//文件名
-        sourceMapFilename: '[name].bundle.map',//映射名
+        sourceMapFilename: '[name].bundle.map'//映射名
         // chunkFilename: '[id].[chunkhash].chunk.js',//块文件索引
-        publicPath: '/dist/'//公共目录名
     },
     //配置插件
     plugins: [
@@ -180,6 +183,10 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     //设置入口为调试入口
     config.entry = devEntry;
 
+    //設置公共目錄名
+    config.output.publicPath=  '/dist/'//公共目录名
+
+
     //添加插件
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
     config.plugins.push(new webpack.NoErrorsPlugin());
@@ -190,6 +197,9 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
 
     //如果是生成环境下，将文件名加上hash
     config.output.filename = '[name].bundle.js.[hash:8]';
+
+    //設置公共目錄名
+    config.output.publicPath=  '/'//公共目录名
 
     //添加代码压缩插件
     config.plugins.push(
