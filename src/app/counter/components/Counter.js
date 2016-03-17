@@ -2,9 +2,10 @@ import React, { Component, PropTypes } from 'react'
 
 class Counter extends Component {
   render() {
+      
     const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props
     return (
-      <p style={{color:"red"}}>
+      <p style={{color:"blue"}}>
         Clicked: {counter} times
         {' '}
         <button onClick={increment}>+</button>

@@ -18,7 +18,7 @@ var NODE_ENV = process.env.NODE_ENV;//获取命令行变量
 
 //定义统一的Application，不同的单页面会作为不同的Application
 /**
- * @function 开发状态下默认会把JS文本编译为main.bundle.js,然后使用根目录下index.html作为调试文件,
+ * @function 开发状态下默认会把JS文本编译为main.bundle.js,然后使用根目录下index.html作为调试文件.
  * @type {*[]}
  */
 var apps = [
@@ -37,6 +37,17 @@ var apps = [
         compiled: true//判斷當前是否加入编译,默认为true
     },
     {
+        id:"helloWorld",
+        title:"HelloWorld",
+        entry:{
+            name:"helloWorld",
+            src:"./src/app/helloworld/container/app.js"
+        },
+        indexPage:"./src/app/helloworld/container/helloworld.html",
+        dev:true,
+        compiled:true
+    },
+    {
         id:"todolist",
         title:"TodoList",
         compiled:false
@@ -52,7 +63,7 @@ var apps = [
         indexPage: "./src/app/counter/container/counter.html",//主页文件
 
         //optional
-        dev: true,//判断是否当前正在调试,默认为false
+        dev: false,//判断是否当前正在调试,默认为false
         compiled: true//判斷當前是否加入编译,默认为true
     },
 ];
