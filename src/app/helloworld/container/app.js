@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 
 import * as actions from "../actions/actions"
 import HelloWorld from "../components/HelloWorld"
-import store from "../store/configureStore"
+import configureStore from "../store/configureStore"
 
 
 //调试Counter

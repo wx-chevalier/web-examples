@@ -145,7 +145,7 @@ var config = {
 
         //提供者fetch Polyfill插件
         new webpack.ProvidePlugin({
-            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+            // 'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
         }),
 
         //自动分割Vendor代码

@@ -1,7 +1,8 @@
 import * as actions from "../actions/actions";
+import { combineReducers } from 'redux'
 
-export default Reducer(state = "Initialization", action)
-{
+
+export default function Reducer(state = "Initialization", action) {
     switch (action.type) {
         case actions.SAY_CHEVALIER:
         {
