@@ -41,3 +41,8 @@ use `npm start` to start Develop Server:localhost:3000
 use `npm run build` to build the release version
 
 use `npm run deploy` to build and set up a simple http server for the dist directory
+
+
+# Todos
+
+- 借鉴并且集成[webpack-boilerplate](https://github.com/geniuscarrier/webpack-boilerplate)中好的地方
