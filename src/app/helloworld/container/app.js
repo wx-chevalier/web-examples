@@ -9,10 +9,7 @@ import * as actions from "../actions/actions"
 import HelloWorld from "../components/HelloWorld"
 import configureStore from "../store/configureStore"
 
-
-//调试Counter
-
-const store = configureStore() //初始化Store
+const store = configureStore(); //初始化Store
 
 //将State映射为Props
 function mapStateToProps(state) {
@@ -33,4 +30,7 @@ render(
         <App />
     </Provider>,
     document.getElementById('root')
-)
+);
+
+//默认导出App组件
+export default App;

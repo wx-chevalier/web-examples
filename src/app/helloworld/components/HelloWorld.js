@@ -24,6 +24,6 @@ HelloWorld.propTypes = {
     SayChevalier: PropTypes.func.isRequired,
     SaySomething: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired
-}
+};
 
-export default HelloWorld
+export default HelloWorld;
