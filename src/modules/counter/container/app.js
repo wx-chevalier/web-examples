@@ -4,10 +4,7 @@ import {bindActionCreators} from "redux";
 import {connect, Provider} from "react-redux";
 import Counter from "../components/Counter";
 import * as CounterActions from "../actions/counter";
-import configureStore from "../store/configureStore"; // 导入组件
-// 导入Actions
-// 导入配置的Store
-
+import configureStore from "../store/configureStore";
 //调试Counter
 
 const store = configureStore({counter: 0}) //初始化Store

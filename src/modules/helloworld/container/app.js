@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Provider } from 'react-redux'
 
-import * as actions from "../actions/actions"
+import * as actions from "../actions/text"
 import HelloWorld from "../components/HelloWorld"
 import configureStore from "../store/configureStore"
 

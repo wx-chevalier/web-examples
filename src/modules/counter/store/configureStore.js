@@ -9,7 +9,7 @@ const logger = createLogger();
 
 const createStoreWithMiddleware = applyMiddleware(
   thunk,promise,logger
-)(createStore)
+)(createStore);
 
 export default function configureStore(initialState) {
   const store = createStoreWithMiddleware(reducer, initialState)
