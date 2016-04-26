@@ -1,8 +1,20 @@
 {
-  "presets": ["react", "es2015"],
+  "presets": [
+    "react",
+    "es2015",
+    {
+      "plugins": [
+        "syntax-flow",
+        "transform-class-properties",
+        "transform-object-rest-spread"
+      ]
+    }
+  ],
   "env": {
     "development": {
-      "presets": ["react-hmre"]
+      "presets": [
+        "react-hmre"
+      ]
     }
   }
 }

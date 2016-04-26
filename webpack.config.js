@@ -38,10 +38,10 @@ var apps = [
         compiled: true//判斷當前是否加入编译,默认为true
     },
     {
-        id: "helloWorld",
+        id: "helloworld",
         title: "HelloWorld",
         entry: {
-            name: "helloWorld",
+            name: "helloworld",
             src: "./src/modules/helloworld/container/app.js"
         },
         indexPage: "./src/modules/helloworld/container/helloworld.html",
@@ -105,7 +105,7 @@ apps.forEach(function (app) {
 
     //构造HTML页面
     htmlPages.push({
-        filename: app.id + ".html",
+        filename: app.entry.name + "/" + app.id + ".html",
         title: app.title,
         // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
         template: 'underscore-template-loader!' + app.indexPage,
@@ -151,7 +151,7 @@ var config = {
         }),
 
         //提取出所有的CSS代码
-        new ExtractTextPlugin('stylesheets/[name].css'),
+        new ExtractTextPlugin('[name]/[name].css'),
 
         //自动分割Vendor代码
         new CommonsChunkPlugin({name: 'vendors', filename: 'vendors.bundle.js', minChunks: Infinity}),
@@ -160,10 +160,10 @@ var config = {
         loaders: [
             {test: /\.jsx$/, exclude: /(libs|node_modules)/, loader: 'babel'},
             {test: /\.js$/, exclude: /(libs|node_modules)/, loader: 'babel'},
-            {test: /\.(png|jpg|ttf|woff|svg|eot)$/, loader: 'url-loader?limit=8192'},// inline base64 URLs for <=8k images, direct URLs for the rest
+            {test: /\.(png|jpg|ttf|woff|svg|eot)$/, loader: 'url-loader?limit=8192&name=assets/imgs/[hash].[ext]'},// inline base64 URLs for <=8k images, direct URLs for the rest
             {
                 test: /\.(scss|sass|css)$/,
-                loader: ExtractTextPlugin.extract(['style-loader', 'css-loader', 'postcss-loader','sass'])
+                loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader!sass')
             },
             {test: /\.vue$/, loader: 'vue'}
         ]
@@ -208,7 +208,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     config.entry = proEntry;
 
     //如果是生成环境下，将文件名加上hash
-    config.output.filename = '[name].bundle.js.[hash:8]';
+    config.output.filename = '[name]/[name].bundle.js.[hash:8]';
 
     //設置公共目錄名
     config.output.publicPath = '/'//公共目录名

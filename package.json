@@ -65,7 +65,7 @@
     "image-webpack-loader": "^1.6.1",
     "imagemin": "^3.2.0",
     "imports-loader": "^0.6.5",
-    "node-sass": "^3.5.3",
+    "node-sass": "^3.6.0",
     "object-assign": "^4.0.1",
     "postcss-loader": "^0.8.0",
     "react-komposer": "^1.8.0",

@@ -11,6 +11,7 @@ var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var WebpackMd5Hash = require('webpack-md5-hash');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var NODE_ENV = process.env.NODE_ENV || "develop";//获取命令行变量
 
@@ -18,7 +19,7 @@ var NODE_ENV = process.env.NODE_ENV || "develop";//获取命令行变量
 
 //定义统一的Application，不同的单页面会作为不同的Application
 /**
- * @function 开发状态下默认会把JS文本编译为main.bundle.js,然后使用根目录下index.html作为调试文件.
+ * @function 开发状态下默认会把JS文本编译为main.bundle.js,然后使用根目录下dev.html作为调试文件.
  * @type {*[]}
  */
 var apps = [
@@ -37,20 +38,20 @@ var apps = [
         compiled: true//判斷當前是否加入编译,默认为true
     },
     {
-        id:"helloWorld",
-        title:"HelloWorld",
-        entry:{
-            name:"helloWorld",
-            src:"./src/app/helloworld/container/app.js"
+        id: "helloWorld",
+        title: "HelloWorld",
+        entry: {
+            name: "helloWorld",
+            src: "./src/modules/helloworld/container/app.js"
         },
-        indexPage:"./src/app/helloworld/container/helloworld.html",
-        dev:true,
-        compiled:true
+        indexPage: "./src/modules/helloworld/container/helloworld.html",
+        dev: true,
+        compiled: true
     },
     {
-        id:"todolist",
-        title:"TodoList",
-        compiled:false
+        id: "todolist",
+        title: "TodoList",
+        compiled: false
     },
     {
         //required
@@ -58,9 +59,9 @@ var apps = [
         title: "Counter",//HTML文件标题
         entry: {
             name: "counter",//该应用的入口名
-            src: "./src/app/counter/container/app.js",//该应用对应的入口文件
+            src: "./src/modules/counter/container/app.js",//该应用对应的入口文件
         },//入口文件
-        indexPage: "./src/app/counter/container/counter.html",//主页文件
+        indexPage: "./src/modules/counter/container/counter.html",//主页文件
 
         //optional
         dev: false,//判断是否当前正在调试,默认为false
@@ -106,9 +107,10 @@ apps.forEach(function (app) {
     htmlPages.push({
         filename: app.id + ".html",
         title: app.title,
-        template: app.indexPage,
-        inject: true, // 使用自动插入JS脚本,
-        chunks: ["vendors", app.entry.name]
+        // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
+        template: 'underscore-template-loader!' + app.indexPage,
+        inject: false, // 使用自动插入JS脚本,
+        chunks: ["vendors", app.entry.name] //选定需要插入的chunk名
     });
 
     //判断是否为当前正在调试的
@@ -148,6 +150,9 @@ var config = {
             // 'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
         }),
 
+        //提取出所有的CSS代码
+        new ExtractTextPlugin('stylesheets/[name].css'),
+
         //自动分割Vendor代码
         new CommonsChunkPlugin({name: 'vendors', filename: 'vendors.bundle.js', minChunks: Infinity}),
     ],
@@ -157,12 +162,8 @@ var config = {
             {test: /\.js$/, exclude: /(libs|node_modules)/, loader: 'babel'},
             {test: /\.(png|jpg|ttf|woff|svg|eot)$/, loader: 'url-loader?limit=8192'},// inline base64 URLs for <=8k images, direct URLs for the rest
             {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader!postcss-loader'
-            },
-            {
-                test: /\.(scss|sass)$/,
-                loader: 'style-loader!css-loader!postcss-loader!sass?sourceMap'
+                test: /\.(scss|sass|css)$/,
+                loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader!sass')
             },
             {test: /\.vue$/, loader: 'vue'}
         ]
@@ -195,7 +196,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     config.entry = devEntry;
 
     //設置公共目錄名
-    config.output.publicPath=  '/dist/'//公共目录名
+    config.output.publicPath = '/dist/'//公共目录名
 
 
     //添加插件
@@ -210,7 +211,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     config.output.filename = '[name].bundle.js.[hash:8]';
 
     //設置公共目錄名
-    config.output.publicPath=  '/'//公共目录名
+    config.output.publicPath = '/'//公共目录名
 
     //添加代码压缩插件
     config.plugins.push(
