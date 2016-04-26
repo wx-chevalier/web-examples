@@ -77,6 +77,13 @@ const externals = {
     pageResponse: 'pageResponse'
 };
 
+
+/*********************************************************/
+/*********************************************************/
+/*下面属于静态配置部分，修改请谨慎*/
+/*********************************************************/
+/*********************************************************/
+
 //开发时的入口考虑到热加载，只用数组形式，即每次只会加载一个文件
 var devEntry = [
     'eventsource-polyfill',
@@ -108,7 +115,7 @@ apps.forEach(function (app) {
         filename: app.entry.name + "/" + app.id + ".html",
         title: app.title,
         // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
-        template: 'underscore-template-loader!' + app.indexPage,
+        template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore
         inject: false, // 使用自动插入JS脚本,
         chunks: ["vendors", app.entry.name] //选定需要插入的chunk名
     });
@@ -204,6 +211,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     config.plugins.push(new webpack.NoErrorsPlugin());
 
 } else {
+    
     //如果是生产环境下
     config.entry = proEntry;
 
