@@ -8,7 +8,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.css?$/,
-                loaders: [ 'style', 'raw' ],
+                loader: 'style-loader!css-loader!postcss-loader',
                 include: path.resolve(__dirname, '../')
             }
         ]

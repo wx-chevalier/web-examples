@@ -34,7 +34,7 @@ It is initial from [react-transform-boilerplate](https://github.com/gaearon/reac
 
 # Quick Start
 
-use `npm install` to set up environment
+use `npm install` / `npm link` to set up environment
 
 use `npm start` to start Develop Server:localhost:3000
 
@@ -55,3 +55,5 @@ use `npm run deploy` to build and set up a simple http server for the dist direc
 # Todos
 
 - 借鉴并且集成[webpack-boilerplate](https://github.com/geniuscarrier/webpack-boilerplate)中好的地方
+
+- 局部状态放在局部处理,全局状态放在全局处理
