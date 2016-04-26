@@ -34,7 +34,7 @@ var apps = [
         indexPage: "./src/index.html",//主页文件
 
         //optional
-        dev: false,//判断是否当前正在调试,默认为false
+        dev: true,//判断是否当前正在调试,默认为false
         compiled: true//判斷當前是否加入编译,默认为true
     },
     {
@@ -45,7 +45,7 @@ var apps = [
             src: "./src/modules/helloworld/container/app.js"
         },
         indexPage: "./src/modules/helloworld/container/helloworld.html",
-        dev: true,
+        dev: false,
         compiled: true
     },
     {
@@ -162,6 +162,12 @@ var config = {
 
         //自动分割Vendor代码
         new CommonsChunkPlugin({name: 'vendors', filename: 'vendors.bundle.js', minChunks: Infinity}),
+
+        //自动分割Chunk代码
+        new CommonsChunkPlugin({
+            children: true,
+            async: true,
+        })
     ],
     module: {
         loaders: [
@@ -170,7 +176,7 @@ var config = {
             {test: /\.(png|jpg|ttf|woff|svg|eot)$/, loader: 'url-loader?limit=8192&name=assets/imgs/[hash].[ext]'},// inline base64 URLs for <=8k images, direct URLs for the rest
             {
                 test: /\.(scss|sass|css)$/,
-                loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader!sass')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass')
             },
             {test: /\.vue$/, loader: 'vue'}
         ]
@@ -211,7 +217,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     config.plugins.push(new webpack.NoErrorsPlugin());
 
 } else {
-    
+
     //如果是生产环境下
     config.entry = proEntry;
 

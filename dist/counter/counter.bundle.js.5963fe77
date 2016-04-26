@@ -2,11 +2,7 @@ webpackJsonp([2],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	"use strict";
 
 	var _react = __webpack_require__(6);
 
@@ -18,15 +14,15 @@ webpackJsonp([2],[
 
 	var _reactRedux = __webpack_require__(52);
 
-	var _text = __webpack_require__(83);
+	var _Counter = __webpack_require__(120);
 
-	var actions = _interopRequireWildcard(_text);
+	var _Counter2 = _interopRequireDefault(_Counter);
 
-	var _HelloWorld = __webpack_require__(123);
+	var _counter = __webpack_require__(82);
 
-	var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
+	var CounterActions = _interopRequireWildcard(_counter);
 
-	var _configureStore = __webpack_require__(125);
+	var _configureStore = __webpack_require__(123);
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
@@ -34,30 +30,29 @@ webpackJsonp([2],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var store = (0, _configureStore2.default)(); //初始化Store
+	//调试Counter
+
+	var store = (0, _configureStore2.default)({ counter: 0 }); //初始化Store
 
 	//将State映射为Props
 	function mapStateToProps(state) {
 	    return {
-	        text: state
+	        counter: state.counter
 	    };
 	}
 
 	//将Dispatch映射为Props
 	function mapDispatchToProps(dispatch) {
-	    return (0, _redux.bindActionCreators)(actions, dispatch);
+	    return (0, _redux.bindActionCreators)(CounterActions, dispatch);
 	}
 
-	var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_HelloWorld2.default);
+	var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Counter2.default);
 
 	(0, _reactDom.render)(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: store },
 	    _react2.default.createElement(App, null)
 	), document.getElementById('root'));
-
-	//默认导出App组件
-	exports.default = App;
 
 /***/ },
 /* 1 */,
@@ -2707,49 +2702,60 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 82 */,
-/* 83 */
+/* 82 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
-	exports.SayWorld = SayWorld;
-	exports.SayChevalier = SayChevalier;
-	exports.SaySomething = SaySomething;
-	var SAY_WORLD = exports.SAY_WORLD = 'SAY_WORLD';
+	exports.increment = increment;
+	exports.decrement = decrement;
+	exports.incrementIfOdd = incrementIfOdd;
+	exports.incrementAsync = incrementAsync;
+	var INCREMENT_COUNTER = exports.INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+	var DECREMENT_COUNTER = exports.DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
-	function SayWorld() {
-	    var delay = arguments.length <= 0 || arguments[0] === undefined ? 1000 : arguments[0];
-
-	    return function (dispatch) {
-	        setTimeout(function () {
-	            dispatch({ type: SAY_WORLD });
-	        }, delay);
-	    };
+	function increment() {
+	  return {
+	    type: INCREMENT_COUNTER
+	  };
 	}
 
-	var SAY_CHEVALIER = exports.SAY_CHEVALIER = 'SAY_CHEVALIER';
-
-	function SayChevalier() {
-	    return {
-	        type: SAY_CHEVALIER
-	    };
+	function decrement() {
+	  return {
+	    type: DECREMENT_COUNTER
+	  };
 	}
 
-	var SAY_SOMETHING = exports.SAY_SOMETHING = 'SAY_SOMETHING';
+	function incrementIfOdd() {
+	  return function (dispatch, getState) {
+	    var _getState = getState();
 
-	function SaySomething(someThing) {
+	    var counter = _getState.counter;
 
-	    return {
-	        type: SAY_SOMETHING,
-	        someThing: someThing
-	    };
+
+	    if (counter % 2 === 0) {
+	      return;
+	    }
+
+	    dispatch(increment());
+	  };
+	}
+
+	function incrementAsync() {
+	  var delay = arguments.length <= 0 || arguments[0] === undefined ? 1000 : arguments[0];
+
+	  return function (dispatch) {
+	    setTimeout(function () {
+	      dispatch(increment());
+	    }, delay);
+	  };
 	}
 
 /***/ },
+/* 83 */,
 /* 84 */,
 /* 85 */,
 /* 86 */,
@@ -2786,13 +2792,10 @@ webpackJsonp([2],[
 /* 117 */,
 /* 118 */,
 /* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -2812,117 +2815,137 @@ webpackJsonp([2],[
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var HelloWorld = function (_Component) {
-	    _inherits(HelloWorld, _Component);
+	__webpack_require__(128);
 
-	    function HelloWorld() {
-	        _classCallCheck(this, HelloWorld);
+	var Counter = function (_Component) {
+	    _inherits(Counter, _Component);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(HelloWorld).apply(this, arguments));
+	    function Counter() {
+	        _classCallCheck(this, Counter);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Counter).apply(this, arguments));
 	    }
 
-	    _createClass(HelloWorld, [{
-	        key: 'render',
+	    _createClass(Counter, [{
+	        key: "render",
 	        value: function render() {
 	            var _props = this.props;
-	            var SayWorld = _props.SayWorld;
-	            var SayChevalier = _props.SayChevalier;
-	            var SaySomething = _props.SaySomething;
-	            var text = _props.text;
+	            var increment = _props.increment;
+	            var incrementIfOdd = _props.incrementIfOdd;
+	            var incrementAsync = _props.incrementAsync;
+	            var decrement = _props.decrement;
+	            var counter = _props.counter;
 
 	            return _react2.default.createElement(
-	                'p',
+	                "p",
 	                { style: { color: "blue" } },
-	                'Hello ',
-	                text,
+	                "Clicked: ",
+	                counter,
+	                " times",
 	                ' ',
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: SayWorld },
-	                    'SayWorld'
+	                    "button",
+	                    { onClick: increment },
+	                    "+"
 	                ),
 	                ' ',
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: SayChevalier },
-	                    'SayChevalier'
+	                    "button",
+	                    { onClick: decrement },
+	                    "-"
 	                ),
 	                ' ',
 	                _react2.default.createElement(
-	                    'button',
+	                    "button",
+	                    { onClick: incrementIfOdd },
+	                    "Increment if odd"
+	                ),
+	                ' ',
+	                _react2.default.createElement(
+	                    "button",
 	                    { onClick: function onClick() {
-	                            SaySomething("SomeThing");
+	                            return incrementAsync();
 	                        } },
-	                    'SaySomething'
-	                ),
-	                ' '
+	                    "Increment async"
+	                )
 	            );
 	        }
 	    }]);
 
-	    return HelloWorld;
+	    return Counter;
 	}(_react.Component);
 
-	HelloWorld.propTypes = {
-	    SayWorld: _react.PropTypes.func.isRequired,
-	    SayChevalier: _react.PropTypes.func.isRequired,
-	    SaySomething: _react.PropTypes.func.isRequired,
-	    text: _react.PropTypes.string.isRequired
+	Counter.propTypes = {
+	    increment: _react.PropTypes.func.isRequired,
+	    incrementIfOdd: _react.PropTypes.func.isRequired,
+	    incrementAsync: _react.PropTypes.func.isRequired,
+	    decrement: _react.PropTypes.func.isRequired,
+	    counter: _react.PropTypes.number.isRequired
 	};
 
-	exports.default = HelloWorld;
+	exports.default = Counter;
 
 /***/ },
-/* 124 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
-	exports.default = Reducer;
+	exports.default = counter;
 
-	var _text = __webpack_require__(83);
+	var _counter = __webpack_require__(82);
 
-	var actions = _interopRequireWildcard(_text);
+	function counter() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+	  var action = arguments[1];
 
-	var _redux = __webpack_require__(13);
 
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	  switch (action.type) {
 
-	function Reducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? "Initialization" : arguments[0];
-	    var action = arguments[1];
-
-	    switch (action.type) {
-	        case actions.SAY_CHEVALIER:
-	            {
-	                return "Chevalier";
-	            }
-	        case actions.SAY_WORLD:
-	            {
-	                return "World";
-	            }
-	        case actions.SAY_SOMETHING:
-	            {
-	                return action.someThing;
-	            }
-	        default:
-	            {
-	                return state;
-	            }
-	    }
+	    case _counter.INCREMENT_COUNTER:
+	      return state + 1;
+	    case _counter.DECREMENT_COUNTER:
+	      return state - 1;
+	    default:
+	      return state;
+	  }
 	}
 
 /***/ },
-/* 125 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
+	});
+
+	var _redux = __webpack_require__(13);
+
+	var _counter = __webpack_require__(121);
+
+	var _counter2 = _interopRequireDefault(_counter);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var rootReducer = (0, _redux.combineReducers)({
+	  counter: _counter2.default
+	});
+
+	exports.default = rootReducer;
+
+/***/ },
+/* 123 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
 	});
 	exports.default = configureStore;
 
@@ -2940,34 +2963,39 @@ webpackJsonp([2],[
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _index = __webpack_require__(124);
+	var _reducers = __webpack_require__(122);
 
-	var _index2 = _interopRequireDefault(_index);
+	var _reducers2 = _interopRequireDefault(_reducers);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//创建一个日志记录器实例
 	var logger = (0, _reduxLogger2.default)();
 
-	//设置默认的创建Store的方法
+	var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxPromise2.default, logger)(_redux.createStore);
+
 	function configureStore(initialState) {
+	  var store = createStoreWithMiddleware(_reducers2.default, initialState);
 
-	    //创建一个新的store
-	    var store = (0, _redux.createStore)(_index2.default, initialState, (0, _redux.compose)((0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxPromise2.default, logger), window.devToolsExtension ? window.devToolsExtension() : function (f) {
-	        return f;
-	    }));
+	  if (false) {
+	    // Enable Webpack hot module replacement for reducers
+	    module.hot.accept('../reducers', function () {
+	      var nextReducer = require('../reducers');
+	      store.replaceReducer(nextReducer);
+	    });
+	  }
 
-	    //判断是否需要进行热加载
-	    if (false) {
-	        // Enable Webpack hot module replacement for reducers
-	        module.hot.accept('../reducers', function () {
-	            var nextReducer = require('../reducers');
-	            store.replaceReducer(nextReducer);
-	        });
-	    }
-
-	    return store;
+	  return store;
 	}
+
+/***/ },
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 ]);
