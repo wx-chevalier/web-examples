@@ -4,7 +4,7 @@
 
 import React from "react";
 import {storiesOf, action} from "@kadira/storybook";
-import HelloWorld from "../helloworld/components/HelloWorld";
+import HelloWorld from "../components/HelloWorld";
 
 //导入自定义组件
 

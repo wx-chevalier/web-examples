@@ -171,8 +171,11 @@ var config = {
     ],
     module: {
         loaders: [
-            {test: /\.jsx$/, exclude: /(libs|node_modules)/, loader: 'babel'},
-            {test: /\.js$/, exclude: /(libs|node_modules)/, loader: 'babel'},
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /(libs|node_modules)/,
+                loaders: ["babel-loader"]
+            },
             {test: /\.(png|jpg|ttf|woff|svg|eot)$/, loader: 'url-loader?limit=8192&name=assets/imgs/[hash].[ext]'},// inline base64 URLs for <=8k images, direct URLs for the rest
             {
                 test: /\.(scss|sass|css)$/,
@@ -236,6 +239,11 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
         }));
 
     //添加MD5计算插件
+
+    //判断是否需要进行检查
+    if(process.env.CHECK === "true"){
+        config.module.loaders[0].loaders.push("eslint-loader");
+    }
 }
 
 module.exports = config;

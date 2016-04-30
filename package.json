@@ -7,6 +7,7 @@
     "storybook": "start-storybook -p 9001",
     "build:webpack": "NODE_ENV=production webpack -p --config webpack.config.js",
     "build": "npm run clean && npm run build:webpack",
+    "build:style-check": "NODE_ENV=production CHECK=true webpack -p --config webpack.config.js",
     "deploy": "npm run build && ./node_modules/.bin/http-server dist",
     "clean": "rimraf dist",
     "lint": "eslint src"
@@ -52,6 +53,7 @@
     "copy-webpack-plugin": "^0.3.3",
     "css-loader": "^0.16.0",
     "eslint": "^1.10.3",
+    "eslint-loader": "^1.3.0",
     "eslint-plugin-babel": "^3.0.0",
     "eslint-plugin-react": "^3.11.3",
     "eventsource-polyfill": "^0.9.6",

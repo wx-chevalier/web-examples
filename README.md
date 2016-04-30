@@ -33,6 +33,8 @@ use `npm run storybook` to start StoryBook UI
 
 use `npm run build` to build the release version
 
+use `npm run build:style-check` to check code style and build the release version
+
 use `npm run deploy` to build and set up a simple http server for the dist directory
 
 **注意**
