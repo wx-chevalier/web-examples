@@ -83,7 +83,7 @@
     "vue-loader": "^7.3.0",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
-    "webpack-hot-middleware": "^2.6.0",
+    "webpack-hot-middleware": "^2.10.0",
     "webpack-md5-hash": "0.0.4"
   },
   "dependencies": {

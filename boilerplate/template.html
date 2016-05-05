@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon %>">
     <% } %>
 
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
     <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
     <![endif]-->
@@ -21,9 +22,7 @@
 <body>
 <div id="root"></div>
 <%for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-<script type="text/javascript" src="<% chunk %>"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
 <%} %>
 </body>
 </html>
-
-
