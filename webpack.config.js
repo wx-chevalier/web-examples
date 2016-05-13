@@ -34,7 +34,7 @@ var apps = [
         indexPage: "./src/index.html",//主页文件
 
         //optional
-        dev: true,//判断是否当前正在调试,默认为false
+        dev: false,//判断是否当前正在调试,默认为false
         compiled: true//判斷當前是否加入编译,默认为true
     },
     {
@@ -67,6 +67,20 @@ var apps = [
         dev: false,//判断是否当前正在调试,默认为false
         compiled: true//判斷當前是否加入编译,默认为true
     },
+    {
+        //required
+        id: "form",//编号
+        title: "Form",//HTML文件标题
+        entry: {
+            name: "form",//该应用的入口名
+            src: "./src/modules/form/form.js"//该应用对应的入口文件
+        },//入口文件
+        indexPage: "./src/modules/form/form.html",//主页文件
+
+        //optional
+        dev: true,//判断是否当前正在调试,默认为false
+        compiled: true//判斷當前是否加入编译,默认为true
+    }
 ];
 
 //定义非直接引用依赖

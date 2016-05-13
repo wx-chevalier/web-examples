@@ -96,6 +96,7 @@
     "react-redux": "^4.4.5",
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
+    "redux-form": "^5.2.3",
     "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^1.0.3",
