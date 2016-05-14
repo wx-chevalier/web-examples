@@ -188,7 +188,17 @@ var config = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(libs|node_modules)/,
-                loaders: ["babel-loader"]
+                loader:"babel",
+                query: {
+                    presets: ["es2015", "react", "stage-2"],
+                    plugins: [
+                        ["typecheck"],
+                        ["transform-flow-strip-types"],
+                        ["syntax-flow"],
+                        ["transform-class-properties"],
+                        ["transform-object-rest-spread"]
+                    ]
+                }
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
