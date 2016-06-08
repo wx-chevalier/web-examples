@@ -36,37 +36,7 @@ var apps = [
         //optional
         dev: false,//判断是否当前正在调试,默认为false
         compiled: true//判斷當前是否加入编译,默认为true
-    },
-    {
-        id: "helloWorld",
-        title: "HelloWorld",
-        entry: {
-            name: "helloWorld",
-            src: "./src/modules/helloworld/container/app.js"
-        },
-        indexPage: "./src/modules/helloworld/container/helloworld.html",
-        dev: true,
-        compiled: true
-    },
-    {
-        id: "todolist",
-        title: "TodoList",
-        compiled: false
-    },
-    {
-        //required
-        id: "counter",//编号
-        title: "Counter",//HTML文件标题
-        entry: {
-            name: "counter",//该应用的入口名
-            src: "./src/modules/counter/container/app.js",//该应用对应的入口文件
-        },//入口文件
-        indexPage: "./src/modules/counter/container/counter.html",//主页文件
-
-        //optional
-        dev: false,//判断是否当前正在调试,默认为false
-        compiled: true//判斷當前是否加入编译,默认为true
-    },
+    }
 ];
 
 //定义非直接引用依赖
@@ -77,6 +47,13 @@ const externals = {
     pageResponse: 'pageResponse'
 };
 
+
+/*********************************************************/
+/*********************************************************/
+/*下面属于静态配置部分，修改请谨慎*/
+/*********************************************************/
+/*********************************************************/
+
 //开发时的入口考虑到热加载，只用数组形式，即每次只会加载一个文件
 var devEntry = [
     'eventsource-polyfill',
@@ -85,7 +62,7 @@ var devEntry = [
 
 //生产环境下考虑到方便编译成不同的文件名，所以使用数组
 var proEntry = {
-    "vendors": "./src/vendors.js",//存放所有的公共文件
+    "vendors": "./src/vendors.js"//存放所有的公共文件
 };
 
 //定义HTML文件入口,默认的调试文件为src/index.html
@@ -108,7 +85,7 @@ apps.forEach(function (app) {
         filename: app.id + ".html",
         title: app.title,
         // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
-        template: 'underscore-template-loader!' + app.indexPage,
+        template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore
         inject: false, // 使用自动插入JS脚本,
         chunks: ["vendors", app.entry.name] //选定需要插入的chunk名
     });
@@ -151,24 +128,47 @@ var config = {
         }),
 
         //提取出所有的CSS代码
-        new ExtractTextPlugin('stylesheets/[name].css'),
+        new ExtractTextPlugin('[name].css'),
 
         //自动分割Vendor代码
         new CommonsChunkPlugin({name: 'vendors', filename: 'vendors.bundle.js', minChunks: Infinity}),
+
+        //自动分割Chunk代码
+        // new CommonsChunkPlugin({
+        //     children: true,
+        //     async: true,
+        // })
     ],
     module: {
         loaders: [
-            {test: /\.jsx$/, exclude: /(libs|node_modules)/, loader: 'babel'},
-            {test: /\.js$/, exclude: /(libs|node_modules)/, loader: 'babel'},
-            {test: /\.(png|jpg|ttf|woff|svg|eot)$/, loader: 'url-loader?limit=8192'},// inline base64 URLs for <=8k images, direct URLs for the rest
             {
-                test: /\.(scss|sass|css)$/,
-                loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader!sass')
+                test: /\.(js|jsx)$/,
+                exclude: /(libs|node_modules)/,
+                loader: "babel",
+                query: {
+                    presets: ["es2015", "react", "stage-2"],
+                    plugins: [
+                        ["typecheck"],
+                        ["transform-flow-strip-types"],
+                        ["syntax-flow"],
+                        ["transform-class-properties"],
+                        ["transform-object-rest-spread"]
+                    ]
+                }
             },
-            {test: /\.vue$/, loader: 'vue'}
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+                loader: 'url-loader?limit=8192&name=assets/imgs/[hash].[ext]'
+            },// inline base64 URLs for <=8k images, direct URLs for the rest
+            {
+                test: /\.vue$/,
+                loader: 'vue'
+            }
         ]
     },
-    postcss: [autoprefixer({browsers: ['last 10 versions', "> 1%"]})],//使用postcss作为默认的CSS编译器
+    postcss: [
+        autoprefixer({browsers: ['last 10 versions', "> 1%"]})
+    ],//使用postcss作为默认的CSS编译器
     resolve: {
         alias: {
             libs: path.resolve(__dirname, 'libs'),
@@ -198,12 +198,19 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     //設置公共目錄名
     config.output.publicPath = '/dist/'//公共目录名
 
+    //调试状态下的CSS
+    config.module.loaders.push({
+        test: /\.(scss|sass|css)$/,
+        loader: 'style-loader!css-loader!postcss-loader!sass'
+    });
+
 
     //添加插件
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
     config.plugins.push(new webpack.NoErrorsPlugin());
 
 } else {
+
     //如果是生产环境下
     config.entry = proEntry;
 
@@ -212,6 +219,12 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
 
     //設置公共目錄名
     config.output.publicPath = '/'//公共目录名
+
+    //发布状态下添加Loader
+    config.module.loaders.push({
+        test: /\.(scss|sass|css)$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass')
+    });
 
     //添加代码压缩插件
     config.plugins.push(
@@ -222,6 +235,11 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
         }));
 
     //添加MD5计算插件
+
+    //判断是否需要进行检查
+    if (process.env.CHECK === "true") {
+        config.module.loaders[0].loaders.push("eslint-loader");
+    }
 }
 
 module.exports = config;

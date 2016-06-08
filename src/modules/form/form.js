@@ -10,7 +10,11 @@ const store = configureStore(); //初始化Store
 
 render(
     <Provider store={store}>
-        <SimpleForm onSubmit={()=>{}} defaultValue={{
+        <SimpleForm onSubmit={(
+               ...args
+        )=>{
+            console.log(args);
+        }} defaultValue={{
             firstName:"张"
         }}/>
     </Provider>,

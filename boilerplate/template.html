@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><%=htmlWebpackPlugin.options.title || 'HTML Template'%></title>
+    <title><%=htmlWebpackPlugin.options.title || 'Template'%></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -9,10 +9,12 @@
     <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon %>">
     <% } %>
 
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
+    <!--Polyfill-->
+
     <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
     <![endif]-->
+
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <%for (var css in htmlWebpackPlugin.files.css) { %>

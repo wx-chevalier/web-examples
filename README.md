@@ -4,6 +4,11 @@ Page-Driven Webpack Boilerplate For React-Redux Work Flow
 
 It is initial from [react-transform-boilerplate](https://github.com/gaearon/react-transform-boilerplate)
 
+其他借鉴了的Boilerplate：
+
+- [react-boilerplate](https://github.com/mxstbr/react-boilerplate)
+- [react-project](https://github.com/ryanflorence/react-project#lazy)
+
 ## Features
 
 本部分假设你已经对Webpack有了大概的了解，这里我们会针对笔者自己在生产环境下使用的Webpack编译脚本进行的一个总结，在介绍具体的配置方案之前笔者想先概述下该配置文件的设计的目标，或者说是笔者认为一个前端编译环境应该达成的特性，这样以后即使Webpack被淘汰了也可以利用其他的譬如JSPM之类的来完成类似的工作。

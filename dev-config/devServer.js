@@ -15,7 +15,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname + "/src/", "dev.html"));
+  res.sendFile(path.join(__dirname + "/", "dev.html"));
 });
 
 //监听本地端口

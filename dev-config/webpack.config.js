@@ -22,66 +22,7 @@ var NODE_ENV = process.env.NODE_ENV || "develop";//获取命令行变量
  * @function 开发状态下默认会把JS文本编译为main.bundle.js,然后使用根目录下dev.html作为调试文件.
  * @type {*[]}
  */
-var apps = [
-    {
-        //required
-        id: "index",//编号
-        title: "Index",//HTML文件标题
-        entry: {
-            name: "index",//该应用的入口名
-            src: "./src/index.js",//该应用对应的入口文件
-        },//入口文件
-        indexPage: "./src/index.html",//主页文件
-
-        //optional
-        dev: false,//判断是否当前正在调试,默认为false
-        compiled: true//判斷當前是否加入编译,默认为true
-    },
-    {
-        id: "helloworld",
-        title: "HelloWorld",
-        entry: {
-            name: "helloworld",
-            src: "./src/modules/helloworld/container/app.js"
-        },
-        indexPage: "./src/modules/helloworld/container/helloworld.html",
-        dev: false,
-        compiled: true
-    },
-    {
-        id: "todolist",
-        title: "TodoList",
-        compiled: false
-    },
-    {
-        //required
-        id: "counter",//编号
-        title: "Counter",//HTML文件标题
-        entry: {
-            name: "counter",//该应用的入口名
-            src: "./src/modules/counter/container/app.js",//该应用对应的入口文件
-        },//入口文件
-        indexPage: "./src/modules/counter/container/counter.html",//主页文件
-
-        //optional
-        dev: false,//判断是否当前正在调试,默认为false
-        compiled: true//判斷當前是否加入编译,默认为true
-    },
-    {
-        //required
-        id: "form",//编号
-        title: "Form",//HTML文件标题
-        entry: {
-            name: "form",//该应用的入口名
-            src: "./src/modules/form/form.js"//该应用对应的入口文件
-        },//入口文件
-        indexPage: "./src/modules/form/form.html",//主页文件
-
-        //optional
-        dev: true,//判断是否当前正在调试,默认为false
-        compiled: true//判斷當前是否加入编译,默认为true
-    }
-];
+var apps = require("./apps.config.js").apps;
 
 //定义非直接引用依赖
 //定义第三方直接用Script引入而不需要打包的类库
@@ -178,17 +119,17 @@ var config = {
         new CommonsChunkPlugin({name: 'vendors', filename: 'vendors.bundle.js', minChunks: Infinity}),
 
         //自动分割Chunk代码
-        new CommonsChunkPlugin({
-            children: true,
-            async: true,
-        })
+        // new CommonsChunkPlugin({
+        //     children: true,
+        //     async: true,
+        // })
     ],
     module: {
         loaders: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(libs|node_modules)/,
-                loader:"babel",
+                loader: "babel",
                 query: {
                     presets: ["es2015", "react", "stage-2"],
                     plugins: [
@@ -211,7 +152,8 @@ var config = {
         ]
     },
     postcss: [
-        autoprefixer({browsers: ['last 10 versions', "> 1%"]})
+        autoprefixer({browsers: ['last 10 versions', "> 1%"]}),
+        require('postcss-flexibility')
     ],//使用postcss作为默认的CSS编译器
     resolve: {
         alias: {
