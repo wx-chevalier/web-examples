@@ -12,6 +12,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var WebpackMd5Hash = require('webpack-md5-hash');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var validate = require("webpack-validator"); //用于webpack配置验证
 
 var NODE_ENV = process.env.NODE_ENV || "develop";//获取命令行变量
 
@@ -228,4 +229,4 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     }
 }
 
-module.exports = config;
+module.exports = validate(config);
