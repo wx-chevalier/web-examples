@@ -13,7 +13,7 @@
 
 ## Contain
 
-Contain模式即保证页面完全包含在浏览器窗口中,在保证页面的宽高比情况下调整页面的宽度或者高度中的较大者,使得页面水平垂直居中,左右或伤心可能出现空白。
+Contain模式即保证页面完全包含在浏览器窗口中,在保证页面的宽高比情况下调整页面的宽度或者高度中的较大者,使得页面水平垂直居中,左右或上下可能出现空白。
 
 ![](https://raw.githubusercontent.com/peunzhang/pageResponse/master/pic/pageResponse_contain.gif)
 
