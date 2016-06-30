@@ -12,9 +12,6 @@ module.exports = {
                 src: "./src/index.js",//该应用对应的入口文件
             },//入口文件
             indexPage: "./src/index.html",//主页文件
-
-            //optional
-            dev: false,//判断是否当前正在调试,默认为false
             compiled: true//判斷當前是否加入编译,默认为true
         },
         {
@@ -25,7 +22,6 @@ module.exports = {
                 src: "./src/modules/helloworld/container/app.js"
             },
             indexPage: "./src/modules/helloworld/container/helloworld.html",
-            dev: false,
             compiled: true
         },
         {
@@ -42,9 +38,6 @@ module.exports = {
                 src: "./src/modules/counter/container/app.js",//该应用对应的入口文件
             },//入口文件
             indexPage: "./src/modules/counter/container/counter.html",//主页文件
-
-            //optional
-            dev: false,//判断是否当前正在调试,默认为false
             compiled: true//判斷當前是否加入编译,默认为true
         },
         {
@@ -56,10 +49,13 @@ module.exports = {
                 src: "./src/modules/form/form.js"//该应用对应的入口文件
             },//入口文件
             indexPage: "./src/modules/form/form.html",//主页文件
-
-            //optional
-            dev: true,//判断是否当前正在调试,默认为false
             compiled: true//判斷當前是否加入编译,默认为true
         }
-    ]
-}
+    ],
+
+    //开发服务器配置
+    devServer: {
+        appEntrySrc: "./widgets/components/scalable/demo.js", //当前待调试的APP的编号
+        port: 3000 //监听的Server端口
+    }
+};

@@ -4,8 +4,11 @@ Page-Driven Webpack Boilerplate For React-Redux Work Flow
 
 It is initial from [react-transform-boilerplate](https://github.com/gaearon/react-transform-boilerplate)
 
-其他借鉴了的Boilerplate：
 
+
+
+## Reference
+- [webpack-for-the-fast-and-the-furious](https://medium.freecodecamp.com/webpack-for-the-fast-and-the-furious-bf8d3746adbd#.poot9r5ee)
 - [react-boilerplate](https://github.com/mxstbr/react-boilerplate)
 - [react-project](https://github.com/ryanflorence/react-project#lazy)
 

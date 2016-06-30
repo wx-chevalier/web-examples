@@ -48,7 +48,7 @@ var devEntry = [
 
 //生产环境下考虑到方便编译成不同的文件名，所以使用数组
 var proEntry = {
-    "vendors": "./src/vendors.js",//存放所有的公共文件
+    "vendors": "./src/vendors.js"//存放所有的公共文件
 };
 
 //定义HTML文件入口,默认的调试文件为src/index.html
@@ -63,25 +63,25 @@ apps.forEach(function (app) {
         return;
     }
 
-    //添加入入口
+    //添加入口
     proEntry[app.entry.name] = app.entry.src;
 
-    //构造HTML页面
-    htmlPages.push({
-        filename: app.id + ".html",
-        title: app.title,
-        // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
-        template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore
-        inject: false, // 使用自动插入JS脚本,
-        chunks: ["vendors", app.entry.name] //选定需要插入的chunk名
-    });
-
-    //判断是否为当前正在调试的
-    if (app.dev === true) {
-        //如果是当前正在调试的，则加入到devEntry
-        devEntry.push(app.entry.src);
+    //判断是否设置了HTML页面,如果设置了则添加
+    if (!!app.indexPage) {
+        //构造HTML页面
+        htmlPages.push({
+            filename: app.id + ".html",
+            title: app.title,
+            // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
+            template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore
+            inject: false, // 使用自动插入JS脚本,
+            chunks: ["vendors", app.entry.name] //选定需要插入的chunk名
+        });
     }
+    ;
+
 });
+
 
 //@endregion 可配置区域
 
@@ -90,7 +90,7 @@ var config = {
     devtool: 'source-map',
     //所有的出口文件，注意，所有的包括图片等本机被放置到了dist目录下，其他文件放置到static目录下
     output: {
-        path: path.join(__dirname, 'dist'),//生成目录
+        path: path.join(__dirname, '../dist'),//生成目录
         filename: '[name].bundle.js',//文件名
         sourceMapFilename: '[name].bundle.map'//映射名
         // chunkFilename: '[id].[chunkhash].chunk.js',//块文件索引
@@ -176,6 +176,9 @@ htmlPages.forEach(function (p) {
 //为开发状态下添加插件
 if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
 
+    //添加调试入口
+    devEntry.push(require("./apps.config.js").devServer.appEntrySrc);
+
     //配置SourceMap
     config.devtool = 'cheap-module-eval-source-map';
 
@@ -202,7 +205,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     config.entry = proEntry;
 
     //如果是生成环境下，将文件名加上hash
-    config.output.filename = '[name].bundle.js.[hash:8]';
+    config.output.filename = '[name].bundle.[hash:8].js';
 
     //設置公共目錄名
     config.output.publicPath = '/'//公共目录名
@@ -216,9 +219,11 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     //添加代码压缩插件
     config.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
-            compressor: {
+            minimize: true,
+            compress: {
                 warnings: false
-            }
+            },
+            verbose: true
         }));
 
     //添加MD5计算插件
@@ -228,5 +233,6 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
         config.module.loaders[0].loaders.push("eslint-loader");
     }
 }
+
 
 module.exports = validate(config);
