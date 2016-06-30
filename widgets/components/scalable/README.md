@@ -53,19 +53,19 @@ ths props of ScalableComponent is :
 
 Contain mode ensure that page is wrapped in the window, there may be some blank area in left/right/top/bottom area.
 
-![](https://raw.githubusercontent.com/peunzhang/pageResponse/master/pic/pageResponse_contain.gif)
+![](https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/blob/master/widgets/components/scalable/screenshots/contain.gif?raw=true)
 
 ## Cover
 
 Cover mode ensure that the page cover the window while keep the aspect ratio.
 
-![](https://raw.githubusercontent.com/peunzhang/pageResponse/master/pic/pageResponse_cover.gif)
+![](https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/blob/master/widgets/components/scalable/screenshots/cover.gif?raw=true)
 
 ## Auto
 
 keep the aspect ratio and adjust the width, ensure that page is wrapped in window in vertical direction
 
-![](https://raw.githubusercontent.com/peunzhang/pageResponse/master/pic/pageResponse_auto.gif)
+![](https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/blob/master/widgets/components/scalable/screenshots/auto.gif?raw=true)
 
 # Issue or Advice
 
