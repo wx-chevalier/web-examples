@@ -1,4 +1,4 @@
-# ScalableComponent
+# [ScalableComponent](https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/tree/master/widgets/components/scalable)
 
 > Inspired By [pageResponse](https://github.com/peunzhang/pageResponse/blob/master/README.md), which is a Responsive plugin for the mobile
 
