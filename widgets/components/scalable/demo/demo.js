@@ -3,7 +3,7 @@
  */
 import React from "react";
 import {render} from "react-dom";
-import ScalableComponent from "./scalable";
+import ScalableComponent from "../scalable";
 
 render(<ScalableComponent mode="contain" wrapperBackgroundColor="rgb(117,155,156)">
     <div style={{color:"white"}}>
