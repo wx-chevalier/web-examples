@@ -29,6 +29,7 @@ var apps = require("./apps.config.js").apps;
 //定义第三方直接用Script引入而不需要打包的类库
 //使用方式即为var $ = require("jquery")
 const externals = {
+    window: "window",
     jquery: "jQuery",
     pageResponse: 'pageResponse'
 };
@@ -46,41 +47,13 @@ var devEntry = [
     'webpack-hot-middleware/client',
 ];
 
+//配置依赖库性质的编译环境
+var libraryEntry = [];
+
 //生产环境下考虑到方便编译成不同的文件名，所以使用数组
 var proEntry = {
     "vendors": "./src/vendors.js"//存放所有的公共文件
 };
-
-//定义HTML文件入口,默认的调试文件为src/index.html
-var htmlPages = [];
-
-//遍历定义好的app进行构造
-apps.forEach(function (app) {
-
-    //判断是否加入编译
-    if (app.compiled === false) {
-        //如果还未开发好,就设置为false
-        return;
-    }
-
-    //添加入口
-    proEntry[app.entry.name] = app.entry.src;
-
-    //判断是否设置了HTML页面,如果设置了则添加
-    if (!!app.indexPage) {
-        //构造HTML页面
-        htmlPages.push({
-            filename: app.id + ".html",
-            title: app.title,
-            // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
-            template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore
-            inject: false, // 使用自动插入JS脚本,
-            chunks: ["vendors", app.entry.name] //选定需要插入的chunk名
-        });
-    }
-    ;
-
-});
 
 
 //@endregion 可配置区域
@@ -102,10 +75,10 @@ var config = {
         new webpack.DefinePlugin({
             'process.env': {
                 //因为使用热加载，所以在开发状态下可能传入的环境变量为空
-                'NODE_ENV': process.env.NODE_ENV === undefined ? JSON.stringify('develop') : JSON.stringify(NODE_ENV)
+                'NODE_ENV': process.env.NODE_ENV === undefined ? JSON.stringify('development') : JSON.stringify(NODE_ENV)
             },
             //判断当前是否处于开发状态
-            __DEV__: process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop" ? JSON.stringify(true) : JSON.stringify(false)
+            __DEV__: process.env.NODE_ENV === undefined || process.env.NODE_ENV === "development" ? JSON.stringify(true) : JSON.stringify(false)
         }),
 
         //提供者fetch Polyfill插件
@@ -168,13 +141,9 @@ var config = {
 //进行脚本组装
 config.externals = externals;
 
-//自动创建HTML代码
-htmlPages.forEach(function (p) {
-    config.plugins.push(new HtmlWebpackPlugin(p));
-});
 
 //为开发状态下添加插件
-if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
+if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "development") {
 
     //添加调试入口
     devEntry.push(require("./apps.config.js").devServer.appEntrySrc);
@@ -199,7 +168,80 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "develop") {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
     config.plugins.push(new webpack.NoErrorsPlugin());
 
+} else if (process.env.NODE_ENV === "library") {
+
+    const library = require("./apps.config.js").library;
+
+    //如果是要编译Library性质的项目
+    libraryEntry.push(library.entry);
+
+    config.entry = libraryEntry;
+
+    //添加生成项的依赖库名
+    config.output.library = library.library;
+
+    //添加全局挂载名
+    config.output.libraryTarget = library.libraryTarget;
+
+    //如果是生成环境下，将文件名加上hash
+    config.output.filename = `${library.name}.library.js`;
+
+    //設置公共目錄名
+    config.output.publicPath = './'//公共目录名
+
+    //添加代码压缩插件
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            compress: {
+                warnings: false
+            },
+            verbose: true
+        }));
+
+    //添加MD5计算插件
+
+    //判断是否需要进行检查
+    if (process.env.CHECK === "true") {
+        config.module.loaders[0].loaders.push("eslint-loader");
+    }
+
 } else {
+
+    //定义HTML文件入口,默认的调试文件为src/index.html
+    var htmlPages = [require("./apps.config.js").devServer.appEntrySrc];
+
+    //遍历定义好的app进行构造
+    apps.forEach(function (app) {
+
+        //判断是否加入编译
+        if (app.compiled === false) {
+            //如果还未开发好,就设置为false
+            return;
+        }
+
+        //添加入口
+        proEntry[app.entry.name] = app.entry.src;
+
+        //判断是否设置了HTML页面,如果设置了则添加
+        if (!!app.indexPage) {
+            //构造HTML页面
+            htmlPages.push({
+                filename: app.id + ".html",
+                title: app.title,
+                // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
+                template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore
+                inject: false, // 使用自动插入JS脚本,
+                chunks: ["vendors", app.entry.name] //选定需要插入的chunk名
+            });
+        }
+
+    });
+
+    //自动创建HTML代码
+    htmlPages.forEach(function (p) {
+        config.plugins.push(new HtmlWebpackPlugin(p));
+    });
 
     //如果是生产环境下
     config.entry = proEntry;
