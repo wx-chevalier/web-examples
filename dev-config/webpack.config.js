@@ -209,7 +209,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "development"
 } else {
 
     //定义HTML文件入口,默认的调试文件为src/index.html
-    var htmlPages = [require("./apps.config.js").devServer.appEntrySrc];
+    var htmlPages = [];
 
     //遍历定义好的app进行构造
     apps.forEach(function (app) {
