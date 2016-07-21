@@ -11,100 +11,96 @@ require('isomorphic-fetch');
  */
 export default class Model {
 
+
+    //默认的基本URL路径
+    static BASE_URL = "/";
+
+    //默认的请求头
+    static headers = {};
+
+    /**
+     * @function 默认构造函数
+     */
     constructor() {
 
-        //绑定本地的CheckStatus方法
-        this.checkStatus = this.checkStatus.bind(this);
+        this._checkStatus = this._checkStatus.bind(this);
 
-        //绑定本地的JSON解析方法
-        this.parseJSON = this.parseJSON.bind(this);
+        this._parseJSON = this._parseJSON.bind(this);
+
+        this._parseText = this._parseText.bind(this);
+
+        this._fetchWithCORS = this._fetchWithCORS.bind(this);
+
 
     }
 
-
     /**
-     * @function 检测响应参数的状态
+     * @function 检测返回值的状态
      * @param response
      * @returns {*}
      */
-    checkStatus(response) {
+    _checkStatus(response) {
 
         if (response.status >= 200 && response.status < 300) {
             return response
         } else {
-            var error = new Error(response.statusText)
-            error.response = response
+            var error = new Error(response.statusText);
+            error.response = response;
             throw error
         }
     }
 
     /**
-     * @function 获取响应中的JSON参数
+     * @function 解析返回值中的Response为JSON形式
      * @param response
      * @returns {*}
      */
-    parseJSON(response) {
+    _parseJSON(response) {
 
         if (!!response) {
-            return response.json()
+
+            return response.json();
         }
         else {
             return undefined;
         }
 
-
     }
 
     /**
-     * @function 在url中根据名称获取值
-     * @param name
-     * @param url
+     * @function 解析TEXT性质的返回
+     * @param response
      * @returns {*}
      */
-    getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    _parseText(response) {
+
+        if (!!response) {
+
+            return response.text();
+        }
+        else {
+            return undefined;
+        }
+
     }
 
     /**
-     * @function 以扁平化方式发起请求
-     * @param host
-     * @param path
-     * @param requestData
-     * @param action
+     * @function 封装好的跨域请求的方法
+     * @param packagedRequestURL
+     * @returns {*|Promise.<TResult>}
+     * @private
      */
-    getWithQueryParams({host=Model.BASE_URL, path="/", requestData={}, action="GET"}) {
+    _fetchWithCORS(packagedRequestURL, contentType) {
 
-        //待拼接的查询字符串
-        let queryString = "";
-
-        //拼接查询字符串
-        for (let key in requestData) {
-            queryString += `${key}=${requestData[key]}&`
-        }
-
-        //将字符串链接
-        const packagedRequestURL = `${host}${path}?${queryString}action=${action}`;
-
-        console.log(packagedRequestURL);
-
-        //执行fetch方法发起请求
         return fetch(packagedRequestURL, {
-            mode: "cors", headers: {}
+            mode: "cors", headers: Model.headers
         })
             .then(this.checkStatus, (error)=> {
-                console.log(error);
                 return error;
             })
-            .then(this.parseJSON, (error)=> {
+            .then(contentType === "json" ? this._parseJSON : this._parseText, (error)=> {
                 return error;
             });
-
     }
 
     /**
@@ -112,28 +108,68 @@ export default class Model {
      * @param path 请求的路径(包括路径参数)
      * @param requestData 请求的参数
      * @param action 请求的类型
+     * @param contentType 返回的类型
      * @returns {Promise.<TResult>|*} Promise.then((data)=>{},(error)=>{});
      */
-    get({host=Model.BASE_URL, path="/", requestData={}, action="GET"}) {
+    get({BASE_URL=Model.BASE_URL, path="/", action="GET", contentType="json"}) {
+
+        //封装最终待请求的字符串
+        const packagedRequestURL = `${BASE_URL}${(path)}?action=${action}`;
+
+        //以CORS方式发起请求
+        return this._fetchWithCORS(packagedRequestURL, contentType);
+
+    }
+
+    /**
+     * @function 利用get方法与封装好的QueryParams形式发起请求
+     * @param path 请求的路径(包括路径参数)
+     * @param requestData 请求的参数
+     * @param action 请求的类型
+     * @returns {Promise.<TResult>|*} Promise.then((data)=>{},(error)=>{});
+     */
+    getWithQueryParams({BASE_URL=Model.BASE_URL, path="/", queryParams={}, action="GET", contentType="json"}) {
+
+
+        //初始化查询字符串
+        let queryString = "";
+
+        //根据queryParams构造查询字符串
+        for (let key in queryParams) {
+
+            queryString += `${key}=${encodeURIComponent(queryParams[key])}&`;
+
+        }
+
+        //将查询字符串进行编码
+        let encodedQueryString = (queryString);
+
+        //封装最终待请求的字符串
+        const packagedRequestURL = `${BASE_URL}${path}?${encodedQueryString}action=${action}`;
+
+        //以CORS方式发起请求
+        return this._fetchWithCORS(packagedRequestURL, contentType);
+
+    }
+
+    /**
+     * @function 利用get方法与封装好的RequestData形式发起请求
+     * @param path 请求的路径(包括路径参数)
+     * @param requestData 请求的参数
+     * @param action 请求的类型
+     * @returns {Promise.<TResult>|*} Promise.then((data)=>{},(error)=>{});
+     */
+    getWithRequestData({path="/", requestData={}, action="GET", contentType="json"}) {
 
         //将requestData序列化为JSON
+        //注意要对序列化后的数据进行URI编码
         var requestDataString = encodeURIComponent(JSON.stringify(requestData));
 
         //将字符串链接
-        const packagedRequestURL = `${host}${path}?requestData=${requestDataString}&action=${action}`;
+        const packagedRequestURL = `${Model.BASE_URL}${path}?requestData=${requestDataString}&action=${action}`;
 
-        console.log(packagedRequestURL);
+        return this._fetchWithCORS(packagedRequestURL, contentType);
 
-        return fetch(packagedRequestURL, {
-            mode: "cors", headers: {}
-        })
-            .then(this.checkStatus, (error)=> {
-                console.log(error);
-                return error;
-            })
-            .then(this.parseJSON, (error)=> {
-                return error;
-            });
     }
 
     /**
@@ -143,43 +179,29 @@ export default class Model {
      * @param action
      * @returns {Promise.<TResult>|*}
      */
-    post({path="/", requestData={}, action="POST"}) {
+    postWithRequestData({path="/", requestData={}, action="POST", contentType="json"}) {
 
         //将requestData序列化为JSON
+        //注意要对序列化后的数据进行URI编码
         var requestDataString = encodeURIComponent(JSON.stringify(requestData));
 
         //将字符串链接
         const packagedRequestURL = `${Model.BASE_URL}${path}?requestData=${requestDataString}&action=${action}`;
 
-        return fetch(packagedRequestURL, {
-            mode: "cors", headers: {}
-        })
-            .then(this.checkStatus, (error)=> {
-                console.log(error);
-                return error;
-            })
-            .then(this.parseJSON, (error)=> {
-                return error;
-            });
-
+        return this._fetchWithCORS(packagedRequestURL, contentType);
     }
 
-    put({path="/", requestData={}, action="put"}) {
+    put({path="/", requestData={}, action="put", contentType="json"}) {
 
     }
 
 
-    delete({path="/", requestData={}, action="DELETE"}) {
+    delete({path="/", requestData={}, action="DELETE", contentType="json"}) {
 
     }
 
 }
 
-
-//基础的URL
-Model.BASE_URL = "http://mp.dragon.live-forest.com/";
-
-// Model.BASE_URL = "http://localhost:8080";
 
 Model.testData = {};
 

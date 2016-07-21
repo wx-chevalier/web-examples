@@ -20,6 +20,12 @@
     <%for (var css in htmlWebpackPlugin.files.css) { %>
     <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
     <%} %>
+
+    <style>
+        html, body, #root {
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 <div id="root"></div>

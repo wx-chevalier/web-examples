@@ -11,7 +11,7 @@ var compiler = webpack(config);
 app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath,
-    host: "0.0.0.0"
+    host: "0.0.0.0" //支持局域网监听
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));

@@ -25,11 +25,6 @@ module.exports = {
             compiled: true
         },
         {
-            id: "todolist",
-            title: "TodoList",
-            compiled: false
-        },
-        {
             //required
             id: "counter",//编号
             title: "Counter",//HTML文件标题
@@ -59,11 +54,11 @@ module.exports = {
         port: 3000 //监听的Server端口
     },
 
-    // //如果是生成的依赖库的配置项
-    // library: {
-    //     name: "service_portal",//依赖项入口名
-    //     entry: "./service/service_portal.js",//依赖库的入口,
-    //     library: "edata",//生成的挂载在全局依赖项下面的名称
-    //     libraryTarget: "var"//挂载的全局变量名
-    // }
+    //如果是生成的依赖库的配置项
+    library: {
+        name: "library_portal",//依赖项入口名
+        entry: "./src/apps/library/library_portal.js",//依赖库的入口,
+        library: "libraryName",//生成的挂载在全局依赖项下面的名称
+        libraryTarget: "var"//挂载的全局变量名
+    }
 };
