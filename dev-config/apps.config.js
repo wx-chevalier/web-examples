@@ -8,9 +8,9 @@ module.exports = {
             title: "HelloWorld",
             entry: {
                 name: "helloworld",
-                src: "./src/helloworld/index.js"
+                src: "./src/helloworld/helloworld.js"
             },
-            indexPage: "./src/helloworld/index.html",
+            indexPage: "./src/helloworld/helloworld.html",
             compiled: true
         }
     ],
@@ -24,7 +24,7 @@ module.exports = {
     //如果是生成的依赖库的配置项
     library: {
         name: "library_portal",//依赖项入口名
-        entry: "./src/apps/library/library_portal.js",//依赖库的入口,
+        entry: "./src/library/library_portal.js",//依赖库的入口,
         library: "libraryName",//生成的挂载在全局依赖项下面的名称
         libraryTarget: "var"//挂载的全局变量名
     }
