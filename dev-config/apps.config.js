@@ -3,6 +3,7 @@
  */
 module.exports = {
     apps: [
+        //HelloWorld
         {
             id: "helloworld",
             title: "HelloWorld",
@@ -12,12 +13,23 @@ module.exports = {
             },
             indexPage: "./src/helloworld/helloworld.html",
             compiled: true
+        },
+        //Count
+        {
+            id: "count",
+            title: "Count",
+            entry: {
+                name: "count",
+                src: "./src/count/count.js"
+            },
+            indexPage: "./src/count/count.html",
+            compiled: true
         }
     ],
 
     //开发服务器配置
     devServer: {
-        appEntrySrc: "./src/helloworld/index.js", //当前待调试的APP的编号
+        appEntrySrc: "./src/helloworld/helloworld.js", //当前待调试的APP的编号
         port: 3000 //监听的Server端口
     },
 
