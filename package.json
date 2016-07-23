@@ -1,5 +1,5 @@
 {
-  "name": "webpack-boilerplate",
+  "name": "webpack-react-redux-boilerplate",
   "version": "1.0.0",
   "description": "Page-Driven Webpack Boilerplate For React-Redux Work Flow",
   "scripts": {
@@ -51,8 +51,10 @@
     "babel-loader": "^6.2.0",
     "babel-plugin-antd": "^0.4.0",
     "babel-plugin-syntax-flow": "^6.8.0",
+    "babel-plugin-syntax-trailing-function-commas": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-plugin-transform-runtime": "^6.9.0",
     "babel-plugin-typecheck": "^3.9.0",
     "babel-polyfill": "^6.9.1",

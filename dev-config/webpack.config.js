@@ -14,7 +14,8 @@ var WebpackMd5Hash = require('webpack-md5-hash');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var validate = require("webpack-validator"); //用于webpack配置验证
 
-var NODE_ENV = process.env.NODE_ENV || "develop";//获取命令行变量
+//设置NODE_ENV的环境变量
+var NODE_ENV = process.env.NODE_ENV || "development";//获取命令行变量
 
 //@region 可配置区域
 
@@ -64,9 +65,9 @@ var config = {
     //所有的出口文件，注意，所有的包括图片等本机被放置到了dist目录下，其他文件放置到static目录下
     output: {
         path: path.join(__dirname, '../dist'),//生成目录
-        filename: '[name].bundle.js',//文件名
-        sourceMapFilename: '[name].bundle.map'//映射名
-        // chunkFilename: '[id].[chunkhash].chunk.js',//块文件索引
+        filename: '[name].bundle.js',//文件名,不加chunkhash,以方便调试时使用
+        sourceMapFilename: '[name].bundle.map',//映射名
+        chunkFilename: '[name].[chunkhash].chunk.js',//块文件索引
     },
     //配置插件
     plugins: [
@@ -99,31 +100,38 @@ var config = {
         // })
     ],
     module: {
+        preLoaders: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /(libs|node_modules)/,
+                loader: 'eslint'
+            }
+        ],
         loaders: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(libs|node_modules)/,
-                loader: "babel",
-                query: {
-                    presets: ["es2015", "react", "stage-2"],
-                    plugins: [
-                        ["typecheck"],
-                        ["transform-flow-strip-types"],
-                        ["syntax-flow"],
-                        ["transform-class-properties"],
-                        ["transform-object-rest-spread"]
-                    ]
-                }
+                loader: "babel"
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
                 loader: 'url-loader?limit=8192&name=assets/imgs/[hash].[ext]'
             },// inline base64 URLs for <=8k images, direct URLs for the rest
             {
-                test: /\.vue$/,
-                loader: 'vue'
+                test: /\.json$/,
+                loader: 'json'
+            },
+            {
+                test: /\.(mp4|webm)$/,
+                loader: 'url?limit=10000'
             }
         ]
+    },
+    eslint: {
+        // TODO: consider separate config for production,
+        // e.g. to enable no-console and no-debugger only in prod.
+        configFile: path.join(__dirname, 'eslint.js'),
+        useEslintrc: false
     },
     postcss: [
         autoprefixer({browsers: ['last 10 versions', "> 1%"]}),
@@ -131,15 +139,30 @@ var config = {
     ],//使用postcss作为默认的CSS编译器
     resolve: {
         alias: {
-            libs: path.resolve(__dirname, 'libs'),
+            libs: path.resolve(__dirname, 'public/libs'),
             nm: path.resolve(__dirname, "node_modules"),
-            assets: path.resolve(__dirname, "assets"),
+            assets: path.resolve(__dirname, "assets")
         }
     }
 };
 
 //进行脚本组装
 config.externals = externals;
+
+//配置额外需要的插件
+const uglifyJSPlugin = new webpack.optimize.UglifyJsPlugin({
+    compressor: {
+        screw_ie8: true,
+        warnings: false
+    },
+    mangle: {
+        screw_ie8: true
+    },
+    output: {
+        comments: false,
+        screw_ie8: true
+    }
+});
 
 
 //为开发状态下添加插件
@@ -157,7 +180,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "development"
     //設置公共目錄名
     config.output.publicPath = '/dist/'//公共目录名
 
-    //调试状态下的CSS
+    //调试状态下的CSS,不进行CSS导出
     config.module.loaders.push({
         test: /\.(scss|sass|css)$/,
         loader: 'style-loader!css-loader!postcss-loader!sass'
@@ -190,14 +213,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "development"
     config.output.publicPath = './'//公共目录名
 
     //添加代码压缩插件
-    config.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            compress: {
-                warnings: false
-            },
-            verbose: true
-        }));
+    config.plugins.push(uglifyJSPlugin);
 
     //添加MD5计算插件
 
@@ -232,7 +248,20 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "development"
                 // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
                 template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore
                 inject: false, // 使用自动插入JS脚本,
-                chunks: ["vendors", app.entry.name] //选定需要插入的chunk名
+                chunks: ["vendors", app.entry.name], //选定需要插入的chunk名,
+                //设置压缩选项
+                minify: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeStyleLinkTypeAttributes: true,
+                    keepClosingSlash: true,
+                    minifyJS: true,
+                    minifyCSS: true,
+                    minifyURLs: true
+                }
             });
         }
 
@@ -250,7 +279,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "development"
     config.output.filename = '[name].bundle.[hash:8].js';
 
     //設置公共目錄名
-    config.output.publicPath = '/'//公共目录名
+    config.output.publicPath = './'//公共目录名
 
     //发布状态下添加Loader
     config.module.loaders.push({
@@ -259,14 +288,7 @@ if (process.env.NODE_ENV === undefined || process.env.NODE_ENV === "development"
     });
 
     //添加代码压缩插件
-    config.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            compress: {
-                warnings: false
-            },
-            verbose: true
-        }));
+    config.plugins.push(uglifyJSPlugin);
 
     //添加MD5计算插件
 
