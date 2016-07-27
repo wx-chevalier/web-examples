@@ -9,6 +9,7 @@
     "build:webpack": "NODE_ENV=production webpack -p --config ./dev-config/webpack.config.js",
     "build:style-check": "NODE_ENV=production CHECK=true webpack -p --config ./dev-config/webpack.config.js",
     "build:library": "npm run clean && NODE_ENV=library webpack -p --config ./dev-config/webpack.config.js",
+    "build:server": "set NODE_ENV=server && npm run clean &&  webpack -p --config ./dev-config/webpack.config.server.js",
     "deploy": "npm run build && ./node_modules/.bin/http-server dist",
     "clean": "rimraf dist",
     "lint": "eslint src",
