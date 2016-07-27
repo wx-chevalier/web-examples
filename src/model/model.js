@@ -137,6 +137,7 @@ export default class Model {
         //根据queryParams构造查询字符串
         for (let key in queryParams) {
 
+            //注意,请求参数必须进行URI格式编码,如果是JSON等特殊格式需要在服务端进行解码
             queryString += `${key}=${encodeURIComponent(queryParams[key])}&`;
 
         }
