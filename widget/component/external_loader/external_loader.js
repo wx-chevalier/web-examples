@@ -187,6 +187,7 @@ export class ReactExternalLoader extends Component {
 
             //返回实际的子组件
             return this.props.children
+
         } else {
 
             //返回加载指示
