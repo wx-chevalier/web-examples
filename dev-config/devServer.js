@@ -1,6 +1,9 @@
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
+var Dashboard = require('webpack-dashboard');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+
 //默认是开发时配置
 var config = require('./webpack.config');
 var appsConfig = require("./apps.config");
@@ -8,15 +11,27 @@ var appsConfig = require("./apps.config");
 var app = express();
 var compiler = webpack(config);
 
+var dashboard = new Dashboard();
+
+compiler.apply(new DashboardPlugin(dashboard.setData));
+
 app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
+    quiet: true,
     publicPath: config.output.publicPath,
-    host: "0.0.0.0" //支持局域网监听
+    host: '0.0.0.0'
 }));
 
-app.use(require('webpack-hot-middleware')(compiler));
+app.use(require('webpack-hot-middleware')(compiler, {
+    log: () => {}
+}));
 
 app.get('*', function (req, res) {
+
+    res.set({
+        'Access-Control-Allow-Origin': '*'
+    });
+
     res.sendFile(path.join(__dirname + "/", "dev.html"));
 });
 
