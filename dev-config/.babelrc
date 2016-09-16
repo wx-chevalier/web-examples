@@ -12,12 +12,5 @@
     "transform-class-properties",
     "transform-object-rest-spread",
     "transform-react-constant-elements"
-  ],
-  "env": {
-    "development": {
-      "presets": [
-        "react-hmre"
-      ]
-    }
-  }
+  ]
 }

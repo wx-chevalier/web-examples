@@ -1,268 +1,81 @@
 # Webpack React Redux Boilerplate
 
+> 核心组件代码与脚手架之间的分割
+
 Page-Driven Webpack Boilerplate For React-Redux Work Flow
 
 It is initial from [react-transform-boilerplate](https://github.com/gaearon/react-transform-boilerplate)
 
 
-[Webpack-React-Redux-Boilerplate](https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/tree/boilerplate)，其允许在一个项目中配置多个应用入口，同时支持开发模式、构建模式与库构建模式。同时笔者习惯不将webpack配置文件分成单独的dev与prod文件，而是合并到一个文件中。如果需要使用该模板，直接使用如下命令:
 
-```
 
-git clone -b boilerplate https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/ # 克隆模板文件夹
-./install.sh # 安装运行所需要的依赖项
-```
+## Reference
+- [webpack-for-the-fast-and-the-furious](https://medium.freecodecamp.com/webpack-for-the-fast-and-the-furious-bf8d3746adbd#.poot9r5ee)
+- [react-boilerplate](https://github.com/mxstbr/react-boilerplate)
+- [react-project](https://github.com/ryanflorence/react-project#lazy)
 
-得到的模本文件夹主要由以下构成:
+## Features
 
-```
+本部分假设你已经对Webpack有了大概的了解，这里我们会针对笔者自己在生产环境下使用的Webpack编译脚本进行的一个总结，在介绍具体的配置方案之前笔者想先概述下该配置文件的设计的目标，或者说是笔者认为一个前端编译环境应该达成的特性，这样以后即使Webpack被淘汰了也可以利用其他的譬如JSPM之类的来完成类似的工作。
 
-├── README.md
-├── README.zh.md
-├── dev-config : 配置文件入口
-│   ├── apps.config.js : 应用配置文件
-│   ├── dev.html : 开发模式下使用的HTML文件
-│   ├── devServer.js : 开发服务器
-│   ├── eslint.js : ESLint配置文件
-│   ├── template.html : 构建模式下推荐的HTML模板文件
-│   └── webpack.config.js : webpack配置文件
-├── install.sh 
-├── package.json
-└── src : 源代码目录
-    ├── count : 某个应用
-    │   ├── App.js
-    │   ├── async_library.js
-    │   ├── colors.js
-    │   ├── count.html
-    │   └── count.js
-    ├── helloworld
-    │   ├── App.css
-    │   ├── App.js
-    │   ├── helloworld.css
-    │   ├── helloworld.html
-    │   ├── helloworld.js
-    │   └── logo.svg
-    ├── library
-    │   ├── foo.js
-    │   ├── library.html
-    │   └── library_portal.js
-    └── vendors.js
-```
+- 单一的配置文件：很多项目里面是把开发环境与生产环境写了两个配置文件，可能笔者比较懒吧，不喜欢这么做，因此笔者的第一个特性就是单一的配置文件，然后通过npm封装不同的编译命令传入环境变量，然后在配置文件中根据不同的环境变量进行动态响应。另外，要保证一个Boilerplate能够在最小修改的情况下应用到其他项目。
 
-其核心的关于应用的配置文件即`apps.config.js`，在模板项目中其配置为:
+- 多应用入口支持：无论是单页应用还是多页应用，在Webpack中往往会把一个html文件作为一个入口。笔者在进行项目开发时，往往会需要面对多个入口，即多个HTML文件，然后这个HTML文件加载不同的JS或者CSS文件。譬如登录页面与主界面，往往可以视作两个不同的入口。Webpack原生提倡的配置方案是面向过程的，而笔者在这里是面向应用方式的封装配置。
 
-```
+- 调试时热加载：这个特性毋庸多言，不过热加载因为走得是中间服务器，同时只能支持监听一个项目，因此需要在多应用配置的情况下加上一个参数，即指定当前调试的应用。
 
-/**
+- 自动化的Polyfill：这个是Webpack自带的一个特性吧，不过笔者就加以整合，主要是实现了对于ES6、React、CSS(Flexbox)等等的自动Polyfill。
 
- * Created by apple on 16/6/8.
+- 资源文件的自动管理：这部分主要指从模板自动生成目标HTML文件、自动处理图片/字体等资源文件以及自动提取出CSS文件等。
 
- */
+- 文件分割与异步加载：可以将多个应用中的公共文件，譬如都引用了React类库的话，可以将这部分文件提取出来，这样前端可以减少一定的数据传输。另外的话还需要支持组件的异步加载，譬如用了React Router，那需要支持组件在需要时再加载。
 
-module.exports = {
+具体的特性包括但不限于：
+"react","reactjs","boilerplate","hot","reload","hmr","live","edit","webpack","babel","react-transform","PostCSS(FlexBox Polyfill)"
 
-    apps: [
+# Quick Start
 
-        //HelloWorld
+use `npm install` / `npm link` to set up environment
 
-        {
+use `npm start` to start Develop Server:localhost:3000
 
-            id: "helloworld",
+use `npm run storybook` to start StoryBook UI
 
-            title: "HelloWorld",
+use `npm run build` to build the release version
 
-            entry: {
+use `npm run build:style-check` to check code style and build the release version
 
-                name: "helloworld",
+use `npm run deploy` to build and set up a simple http server for the dist directory
 
-                src: "./src/helloworld/helloworld.js"
+**注意**
 
-            },
+- 鉴于node_modules实在比较大,在本项目中默认配置使用了根目录下的node_modules,详情可见各个子模块的webpack.config.js中的`resolve.root`配置。
 
-            indexPage: "./src/helloworld/helloworld.html",
 
-            compiled: true
+# Directory Structure
 
-        },
+## src:基本讲解的示范
 
-        //Count
+## Module:常见的功能模块示例
 
-        {
+## Widget:常见的页面组件控件
 
-            id: "count",
+## boilerplate:可开箱即用的模板
 
-            title: "Count",
+## dashboard:基于React+Redux的仪表盘界面
 
-            entry: {
+## Electron:基于Electron的示例
 
-                name: "count",
 
-                src: "./src/count/count.js"
+# Todos
 
-            },
+- 借鉴并且集成[webpack-boilerplate](https://github.com/geniuscarrier/webpack-boilerplate)中好的地方
 
-            indexPage: "./src/count/count.html",
+- 局部状态放在局部处理,全局状态放在全局处理
 
-            compiled: true
+- 添加API Proxy支持
 
-        }
+- 添加Server Side Rendering支持
 
-    ],
+- 使用[React Helmet](https://github.com/nfl/react-helmet)作为内置的HTML文件属性修改
 
-
-
-    //开发服务器配置
-
-    devServer: {
-
-        appEntrySrc: "./src/helloworld/helloworld.js", //当前待调试的APP的编号
-
-        port: 3000 //监听的Server端口
-
-    },
-
-
-
-    //如果是生成的依赖库的配置项
-
-    library: {
-
-        name: "library_portal",//依赖项入口名
-
-        entry: "./src/library/library_portal.js",//依赖库的入口,
-
-        library: "libraryName",//生成的挂载在全局依赖项下面的名称
-
-        libraryTarget: "var"//挂载的全局变量名
-
-    }
-
-};
-
-```
-
-### 开发模式
-
-开发模式下主要读取`apps.config.js`中的`devServer`配置，主要是可以配置调试的入口JS文件与开发服务器监听的端口号。开发模式下会自动使用`dev.html`作为默认的HTML文件传输到浏览器中展示，譬如在模板项目中是将helloworld项目作为当前正在开发的项目，切换到项目目录下使用`npm start`，即可开启开发模式，此时在浏览器内打开`http://localhost:3000`，即可以看到如下画面:
-
-![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/7/3/8775DB19-1394-41FB-9CA0-645936E35E86.png)
-
-开发模式默认是支持热加载机制，另外，因为笔者经常需要进行移动端开发，因此需要在局域网内使用手机端进行访问，目前开发模式已经支持以LAN地址进行访问，你可以直接在其他端输入`http://192.168.1.1:3000`即可。
-
-### 构建模式
-
-对于应用中存在的多应用入口，主要是在`apps.config.js`中的apps下进行配置的，一个典型的应用配置为:
-
-```
-
-
-            id: "helloworld", //编号
-
-            title: "HelloWorld", //生成的HTML文件中的标题
-
-            entry: {
-
-                name: "helloworld", //用于webpack的入口名
-
-                src: "./src/helloworld/helloworld.js" //入口文件地址
-
-            },
-
-            indexPage: "./src/helloworld/helloworld.html", //HTML模板文件地址
-
-            compiled: true //是否进行编译
-
-```
-
-我们使用`npm run build`即可以自动进行打包，同样的，会自动进行代码压缩与优化，同时还会将CSS提取到一个单独的文件中，以在文件头部引入。对于图片等资源也会自动放置到dist目录下。如果你使用`npm run deploy`，则会自动地建立一个监听dist目录的HTTP Server，譬如在模板项目中使用`npm run deploy`，然后再访问`http://localhost:8080`，既可以得到如下界面:
-
-![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/7/3/B1C9E083-02E5-4507-9C79-66E9EF92BECE.png)
-
-另外，构建模式下也默认设置了`vendors`这个公共的Chunk来进行公共代码提取，建议是将React等公共代码的引入放置到`src/vendors.js`文件中，这样多应用之间共享的公共代码就会被提取出来。
-
-
-
-### 库构建模式
-
-有时候，我们希望使用Webpack编译好的函数能够直接在Global作用域下使用，或者能够通过AMD/CMD规范引入，最直观的用法就是能够直接挂载在script标签下使用。关于此部分的理论说明参考[Webpack Configuration](https://github.com/wxyyxc1992/web-frontend-practice-handbook/blob/master/builder/webpack/webpack-configuration.md#library)。在模板项目中，关于库构建的配置在:
-
-```
-
-    //如果是生成的依赖库的配置项
-
-    library: {
-
-        name: "library_portal",//依赖项入口名
-
-        entry: "./src/library/library_portal.js",//依赖库的入口,
-
-        library: "libraryName",//生成的挂载在全局依赖项下面的名称
-
-        libraryTarget: "var"//挂载的全局变量名
-
-}
-
-```
-
-我们首先构建一个基于ES6类的服务:
-
-```
-
-/**
- * Created by apple on 16/7/23.
- */
-
-/**
- * @function 基于ES6的服务类
- */
-export class FooService {
-
-    static echo(){
-
-        const fooService = new FooService();
-
-        return fooService.getMessage();
-    }
-
-    /**
-     * @function 默认构造函数
-     */
-    constructor() {
-        this.message = "This is Message From FooService!";
-    }
-
-    getMessage() {
-        return this.message;
-    }
-
-}
-```
-
-然后设置一个模板的入口文件:
-
-```
-
-/**
- * Created by apple on 16/7/23.
- */
-import {FooService} from "./foo";
-
-/**
- * @function 配置需要暴露的API
- * @type {{foo: {echo: FooService.echo}}}
- */
-module.exports = {
-
-    foo: {
-        echo: FooService.echo
-    }
-
-};
-```
-
-注意，暴露出来的接口貌似只能是静态函数。最后我们使用`npm run build:library`进行库构建，构建完成后再HTML文件中可以如此使用:
-
-```
-
-alert(window.libraryName.foo.echo());
-```
