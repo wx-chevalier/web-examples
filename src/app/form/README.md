@@ -1,1 +1,0 @@
-要单独运行该模块,请将根目录下的webpack.config.js中的id为form的app配置项中的dev改为true,即默认调试该模块即可。
