@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Page-Driven Webpack Boilerplate For React-Redux Work Flow",
   "scripts": {
-    "start": "node ./dev-config/devServer.js --host 0.0.0.0",
+    "start": "node --harmony ./dev-config/devServer.js --host 0.0.0.0",
     "storybook": "start-storybook -p 9001",
     "build": "npm run clean && set NODE_ENV=production webpack -p --config ./dev-config/webpack.config.js",
     "build:library": "set NODE_ENV=library && npm run clean && webpack -p --config ./dev-config/webpack.config.js",

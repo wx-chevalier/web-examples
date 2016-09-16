@@ -53,7 +53,7 @@ var libraryEntry = [];
 
 //生产环境下考虑到方便编译成不同的文件名，所以使用数组
 var proEntry = {
-  "vendors": "./src/vendors.js"//存放所有的公共文件
+  "vendors": "./dev-config/vendors.js"//存放所有的公共文件
 };
 
 
@@ -125,13 +125,6 @@ var config = {
     autoprefixer({browsers: ['last 10 versions', "> 1%"]}),
     require('postcss-flexibility')
   ],//使用postcss作为默认的CSS编译器
-  resolve: {
-    alias: {
-      libs: path.resolve(__dirname, 'public/libs'),
-      nm: path.resolve(__dirname, "node_modules"),
-      assets: path.resolve(__dirname, "assets")
-    }
-  }
 };
 
 //进行脚本组装
