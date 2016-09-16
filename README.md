@@ -1,5 +1,7 @@
 # Webpack React Redux Boilerplate
 
+> 核心组件代码与脚手架之间的分割
+
 Page-Driven Webpack Boilerplate For React-Redux Work Flow
 
 It is initial from [react-transform-boilerplate](https://github.com/gaearon/react-transform-boilerplate)
@@ -70,3 +72,10 @@ use `npm run deploy` to build and set up a simple http server for the dist direc
 - 借鉴并且集成[webpack-boilerplate](https://github.com/geniuscarrier/webpack-boilerplate)中好的地方
 
 - 局部状态放在局部处理,全局状态放在全局处理
+
+- 添加API Proxy支持
+
+- 添加Server Side Rendering支持
+
+- 使用[React Helmet](https://github.com/nfl/react-helmet)作为内置的HTML文件属性修改
+

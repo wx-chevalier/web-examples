@@ -5,15 +5,12 @@
     "stage-0"
   ],
   "plugins": [
+    "typecheck",
     "syntax-flow",
+    "syntax-trailing-function-commas",
+    "transform-flow-strip-types",
     "transform-class-properties",
-    "transform-object-rest-spread"
-  ],
-  "env": {
-    "development": {
-      "presets": [
-        "react-hmre"
-      ]
-    }
-  }
+    "transform-object-rest-spread",
+    "transform-react-constant-elements"
+  ]
 }
