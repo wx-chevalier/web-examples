@@ -1,7 +1,7 @@
 /**
  * Created by apple on 16/6/8.
  */
-const defaultIndexPage = "./dev-config/template.html";
+const defaultIndexPage = "./dev-config/prod/template.html";
 
 module.exports = {
   apps: [
@@ -14,7 +14,7 @@ module.exports = {
         src: "./src/helloworld/helloworld.js"
       },
       indexPage: defaultIndexPage,
-      compiled: false
+      compiled: true
     },
     {
       id: "react",
@@ -34,7 +34,7 @@ module.exports = {
         src: "./src/ssr/react_client.js"
       },
       indexPage: defaultIndexPage,
-      compiled: true
+      compiled: false
     }
   ],
 
@@ -48,7 +48,7 @@ module.exports = {
   library: {
     name: "library_portal",//依赖项入口名
     entry: "./src/library/library_portal.js",//依赖库的入口,
-    library: "libraryName",//生成的挂载在全局依赖项下面的名称
+    libraryName: "libraryName",//生成的挂载在全局依赖项下面的名称
     libraryTarget: "var"//挂载的全局变量名
   }
 };

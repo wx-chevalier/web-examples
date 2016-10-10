@@ -5,8 +5,8 @@ var Dashboard = require('webpack-dashboard');
 var DashboardPlugin = require('webpack-dashboard/plugin');
 
 //默认是开发时配置
-var config = require('./webpack.config');
-var appsConfig = require("./apps.config");
+var config = require('./../webpack.config.js');
+var appsConfig = require("./../apps.config.js");
 
 var app = express();
 var compiler = webpack(config);
