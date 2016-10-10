@@ -11,10 +11,10 @@ export class Login extends Component {
    */
   render() {
     return <section className="login__container">
-      登陆
-      <div className="button">
-
-      </div>
+      登陆界面
+      <button>
+        点击登陆
+      </button>
     </section>
   }
 }

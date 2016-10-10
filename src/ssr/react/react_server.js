@@ -8,8 +8,11 @@ import { RouterContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import routes from '../../react/container/routes';
 
+//构建express实例
 const app = express();
 
+//待渲染完整的页面
+//这里的页面建议以最简形式,如果需要复杂的头设定使用react-helmet组件
 const renderFullPage = (html) => {
   return `
     <!doctype html>
@@ -26,8 +29,10 @@ const renderFullPage = (html) => {
   `;
 };
 
+//读取静态资源
 app.use('/static', express.static(__dirname + '/../../dist'));
 
+//处理所有的请求地址
 app.get('/*', function (req, res) {
 
   const location = createLocation(req.url);
@@ -46,6 +51,7 @@ app.get('/*', function (req, res) {
   })
 });
 
+//监听地址
 const server = app.listen(3001, function () {
   const host = server.address().address;
   const port = server.address().port;

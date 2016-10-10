@@ -16,6 +16,7 @@ var dashboard = new Dashboard();
 //添加Webpack Dashboard支持
 compiler.apply(new DashboardPlugin(dashboard.setData));
 
+//添加webpack-dev-middleware中间件
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   quiet: true,
@@ -23,11 +24,13 @@ app.use(require('webpack-dev-middleware')(compiler, {
   host: '0.0.0.0'
 }));
 
+//添加webpack-hot-middleware中间件
 app.use(require('webpack-hot-middleware')(compiler, {
   log: () => {
   }
 }));
 
+//返回调试页面
 app.get('*', function (req, res) {
 
   res.set({

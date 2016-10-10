@@ -1,7 +1,7 @@
 /**
  * Created by apple on 16/6/8.
  */
-const defaultIndexPage = "./dev-config/prod/template.html";
+const defaultIndexPage = "./dev-config/server/template.html";
 
 module.exports = {
   apps: [
@@ -11,7 +11,7 @@ module.exports = {
       title: "HelloWorld",
       entry: {
         name: "helloworld",
-        src: "./src/helloworld/helloworld.js"
+        src: "./src/simple/helloworld/helloworld.js"
       },
       indexPage: defaultIndexPage,
       compiled: true
@@ -40,7 +40,7 @@ module.exports = {
 
   //开发服务器配置
   devServer: {
-    appEntrySrc: "./src/react/react_app.js", //当前待调试的APP的编号
+    appEntrySrc: "./src/simple/helloworld/helloworld.js", //当前待调试的APP的编号
     port: 3000 //监听的Server端口
   },
 

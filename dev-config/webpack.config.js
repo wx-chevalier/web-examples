@@ -35,7 +35,7 @@ if (__DEV__) {
 
 } else {
   entry = {
-    "vendors": "./dev-config/prod/vendors.js"//存放所有的公共文件
+    "vendors": "./dev-config/vendors.js"//存放所有的公共文件
   };
 }
 
@@ -146,7 +146,8 @@ if (NODE_ENV === "production") {
   });
 
   //如果是生成环境下，将文件名加上hash
-  config.output.filename = '[name].bundle.[hash:8].js';
+  // config.output.filename = '[name].bundle.[hash:8].js';
+  config.output.filename = '[name].bundle.js';
 }
 
 module.exports = validate(config);
