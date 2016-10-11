@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "react",
+    "latest",
+    "stage-1"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-runtime",
+    "async-to-promises"
+  ],
+  "env": {
+    "development": {
+      "presets": [
+        "react-hmre"
+      ],
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    }
+  }
+}

@@ -16,6 +16,7 @@ var __DEV__ = NODE_ENV === "development";
 
 //定义统一的Application，不同的单页面会作为不同的Application
 var apps = require("./apps.config.js").apps;
+var appsConfig = require("./apps.config.js");
 
 //定义入口变量
 var entry;
@@ -24,8 +25,9 @@ var entry;
 if (__DEV__) {
   //开发状态下的默认入口
   entry = [
-    'eventsource-polyfill',
-    'webpack-hot-middleware/client',
+    'react-hot-loader/patch',
+    `webpack-dev-server/client?http://0.0.0.0:${appsConfig.devServer.port}`,
+    'webpack/hot/only-dev-server',
     require("./apps.config.js").devServer.appEntrySrc
   ];
 } else if (NODE_ENV === "library") {
@@ -44,12 +46,13 @@ const devTool = __DEV__ ? 'source-map' : 'cheap-module-eval-source-map';
 
 //基本配置
 var config = {
+  cache: false,
   entry,
   devtool: devTool,
   //所有的出口文件，注意，所有的包括图片等本机被放置到了dist目录下，其他文件放置到static目录下
   output: {
     path: path.join(__dirname, '../dist'),//生成目录
-    publicPath: __DEV__ ? '/dist/' : './', //生成的公共目录
+    publicPath: './', //生成的公共目录
     filename: '[name].bundle.js',//文件名,不加chunkhash,以方便调试时使用
     sourceMapFilename: '[name].bundle.map',//映射名
     chunkFilename: '[name].[chunkhash].chunk.js',//块文件索引
@@ -59,21 +62,16 @@ var config = {
     //开发环境下所需要的插件
     [].concat(plugins.commonPlugins).concat(plugins.devPlugins) :
     //生产环境下需要添加的插件
-    [].concat(plugins.commonPlugins).concat([plugins.uglifyJSPlugin]),
+    [].concat(plugins.commonPlugins).concat(plugins.prodPlugins),
   module: {
-    preLoaders: [
-      //添加JSLint作为PreLoader
-      loaders.jslint
-    ],
     loaders: [
+      // loaders.jslint,
       loaders.jsx,
       loaders.style,
       loaders.assets,
       loaders.json
     ]
   },
-  eslint: utils.eslintConfig,
-  postcss: utils.postCSSConfig,
   externals: utils.externals
 };
 
@@ -110,18 +108,18 @@ if (NODE_ENV === "production") {
     }
 
     //添加入口
-    config.entry[app.entry.name] = app.entry.src;
+    config.entry[app.id] = app.src;
 
     //判断是否设置了HTML页面,如果设置了则添加
     if (!!app.indexPage) {
       //构造HTML页面
       htmlPages.push({
         filename: app.id + ".html",
-        title: app.title,
         // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
         template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore作为模板
         inject: false, // 使用自动插入JS脚本,
-        chunks: ["vendors", app.entry.name], //选定需要插入的chunk名,
+        chunks: ["vendors", app.id], //选定需要插入的chunk名,
+        
         //设置压缩选项
         minify: {
           removeComments: true,

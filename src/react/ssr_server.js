@@ -1,50 +1,50 @@
 /**
  * Created by apple on 16/9/13.
  */
+const fs = require("fs");
+const path = require('path');
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
-import routes from '../../react/container/routes';
+import getRoutes from './routes';
+import renderHTML from '../../dev-config/server/template';
 
 //构建express实例
 const app = express();
 
-//待渲染完整的页面
-//这里的页面建议以最简形式,如果需要复杂的头设定使用react-helmet组件
-const renderFullPage = (html) => {
-  return `
-    <!doctype html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Isomorphic Redux Example</title>
-      </head>
-      <body>
-        <div id="root">${html}</div>
-        <script src="/static/react-ssr.bundle.a84489e3.js"></script>
-      </body>
-    </html>
-  `;
-};
-
 //读取静态资源
-app.use('/static', express.static(__dirname + '/../../dist'));
+app.use('/static', express.static(process.env.PWD + '/dist/'));
 
 //处理所有的请求地址
 app.get('/*', function (req, res) {
 
+  //从url重构出当前地址
   const location = createLocation(req.url);
 
-  match({routes, location}, (error, redirectLocation, renderProps) => {
+  //这里的store即为客户端传入的Cookie,将其序列化为JSON对象即可
+  let store = {
+    server: "server"
+  };
+
+  //匹配客户端路由
+  match({routes: getRoutes(store), location}, (error, redirectLocation, renderProps) => {
 
     if (error) {
       res.status(500).send(error.message)
     } else if (redirectLocation) {
+
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+
     } else if (renderProps) {
-      res.status(200).send(renderToString(<RouterContext {...renderProps} />))
+
+      let html = renderToString(<RouterContext {...renderProps} />);
+
+      console.log(html);
+
+      res.status(200).send(renderHTML(html, {key: "value"}, ['/static/vendors.bundle.js', '/static/react.bundle.js']));
+
     } else {
       res.status(404).send('Not found')
     }

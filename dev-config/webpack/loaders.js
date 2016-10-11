@@ -14,33 +14,35 @@ var __DEV__ = NODE_ENV === "development";
 //基于Babel的JS/JSX Loader
 exports.jsx = {
   test: /\.(js|jsx)$/,
-  exclude: /(libs|node_modules)/,
-  loader: "babel"
+  exclude: /(node_modules)/,
+  loaders: ["babel"]
 };
 
 //对于JS与JSX的格式校验
 exports.jslint = {
+  enforce: 'pre',
   test: /\.(js|jsx)$/,
-  exclude: /(libs|node_modules)/,
+  exclude: /(node_modules)/,
   loader: 'eslint'
 };
 
 //对于TS与TSX的Loader
 exports.tsx = {
   test: /\.ts|tsx?$/,
-  loader: 'awesome-typescript-loader',
   exclude: /node_modules/,
+  loader: 'awesome-typescript-loader'
 };
 
 //对于TS与TSX的校验
 exports.tslint = {
   test: /\.tsx?$/,
-  loader: 'tslint',
   exclude: /node_modules/,
+  loader: 'tslint'
 };
 
 
 //根据不同的环境开发设置不同的样式加载的Loader
+
 if (NODE_ENV === "development") {
   //如果当前为开发环境,则封装内联的CSS
   exports.style = {
@@ -52,7 +54,7 @@ if (NODE_ENV === "development") {
   //如果当前为编译环境,则抽取出CSS代码
   exports.style = {
     test: /\.(scss|sass|css)$/,
-    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules')
+    loader: ExtractTextPlugin.extract('css-loader!postcss-loader!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules')
   };
 
 }

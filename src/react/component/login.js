@@ -3,6 +3,9 @@
  */
 import React, { Component, PropTypes } from 'react';
 
+/**
+ * @function 登陆页面组件
+ */
 export class Login extends Component {
 
   /**
@@ -12,7 +15,9 @@ export class Login extends Component {
   render() {
     return <section className="login__container">
       登陆界面
-      <button>
+      <button onClick={()=> {
+        alert(1)
+      }}>
         点击登陆
       </button>
     </section>

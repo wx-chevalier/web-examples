@@ -1,11 +1,12 @@
 {
   "name": "webpack-react-redux-boilerplate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Page-Driven Webpack Boilerplate For React-Redux Work Flow",
   "scripts": {
     "start": "node --harmony ./dev-config/server/devServer.js --host 0.0.0.0",
     "storybook": "start-storybook -p 9001",
     "build": "npm run clean && better-npm-run build",
+    "build:ssr": "npm run clean && better-npm-run build:ssr && better-npm-run build:server",
     "build:library": "npm run clean && better-npm-run build:library",
     "deploy": "npm run build && ./node_modules/.bin/http-server dist",
     "clean": "rimraf dist",
@@ -17,6 +18,19 @@
   "betterScripts": {
     "build": {
       "command": "webpack --config ./dev-config/webpack.config.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:ssr": {
+      "command": "webpack --config ./dev-config/webpack.config.js",
+      "env": {
+        "NODE_ENV": "production",
+        "TARGET": "ssr"
+      }
+    },
+    "build:server": {
+      "command": "webpack --config ./dev-config/webpack.server.config.js",
       "env": {
         "NODE_ENV": "production"
       }
@@ -53,23 +67,7 @@
   },
   "homepage": "https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate",
   "babel": {
-    "presets": [
-      "react",
-      "latest",
-      "stage-3"
-    ],
-    "plugins": [
-      "transform-decorators-legacy",
-      "transform-class-properties",
-      "transform-runtime"
-    ],
-    "env": {
-      "development": {
-        "presets": [
-          "react-hmre"
-        ]
-      }
-    }
+    "extends": "./dev-config/.babelrc"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.14.0",
@@ -77,15 +75,13 @@
     "babel-core": "^6.14.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.0",
-    "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-polyfill": "^6.9.1",
-    "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-hmre": "^1.1.1",
-    "babel-preset-stage-0": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
     "better-npm-run": "0.0.11",
     "bundle-loader": "^0.5.4",
     "chai": "^3.5.0",
@@ -95,8 +91,6 @@
     "eslint-loader": "^1.4.1",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-react": "^6.2.2",
-    "eventsource-polyfill": "^0.9.6",
-    "exports-loader": "^0.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.4",
@@ -104,7 +98,6 @@
     "http-server": "^0.9.0",
     "image-webpack-loader": "^2.0.0",
     "imagemin": "^5.2.2",
-    "imports-loader": "^0.6.5",
     "karma-chrome-launcher": "^2.0.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-mocha": "^1.1.1",
@@ -114,9 +107,8 @@
     "object-assign": "^4.0.1",
     "postcss-flexibility": "^1.1.0",
     "postcss-loader": "^0.13.0",
+    "react-hot-loader": "^3.0.0-beta.5",
     "react-komposer": "^1.13.1",
-    "react-mixin": "^3.0.5",
-    "react-transform-hmr": "^1.0.4",
     "rimraf": "^2.5.3",
     "sass-loader": "^4.0.2",
     "scss-loader": "^0.0.1",
@@ -124,17 +116,19 @@
     "style-loader": "^0.13.0",
     "underscore-template-loader": "^0.7.2",
     "url-loader": "^0.5.6",
-    "webpack": "^1.12.9",
+    "webpack": "^2.1.0-beta",
     "webpack-dashboard": "^0.1.8",
-    "webpack-dev-middleware": "^1.7.0",
-    "webpack-hot-middleware": "^2.12.1",
+    "webpack-dev-server": "^2.1.0-beta",
     "webpack-md5-hash": "0.0.5",
     "webpack-validator": "^2.2.3"
   },
   "dependencies": {
+    "babel-plugin-async-to-promises": "^1.0.5",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
     "boron": "^0.2.3",
     "es6-promise": "^3.3.1",
     "express": "^4.14.0",
+    "fluent-fetcher": "0.0.9",
     "font-awesome": "^4.6.3",
     "install": "^0.8.1",
     "isomorphic-fetch": "^2.2.1",

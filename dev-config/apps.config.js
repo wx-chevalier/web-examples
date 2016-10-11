@@ -8,41 +8,26 @@ module.exports = {
     //HelloWorld
     {
       id: "helloworld",
-      title: "HelloWorld",
-      entry: {
-        name: "helloworld",
-        src: "./src/simple/helloworld/helloworld.js"
-      },
+      src: "./src/simple/helloworld/helloworld.js",
       indexPage: defaultIndexPage,
-      compiled: true
+      compiled: false
     },
     {
       id: "react",
-      title: "React Application",
-      entry: {
-        name: "react",
-        src: "./src/react/helloworld.js"
-      },
+      src: "./src/react/react_app.js",
       indexPage: defaultIndexPage,
-      compiled: false
-    },
-    {
-      id: "react-ssr",
-      title: "React ServerSideRendering Application",
-      entry: {
-        name: "react-ssr",
-        src: "./src/ssr/react_client.js"
-      },
-      indexPage: defaultIndexPage,
-      compiled: false
+      compiled: true
     }
   ],
 
   //开发服务器配置
   devServer: {
-    appEntrySrc: "./src/simple/helloworld/helloworld.js", //当前待调试的APP的编号
+    appEntrySrc: "./src/react/react_app.js", //当前待调试的APP的编号
     port: 3000 //监听的Server端口
   },
+
+  //依赖项配置
+  proxy: {},
 
   //如果是生成的依赖库的配置项
   library: {

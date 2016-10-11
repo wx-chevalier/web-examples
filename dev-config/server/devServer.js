@@ -1,51 +1,23 @@
 var path = require('path');
-var express = require('express');
 var webpack = require('webpack');
-var Dashboard = require('webpack-dashboard');
-var DashboardPlugin = require('webpack-dashboard/plugin');
+var WebpackDevServer = require('webpack-dev-server');
 
 //默认是开发时配置
 var config = require('./../webpack.config.js');
 var appsConfig = require("./../apps.config.js");
 
-var app = express();
-var compiler = webpack(config);
-
-var dashboard = new Dashboard();
-
-//添加Webpack Dashboard支持
-compiler.apply(new DashboardPlugin(dashboard.setData));
-
-//添加webpack-dev-middleware中间件
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  quiet: true,
-  publicPath: config.output.publicPath,
-  host: '0.0.0.0'
-}));
-
-//添加webpack-hot-middleware中间件
-app.use(require('webpack-hot-middleware')(compiler, {
-  log: () => {
-  }
-}));
-
-//返回调试页面
-app.get('*', function (req, res) {
-
-  res.set({
-    'Access-Control-Allow-Origin': '*'
-  });
-
-  res.sendFile(path.join(__dirname + "/", "dev.html"));
-});
-
-//监听本地端口
-app.listen(appsConfig.devServer.port, '0.0.0.0', function (err) {
+new WebpackDevServer(webpack(config), {
+  //设置WebpackDevServer的开发目录
+  contentBase: path.join(__dirname + "/"),
+  // publicPath: `http://0.0.0.0:${appsConfig.devServer.port}/`,
+  hot: true,
+  historyApiFallback: true,
+  // noInfo: true,
+  stats: {colors: true}
+}).listen(appsConfig.devServer.port, '0.0.0.0', function (err, result) {
   if (err) {
-    console.log(err);
-    return;
+    return console.log(err);
   }
 
-  console.log('Listening at http://0.0.0.0:3000');
+  console.log(`Listening at http://0.0.0.0:${appsConfig.devServer.port}/`);
 });
