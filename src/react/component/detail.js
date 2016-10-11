@@ -13,7 +13,11 @@ export class Detail extends Component {
     return <section className="detail__container">
       详情页
       <div>
-        点击跳转到主页
+        <button onClick={()=> {
+          this.props.router.goBack()
+        }}>
+          点击回退
+        </button>
       </div>
     </section>
   }

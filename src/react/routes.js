@@ -21,7 +21,7 @@ const Container = (props) => {
  *
  * @param store
  */
-export default (store)=> {
+export default (store = {})=> {
 
   //注意,在SSR情况下这里使用的是服务端传入的Store
 
@@ -33,11 +33,13 @@ export default (store)=> {
    */
   async function auth(nextState, replace, callback) {
 
+    let userToken = store.userToken;
+
     //在这里执行异步认证,假设传入的store中包含userToken
     //这里使用Promise执行异步操作
     //如果是SSR,则本部分代码会在服务端运行
 
-    let isValid = await valid_user(store.userToken);
+    let isValid = await valid_user(userToken);
 
     //如果用户尚未认证,则进行跳转操作
     isValid || replace('/login');
@@ -60,4 +62,5 @@ export default (store)=> {
   );
 
 }
+
 

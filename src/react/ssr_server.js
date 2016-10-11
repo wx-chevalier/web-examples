@@ -23,16 +23,13 @@ app.get('/*', function (req, res) {
   //从url重构出当前地址
   const location = createLocation(req.url);
 
-  //这里的store即为客户端传入的Cookie,将其序列化为JSON对象即可
-  let store = {
-    server: "server"
-  };
-
   //匹配客户端路由
-  match({routes: getRoutes(store), location}, (error, redirectLocation, renderProps) => {
+  match({routes: getRoutes(), location}, (error, redirectLocation, renderProps) => {
 
     if (error) {
+
       res.status(500).send(error.message)
+
     } else if (redirectLocation) {
 
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
@@ -40,8 +37,6 @@ app.get('/*', function (req, res) {
     } else if (renderProps) {
 
       let html = renderToString(<RouterContext {...renderProps} />);
-
-      console.log(html);
 
       res.status(200).send(renderHTML(html, {key: "value"}, ['/static/vendors.bundle.js', '/static/react.bundle.js']));
 
