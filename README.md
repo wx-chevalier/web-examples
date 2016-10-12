@@ -1,13 +1,15 @@
 
-> 本文从属于笔者的[](),项目的Github地址为[]().
+> 本文从属于笔者的[Web Frontend Introduction And Best Practices:前端入门与最佳实践]([https://github.com/wxyyxc1992/Web-Frontend-Introduction-And-Best-Practices),项目的Github地址为[Webpack2-React-Redux-Boilerplate](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate).
 
-> Warning!笔者自己构建的基于Webpack+React+Redux的脚手架已经经历了三个版本,分别参考[]()以及[]()。在本文之处,我必须严肃吐槽下,我深刻感觉到Boilerplate就像当年的Rails,方便入门的同时会给你无尽的束缚,因此笔者不建议任何人在大型项目中直接使用任何自己不能完全掌控的脚手架。我觉得我是无法忘记当初被react-redux-universal-hot-example支配的恐惧。
+> Warning!笔者自己构建的基于Webpack+React+Redux的脚手架已经经历了三个版本,分别参考[]()以及[]()。在本文文首此处,我必须严肃吐槽下,我深刻感觉到Boilerplate就像当年的Rails,方便入门的同时会给你无尽的束缚,因此笔者不建议任何人在正式项目中直接使用自己不能完全掌控的脚手架。我觉得我是无法忘记当初被[react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)支配的恐惧。
 
 # Webpack2 React Redux Boilerplate
 
 > 核心组件代码与脚手架之间务必存在有机分割，整个程序架构清晰易懂。
 
-如果你是完全的React初学者,那么建议首先了解下[使用Facebook的create-react-app快速构建React开发环境](https://segmentfault.com/a/1190000006055973)
+![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/10/2/1-raWO3dhM4jMjf9VY-kZzNg.png)
+
+如果你是完全的React初学者,那么建议首先了解下[使用Facebook的create-react-app快速构建React开发环境](https://segmentfault.com/a/1190000006055973)，
 本项目算是个半自动化的脚手架工具,笔者并不希望做成完全傻瓜式的开箱即用的工具,这只会给你的项目埋下危险的伏笔,希望每个可能用这个Boilerplate的同学都能阅读文本,至少要保证对文本提及的知识点有个全局的了解。
 
 
