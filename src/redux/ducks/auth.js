@@ -8,6 +8,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
+export const HAS_REDIRECT = 'HAS_REDIRECT';
+
 export const LOGOUT = 'LOGOUT';
 
 //默认的初始状态
@@ -43,6 +45,11 @@ export default function (state = initialState, {type, ...rest}) {
       return {...state, loading: false, error: rest.error, shouldRedirect: false}
     }
 
+    //已经跳转
+    case HAS_REDIRECT: {
+      return {...state, shouldRedirect: false}
+    }
+
     //登出操作
     case LOGOUT: {
       return {
@@ -75,4 +82,10 @@ export const doLogout = ()=> {
   return {
     type: LOGOUT
   }
-}
+};
+
+export const doRedirect = ()=> {
+  return {
+    type: HAS_REDIRECT
+  }
+};

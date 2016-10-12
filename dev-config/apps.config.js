@@ -17,17 +17,26 @@ module.exports = {
       src: "./src/react/react_app.js",
       indexPage: defaultIndexPage,
       compiled: true
+    },
+    {
+      id: "redux",
+      src: "./src/redux/redux_app.js",
+      indexPage: defaultIndexPage,
+      compiled: false
     }
   ],
 
   //开发服务器配置
   devServer: {
-    appEntrySrc: "./src/redux/redux_app.js", //当前待调试的APP的编号
+    appEntrySrc: "./src/react/react_app.js", //当前待调试的APP的编号
     port: 3000 //监听的Server端口
   },
 
   //依赖项配置
-  proxy: {},
+  proxy: {
+    //后端服务器地址 http://your.backend/
+    backend: "",
+  },
 
   //如果是生成的依赖库的配置项
   library: {

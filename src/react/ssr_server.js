@@ -7,7 +7,6 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
-import createLocation from 'history/lib/createLocation';
 import getRoutes from './routes';
 import renderHTML from '../../dev-config/server/template';
 
@@ -20,11 +19,8 @@ app.use('/static', express.static(process.env.PWD + '/dist/'));
 //处理所有的请求地址
 app.get('/*', function (req, res) {
 
-  //从url重构出当前地址
-  const location = createLocation(req.url);
-
   //匹配客户端路由
-  match({routes: getRoutes(), location}, (error, redirectLocation, renderProps) => {
+  match({routes: getRoutes(), location:req.originalUrl}, (error, redirectLocation, renderProps) => {
 
     if (error) {
 

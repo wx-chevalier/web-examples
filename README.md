@@ -7,19 +7,21 @@
 
 > 核心组件代码与脚手架之间务必存在有机分割，整个程序架构清晰易懂。
 
-![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/10/2/1-7M1eE4GO6_Lh2c-pmjGkcA.jpeg)
-
 如果你是完全的React初学者,那么建议首先了解下[使用Facebook的create-react-app快速构建React开发环境](https://segmentfault.com/a/1190000006055973)
+本项目算是个半自动化的脚手架工具,笔者并不希望做成完全傻瓜式的开箱即用的工具,这只会给你的项目埋下危险的伏笔,希望每个可能用这个Boilerplate的同学都能阅读文本,至少要保证对文本提及的知识点有个全局的了解。
+
 
 ## Reference
 
-参考的其他模板项目:
+### Boilerplate
+
 - [react-transform-boilerplate](https://github.com/gaearon/react-transform-boilerplate)
 - [react-boilerplate](https://github.com/mxstbr/react-boilerplate)
 - [react-redux-saga-boilerplate](https://github.com/gilbarbara/react-redux-saga-boilerplate)
 - [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
 
-推荐阅读文章:
+### Blogs
+
 - [webpack-for-the-fast-and-the-furious](https://medium.freecodecamp.com/webpack-for-the-fast-and-the-furious-bf8d3746adbd#.poot9r5ee)
 - [react-project](https://github.com/ryanflorence/react-project#lazy)
 
@@ -46,8 +48,40 @@
 
 ## 真的需要Redux吗?
 
-对于这个问题笔者没有明确的答案,但是在这两年的自己对于Redux的实战中,也一直在摇把。我坚定的认为Redux指明了解决某类问题的正确方向,但是它真的适合于所有的项目吗?
-笔者在[我的前端之路]()一文中提及,
+虽然本项目是面向Webpack+React+Redux的Boilerplate，但是笔者还是希望在此抛出这个问题，也是便于大家能够理解Redux。对于这个问题笔者没有明确的答案,但是在这两年的自己对于Redux的实战中,也一直在摇把。我坚定的认为Redux指明了解决某类问题的正确方向,但是它真的适合于所有的项目吗?笔者在[我的前端之路]()一文中提及,从以DOM操作为核心的jQuery时代到以声明式组件为核心的React时代的变迁是声明式编程对于命令式的慢慢代替,而Redux则是纯粹的声明式编程典范。这里以某个登录认证的小例子进行说明，产品的需求是允许用户在登录成功之后在登录页面上显示“登录成功，正在跳转”，然后延时跳转到其他页面。这里强调要在登录页面上进行回显是因为很多人习惯将，跳转作为Side Effect在Thunk或者Saga中就处理了，并没有影响到界面本身。具体的代码对比可以参考[纯粹的React实现的登录跳转](https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/blob/master/src/react/component/login.js)与[基于Redux实现的登录跳转](https://github.com/wxyyxc1992/Webpack-React-Redux-Boilerplate/blob/master/src/redux/container/login.js)。首先，如果是纯粹的React命令式的话，会是:
+
+```
+class ReactComponent{
+  ...
+  if(!isValid){ //isValid是外部传入的状态变量，存放用户是否已经登录
+  //如果尚未登录，则进行登录操作
+  login().then(()=>{
+    //登录成功之后，显示文字并且执行跳转
+    show('登录成功，正在跳转');
+    redirect();
+  });
+}
+}
+```
+
+如果我们引入Redux，并且将Component中的所有副作用移除的话:
+
+```
+class ReduxComponent{
+  ...
+  if(!isValid){ 
+  	login(); //执行登录操作，其会dispatch某个Action，触发外部状态变化
+  }
+  
+  if(shouldRedirect){ //需要添加该变量来记录是否需要进行跳转
+    show('登录成功，正在跳转');
+    redirect();
+  }
+}
+}
+```
+
+从上面的例子中我们能看出,就好像能量守恒定理一样,对于任何的业务逻辑的实现要么以命令的方式,要么以声明的方式辅以大量的状态变量（参考基于变量的循环与基于迭代的循环二者的代码复杂度比较）。Redux以函数式编程的强约束将我们很多的逻辑拆分为了多个纯函数表示,并以数据流驱动整个项目。Redux允许我们以支离破碎的逻辑代码与相较于命令式编程膨胀很多的模板代码为代价实现百分百的可测试性与可预测性。经过这么长时间的摸索与社区广泛的讨论实践，Redux的优势与劣势都已经很明显了。对于具体的使用者也是见仁见智，以笔者而言因为一直都在中小型企业中，往往对于产品进度的要求会多余测试，并且更多的以人工测试为主，因此笔者目前是尝试在项目中混用MobX与Redux，希望能够有效平衡开发速度与整体的鲁棒性/可扩展性。
 
 ## Personal Best Practice
 
@@ -56,10 +90,16 @@
 - 使用fetch作为统一的数据获取函数，在本项目中使用了笔者的[fluent-fetcher]()作为fetch的上层封装使用。
 
 - 尽可能少的使用行内样式,将每个组件的样式文件与组件声明文件同地存放。
-譬如Material-UI这个著名的React样式组件库与[react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
-之前的版本都是用的CSS-IN-JavaScript,全部内联样式。笔者感觉还是需要将CSS与JS剥离开来,一方面是处于职责分割的考虑,另一方面也是为了样式的可变性。通过样式类的方式来定义方式很方便地可以通过CSS来修正样式,而不需要每次都要找半天内联样式在哪里,然后去重新编译整个项目。
+  譬如Material-UI这个著名的React样式组件库与[react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
+  之前的版本都是用的CSS-IN-JavaScript,全部内联样式。笔者感觉还是需要将CSS与JS剥离开来,一方面是处于职责分割的考虑,另一方面也是为了样式的可变性。通过样式类的方式来定义方式很方便地可以通过CSS来修正样式,而不需要每次都要找半天内联样式在哪里,然后去重新编译整个项目。
 
 # Quick Start
+
+![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/10/2/1-7M1eE4GO6_Lh2c-pmjGkcA.jpeg)
+
+
+
+
 
 use `npm install` / `npm link` to set up environment
 
@@ -73,6 +113,9 @@ use `npm run build:style-check` to check code style and build the release versio
 
 use `npm run deploy` to build and set up a simple http server for the dist directory
 
+
+
+如果你要基于本项目进行二次开发,可以直接拷贝dev-config与package.json到你自己的项目中,然后根据需要配置dev-config/apps.config.js项目。
 
 # Develop Environment:开发环境机制详解
 

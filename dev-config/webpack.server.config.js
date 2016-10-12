@@ -36,9 +36,15 @@ module.exports = {
   },
   plugins: [
     //忽略所有的CSS与LESS文件
-    new webpack.IgnorePlugin(/\.(css|less)$/),
+    new webpack.IgnorePlugin(/\.(css|less|scss)$/),
     // new webpack.BannerPlugin('require("source-map-support").install();',
     //   {raw: true, entryOnly: false})
+    //定义环境变量
+    new webpack.DefinePlugin({
+      //判断当前是否处于开发状态
+      __DEV__: JSON.stringify(false),
+      __SSR__: JSON.stringify(true)
+    })
   ],
   devtool: 'sourcemap'
 };

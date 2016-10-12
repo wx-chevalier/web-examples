@@ -7,6 +7,7 @@ import { Login } from './component/login';
 import { Home } from './component/home';
 import { Detail } from './component/detail';
 import { valid_user } from './api/auth';
+import Helmet from 'react-helmet';
 
 
 // 无状态（stateless）组件，一个简单的容器，react-router 会根据 route

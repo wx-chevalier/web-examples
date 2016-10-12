@@ -6,7 +6,6 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { increment, incrementAsync, decrement } from '../ducks/count';
-require('./home.scss');
 
 /**
  * @function 根页面组件
@@ -19,6 +18,9 @@ require('./home.scss');
 )
 export class Home extends Component {
   render() {
+
+    //在非SSR状态下导入SCSS文件
+    __SSR__ || require('./home.scss');
 
     const {count, pushState, increment, incrementAsync, decrement} = this.props;
 

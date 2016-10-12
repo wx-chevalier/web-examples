@@ -39,9 +39,6 @@ exports.commonPlugins = [
   })
 ];
 
-var Dashboard = require('webpack-dashboard');
-var DashboardPlugin = require('webpack-dashboard/plugin');
-var dashboard = new Dashboard();
 
 //开发时使用插件
 exports.devPlugins = [
@@ -54,9 +51,16 @@ exports.devPlugins = [
         utils.postCSSConfig
       ]
     }
-  }),
-  new DashboardPlugin(dashboard.setData)
+  })
 ];
+
+//判断是否为开发模式,如果为开发模式则添加WebpackDashboard
+if (__DEV__) {
+  var Dashboard = require('webpack-dashboard');
+  var DashboardPlugin = require('webpack-dashboard/plugin');
+  var dashboard = new Dashboard();
+  exports.devPlugins.push(new DashboardPlugin(dashboard.setData));
+}
 
 
 //生产环境下使用插件

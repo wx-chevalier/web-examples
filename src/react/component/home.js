@@ -3,13 +3,15 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-require('./home.scss');
 
 /**
  * @function 根页面组件
  */
 export class Home extends Component {
   render() {
+    
+    __SSR__ || require('./home.scss');
+
     return <section className="home__container">
 
       <div>

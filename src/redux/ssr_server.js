@@ -6,9 +6,11 @@ const path = require('path');
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import createHistory from 'react-router/lib/createMemoryHistory';
 import { RouterContext, match } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import createLocation from 'history/lib/createLocation';
+import createStore from './store/store';
+import { Provider } from 'react-redux';
 import getRoutes from './routes';
 import renderHTML from '../../dev-config/server/template';
 
@@ -30,11 +32,8 @@ app.get('/*', function (req, res) {
   //构建出与Store同步的history
   const history = syncHistoryWithStore(memoryHistory, store);
 
-  //从url重构出当前地址
-  const location = createLocation(req.url);
-
   //匹配客户端路由
-  match({history, routes: getRoutes(), location}, (error, redirectLocation, renderProps) => {
+  match({history, routes: getRoutes(), location: req.originalUrl}, (error, redirectLocation, renderProps) => {
 
     if (error) {
 
@@ -53,9 +52,9 @@ app.get('/*', function (req, res) {
       );
 
       //设置全局的navigator值
-      global.navigator = {userAgent: req.headers['user-agent']};
+      // global.navigator = {userAgent: req.headers['user-agent']};
 
-      res.status(200).send(renderHTML(html, {key: "value"}, ['/static/vendors.bundle.js', '/static/react.bundle.js']));
+      res.status(200).send(renderHTML(html, {key: "value"}, ['/static/vendors.bundle.js', '/static/redux.bundle.js']));
 
     } else {
       res.status(404).send('Not found')
