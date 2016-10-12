@@ -3,18 +3,18 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { Route, IndexRoute, withRouter, browserHistory } from 'react-router';
-import { Login } from './component/login';
-import { Home } from './component/home';
-import { Detail } from './component/detail';
-import { valid_user } from './api/auth';
-
+import { Login } from './container/login';
+import { Home } from './container/home';
+import { Detail } from './container/detail';
+import { valid_user } from '../react/api/auth';
+import Helmet from 'react-helmet';
 
 // 无状态（stateless）组件，一个简单的容器，react-router 会根据 route
 // 规则匹配到的组件作为 `props.children` 传入
 const Container = (props) => {
   return (
     <div>
-      <Helmet title="React Application Demonstration"/>
+      <Helmet title="Redux Application Demonstration"/>
       {props.children}
     </div>
   );
@@ -36,16 +36,30 @@ export default (store = {})=> {
    */
   async function auth(nextState, replace, callback) {
 
-    let userToken = store.userToken;
+    //从Store中获取状态
+    let state = store.getState();
 
-    //在这里执行异步认证,假设传入的store中包含userToken
-    //这里使用Promise执行异步操作
-    //如果是SSR,则本部分代码会在服务端运行
+    //判断键值是否存在
+    if (!(state && state.auth && state.auth.userToken)) {
 
-    let isValid = await valid_user(userToken);
+      //如果用户尚未登录,则跳转到登录界面
+      replace('/login');
 
-    //如果用户尚未认证,则进行跳转操作
-    isValid || replace('/login');
+    } else {
+
+      //从Store中获取用户Token
+      let userToken = store.getState().auth.userToken;
+
+      //在这里执行异步认证,假设传入的store中包含userToken
+      //这里使用Promise执行异步操作
+      //如果是SSR,则本部分代码会在服务端运行
+
+      let isValid = await valid_user(userToken);
+
+      //如果用户尚未认证,则进行跳转操作
+      isValid || replace('/login');
+
+    }
 
     //执行回调函数
     callback();

@@ -12,6 +12,7 @@ new WebpackDevServer(webpack(config), {
   // publicPath: `http://0.0.0.0:${appsConfig.devServer.port}/`,
   hot: true,
   historyApiFallback: true,
+  quiet:true,
   // noInfo: true,
   stats: {colors: true}
 }).listen(appsConfig.devServer.port, '0.0.0.0', function (err, result) {

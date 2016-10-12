@@ -2,7 +2,7 @@
  * Created by apple on 16/9/13.
  */
 import React, { Component, PropTypes } from 'react';
-import { login, logout } from '../api/api';
+import { login, logout } from '../api/auth';
 
 /**
  * @function 登陆页面组件

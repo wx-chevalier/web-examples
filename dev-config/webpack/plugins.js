@@ -3,10 +3,13 @@
  */
 var webpack = require('webpack');
 var path = require('path');
+
 var DefinePlugin = require('webpack/lib/DefinePlugin');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var DashboardPlugin = require('webpack-dashboard/plugin');
+
+var appsConfig = require("./../apps.config.js");
 const utils = require('./utils');
 
 
@@ -36,6 +39,10 @@ exports.commonPlugins = [
   })
 ];
 
+var Dashboard = require('webpack-dashboard');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var dashboard = new Dashboard();
+
 //开发时使用插件
 exports.devPlugins = [
   new webpack.HotModuleReplacementPlugin(),
@@ -47,7 +54,8 @@ exports.devPlugins = [
         utils.postCSSConfig
       ]
     }
-  })
+  }),
+  new DashboardPlugin(dashboard.setData)
 ];
 
 

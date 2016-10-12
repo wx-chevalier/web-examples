@@ -117,7 +117,7 @@
     "underscore-template-loader": "^0.7.2",
     "url-loader": "^0.5.6",
     "webpack": "^2.1.0-beta",
-    "webpack-dashboard": "^0.1.8",
+    "webpack-dashboard": "^0.2.0",
     "webpack-dev-server": "^2.1.0-beta",
     "webpack-md5-hash": "0.0.5",
     "webpack-validator": "^2.2.3"
@@ -141,6 +141,7 @@
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-fontawesome": "^1.2.0",
+    "react-helmet": "^3.1.0",
     "react-komposer": "^1.11.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
@@ -148,9 +149,9 @@
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.6.0",
     "redux-form": "^6.0.5",
-    "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0",
+    "scroll-behavior": "^0.8.2",
     "whatwg-fetch": "^1.0.0"
   }
 }

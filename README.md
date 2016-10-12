@@ -7,7 +7,9 @@
 
 > 核心组件代码与脚手架之间务必存在有机分割，整个程序架构清晰易懂。
 
-如果你是完全的React初学者,那么建议首先
+![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/10/2/1-7M1eE4GO6_Lh2c-pmjGkcA.jpeg)
+
+如果你是完全的React初学者,那么建议首先了解下[使用Facebook的create-react-app快速构建React开发环境](https://segmentfault.com/a/1190000006055973)
 
 ## Reference
 
@@ -42,12 +44,20 @@
 
 - 文件分割与异步加载：可以将多个应用中的公共文件，譬如都引用了React类库的话，可以将这部分文件提取出来，这样前端可以减少一定的数据传输。另外的话还需要支持组件的异步加载，譬如用了React Router，那需要支持组件在需要时再加载。
 
-## Best Practice
+## 真的需要Redux吗?
+
+对于这个问题笔者没有明确的答案,但是在这两年的自己对于Redux的实战中,也一直在摇把。我坚定的认为Redux指明了解决某类问题的正确方向,但是它真的适合于所有的项目吗?
+笔者在[我的前端之路]()一文中提及,
+
+## Personal Best Practice
 
 - 使用Promise进行异步操作，建议使用await/async作为Promise语法糖构建异步函数。
+
 - 使用fetch作为统一的数据获取函数，在本项目中使用了笔者的[fluent-fetcher]()作为fetch的上层封装使用。
 
-
+- 尽可能少的使用行内样式,将每个组件的样式文件与组件声明文件同地存放。
+譬如Material-UI这个著名的React样式组件库与[react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
+之前的版本都是用的CSS-IN-JavaScript,全部内联样式。笔者感觉还是需要将CSS与JS剥离开来,一方面是处于职责分割的考虑,另一方面也是为了样式的可变性。通过样式类的方式来定义方式很方便地可以通过CSS来修正样式,而不需要每次都要找半天内联样式在哪里,然后去重新编译整个项目。
 
 # Quick Start
 
@@ -169,10 +179,85 @@ match({routes: getRoutes(localStorage), location}, () => {
 
 # Isomorphic Redux
 
-笔者目前在自己主导的几个前端项目中渐渐的转向MobX与Redux并行
+对于[Redux Dev Tools](https://github.com/gaearon/redux-devtools#browser-extension),请自行使用[Browser Extension]()。
+
+笔者目前在自己主导的几个前端项目中渐渐的转向MobX与Redux并行.本项目中对于Redux的文件布局采取的是[Ducks](https://github.com/erikras/ducks-modular-redux)这种方式,参考了[my-journey-toward-a-maintainable-project-structure-for-react-redux](https://hackernoon.com/my-journey-toward-a-maintainable-project-structure-for-react-redux-b05dfd999b5#.yot2mml9t)一文。即按照特性来将Reducers、ActionCreators、Actions、Selectors集中到单个文件中:
+```
+// src/ducks/auth.js
+const AUTO_LOGIN = 'AUTH/AUTH_AUTO_LOGIN'
+const SIGNUP_REQUEST = 'AUTH/SIGNUP_REQUEST'
+const SIGNUP_SUCCESS = 'AUTH/SIGNUP_SUCCESS'
+const SIGNUP_FAILURE = 'AUTH/SIGNUP_FAILURE'
+const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
+const LOGIN_SUCCESS = 'AUTH/LOGIN_SUCCESS'
+const LOGIN_FAILURE = 'AUTH/LOGIN_FAILURE'
+const LOGOUT = 'AUTH/LOGOUT'
+
+const initialState = {
+  user: null,
+  isLoading: false,
+  error: null
+}
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case SIGNUP_REQUEST:
+    case LOGIN_REQUEST:
+      return { ...state, isLoading: true, error: null }
+
+    case SIGNUP_SUCCESS:
+    case LOGIN_SUCCESS:
+      return { ...state, isLoading: false, user: action.user }
+
+    case SIGNUP_FAILURE:
+    case LOGIN_FAILURE:
+      return { ...state, isLoading: false, error: action.error }
+
+    case LOGOUT:
+      return { ...state, user: null }
+
+    default:
+      return state
+  }
+}
+
+export const signup = (email, password) => ({ type: SIGNUP_REQUEST, email, password })
+export const login = (email, password) => ({ type: LOGIN_REQUEST, email, password })
+export const logout = () => ({ type: LOGOUT })
+```
 
 ## Pure Frontend 
 
+引入Redux最大的区别在于,笔者所做的改造点为
+
+### [React Router Redux](https://github.com/reactjs/react-router-redux)
+React Router Redux的代码还是简单易懂的,其只是在用户点击/跳转与React Router自身的History之间加上了一层封装
+
+> [history](https://github.com/reactjs/history) + `store` ([redux](https://github.com/reactjs/redux)) → [**react-router-redux**](https://github.com/reactjs/react-router-redux) → enhanced [history](https://github.com/reactjs/history) → [react-router](https://github.com/reactjs/react-router)
+
+如果你需要自定义其他的Location,譬如如果你需要引入ImmutableJS作为Store:
+```
+import Immutable from 'immutable';
+import {
+    LOCATION_CHANGE
+} from 'react-router-redux';
+
+let initialState;
+
+initialState = Immutable.fromJS({
+    locationBeforeTransitions: undefined
+});
+
+export default (state = initialState, action) => {
+    if (action.type === LOCATION_CHANGE) {
+        return state.merge({
+            locationBeforeTransitions: action.payload
+        });
+    }
+
+    return state;
+};
+```
 ## SSR
 
 

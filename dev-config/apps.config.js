@@ -22,7 +22,7 @@ module.exports = {
 
   //开发服务器配置
   devServer: {
-    appEntrySrc: "./src/react/react_app.js", //当前待调试的APP的编号
+    appEntrySrc: "./src/redux/redux_app.js", //当前待调试的APP的编号
     port: 3000 //监听的Server端口
   },
 

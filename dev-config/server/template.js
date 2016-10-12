@@ -19,23 +19,32 @@ export default (html, initialState = {}, scripts = [], styles = []) => {
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-        ${
-    styles.map((style)=> {
-      return <link href={style} media="screen, projection" rel="stylesheet" type="text/css" charSet="UTF-8"/>
-    })
-    }
+        ${styleMapper(styles)}
       </head>
       <body>
         <div id="root">${html}</div>        
       </body>
-      ${
-    scripts.map((script)=> {
-      return `<script src=${script}></script>`
-    })
-    }
+      ${scriptMapper(scripts)}
       <script>
         window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
       </script>
     </html>
   `;
+};
+
+/**
+ * @function 将输入的样式文件路径转化为Link标签
+ * @param styles
+ * @return {*}
+ */
+const styleMapper = (styles) => {
+  return styles.map((style)=> {
+    return <link href={style} media="screen, projection" rel="stylesheet" type="text/css" charSet="UTF-8"/>
+  });
+};
+
+const scriptMapper = (scripts)=> {
+  return scripts.map((script)=> {
+    return `<script src=${script}></script>`
+  });
 };
