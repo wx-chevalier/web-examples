@@ -5,6 +5,8 @@ var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
 
+const ssrServer = require('./apps.config').ssrServer;
+
 var nodeModules = {};
 
 //遍历所有的NodeModules以防止意外引入
@@ -18,7 +20,7 @@ fs.readdirSync('node_modules')
 
 //设置基本的模块导入导出规范
 module.exports = {
-  entry: './src/react/ssr_server.js',
+  entry: ssrServer.serverEntrySrc,
   target: 'node',
   output: {
     path: path.join(__dirname, '../dist'),

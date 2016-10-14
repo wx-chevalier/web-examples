@@ -29,6 +29,9 @@ export const valid_user = (userToken = undefined)=> {
 export const login = ()=> {
   return new Promise((resolve, reject)=> {
 
+    //将userToken写入到localStorage,首先判断是否为DOM环境
+    !window || window.localStorage.setItem('userToken',validUserToken);
+
     resolve(validUserToken);
 
   });
@@ -40,6 +43,8 @@ export const login = ()=> {
  */
 export const logout = ()=> {
   return new Promise((resolve, reject)=> {
+
+    !window || window.localStorage.removeItem('userToken');
 
     resolve();
 

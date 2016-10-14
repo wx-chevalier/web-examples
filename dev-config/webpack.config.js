@@ -33,7 +33,7 @@ if (__DEV__) {
 } else if (NODE_ENV === "library") {
 
   //配置依赖库性质的编译环境
-  entry = [];
+  entry = [appsConfig.library.entry];
 
 } else {
   entry = {
@@ -42,7 +42,7 @@ if (__DEV__) {
 }
 
 //设置开发时源代码映射工具
-const devTool = __DEV__ ? 'source-map' : 'cheap-module-eval-source-map';
+const devTool = __DEV__ ? 'cheap-module-eval-source-map' : 'hidden-source-map';
 
 //基本配置
 var config = {

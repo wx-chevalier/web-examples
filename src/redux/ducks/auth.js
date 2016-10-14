@@ -84,6 +84,10 @@ export const doLogout = ()=> {
   }
 };
 
+/**
+ * @function 在正式跳转之后将跳转变量设置为false
+ * @return {{type: string}}
+ */
 export const doRedirect = ()=> {
   return {
     type: HAS_REDIRECT
