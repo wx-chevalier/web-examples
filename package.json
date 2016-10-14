@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-redux-boilerplate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Page-Driven Webpack Boilerplate For React-Redux Work Flow",
   "scripts": {
     "start": "node --harmony ./dev-config/server/devServer.js --host 0.0.0.0",
