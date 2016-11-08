@@ -8,7 +8,8 @@
     "transform-decorators-legacy",
     "transform-class-properties",
     "transform-runtime",
-    "async-to-promises"
+    "async-to-promises",
+    "transform-flow-strip-types"
   ],
   "env": {
     "development": {

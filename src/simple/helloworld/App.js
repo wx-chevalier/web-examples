@@ -1,12 +1,18 @@
 /**
  * Created by apple on 16/7/23.
  */
+// @flow
+
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   render() {
+
+    //测试Flow类型检查工具
+    const title: string = 'WXChevalier Presentation';
+
     return (
       <div className="App">
         <div className="App-header">

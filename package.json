@@ -4,41 +4,46 @@
   "description": "Page-Driven Webpack Boilerplate For React-Redux Work Flow",
   "scripts": {
     "start": "node --harmony ./dev-config/server/devServer.js --host 0.0.0.0",
-    "storybook": "start-storybook -p 9001",
     "build": "npm run clean && better-npm-run build",
     "build:ssr": "npm run clean && better-npm-run build:ssr && better-npm-run build:server",
     "build:library": "npm run clean && better-npm-run build:library",
-    "deploy": "npm run build && ./node_modules/.bin/http-server dist",
     "clean": "rimraf dist",
     "lint": "eslint src",
     "mocha": "./node_modules/mocha/bin/mocha -t 10000 --compilers js:babel-core/register",
     "mocha-all": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
-    "update": "npm-check -u"
+    "update": "npm-check -u",
+    "weapp": "better-npm-run weapp"
   },
   "betterScripts": {
     "build": {
-      "command": "webpack --config ./dev-config/webpack.config.js",
+      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.config.js",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "build:ssr": {
-      "command": "webpack --config ./dev-config/webpack.config.js",
+      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.config.js",
       "env": {
         "NODE_ENV": "production",
         "TARGET": "ssr"
       }
     },
     "build:server": {
-      "command": "webpack --config ./dev-config/webpack.server.config.js",
+      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.server.config.js",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "build:library": {
-      "command": "webpack --config ./dev-config/webpack.config.js",
+      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.config.js",
       "env": {
         "NODE_ENV": "library"
+      }
+    },
+    "weapp": {
+      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.weapp.config.js --watch",
+      "env": {
+        "NODE_ENV": "production"
       }
     }
   },
@@ -75,8 +80,11 @@
     "babel-core": "^6.14.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.0",
+    "babel-plugin-async-to-promises": "^1.0.5",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.14.0",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-polyfill": "^6.9.1",
     "babel-preset-react": "^6.11.1",
@@ -123,16 +131,12 @@
     "webpack-validator": "^2.2.3"
   },
   "dependencies": {
-    "babel-plugin-async-to-promises": "^1.0.5",
-    "babel-plugin-syntax-async-functions": "^6.13.0",
-    "boron": "^0.2.3",
     "es6-promise": "^3.3.1",
     "express": "^4.14.0",
     "fluent-fetcher": "0.0.9",
     "font-awesome": "^4.6.3",
     "install": "^0.8.1",
     "isomorphic-fetch": "^2.2.1",
-    "istanbul": "^0.4.5",
     "jquery": "^3.1.0",
     "js-cookie": "^2.1.3",
     "lodash": "^4.15.0",
@@ -142,7 +146,6 @@
     "react-dom": "^15.3.1",
     "react-fontawesome": "^1.2.0",
     "react-helmet": "^3.1.0",
-    "react-komposer": "^1.11.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "react-router-redux": "^4.0.5",
