@@ -133,7 +133,7 @@
   "dependencies": {
     "es6-promise": "^3.3.1",
     "express": "^4.14.0",
-    "fluent-fetcher": "0.0.9",
+    "fluent-fetcher": "^0.1.2",
     "font-awesome": "^4.6.3",
     "install": "^0.8.1",
     "isomorphic-fetch": "^2.2.1",

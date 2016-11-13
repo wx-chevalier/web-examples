@@ -1,3 +1,5 @@
-import EntityClass from '../../common/entity/entity';
+import UserEntityClass from '../../common/entity/user';
+import FluentFetcherClass from 'fluent-fetcher';
 
-export const Entity = EntityClass;
+export const UserEntity = UserEntityClass;
+export const FluentFetcher = FluentFetcherClass;

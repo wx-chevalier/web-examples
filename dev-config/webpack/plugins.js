@@ -74,9 +74,7 @@ exports.prodPlugins = [
     debug: false,
     options: {
       context: '/',
-      postcss: [
-        utils.postCSSConfig
-      ]
+      postcss: utils.postCSSConfig
     }
   }),
 
