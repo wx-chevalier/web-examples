@@ -7,6 +7,8 @@
 
 > 核心组件代码与脚手架之间务必存在有机分割，整个程序架构清晰易懂。
 
+![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/11/3/1-aX8wNs_oVQ4ZZDUzowiolg.jpeg)
+
 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/10/2/1-raWO3dhM4jMjf9VY-kZzNg.png)
 
 如果你是完全的React初学者,那么建议首先了解下[使用Facebook的create-react-app快速构建React开发环境](https://segmentfault.com/a/1190000006055973)，同时参考笔者的[React 入门与最佳实践](https://github.com/wxyyxc1992/Web-Develop-Introduction-And-Best-Practices/tree/master/Frontend/Framework/View/React)以及[Redux 入门与最佳实践](https://github.com/wxyyxc1992/Web-Develop-Introduction-And-Best-Practices/tree/master/Frontend/Framework/StateManagement/Redux)。本项目算是个半自动化的脚手架工具,笔者并不希望做成完全傻瓜式的开箱即用的工具,这只会给你的项目埋下危险的伏笔,希望每个可能用这个Boilerplate的同学都能阅读文本,至少要保证对文本提及的知识点有个全局的了解。
