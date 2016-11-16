@@ -47,9 +47,7 @@ exports.devPlugins = [
   new webpack.LoaderOptionsPlugin({
     options: {
       context: '/',
-      postcss: [
-        utils.postCSSConfig
-      ]
+      postcss: utils.postCSSConfig
     }
   })
 ];
