@@ -16,7 +16,7 @@
   },
   "betterScripts": {
     "build": {
-      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.config.js",
+      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack/build/build.js",
       "env": {
         "NODE_ENV": "production"
       }
@@ -90,14 +90,18 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-1": "^6.3.13",
+    "babel-register": "^6.18.0",
     "better-npm-run": "0.0.11",
     "bundle-loader": "^0.5.4",
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.25.0",
     "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^13.0.0",
     "eslint-loader": "^1.4.1",
     "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "^6.2.2",
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "file-loader": "^0.9.0",

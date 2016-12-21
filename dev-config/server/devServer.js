@@ -1,24 +1,3 @@
-var path = require('path');
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-
-//默认是开发时配置
-var config = require('./../webpack.config.js');
-var appsConfig = require("./../apps.config.js");
-
-new WebpackDevServer(webpack(config), {
-  //设置WebpackDevServer的开发目录
-  contentBase: path.join(__dirname + "/"),
-  // publicPath: `http://0.0.0.0:${appsConfig.devServer.port}/`,
-  hot: true,
-  historyApiFallback: true,
-  quiet:true,
-  // noInfo: true,
-  stats: {colors: true}
-}).listen(appsConfig.devServer.port, '0.0.0.0', function (err, result) {
-  if (err) {
-    return console.log(err);
-  }
-
-  console.log(`Listening at http://0.0.0.0:${appsConfig.devServer.port}/`);
-});
+// 使用require('babel-register');引入es6环境，对于后面require的文件全部生效
+require('babel-register');
+require('./startDevServer');
