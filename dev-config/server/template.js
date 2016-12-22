@@ -1,8 +1,27 @@
 /**
  * Created by apple on 16/10/11.
  */
-//待渲染完整的页面
-//这里的页面建议以最简形式,如果需要复杂的头设定使用react-helmet组件
+// 待渲染完整的页面 这里的页面建议以最简形式,如果需要复杂的头设定使用react-helmet组件
+
+import React from 'react';
+
+/**
+ * @function 将输入的样式文件路径转化为Link标签
+ * @param styles
+ * @return {*}
+ */
+const styleMapper = styles => (
+  styles.map(style => (
+    <link
+    href={style}
+    media="screen, projection"
+    rel="stylesheet"
+    type="text/css"
+    charSet="UTF-8" />)
+  )
+);
+
+const scriptMapper = scripts => (scripts.map(script => (`<script src=${script}></script>`)));
 
 /**
  * @function 生成同构直出的HTML界面模板
@@ -12,8 +31,8 @@
  * @param styles
  * @return {string}
  */
-export default (html, initialState = {}, scripts = [], styles = []) => {
-  return `
+export default(html, initialState = {}, scripts = [], styles = []) => (
+  `
     <!doctype html>
     <html>
       <head>
@@ -28,23 +47,5 @@ export default (html, initialState = {}, scripts = [], styles = []) => {
       <script>
         window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
       </script>
-    </html>
-  `;
-};
-
-/**
- * @function 将输入的样式文件路径转化为Link标签
- * @param styles
- * @return {*}
- */
-const styleMapper = (styles) => {
-  return styles.map((style)=> {
-    return <link href={style} media="screen, projection" rel="stylesheet" type="text/css" charSet="UTF-8"/>
-  });
-};
-
-const scriptMapper = (scripts)=> {
-  return scripts.map((script)=> {
-    return `<script src=${script}></script>`
-  });
-};
+    </html>`
+);
