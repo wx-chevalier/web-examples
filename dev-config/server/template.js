@@ -24,10 +24,10 @@ export default (html, initialState = {}, scripts = [], styles = []) => {
       <body>
         <div id="root">${html}</div>        
       </body>
-      ${scriptMapper(scripts)}
       <script>
         window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
       </script>
+      ${scriptMapper(scripts)}
     </html>
   `;
 };
@@ -39,12 +39,17 @@ export default (html, initialState = {}, scripts = [], styles = []) => {
  */
 const styleMapper = (styles) => {
   return styles.map((style)=> {
-    return <link href={style} media="screen, projection" rel="stylesheet" type="text/css" charSet="UTF-8"/>
+    return `<link href="${style}" media="screen, projection" rel="stylesheet" type="text/css" charSet="UTF-8"/>`
   });
 };
 
 const scriptMapper = (scripts)=> {
-  return scripts.map((script)=> {
-    return `<script src=${script}></script>`
-  });
+
+  let scriptTags = [];
+
+  for (let i = 0; i < scripts.length; i++) {
+    scriptTags.push(`<script src=${scripts[i]}></script>`)
+  }
+
+  return scriptTags;
 };

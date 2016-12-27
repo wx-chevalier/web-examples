@@ -15,7 +15,7 @@ var __DEV__ = NODE_ENV === "development";
 exports.jsx = {
   test: /\.(js|jsx)$/,
   exclude: /(node_modules)/,
-  loaders: ["babel"]
+  loaders: ["babel-loader"]
 };
 
 //对于JS与JSX的格式校验
@@ -47,14 +47,14 @@ if (NODE_ENV === "development") {
   //如果当前为开发环境,则封装内联的CSS
   exports.style = {
     test: /\.(scss|sass|css)$/,
-    loader: 'style-loader!css-loader!postcss-loader!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules'
+    loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules'
   };
 } else {
 
   //如果当前为编译环境,则抽取出CSS代码
   exports.style = {
     test: /\.(scss|sass|css)$/,
-    loader: ExtractTextPlugin.extract('css-loader!postcss-loader!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules')
+    loader: ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules')
   };
 
 }

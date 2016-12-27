@@ -8,7 +8,6 @@ var path = require('path');
 //使用方式即为var $ = require("jquery")
 exports.externals = {
   window: "window",
-  jquery: "jQuery",
   pageResponse: 'pageResponse'
 };
 
@@ -37,4 +36,7 @@ exports.postCSSConfig = [
       'android >= 4.4',
       'bb >= 10'
     ]
-  }), require('postcss-flexibility')];
+  }),
+  require('postcss-flexibility')
+];
+

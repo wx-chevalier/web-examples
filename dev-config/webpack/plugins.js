@@ -35,7 +35,8 @@ exports.commonPlugins = [
     },
     //判断当前是否处于开发状态
     __DEV__: JSON.stringify(__DEV__),
-    __SSR__: TARGET === 'ssr' ? JSON.stringify(true) : JSON.stringify(false)
+    __SSR__: TARGET === 'ssr' ? JSON.stringify(true) : JSON.stringify(false),
+    __SERVER__: JSON.stringify(false)
   })
 ];
 
@@ -76,8 +77,12 @@ exports.prodPlugins = [
     }
   }),
 
+  new webpack.optimize.DedupePlugin(), //dedupe similar code
+
   //代码压缩插件
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: true
-  })
+  }),
+
+  new webpack.optimize.AggressiveMergingPlugin()//Merge chunks
 ];
