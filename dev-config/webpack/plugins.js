@@ -44,7 +44,7 @@ exports.commonPlugins = [
 //开发时使用插件
 exports.devPlugins = [
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
   new webpack.LoaderOptionsPlugin({
     options: {
       context: '/',
@@ -55,10 +55,8 @@ exports.devPlugins = [
 
 //判断是否为开发模式,如果为开发模式则添加WebpackDashboard
 if (__DEV__) {
-  var Dashboard = require('webpack-dashboard');
   var DashboardPlugin = require('webpack-dashboard/plugin');
-  var dashboard = new Dashboard();
-  exports.devPlugins.push(new DashboardPlugin(dashboard.setData));
+  exports.devPlugins.push(new DashboardPlugin());
 }
 
 

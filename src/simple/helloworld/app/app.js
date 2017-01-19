@@ -6,7 +6,6 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './app.css';
 import LazilyLoad, { importLazy } from '../../../common/utils/load/lazily_load';
-import LoadedJQuery from '../lazy/loaded_jquery';
 
 
 class App extends Component {
@@ -16,14 +15,54 @@ class App extends Component {
     super(...arguments);
     this.state = {
       load: false,
+      count: 0
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  async handleClick() {
+
+    console.trace(this.setState);
+
     this.setState({
       load: !this.state.load,
+      count: this.state.count + 1
+    }, () => {
+      console.log(this.state.count);
+      console.log('加载完成')
     });
+
+    await this.setStateAsync({
+      load: !this.state.load,
+      count: this.state.count + 1
+    });
+
+    console.log(this.state.count);
+    console.log('加载完成Async');
+
+    this.setState(function (prevState, props) {
+
+      console.log(prevState);
+
+      return {count: this.state.count + 1}
+
+    }, () => {
+      console.log(this.state.count);
+      console.log('加载完成')
+    });
+
+
+  }
+
+  setStateAsync(nextState) {
+
+    return new Promise((resolve, reject) => {
+
+      this.setState(nextState, () => {
+        resolve();
+      })
+
+    })
   }
 
   render() {
@@ -58,7 +97,7 @@ class App extends Component {
           }
         </LazilyLoad>
 
-        {this.state.load ? <LoadedJQuery /> : null}
+        {/*{this.state.load ? <LoadedJQuery /> : null}*/}
 
       </div>
     );
