@@ -9,7 +9,7 @@ const NODE_ENV = process.env.NODE_ENV || "development";
 //判断当前是否处于开发状态下
 const __DEV__ = NODE_ENV === "development";
 
-const optionalRender = (App, path, rootID) => {
+const optionalRender = (App, root, path) => {
 
   //重定义渲染函数
   const render = (Component) => {
@@ -17,7 +17,7 @@ const optionalRender = (App, path, rootID) => {
       <AppContainer>
         {Component}
       </AppContainer>,
-      document.getElementById(rootID)
+      root
     );
   };
 
@@ -34,7 +34,7 @@ const optionalRender = (App, path, rootID) => {
   } else {
     ReactDOM.render(
       App,
-      document.getElementById(rootID)
+      root
     )
   }
 

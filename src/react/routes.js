@@ -25,7 +25,7 @@ const Container = (props) => {
  *
  * @param store
  */
-export default (store = {})=> {
+export default (store = {}) => {
 
   //注意,在SSR情况下这里使用的是服务端传入的Store
 

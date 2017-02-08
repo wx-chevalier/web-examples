@@ -30,7 +30,8 @@ module.exports = {
 
   //开发服务器配置
   devServer: {
-    appEntrySrc: "./src/simple/helloworld/helloworld.js", //当前待调试的APP的入口文件
+    // appEntrySrc: "./src/simple/helloworld/helloworld.js", //当前待调试的APP的入口文件
+    appEntrySrc: "./src/react/react_app.js", //当前待调试的APP的入口文件
     port: 3000 //监听的Server端口
   },
 

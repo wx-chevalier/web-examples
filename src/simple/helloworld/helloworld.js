@@ -6,7 +6,7 @@ import App from './app/app';
 import './helloworld.scss';
 import optionalRender from '../../../dev-config/webpack/render';
 
-optionalRender(<App />, './app/app', 'root');
+optionalRender(<App />, document.getElementById('root'), './app/app');
 
 // ReactDOM.render(
 //   <div>
