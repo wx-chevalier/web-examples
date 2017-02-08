@@ -12,13 +12,13 @@ module.exports = {
       id: "helloworld",
       src: "./src/simple/helloworld/helloworld.js",
       indexPage: defaultIndexPage,
-      compiled: false
+      compiled: true
     },
     {
       id: "react",
       src: "./src/react/react_app.js",
       indexPage: defaultIndexPage,
-      compiled: true
+      compiled: false
     },
     {
       id: "redux",

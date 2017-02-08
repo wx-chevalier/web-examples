@@ -5,9 +5,6 @@ const plugins = require('./webpack/plugins');
 const utils = require('./webpack/utils');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-//webpack plugins
-var validate = require("webpack-validator"); //用于webpack配置验证
-
 //获取命令行NODE_ENV环境变量,默认为development
 var NODE_ENV = process.env.NODE_ENV || "development";
 
@@ -15,8 +12,8 @@ var NODE_ENV = process.env.NODE_ENV || "development";
 var __DEV__ = NODE_ENV === "development";
 
 //定义统一的Application，不同的单页面会作为不同的Application
-var apps = require("./apps.config.js").apps;
 var appsConfig = require("./apps.config.js");
+var apps = appsConfig.apps;
 
 //定义入口变量
 var entry;
@@ -64,7 +61,7 @@ var config = {
     //生产环境下需要添加的插件
     [].concat(plugins.commonPlugins).concat(plugins.prodPlugins),
   module: {
-    loaders: [
+    rules: [
       // loaders.jslint,
       loaders.jsx,
       loaders.style,
@@ -72,7 +69,8 @@ var config = {
       loaders.json
     ]
   },
-  externals: utils.externals
+  externals: utils.externals,
+  target: 'web'
 };
 
 //如果当前是Library配置
@@ -119,7 +117,7 @@ if (NODE_ENV === "production") {
         template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore作为模板
         inject: false, // 使用自动插入JS脚本,
         chunks: ["vendors", app.id], //选定需要插入的chunk名,
-        
+
         //设置压缩选项
         minify: {
           removeComments: true,
@@ -148,4 +146,4 @@ if (NODE_ENV === "production") {
   config.output.filename = '[name].bundle.js';
 }
 
-module.exports = validate(config);
+module.exports = config;

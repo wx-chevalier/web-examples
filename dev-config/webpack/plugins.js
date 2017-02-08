@@ -2,24 +2,20 @@
  * Created by apple on 16/10/9.
  */
 var webpack = require('webpack');
-var path = require('path');
 
-var DefinePlugin = require('webpack/lib/DefinePlugin');
-var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var DashboardPlugin = require('webpack-dashboard/plugin');
 
 var appsConfig = require("./../apps.config.js");
 const utils = require('./utils');
 
-
 //获取命令行NODE_ENV环境变量,默认为development
 var NODE_ENV = process.env.NODE_ENV || "development";
 
-var TARGET = process.env.TARGET || "standalone";
-
 //判断当前是否处于开发状态下
 var __DEV__ = NODE_ENV === "development";
+
+var TARGET = process.env.TARGET || "standalone";
 
 //通用插件组
 exports.commonPlugins = [
@@ -44,6 +40,7 @@ exports.commonPlugins = [
 //开发时使用插件
 exports.devPlugins = [
   new webpack.HotModuleReplacementPlugin(),
+  new webpack.NamedModulesPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.LoaderOptionsPlugin({
     options: {
@@ -74,8 +71,6 @@ exports.prodPlugins = [
       postcss: utils.postCSSConfig
     }
   }),
-
-  new webpack.optimize.DedupePlugin(), //dedupe similar code
 
   //代码压缩插件
   new webpack.optimize.UglifyJsPlugin({
