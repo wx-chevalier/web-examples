@@ -2,8 +2,7 @@
  * Created by apple on 16/9/13.
  */
 import React, { Component, PropTypes } from 'react';
-import { Route, IndexRoute, withRouter, browserHistory } from 'react-router';
-import { Login } from './component/login';
+import { Route, IndexRoute, withRouter, browserHistory } from 'react-router/es6';
 import { Home } from './component/home';
 import { Detail } from './component/detail';
 import { valid_user } from './api/auth';
@@ -19,6 +18,19 @@ const Container = (props) => {
       {props.children}
     </div>
   );
+};
+
+
+const getComponentLazily = (importor, name = 'default') => {
+  return (location, cb) => {
+    importor.then((module) => {
+      //如果是默认模块，则是 module.default
+      cb(null, module[name]);
+    })
+      .catch((err) => {
+        console.error(`动态路由加载失败：${err}`)
+      });
+  }
 };
 
 /**
@@ -60,7 +72,7 @@ export default (store = {}) => {
     <Route path="/" history={browserHistory} component={Container}>
       <IndexRoute component={Home}/>
       <Route path="home" component={withRouter(Home)}/>
-      <Route path="login" component={withRouter(Login)}/>
+      <Route path="login" getComponent={getComponentLazily(System.import('./component/login'),'Login')}/>
       <Route path="detail" component={withRouter(Detail)} onEnter={auth}/>
     </Route>
   );
