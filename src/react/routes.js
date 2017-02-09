@@ -2,7 +2,7 @@
  * Created by apple on 16/9/13.
  */
 import React, { Component, PropTypes } from 'react';
-import { Route, IndexRoute, withRouter, browserHistory } from 'react-router/es6';
+import { Route, IndexRoute, withRouter, browserHistory } from 'react-router';
 import { Home } from './component/home';
 import { Detail } from './component/detail';
 import { valid_user } from './api/auth';
