@@ -1,23 +1,40 @@
 # 基于 React 技术栈的前端工程项目模板
 
+本仓库包含两个部分，一个 [create-react-boilerplate](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/tree/master/create-react-boilerplate)，是用于构建 React 及其技术栈项目的脚手架。另一个是完整的多应用模板项目，顺便包含[详细的从零到一的 React 及其技术栈使用教程](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/blob/master/boilerplate/README.md)。
 
+# create-react-boilerplate: 面向 React 技术栈的工程项目脚手架
 
-# create-react-boilerplate
+最近笔者在逐步将之前的项目升级为 Webpack2 + ReactRouter4，同时优化 MobX/Redux 搭配的状态管理模式，以及将通用组件抽取到 React Storybook 中切向所谓组件驱动开发。对于其中浅薄的工程化的思考可以参考[2016-我的前端之路:工具化与工程化](https://zhuanlan.zhihu.com/p/24575395),对于模板中配置的详解参考详细的从零到一的 React 及其技术栈使用教程]，这也是笔者当前仓库中另一个主要内容。
+言归正传，笔者最近团队中项目在逐步增多，特别是有很多小的需要快速搭建的项目；由于人员素质相对参差，并且技术包括实践衍化过快，笔者就花了几小时参考了[ create-react-app](https://segmentfault.com/a/1190000006055973) 将 [Webpack2-Boilerplate](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/blob/master/boilerplate/README.md) 封装了一下。目前存在大量的问题，预定的四个模式中也只完善了最基本的纯 React 应用，欢迎大家提出指导或者有什么觉得不错的特性。
 
-# Webpack2-React-Redux-MobX-Boilerplate
+可以直接使用 npm 或者 yarn 安装：
+```
+npm install create-react-boilerplate -g
+```
+基本使用方式类似于 create-react-app，直接创建项目：
+![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/2/2/WX20170221-22060311.png)
 
-本部分假设你已经对Webpack有了大概的了解，这里我们会针对笔者自己在生产环境下使用的Webpack编译脚本进行的一个总结，在介绍具体的配置方案之前笔者想先概述下该配置文件的设计的目标，或者说是笔者认为一个前端编译环境应该达成的特性，这样以后即使Webpack被淘汰了也可以利用其他的譬如JSPM之类的来完成类似的工作。
+其支持四个模板类型：
+- react：侧重 React，React StoryBook， ReactRouter4
+- mobx：侧重 mobx
+- redux：侧重 redux
+- full：侧重完整的工程项目
 
-- 考虑到同一项目对多编译目标的支持，包括开发环境、纯前端运行环境（包括Cordova、APICloud、Weapp这种面向移动端的方案）、同构直出环境，并且保证项目可以在这三个环境之间平滑切换，合理分割脚手架工具与核心应用代码。
+```
+create-react-boilerplate app
+```
+![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/2/2/WX20170221-220910aa.png)
 
-- 单一的配置文件：很多项目里面是把开发环境与生产环境写了两个配置文件，可能笔者比较懒吧，不喜欢这么做，因此笔者的第一个特性就是单一的配置文件，然后通过npm封装不同的编译命令传入环境变量，然后在配置文件中根据不同的环境变量进行动态响应。另外，要保证一个Boilerplate能够在最小修改的情况下应用到其他项目。
+create-react-boilerplate 并没有负责安装依赖，项目创建之后切换到项目目录，执行`sh ./install.sh`安装依赖，包括：
 
-- 多应用入口支持：无论是单页应用还是多页应用，在Webpack中往往会把一个html文件作为一个入口。笔者在进行项目开发时，往往会需要面对多个入口，即多个HTML文件，然后这个HTML文件加载不同的JS或者CSS文件。譬如登录页面与主界面，往往可以视作两个不同的入口。Webpack原生提倡的配置方案是面向过程的，而笔者在这里是面向应用方式的封装配置。
+```
+#!/usr/bin/env bash
+npm install --global yarn
+yarn install #安装本地package.json中依赖
+yarn global add flow-bin #全局安装flow类型检查工具
+yarn global add cnpm-check #全局安装npm-check
+yarn global add babel-cli #全局安装Babel CLI命令行工具
+yarn global add weinre #全局安装调试工具
+```
 
-- 调试时热加载：这个特性毋庸多言，不过热加载因为走得是中间服务器，同时只能支持监听一个项目，因此需要在多应用配置的情况下加上一个参数，即指定当前调试的应用。
-
-- 自动化的Polyfill：这个是Webpack自带的一个特性吧，不过笔者就加以整合，主要是实现了对于ES6、React、CSS(Flexbox)等等的自动Polyfill。
-
-- 资源文件的自动管理：这部分主要指从模板自动生成目标HTML文件、自动处理图片/字体等资源文件以及自动提取出CSS文件等。
-
-- 文件分割与异步加载：可以将多个应用中的公共文件，譬如都引用了React类库的话，可以将这部分文件提取出来，这样前端可以减少一定的数据传输。另外的话还需要支持组件的异步加载，譬如用了React Router，那需要支持组件在需要时再加载。
+安装完毕后执行`npm start`即可进入开发模式，关于这里的几个构建目标可以参考[详细的从零到一的 React 及其技术栈使用教程](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/blob/master/boilerplate/README.md)。

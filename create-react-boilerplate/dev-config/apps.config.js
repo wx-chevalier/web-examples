@@ -10,7 +10,7 @@ module.exports = {
     //HelloWorld
     {
       id: "app",
-      src: "./src/app.js",
+      src: "./src/client.js",
       indexPage: defaultIndexPage,
       compiled: true
     }
@@ -18,7 +18,7 @@ module.exports = {
 
   //开发服务器配置
   devServer: {
-    appEntrySrc: "./src/app.js", //当前待调试的APP的入口文件
+    appEntrySrc: "./src/client.js", //当前待调试的APP的入口文件
     port: 3000 //监听的Server端口
   },
 

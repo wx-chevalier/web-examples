@@ -175,7 +175,7 @@ function createApp(name, type) {
     console.log('对于新手，建议执行以下命令（建议首先安装 yarn）：');
     console.log();
     console.log(chalk.cyan('  cd'), cdpath);
-    console.log(chalk.cyan('  sh ./install.sh (Linux 环境中) / ./install.bat (Windows 环境中)'));
+    console.log(chalk.cyan('  sh ./install.sh (Linux 环境中) / ./install.bat (Windows 环境中) (此命令用于安装全局依赖，若非首次创建，请手动执行 yarn install 即可)'));
     console.log('  ' + chalk.cyan(command + ' start'));
     console.log();
     console.log('王下邀月熊！更多信息请往 wxyyxc1992@github');
