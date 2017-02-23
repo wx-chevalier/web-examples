@@ -2,14 +2,11 @@
  * Created by apple on 16/10/9.
  */
 'use strict';
-var path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-//获取命令行NODE_ENV环境变量,默认为development
-var NODE_ENV = process.env.NODE_ENV || "development";
+const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 //判断当前是否处于开发状态下
-var __DEV__ = NODE_ENV === "development";
+const __DEV__ = (process.env.NODE_ENV || "development") === "development";
 
 //基于Babel的JS/JSX Loader
 exports.jsx = {
@@ -50,9 +47,9 @@ exports.tslint = {
 
 
 //根据不同的环境开发设置不同的样式加载的Loader
-var sassLoaderSuffix = '?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules'
+const sassLoaderSuffix = '?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules';
 
-if (NODE_ENV === "development") {
+if (__DEV__) {
   //如果当前为开发环境,则封装内联的CSS
   exports.style = {
     test: /\.(scss|sass|css)$/,

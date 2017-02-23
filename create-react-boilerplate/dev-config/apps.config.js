@@ -30,6 +30,6 @@ module.exports = {
   //依赖项配置
   proxy: {
     //后端服务器地址 http://your.backend/
-    backend: "",
+    "/api/*": "http://localhost:3001",
   }
 };

@@ -3,11 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-//获取命令行NODE_ENV环境变量,默认为development
-const NODE_ENV = process.env.NODE_ENV || "development";
-
 //判断当前是否处于开发状态下
-const __DEV__ = NODE_ENV === "development";
+const __DEV__ = (process.env.NODE_ENV || "development") === "development";
 
 const optionalRender = (App, root, path) => {
 

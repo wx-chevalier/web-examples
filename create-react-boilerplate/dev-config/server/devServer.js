@@ -13,8 +13,9 @@ new WebpackDevServer(webpack(config), {
   hot: true,
   historyApiFallback: true,
   quiet: true,
-  // noInfo: true,
-  stats: {colors: true}
+  noInfo: true,
+  stats: {colors: true},
+  proxy: appsConfig.proxy
 }).listen(appsConfig.devServer.port, '0.0.0.0', function (err, result) {
   if (err) {
     return console.log(err);

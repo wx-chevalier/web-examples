@@ -1,22 +1,19 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 const loaders = require('./webpack/loaders');
 const plugins = require('./webpack/plugins');
 const utils = require('./webpack/utils');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-
-//获取命令行NODE_ENV环境变量,默认为development
-var NODE_ENV = process.env.NODE_ENV || "development";
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //判断当前是否处于开发状态下
-var __DEV__ = NODE_ENV === "development";
+const __DEV__ = (process.env.NODE_ENV || "development") === "development";
+
 
 //定义统一的Application，不同的单页面会作为不同的Application
-var appsConfig = require("./apps.config.js");
-var apps = appsConfig.apps;
+const appsConfig = require("./apps.config.js");
 
 //定义入口变量
-var entry;
+let entry;
 
 //根据不同的环境状态设置不同的开发变量
 if (__DEV__) {
@@ -27,11 +24,6 @@ if (__DEV__) {
     'webpack/hot/only-dev-server',
     require("./apps.config.js").devServer.appEntrySrc
   ];
-} else if (NODE_ENV === "library") {
-
-  //配置依赖库性质的编译环境
-  entry = [appsConfig.library.entry];
-
 } else {
   entry = {
     "vendors": "./dev-config/vendors.js"//存放所有的公共文件
@@ -42,7 +34,7 @@ if (__DEV__) {
 const devTool = __DEV__ ? 'cheap-module-eval-source-map' : 'hidden-source-map';
 
 //基本配置
-var config = {
+let config = {
   cache: false,
   entry,
   devtool: devTool,
@@ -73,28 +65,13 @@ var config = {
   target: 'web'
 };
 
-//如果当前是Library配置
-if (NODE_ENV === "library") {
-
-
-  var library = require("./apps.config.js").library;
-
-  //添加生成项的依赖库名
-  config.output.library = library.libraryName;
-
-  //添加全局挂载名
-  config.output.libraryTarget = library.libraryTarget;
-
-  //如果是生成环境下，将文件名加上hash
-  config.output.filename = `${library.name}.library.js`;
-
-}
-
 //为生产环境添加额外配置
-if (NODE_ENV === "production") {
+if (!__DEV__) {
 
   //定义HTML文件入口,默认的调试文件为src/index.html
-  var htmlPages = [];
+  let htmlPages = [];
+
+  const apps = appsConfig.apps;
 
   //遍历定义好的app进行构造
   apps.forEach(function (app) {
