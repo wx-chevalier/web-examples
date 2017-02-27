@@ -15,26 +15,12 @@
     "transform-class-properties",
     "transform-runtime",
     "async-to-promises",
-    "transform-flow-strip-types",
-    [
-      "import",
-      [
-        {
-          "libraryName": "antd",
-          "libraryDirectory": "lib",
-          "style": "css"
-        },
-        {
-          "libraryName": "antd-mobile",
-          "libraryDirectory": "component"
-        }
-      ]
-    ]
+    "transform-flow-strip-types"
   ],
   "env": {
     "development": {
       "presets": [
-        "react-hmre",
+        "react-hmre"
       ],
       "plugins": [
         "react-hot-loader/babel"

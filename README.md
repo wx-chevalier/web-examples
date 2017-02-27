@@ -12,10 +12,11 @@
 npm install create-react-boilerplate -g
 ```
 基本使用方式类似于 create-react-app，直接创建项目：
+
 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/2/2/WX20170221-22060311.png)
 
 其支持四个模板类型：
-- react：侧重 React，React StoryBook， ReactRouter4
+- pwa：侧重 React，React StoryBook， ReactRouter4
 - mobx：侧重 mobx
 - redux：侧重 redux
 - full：侧重完整的工程项目

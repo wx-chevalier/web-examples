@@ -5,7 +5,7 @@ import React, { Component, PropTypes } from 'react';
 import { Router, browserHistory, hashHistory } from 'react-router';
 import { render } from 'react-dom';
 import getRoutes from './routes';
-import optionalRender from '../dev-config/webpack/render';
+import clientRender from '../dev-config/webpack/render';
 
 let history;
 
@@ -24,8 +24,9 @@ const router = <Router history={history}>
 </Router>;
 
 //将组件渲染到DOM中
-optionalRender(
+clientRender(
   router,
   document.getElementById('root'),
-  './routes'
+  './routes',
+  true
 );

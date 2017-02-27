@@ -47,7 +47,7 @@ var program = commander
   .action(function (name) {
     projectName = name;
   })
-  .option('-t, --type [type]', '选择模板类型 [react/redux/mobx/full]', 'react')
+  .option('-t, --type [type]', '选择模板类型 [pwa/redux/mobx/full]', 'pwa')
   .allowUnknownOption()
   .on('--help', function () {
     console.log('    Only ' + chalk.green('<project-directory>') + ' is required.');
@@ -127,6 +127,9 @@ function createApp(name, type) {
       })
     );
 
+    //复制 gitignore
+    fs.copySync(crbInNMPath + 'template/gitignore', './.gitignore');
+
     //复制其他文件
     fs.copySync(crbInNMPath + 'util', './');
 
@@ -137,8 +140,8 @@ function createApp(name, type) {
     fs.copySync(crbInNMPath + 'storybook', '.storybook');
 
     //复制源代码
-    if (type === 'react') {
-      fs.copySync(crbInNMPath + 'template/react', 'src');
+    if (type === 'pwa') {
+      fs.copySync(crbInNMPath + 'template/pwa', 'src');
     }
 
     //执行依赖安装

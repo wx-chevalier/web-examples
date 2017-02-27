@@ -1,6 +1,6 @@
 {
   "name": "create-react-boilerplate",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "scaffold for creating engineering react project with optional redux, mobx, etc. ",
   "main": "index.js",
   "repository": {

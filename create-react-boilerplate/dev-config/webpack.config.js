@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const loaders = require('./webpack/loaders');
 const plugins = require('./webpack/plugins');
 const utils = require('./webpack/utils');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //判断当前是否处于开发状态下
 const __DEV__ = (process.env.NODE_ENV || "development") === "development";
@@ -25,9 +24,25 @@ if (__DEV__) {
     require("./apps.config.js").devServer.appEntrySrc
   ];
 } else {
+
   entry = {
     "vendors": "./dev-config/vendors.js"//存放所有的公共文件
   };
+
+  //遍历定义好的app进行构造
+  appsConfig.apps.forEach(function (app) {
+
+    //判断是否加入编译
+    if (app.compiled === false) {
+      //如果还未开发好,就设置为false
+      return;
+    }
+
+    //添加入口
+    entry[app.id] = app.src;
+  });
+
+
 }
 
 //设置开发时源代码映射工具
@@ -42,7 +57,7 @@ let config = {
   output: {
     path: path.join(__dirname, '../dist'),//生成目录
     publicPath: './', //生成的公共目录
-    filename: '[name].bundle.js',//文件名,不加chunkhash,以方便调试时使用
+    filename: '[name].bundle.js',//文件名,不加chunkhash,以方便调试时使用，生产环境下可以设置为 [name].bundle.[hash:8].js
     sourceMapFilename: '[name].bundle.map',//映射名
     chunkFilename: '[name].[chunkhash].chunk.js',//块文件索引
   },
@@ -64,63 +79,5 @@ let config = {
   externals: utils.externals,
   target: 'web'
 };
-
-//为生产环境添加额外配置
-if (!__DEV__) {
-
-  //定义HTML文件入口,默认的调试文件为src/index.html
-  let htmlPages = [];
-
-  const apps = appsConfig.apps;
-
-  //遍历定义好的app进行构造
-  apps.forEach(function (app) {
-
-    //判断是否加入编译
-    if (app.compiled === false) {
-      //如果还未开发好,就设置为false
-      return;
-    }
-
-    //添加入口
-    config.entry[app.id] = app.src;
-
-    //判断是否设置了HTML页面,如果设置了则添加
-    if (!!app.indexPage) {
-      //构造HTML页面
-      htmlPages.push({
-        filename: app.id + ".html",
-        // favicon: path.join(__dirname, 'assets/images/favicon.ico'),
-        template: 'underscore-template-loader!' + app.indexPage, //默认使用underscore作为模板
-        inject: false, // 使用自动插入JS脚本,
-        chunks: ["vendors", app.id], //选定需要插入的chunk名,
-
-        //设置压缩选项
-        minify: {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-          keepClosingSlash: true,
-          minifyJS: true,
-          minifyCSS: true,
-          minifyURLs: true
-        }
-      });
-    }
-
-  });
-
-  //自动创建HTML代码
-  htmlPages.forEach(function (p) {
-    config.plugins.push(new HtmlWebpackPlugin(p));
-  });
-
-  //如果是生成环境下，将文件名加上hash
-  // config.output.filename = '[name].bundle.[hash:8].js';
-  config.output.filename = '[name].bundle.js';
-}
 
 module.exports = config;
