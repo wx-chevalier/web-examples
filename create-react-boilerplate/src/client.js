@@ -4,7 +4,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Router, browserHistory, hashHistory } from 'react-router';
 import { render } from 'react-dom';
-import getRoutes from './routes';
+import getRoutes from './pwa/routes';
 import clientRender from '../dev-config/webpack/render';
 
 let history;

@@ -16,7 +16,7 @@ module.exports = {
     }
   ],
 
-  //开发服务器配置
+  //开发入口配置
   devServer: {
     appEntrySrc: "./src/client.js", //当前待调试的APP的入口文件
     port: 3000 //监听的Server端口
@@ -31,5 +31,12 @@ module.exports = {
   proxy: {
     //后端服务器地址 http://your.backend/
     "/api/*": "http://localhost:3001",
+  },
+
+  //后端 api 配置，这样配置可以避免将测试服务器端口暴露出去
+  api: {
+    dev: {},
+    prod: {}
   }
+
 };

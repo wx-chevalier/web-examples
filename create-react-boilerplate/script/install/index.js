@@ -35,13 +35,13 @@ var spawn = require('cross-spawn');
 var semver = require('semver');
 var ejs = require('ejs');
 
-var install = require('./script/install');
-var check = require('./script/check');
+var install = require('./../install');
+var check = require('./../check');
 
 var projectName;
 
 var program = commander
-  .version(require('./package.json').version)
+  .version(require('./../../package.json').version)
   .arguments('<project-directory>')
   .usage(chalk.green('<project-directory>') + ' [options]')
   .action(function (name) {

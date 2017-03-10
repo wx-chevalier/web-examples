@@ -8,7 +8,7 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
-import getRoutes from './routes';
+import getRoutes from './pwa/routes';
 import renderHTML from '../dev-config/server/template';
 
 //构建express实例

@@ -1,7 +1,11 @@
-/node_modules
 .DS_Store
 node_modules
 npm-debug.log
-/npm-debug.log
 .idea
 /dist/
+
+# 引入 gitignore 文件
+!/.gitignore
+
+# 引入 storybook 文件
+!/.storybook/
