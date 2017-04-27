@@ -1,4 +1,4 @@
-**本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start**
+**本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start 或者 参考在线地址：http://wxyyxc1992.github.io/crb/react/**
 
 # 基于 React 技术栈的前端工程项目模板
 
