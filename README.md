@@ -1,6 +1,8 @@
+**本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start**
+
 # 基于 React 技术栈的前端工程项目模板
 
-本仓库包含两个部分，一个 [create-react-boilerplate](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/tree/master/create-react-boilerplate)，是用于构建 React 及其技术栈项目的脚手架。另一个是完整的多应用模板项目，顺便包含[详细的从零到一的 React 及其技术栈使用教程](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/blob/master/boilerplate/README.md)。
+本仓库包含两个部分，一个 [create-react-boilerplate](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/tree/master/create-react-boilerplate)，是用于构建 React 及其技术栈项目的脚手架。另一个是完整的多应用模板项目，顺便包含[详细的从零到一的 React 及其技术栈使用教程](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/blob/master/Tutorial.md)。
 
 # create-react-boilerplate: 面向 React 技术栈的工程项目脚手架
 

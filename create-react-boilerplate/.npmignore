@@ -1,6 +1,0 @@
-
-# 引入 gitignore 文件
-!.gitignore
-
-# 引入 storybook 文件
-!.storybook
