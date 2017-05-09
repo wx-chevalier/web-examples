@@ -4,7 +4,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { login, logout } from "../../../../../api/auth";
+import { login, logout } from "../../../../../shared/api/auth";
 /**
  * @function 登陆页面组件
  */

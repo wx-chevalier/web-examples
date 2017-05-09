@@ -1,8 +1,11 @@
-**本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start 或者 参考在线地址：http://wxyyxc1992.github.io/crb/react/**
+**本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start  运行开发环境，使用 npm run build:ssr & node dist/ssr_server.bundle.js 编译服务端渲染运行。或者参考在线地址：http://wxyyxc1992.github.io/crb/react/**
 
 # 基于 React 技术栈的前端工程项目模板
 
-本仓库包含两个部分，一个 [create-react-boilerplate](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/tree/master/create-react-boilerplate)，是用于构建 React 及其技术栈项目的脚手架。另一个是完整的多应用模板项目，顺便包含[详细的从零到一的 React 及其技术栈使用教程](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/blob/master/Tutorial.md)。
+基于本脚手架构建的项目有：
+- [react-antd-mobx-admin](https://parg.co/btu): 基于 React Router V4、AntD、MobX 的后端管理模板
+
+
 
 # create-react-boilerplate: 面向 React 技术栈的工程项目脚手架
 
@@ -41,3 +44,44 @@ yarn global add weinre #全局安装调试工具
 ```
 
 安装完毕后执行`npm start`即可进入开发模式，关于这里的几个构建目标可以参考[详细的从零到一的 React 及其技术栈使用教程](https://github.com/wxyyxc1992/Webpack2-React-Redux-Boilerplate/blob/master/boilerplate/README.md)。
+
+
+```javascript
+
+module.exports = {
+  //基本的应用配置信息
+  apps: [
+    //HelloWorld
+    {
+      id: "pwa",
+      src: "./pwa/client.js",
+      indexPage: defaultIndexPage,
+      compiled: true
+    }
+  ],
+
+  //开发入口配置
+  devServer: {
+    appEntrySrc: "./pwa/client.js", //当前待调试的APP的入口文件
+    port: 3000 //监听的Server端口
+  },
+
+  //用于服务端渲染的Server路径
+  ssrServer: {
+    serverEntrySrc: "./pwa/ssr_server.js"
+  },
+
+  //依赖项配置
+  proxy: {
+    //后端服务器地址 http://your.backend/
+    "/api/*": "http://localhost:3001"
+  },
+
+  //后端 api 配置，这样配置可以避免将测试服务器端口暴露出去
+  api: {
+    dev: {},
+    prod: {}
+  }
+};
+
+```

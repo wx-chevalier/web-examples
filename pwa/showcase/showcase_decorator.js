@@ -43,11 +43,14 @@ export class ShowcaseHeader extends PureComponent {
 
 /**
  * @function 404 未发现页面
+ * @param url
  * @param location
  */
-export const NoMatch = ({ location }) => (
+export const NoMatch = ({ url, location }) => (
   <div>
-    <h3>No match for <code>{location.pathname}</code></h3>
+    <h3>
+      No match for <code>{url && url}{location && location.pathname}</code>
+    </h3>
   </div>
 );
 

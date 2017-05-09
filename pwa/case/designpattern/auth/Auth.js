@@ -4,8 +4,8 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Home from "./home/Home";
 import Login from "./login/Login";
 import Private from "./private/Private";
-import { validateUserTokenSync } from "../../../../api/auth";
 import { ShowcaseHeader } from "../../../showcase/showcase_decorator";
+import { validateUserTokenSync } from "../../../../shared/api/auth";
 
 /**
  * @function HOC 方式保护路由

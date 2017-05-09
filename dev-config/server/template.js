@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /**
  * Created by apple on 16/10/11.
  */

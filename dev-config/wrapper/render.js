@@ -1,13 +1,17 @@
-// @flow
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, HashRouter } from "react-router-dom";
 import { AppContainer } from "react-hot-loader";
 
 // 声明外部模块
 declare var module: {
   hot: {
     accept(path: string, callback: () => void): void
+  }
+};
+
+declare var process: {
+  env: {
+    NODE_ENV: string
   }
 };
 
@@ -56,8 +60,3 @@ export const clientRender = (
     }
   }
 };
-
-// 根据是否服务端渲染动态选定路由
-const Router = __SSR__ ? BrowserRouter : HashRouter;
-
-export { Router };
