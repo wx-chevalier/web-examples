@@ -5,7 +5,9 @@
 基于本脚手架构建的项目有：
 - [react-antd-mobx-admin](https://parg.co/btu): 基于 React Router V4、AntD、MobX 的后端管理模板
 
+## Features
 
+- 使用 Prepack & prepack-webpack-plugin 进行代码优化
 
 # create-react-boilerplate: 面向 React 技术栈的工程项目脚手架
 

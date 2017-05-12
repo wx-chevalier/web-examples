@@ -8,8 +8,8 @@ module.exports = {
   apps: [
     //HelloWorld
     {
-      id: "pwa",
-      src: "./pwa/client.js",
+      id: "index",
+      src: "./src/client.js",
       indexPage: defaultIndexPage,
       compiled: true
     }
@@ -17,13 +17,13 @@ module.exports = {
 
   //开发入口配置
   devServer: {
-    appEntrySrc: "./pwa/client.js", //当前待调试的APP的入口文件
+    appEntrySrc: "./src/client.js", //当前待调试的APP的入口文件
     port: 3000 //监听的Server端口
   },
 
   //用于服务端渲染的Server路径
   ssrServer: {
-    serverEntrySrc: "./pwa/ssr_server.js"
+    serverEntrySrc: "./src/ssr_server.js"
   },
 
   //依赖项配置

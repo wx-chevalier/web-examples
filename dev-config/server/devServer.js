@@ -1,25 +1,30 @@
-var path = require('path');
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-
+const path = require("path");
+const webpack = require("webpack");
+const WebpackDevServer = require("webpack-dev-server");
+const fs = require("fs-extra");
 //默认是开发时配置
-var config = require('./../webpack.config.js');
-var appsConfig = require("./../apps.config.js");
+const config = require("./../webpack.config.js");
+const appsConfig = require("../apps.config.js");
 
 new WebpackDevServer(webpack(config), {
-  //设置WebpackDevServer的开发目录
-  contentBase: path.join(__dirname + "/"),
-  // publicPath: `http://0.0.0.0:${appsConfig.devServer.port}/`,
+  //设置 WebpackDevServer 的开发目录，默认为当前项目的根目录
+  contentBase: path.join(__dirname, "../../public"),
+  publicPath: `/`,
+  compress: true,
   hot: true,
   historyApiFallback: true,
   quiet: true,
   noInfo: true,
-  stats: {colors: true},
+  stats: { colors: true },
   proxy: appsConfig.proxy
-}).listen(appsConfig.devServer.port, '0.0.0.0', function (err, result) {
+}).listen(appsConfig.devServer.port, "0.0.0.0", function(err, result) {
   if (err) {
     return console.log(err);
   }
-
+  // 复制文件
+  fs.copy(
+    path.resolve(__dirname, "./dev.html"),
+    path.resolve(__dirname, "../../public/index.html")
+  );
   console.log(`Listening at http://0.0.0.0:${appsConfig.devServer.port}/`);
 });

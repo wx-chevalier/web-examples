@@ -23,9 +23,7 @@ if (__DEV__) {
     require("./apps.config.js").devServer.appEntrySrc
   ];
 } else {
-  entry = {
-    vendors: "./dev-config/vendors.js" //存放所有的公共文件
-  };
+  entry = {};
 
   //遍历定义好的app进行构造
   appsConfig.apps.forEach(function(app) {
@@ -41,7 +39,7 @@ if (__DEV__) {
 }
 
 //设置开发时源代码映射工具
-const devTool = __DEV__ ? "cheap-module-eval-source-map" : "hidden-source-map";
+const devTool = __DEV__ ? "eval-cheap-module-source-map" : "hidden-source-map";
 
 //基本配置
 let config = {

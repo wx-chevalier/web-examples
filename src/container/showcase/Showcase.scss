@@ -1,0 +1,25 @@
+.Showcase__container {
+
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+
+  // 左侧导航栏
+  .Showcase__navigator {
+    flex: 240px 0 0;
+
+    height: 100%;
+    border-right: 1px solid #e9e9e9;
+
+    // 忽略子元素内所有的边设置
+    ul {
+      border: none !important;
+    }
+  }
+
+  // 右侧展示区域
+  .Showcase__cases {
+    flex: 80% 1 1;
+  }
+}
