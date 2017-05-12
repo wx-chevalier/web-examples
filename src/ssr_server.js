@@ -63,7 +63,10 @@ app.get("/*", function(req, res) {
           renderHTML(
             markup,
             { key: "value" },
-            ["/static/vendor.bundle.js", "/static/index.bundle.js"],
+            [
+              "/static/vendor.bundle.js",
+              "/static/index.bundle.js"
+            ],
             ["/static/index.css"]
           )
         );

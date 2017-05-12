@@ -1,13 +1,17 @@
 **本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start  运行开发环境，使用 npm run build:ssr & node dist/ssr_server.bundle.js 编译服务端渲染运行。或者参考在线地址：http://wxyyxc1992.github.io/crb/react/**
 
-# 基于 React 技术栈的前端工程项目模板
+# 现代 Webpack 前端工程项目脚手架
 
 基于本脚手架构建的项目有：
 - [react-antd-mobx-admin](https://parg.co/btu): 基于 React Router V4、AntD、MobX 的后端管理模板
+- [declarative-crawler-ui](): 爬虫的配套监控框架
 
 ## Features
 
-- 使用 Prepack & prepack-webpack-plugin 进行代码优化
+- 技术栈支持：使用 ES6/ES7 语法、允许使用 SCSS 并且使用 PostCSS 进行自动 Polyfill、使用 Flow 作为静态类型检测工具、使用 Jest 作为默认的测试框架
+- 开发环境：使用 WebpackDevServer 部署开发服务器、使用 React Hot Loader 进行组件热加载、使用 Babel 进行代码转换、使用 ESLint 进行代码检测、使用 DllPlugin 作为开发环境下公共代码提取工具以优化编译速度
+- 生产环境：使用 CommonChunksPlugin 作为生产环境下公共代码提取工具、使用 Prepack & prepack-webpack-plugin 进行代码优化、使用 offline-plugin 添加简单的 PWA 特性增强
+- 部署方式：支持独立部署（Hash 方式切换路由）、支持服务端部署、支持服务端渲染
 
 # create-react-boilerplate: 面向 React 技术栈的工程项目脚手架
 

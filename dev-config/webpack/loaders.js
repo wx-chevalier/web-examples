@@ -1,6 +1,5 @@
 // @flow
 
-const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 //判断当前是否处于开发状态下

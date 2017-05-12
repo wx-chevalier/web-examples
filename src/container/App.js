@@ -1,13 +1,13 @@
 /* eslint-disable no-undef */
 // @flow
 
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {BrowserRouter, HashRouter, Route} from "react-router-dom";
+import { BrowserRouter, HashRouter, Route } from "react-router-dom";
 import "antd/dist/antd.min.css";
 import Helmet from "react-helmet";
-import {BackTop} from "antd";
-import logo from "../logo.svg";
+import { BackTop } from "antd";
+import logo from "../../public/assets/logo.svg";
 import Showcase from "./showcase/Showcase";
 
 import GithubCorner from "../component/GithubCorner";
