@@ -9,7 +9,6 @@ const DashboardPlugin = require("webpack-dashboard/plugin");
 const OfflinePlugin = require("offline-plugin");
 const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
 const path = require("path");
-
 const utils = require("./utils");
 
 //判断当前是否处于开发状态下
@@ -79,9 +78,11 @@ let prodPlugins = [
 
   // 使用 Prepack 优化包体大小
   // 暂时存在 Bug,等待修复
-  // new PrepackWebpackPlugin({
-  //   mathRandomSeed: "0"
-  // }),
+  // 使用前 21 - 425
+  // 使用后 21 - 433
+  new PrepackWebpackPlugin({
+    mathRandomSeed: "0"
+  }),
 
   //代码压缩插件
   new webpack.optimize.UglifyJsPlugin({
