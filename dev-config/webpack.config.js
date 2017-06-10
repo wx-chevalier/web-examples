@@ -64,7 +64,9 @@ let config = {
     rules: [
       // loaders.jslint,
       loaders.jsx,
-      loaders.style,
+      loaders.styles.css,
+      loaders.styles.scss,
+      loaders.styles.less,
       loaders.assets,
       loaders.json
     ]

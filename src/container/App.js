@@ -4,7 +4,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, HashRouter, Route } from "react-router-dom";
-import "antd/dist/antd.min.css";
 import Helmet from "react-helmet";
 import { BackTop } from "antd";
 import logo from "../../public/assets/logo.svg";

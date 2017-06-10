@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from "react";
 import { Menu, Icon, Switch } from "antd";
-const SubMenu = Menu.SubMenu;
 
+const SubMenu = Menu.SubMenu;
 // 子菜单标题
 const SubMenuTitle = ({ title }) => (
   <span><Icon type="menu-fold" /><span>{title}</span></span>
