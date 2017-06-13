@@ -22,7 +22,7 @@ export default class LazyComponent extends Component {
     return (
       <section className="LazyComponent__container">
         <BackgroundWrapper>
-          <span>仿佛身体被掏空，你不点我不加载</span>
+          <span>异步加载组件</span>
         </BackgroundWrapper>
       </section>
     );

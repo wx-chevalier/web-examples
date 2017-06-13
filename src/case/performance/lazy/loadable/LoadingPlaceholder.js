@@ -7,13 +7,14 @@ type Props = {
   pastDelay: null
 };
 /**
+ * Description 异步加载指示符
  * @return {null}
  */
 export const LoadingPlaceholder = ({ isLoading, error, pastDelay }: Props) => {
   if (isLoading) {
-    return pastDelay ? <div>Loading...</div> : null; // Don't flash "Loading..." when we don't need to.
+    return pastDelay ? <div>加载中。。。</div> : null; // Don't flash "Loading..." when we don't need to.
   } else if (error) {
-    return <div>Error! Component failed to load</div>;
+    return <div>加载失败！</div>;
   } else {
     return <div>aa</div>;
   }

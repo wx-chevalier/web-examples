@@ -44,29 +44,38 @@ const moduleCSSLoader = {
   }
 };
 
+const postCSSLoader = {
+  loader: "postcss-loader",
+  options: {
+    config: {
+      path: path.join(__dirname, "../tool/postcss.config.js")
+    }
+  }
+};
+
 exports.styles = {
   css: {
     test: /\.css$/,
     use: __DEV__
-      ? ["style-loader", moduleCSSLoader, "postcss-loader"]
+      ? ["style-loader", moduleCSSLoader, postCSSLoader]
       : ExtractTextPlugin.extract({
-          use: [moduleCSSLoader, "postcss-loader"]
+          use: [moduleCSSLoader, postCSSLoader]
         })
   },
   scss: {
     test: /\.(scss|sass)$/,
     use: __DEV__
-      ? ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+      ? ["style-loader", "css-loader", postCSSLoader, "sass-loader"]
       : ExtractTextPlugin.extract({
-          use: ["css-loader", "postcss-loader", "sass-loader"]
+          use: ["css-loader", postCSSLoader, "sass-loader"]
         })
   },
   less: {
     test: /\.(less)$/,
     use: __DEV__
-      ? ["style-loader", "css-loader", "postcss-loader", "less-loader"]
+      ? ["style-loader", "css-loader", postCSSLoader, "less-loader"]
       : ExtractTextPlugin.extract({
-          use: ["css-loader", "postcss-loader", "less-loader"]
+          use: ["css-loader", postCSSLoader, "less-loader"]
         })
   }
 };

@@ -41,8 +41,7 @@ exports.devPlugins = [
     minimize: false,
     debug: true,
     options: {
-      context: "/",
-      postcss: utils.postCSSConfig
+      context: "/"
     }
   }),
   new webpack.DllReferencePlugin({
@@ -68,8 +67,7 @@ let prodPlugins = [
     minimize: true,
     debug: false,
     options: {
-      context: "/",
-      postcss: utils.postCSSConfig
+      context: "/"
     }
   }),
 
