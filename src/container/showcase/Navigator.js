@@ -43,8 +43,8 @@ export default class Navigator extends Component {
           </SubMenu>
           <SubMenu key="performance" title={<SubMenuTitle title="性能优化" />}>
             <Menu.Item key="/lazy">组件懒加载</Menu.Item>
+            <Menu.Item key="/wasm">WebAssembly</Menu.Item>
           </SubMenu>
-
         </Menu>
       </div>
     );

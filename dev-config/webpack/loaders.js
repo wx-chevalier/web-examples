@@ -5,6 +5,11 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 //判断当前是否处于开发状态下
 const __DEV__ = (process.env.NODE_ENV || "development") === "development";
 
+exports.wasm = {
+  test: /\.wasm$/,
+  use: ["wasm-loader"]
+};
+
 //基于Babel的JS/JSX Loader
 exports.jsx = {
   test: /\.(js|jsx)$/,

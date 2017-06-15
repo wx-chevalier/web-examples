@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from "react";
-import ExternalLoader from "./ExternalLoader";
+import { message } from "antd";
+import { ExternalLoader } from "fluent-fetcher";
 
 /**
  * @function 执行外部脚本加载工作
@@ -24,7 +25,7 @@ export default class ExternalDependedComponent extends Component {
             </div>
           }
           onLoad={() => {
-            alert("Loaded!");
+            message.success("Loaded!");
           }}
         >
           <div style={{ color: "white" }}>

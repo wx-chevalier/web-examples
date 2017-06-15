@@ -1,13 +1,40 @@
-**本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start  运行开发环境，使用 npm run build:ssr & node dist/ssr_server.bundle.js 编译服务端渲染运行。或者参考在线地址：http://wxyyxc1992.github.io/crb/react/**
+**本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start  运行开发环境，使用 npm run build:ssr & node dist/ssr_server.bundle.js 编译服务端渲染运行。或者参考在线地址：http://wxyyxc1992.github.io/crb/**
 
-基于本脚手架构建的项目有：
-- [react-antd-mobx-admin](https://parg.co/btu): 基于 React Router V4、AntD、MobX 的后端管理模板
-- [declarative-crawler-ui](): 爬虫的配套监控框架
 
-> [现代 Webpack 前端工程项目脚手架]()从属于笔者的[]()，算来已经是笔者 React 技术栈脚手架的第四个迭代版本。更多关于 React 或者前端开发相关的资料链接可以参考[]()与[]()。
+> [现代 Webpack 前端工程项目脚手架]()从属于笔者的[  Web 前端入门与工程实践](https://github.com/wxyyxc1992/Web-Development-And-Engineering-Practices)，算来已经是笔者 React 技术栈脚手架的第四个迭代版本。更多关于 React 或者前端开发相关的资料链接可以参考[React 学习与实践资料索引](https://parg.co/bM1)与[]()。
+
 
 # 现代 Webpack 前端工程项目脚手架
 
+create-react-boilerplate 是笔者对于日常工作中的基于 React 技术栈与实践的沉淀，dev-config/* 与 package.json 构成了基础的脚手架，支持最新的开发流程与默认的生产环境优化。此外本项目中的演示代码还包含了性能优化、设计模式、样式指南、Redux、MobX 等常见的开发模式。
+
+- 性能优化
+
+    - 懒加载：
+        
+        - 组件的异步加载：src/case/performance/lazy/loadable
+        
+        - 外部依赖脚本（JS / CSS）的异步加载：src/case/performance/lazy/external/*
+        
+    - WebAssembly：[WebAssembly 初体验：重构计算模块](https://zhuanlan.zhihu.com/p/27410280)
+    
+        - 简单计数器：src/case/performance/web_assembly/counter
+        
+        - WayOfLife 游戏引擎：src/case/performance/web_assembly/game
+
+- 设计模式
+
+    - 权限校验：
+        
+        - 基于 React-Router-V4 的登录与权限控制验证：src/case/designpattern/auth
+
+- 样式指南
+
+- Redux
+
+- MobX
+    
+    - TODOApp
 
 ## Features
 
@@ -55,6 +82,14 @@ module.exports = {
 };
 
 ```
+## Applications
+
+基于本脚手架构建的项目有：
+
+- [react-antd-mobx-admin](https://parg.co/btu): 基于 React Router V4、AntD、MobX 的后端管理模板
+
+- [declarative-crawler-ui](https://github.com/wxyyxc1992/declarative-crawler/tree/master/ui): 爬虫的配套监控框架
+
 
 # 服务端渲染
 

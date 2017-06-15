@@ -1,11 +1,13 @@
 // @flow
 
 import React from "react";
+
 type Props = {
   isLoading: boolean,
   error: Error | null,
   pastDelay: null
 };
+
 /**
  * Description 异步加载指示符
  * @return {null}

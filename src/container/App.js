@@ -11,6 +11,8 @@ import Showcase from "./showcase/Showcase";
 
 import GithubCorner from "../component/GithubCorner";
 import "./App.scss";
+import Counter from "../case/performance/web_assembly/counter/Counter";
+import WayOfLife from "../case/performance/web_assembly/game/WayOfLife";
 
 // 将路由放在这边是为了方便进行热加载
 const Router = __SSR__ ? BrowserRouter : HashRouter;

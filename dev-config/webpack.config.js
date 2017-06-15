@@ -63,6 +63,7 @@ let config = {
   module: {
     rules: [
       // loaders.jslint,
+      loaders.wasm,
       loaders.jsx,
       loaders.styles.css,
       loaders.styles.scss,

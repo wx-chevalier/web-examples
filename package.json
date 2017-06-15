@@ -159,6 +159,7 @@
     "style-loader": "0.18.2",
     "underscore-template-loader": "^0.7.3",
     "url-loader": "0.5.9",
+    "wasm-loader": "^1.0.0",
     "webpack": "2.6.1",
     "webpack-bundle-analyzer": "2.8.2",
     "webpack-dashboard": "0.4.0",
@@ -167,7 +168,7 @@
   "dependencies": {
     "antd": "2.11.0",
     "es6-promise": "^4.1.0",
-    "fluent-fetcher": "^0.2.2",
+    "fluent-fetcher": "0.2.3",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
     "mobx": "^3.1.15",

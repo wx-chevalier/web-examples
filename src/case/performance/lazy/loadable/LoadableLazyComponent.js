@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import Loadable from "react-loadable";
-import {LoadingPlaceholder} from "./LoadingPlaceholder";
+import { LoadingPlaceholder } from "./LoadingPlaceholder";
 
 export const LoadableLazyComponent = Loadable({
   loader: () => import("./LazyComponent"),
