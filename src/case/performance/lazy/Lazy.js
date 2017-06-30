@@ -23,7 +23,8 @@ export default class Lazy extends Component {
           <Button
             onClick={() => {
               this.setState({
-                isLoadExternalScript: true
+                isLoadExternalScript: true,
+                isLoadLazyComponent: false
               });
             }}
             type="primary"
@@ -34,6 +35,7 @@ export default class Lazy extends Component {
           <Button
             onClick={() => {
               this.setState({
+                isLoadExternalScript: false,
                 isLoadLazyComponent: true
               });
             }}

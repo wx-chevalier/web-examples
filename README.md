@@ -1,12 +1,58 @@
 **本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start  运行开发环境，使用 npm run build:ssr & node dist/ssr_server.bundle.js 编译服务端渲染运行。或者参考在线地址：http://wxyyxc1992.github.io/crb/**
 
 
-> [现代 Webpack 前端工程项目脚手架]()从属于笔者的[  Web 前端入门与工程实践](https://github.com/wxyyxc1992/Web-Development-And-Engineering-Practices)，算来已经是笔者 React 技术栈脚手架的第四个迭代版本。更多关于 React 或者前端开发相关的资料链接可以参考[React 学习与实践资料索引](https://parg.co/bM1)与[]()。
+> [基于 Webpack 3 的 React 工程项目脚手架](https://github.com/wxyyxc1992/create-react-boilerplate)从属于笔者的[  Web 前端入门与工程实践](https://github.com/wxyyxc1992/Web-Development-And-Engineering-Practices)，算来已经是笔者 React 技术栈脚手架的第四个迭代版本。更多关于 React 或者前端开发相关的资料链接可以参考[React 学习与实践资料索引](https://parg.co/bM1)与[]()。
 
 
-# 现代 Webpack 前端工程项目脚手架
+# 基于 Webpack 3 的 React 工程项目脚手架
 
-create-react-boilerplate 是笔者对于日常工作中的基于 React 技术栈与实践的沉淀，dev-config/* 与 package.json 构成了基础的脚手架，支持最新的开发流程与默认的生产环境优化。此外本项目中的演示代码还包含了性能优化、设计模式、样式指南、Redux、MobX 等常见的开发模式。
+
+[ create-react-boilerplate ](https://github.com/wxyyxc1992/create-react-boilerplate)是笔者对于日常工作中的基于 React 技术栈与实践的沉淀，dev-config/* 与 package.json 构成了基础的脚手架，支持最新的开发流程与默认的生产环境优化；模板项目包含特性如下：
+
+- 技术栈支持：使用 ES6/ES7 语法、使用 React Router V4、允许使用 CSS Modules、SCSS、Less 并且使用 PostCSS 进行自动 Polyfill、支持使用 styled-component 进行 CSS-in-JS 样式控制、使用 Flow 作为静态类型检测工具、使用 Jest 作为默认的测试框架
+- 开发环境：使用 WebpackDevServer 部署开发服务器、使用 React Hot Loader 进行组件热加载、使用 Babel 进行代码转换、使用 ESLint 进行代码检测、使用 DllPlugin 作为开发环境下公共代码提取工具以优化编译速度
+- 生产环境：使用 CommonChunksPlugin 作为生产环境下公共代码提取工具、使用 Prepack & prepack-webpack-plugin 进行代码优化、使用 offline-plugin 添加简单的 PWA 特性增强
+- 部署方式：支持独立部署（Hash 方式切换路由）、支持服务端部署、支持服务端渲染
+
+
+
+```bash
+
+# 下载本项目
+git clone https://github.com/wxyyxc1992/create-react-boilerplate
+
+# 可以使用 yarn install & npm start 直接运行本项目
+# 仅保留 dev-config、package.json、src/client.js、src/ssr_server.js
+mkdir /path/to/your/project
+
+cp -r dev-config/ /path/to/your/project
+cp package.json /path/to/your/project
+cp src/client.js /path/to/your/project/src/
+cp src/ssr_server.js /path/to/your/project/src/
+
+# 安装运行依赖
+cd /path/to/your/project
+
+yarn install / npm install
+
+# 启动项目
+npm start
+
+# 编译为纯客户端部署模式，即单个 HTML 页面
+npm run build
+
+# 编译为服务端渲染模式（主要区别在于路由支持）
+npm run build:ssr
+
+# 进行依赖升级检查
+npm run update
+
+# 启动 Storybook
+npm run storybook
+
+```
+
+此外本项目中的演示代码还包含了性能优化、设计模式、样式指南、Redux、MobX 等常见的开发模式。
 
 - 性能优化
 
@@ -36,12 +82,16 @@ create-react-boilerplate 是笔者对于日常工作中的基于 React 技术栈
     
     - TODOApp
 
-## Features
+未来笔者也会同步升级 `create-react-boilerplate` 命令行工具以快速创建项目。基于本脚手架构建的开放项目有：
 
-- 技术栈支持：使用 ES6/ES7 语法、允许使用 SCSS 并且使用 PostCSS 进行自动 Polyfill、使用 Flow 作为静态类型检测工具、使用 Jest 作为默认的测试框架
-- 开发环境：使用 WebpackDevServer 部署开发服务器、使用 React Hot Loader 进行组件热加载、使用 Babel 进行代码转换、使用 ESLint 进行代码检测、使用 DllPlugin 作为开发环境下公共代码提取工具以优化编译速度
-- 生产环境：使用 CommonChunksPlugin 作为生产环境下公共代码提取工具、使用 Prepack & prepack-webpack-plugin 进行代码优化、使用 offline-plugin 添加简单的 PWA 特性增强
-- 部署方式：支持独立部署（Hash 方式切换路由）、支持服务端部署、支持服务端渲染
+
+- [react-antd-mobx-admin](https://parg.co/btu): 基于 React Router V4、AntD、MobX 的后端管理模板
+
+- [declarative-crawler-ui](https://github.com/wxyyxc1992/declarative-crawler/tree/master/ui): 爬虫的配套监控框架
+
+
+# 基础配置
+
 
 ```javascript
 
@@ -82,15 +132,34 @@ module.exports = {
 };
 
 ```
-## Applications
 
-基于本脚手架构建的项目有：
+## 脚本编译与热加载
 
-- [react-antd-mobx-admin](https://parg.co/btu): 基于 React Router V4、AntD、MobX 的后端管理模板
+## 样式处理
 
-- [declarative-crawler-ui](https://github.com/wxyyxc1992/declarative-crawler/tree/master/ui): 爬虫的配套监控框架
+# Webpack 性能优化
 
+## 代码分割与异步加载
 
-# 服务端渲染
+## 代码编译优化
+
+## 构建性能优化
+
+## PWA
 
 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/3/2/QQ20170518-093821.png)
+
+
+# 设计模式
+
+## 组件异步加载
+
+## 服务端渲染
+
+# RoadMap
+
+- 升级到 React 16.0.0
+
+## Contributions
+
+欢迎提出 Issue。
