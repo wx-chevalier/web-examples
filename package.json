@@ -28,6 +28,7 @@
     "crb": "./index.js"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "better-npm-run start:dll && better-npm-run start:dev",
     "build": "npm run clean && better-npm-run build",
     "build:ssr": "npm run clean && better-npm-run build:ssr && better-npm-run build:server",
@@ -67,13 +68,10 @@
       "env": {
         "NODE_ENV": "production"
       }
-    },
-    "build:library": {
-      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.config.js",
-      "env": {
-        "NODE_ENV": "library"
-      }
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
   },
   "eslintConfig": {
     "extends": "./dev-config/tool/eslint.js"
@@ -82,15 +80,8 @@
     "extends": "./dev-config/tool/.babelrc"
   },
   "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "bower_components",
-      "shared"
-    ],
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories": ["node_modules", "bower_components", "shared"],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
@@ -112,6 +103,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -168,9 +160,12 @@
     "antd": "^2.11.2",
     "es6-promise": "^4.1.1",
     "fluent-fetcher": "^0.2.8",
+    "husky": "^0.14.3",
     "jquery": "^3.2.1",
+    "lint-staged": "^4.0.1",
     "mobx": "^3.1.16",
     "mobx-react": "4.2.1",
+    "prettier": "^1.5.2",
     "prop-types": "15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

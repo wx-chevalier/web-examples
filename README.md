@@ -1,7 +1,7 @@
 **本项目正在重构中，如果需要运行请直接 git clone & yarn install & npm start  运行开发环境，使用 npm run build:ssr & node dist/ssr_server.bundle.js 编译服务端渲染运行。或者参考在线地址：http://wxyyxc1992.github.io/crb/**
 
 
-> [基于 Webpack 3 的 React 工程项目脚手架](https://github.com/wxyyxc1992/create-react-boilerplate)从属于笔者的[  Web 前端入门与工程实践](https://github.com/wxyyxc1992/Web-Development-And-Engineering-Practices)，算来已经是笔者 React 技术栈脚手架的第四个迭代版本。更多关于 React 或者前端开发相关的资料链接可以参考[React 学习与实践资料索引](https://parg.co/bM1)与[]()。
+> [基于 Webpack 3 的 React 工程项目脚手架](https://github.com/wxyyxc1992/create-react-boilerplate)从属于笔者的[  Web 前端入门与工程实践](https://github.com/wxyyxc1992/Web-Development-And-Engineering-Practices)，算来已经是笔者 React 技术栈脚手架的第四个迭代版本。更多关于 React 或者前端开发相关的资料链接可以参考[React 学习与实践资料索引](https://parg.co/bM1)以及[ Webpack 学习与资料索引](https://parg.co/bVs)。
 
 
 # 基于 Webpack 3 的 React 工程项目脚手架
@@ -15,9 +15,8 @@
 - 部署方式：支持独立部署（Hash 方式切换路由）、支持服务端部署、支持服务端渲染
 
 
-
+我们可以直接拷贝该项目来展示部分开发模式或者作为模板项目使用：
 ```bash
-
 # 下载本项目
 git clone https://github.com/wxyyxc1992/create-react-boilerplate
 
@@ -49,10 +48,9 @@ npm run update
 
 # 启动 Storybook
 npm run storybook
-
 ```
 
-此外本项目中的演示代码还包含了性能优化、设计模式、样式指南、Redux、MobX 等常见的开发模式。
+此外本项目中的演示代码还包含了性能优化、设计模式、样式指南、Redux、MobX 等常见的开发模式；目前演示代码还处于完善阶段，可以关注[代码仓库](https://github.com/wxyyxc1992/create-react-boilerplate)了解最新更新：
 
 - 性能优化
 
@@ -82,7 +80,7 @@ npm run storybook
     
     - TODOApp
 
-未来笔者也会同步升级 `create-react-boilerplate` 命令行工具以快速创建项目。基于本脚手架构建的开放项目有：
+未来笔者也会同步升级 `create-react-boilerplate` 命令行工具以快速创建项目；目前基于本脚手架构建的开放项目有：
 
 
 - [react-antd-mobx-admin](https://parg.co/btu): 基于 React Router V4、AntD、MobX 的后端管理模板
@@ -156,7 +154,15 @@ module.exports = {
 
 ## 服务端渲染
 
-# RoadMap
+# About 
+
+## Opninated Plugin
+
+鉴于项目配置所限，还有部分插件为纳入进来，具体使用者可根据自己所处项目的特点选择性使用：
+- [bundlesize](https://github.com/siddharthkp/bundlesize): Keep your bundle size in check
+
+
+## RoadMap
 
 - 升级到 React 16.0.0
 

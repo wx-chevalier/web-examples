@@ -34,8 +34,14 @@ exports.commonPlugins = [
 
 //开发时使用插件
 exports.devPlugins = [
+
+  // 启用 HMR
   new webpack.HotModuleReplacementPlugin(),
+
+  // 在控制台中输出可读的模块名
   new webpack.NamedModulesPlugin(),
+
+  // 避免发出包含错误的模块
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.LoaderOptionsPlugin({
     minimize: false,
@@ -61,6 +67,9 @@ let prodPlugins = [
       resource.indexOf("node_modules") >= 0 &&
       resource.match(/\.(js|less|scss)$/)
   }),
+
+  // 使用 Scope Hositing 特性
+  new webpack.optimize.ModuleConcatenationPlugin(),
 
   //提取Loader定义到同一地方
   new webpack.LoaderOptionsPlugin({
