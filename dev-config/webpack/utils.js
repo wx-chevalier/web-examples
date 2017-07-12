@@ -1,6 +1,3 @@
-/**
- * Created by apple on 16/10/9.
- */
 const path = require("path");
 
 //定义非直接引用依赖
@@ -15,6 +12,6 @@ exports.externals = {
 exports.eslintConfig = {
   // TODO: consider separate config for production,
   // e.g. to enable no-console and no-debugger only in prod.
-  configFile: path.join(__dirname, "../tool/eslint.js"),
+  configFile: path.join(__dirname, "../tool/.eslintrc.js"),
   useEslintrc: false
 };

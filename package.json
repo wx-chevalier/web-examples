@@ -71,17 +71,27 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
-    "extends": "./dev-config/tool/eslint.js"
+    "extends": "./dev-config/tool/.eslintrc.js"
   },
   "babel": {
     "extends": "./dev-config/tool/.babelrc"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
@@ -119,7 +129,9 @@
     "eslint": "^4.1.1",
     "eslint-loader": "^1.8.0",
     "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-react": "^7.1.0",
     "express": "4.15.3",
     "extract-text-webpack-plugin": "3.0.0-beta.3",
@@ -127,11 +139,13 @@
     "fs-extra": "3.0.1",
     "html-loader": "^0.4.5",
     "html-webpack-plugin": "^2.29.0",
+    "husky": "^0.14.3",
     "image-webpack-loader": "3.3.1",
     "imagemin": "5.3.1",
     "install": "0.10.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
+    "lint-staged": "^4.0.1",
     "mocha": "3.4.2",
     "nock": "^9.0.13",
     "node-sass": "4.5.3",
@@ -140,6 +154,7 @@
     "postcss-flexibility": "2.0.0",
     "postcss-loader": "^2.0.6",
     "prepack-webpack-plugin": "^1.1.0",
+    "prettier": "^1.5.2",
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-komposer": "^2.0.0",
@@ -159,13 +174,13 @@
   "dependencies": {
     "antd": "^2.11.2",
     "es6-promise": "^4.1.1",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
     "fluent-fetcher": "^0.2.8",
-    "husky": "^0.14.3",
+    "fractal-react-components": "^0.0.3",
     "jquery": "^3.2.1",
-    "lint-staged": "^4.0.1",
     "mobx": "^3.1.16",
     "mobx-react": "4.2.1",
-    "prettier": "^1.5.2",
     "prop-types": "15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
