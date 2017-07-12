@@ -9,7 +9,6 @@ const DashboardPlugin = require("webpack-dashboard/plugin");
 const OfflinePlugin = require("offline-plugin");
 const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
 const path = require("path");
-const utils = require("./utils");
 
 //判断当前是否处于开发状态下
 const __DEV__ = (process.env.NODE_ENV || "development") === "development";
