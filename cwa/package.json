@@ -1,0 +1,24 @@
+{
+  "name": "cwa",
+  "version": "0.0.1",
+  "description": "create-webpack-app cli tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wxyyxc1992/create-webpack-app.git"
+  },
+  "keywords": [
+    "webpack",
+    "react",
+    "vue.js"
+  ],
+  "author": "wxyyxc1992",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wxyyxc1992/create-webpack-app/issues"
+  },
+  "homepage": "https://github.com/wxyyxc1992/create-webpack-app#readme"
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        <%=htmlWebpackPlugin.options.title || 'Template'%>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%if (htmlWebpackPlugin.files.favicon) { %>
+        <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon %>">
+        <% } %>
+
+            <%for (var css in htmlWebpackPlugin.files.css) { %>
+                <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+                <%} %>
+
+                    <%for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+                        <a href='<%= htmlWebpackPlugin.files.chunks[chunk].entry %>' class="async_script"></a>
+                        <%} %>
+
+                            <style>
+                                html,
+                                body,
+                                #root {
+                                    height: 100%;
+                                }
+                                
+                                .async_script {
+                                    display: none;
+                                }
+                                
+                                .loader {
+                                    position: fixed;
+                                    top: 35%;
+                                    width: 48%;
+                                }
+                                
+                                .loader,
+                                .loader:before,
+                                .loader:after {
+                                    background: rgb(237, 140, 61);
+                                    -webkit-animation: load1 1s infinite ease-in-out;
+                                    animation: load1 1s infinite ease-in-out;
+                                    width: 1em;
+                                    height: 4em;
+                                }
+                                
+                                .loader {
+                                    color: #ffffff;
+                                    text-indent: -9999em;
+                                    margin: 88px auto;
+                                    position: relative;
+                                    font-size: 11px;
+                                    -webkit-transform: translateZ(0);
+                                    -ms-transform: translateZ(0);
+                                    transform: translateZ(0);
+                                    -webkit-animation-delay: -0.16s;
+                                    animation-delay: -0.16s;
+                                }
+                                
+                                .loader:before,
+                                .loader:after {
+                                    position: absolute;
+                                    top: 0;
+                                    content: '';
+                                }
+                                
+                                .loader:before {
+                                    left: -1.5em;
+                                    -webkit-animation-delay: -0.32s;
+                                    animation-delay: -0.32s;
+                                }
+                                
+                                .loader:after {
+                                    left: 1.5em;
+                                }
+                                
+                                @-webkit-keyframes load1 {
+                                    0%,
+                                    80%,
+                                    100% {
+                                        box-shadow: 0 0;
+                                        height: 4em;
+                                    }
+                                    40% {
+                                        box-shadow: 0 -2em;
+                                        height: 5em;
+                                    }
+                                }
+                                
+                                @keyframes load1 {
+                                    0%,
+                                    80%,
+                                    100% {
+                                        box-shadow: 0 0;
+                                        height: 4em;
+                                    }
+                                    40% {
+                                        box-shadow: 0 -2em;
+                                        height: 5em;
+                                    }
+                                }
+                            </style>
+
+</head>
+
+<body>
+    <div id="root">
+        <div class="loader" />
+    </div>
+
+
+    <script>
+        /**
+   * @function 异步加载脚本
+   * @param src 脚本地址
+   * @param cb 加载完毕之后的回掉函数
+   */
+        function loadScript(src, cb) {
+
+            //创建一个script元素
+            var el = document.createElement('script');
+
+            var loaded = false;
+
+            //设置加载完成的回调事件
+            el.onload = el.onreadystatechange = function () {
+
+                //防止重复加载
+                if ((el.readyState && el.readyState !== 'complete' && el.readyState !== 'loaded') || loaded) {
+                    return false;
+                }
+
+                //加载完成后将该脚本的onload设置为null
+                el.onload = el.onreadystatechange = null;
+
+                loaded = true;
+
+                cb && cb();
+            };
+
+            el.async = true;
+
+            el.src = src;
+
+            var body = document.getElementsByTagName('body')[0];
+
+            body.appendChild(el);
+
+        }
+
+        window.onload = function () {
+
+            var scripts = [];
+
+            [].forEach.call(document.getElementsByClassName('async_script'), function (a) {
+                scripts.push(a.getAttribute('href'));
+            });
+
+
+            for (var i = 0; i < scripts.length; i++) {
+
+                (function (j) {
+                    setTimeout(function () {
+                        loadScript(scripts[j]);
+                    }, j * 500);
+                }(i));
+
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
