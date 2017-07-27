@@ -1,5 +1,5 @@
 {
-  "name": "create-react-boilerplate",
+  "name": "react-boilerplate",
   "version": "0.0.14",
   "description": "scaffold for creating engineering react project with optional redux, mobx, etc. ",
   "author": "wxyyxc1992",
@@ -67,7 +67,10 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": "./dev-config/tool/.eslintrc.js"
@@ -76,8 +79,15 @@
     "extends": "./dev-config/tool/.babelrc"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
@@ -113,10 +123,12 @@
     "css-loader": "0.28.4",
     "cssnano": "^3.10.0",
     "eslint": "^4.1.1",
+    "eslint-config-airbnb": "^15.0.2",
     "eslint-loader": "^1.8.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-react": "^7.1.0",
     "express": "4.15.3",
@@ -137,8 +149,11 @@
     "node-sass": "4.5.3",
     "object-assign": "^4.1.1",
     "offline-plugin": "4.8.1",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-flexbugs-fixes": "^3.0.0",
     "postcss-flexibility": "2.0.0",
     "postcss-loader": "^2.0.6",
+    "postcss-pxtorem": "^4.0.1",
     "prepack-webpack-plugin": "^1.1.0",
     "prettier": "^1.5.2",
     "raw-loader": "^0.5.1",
@@ -160,8 +175,6 @@
   "dependencies": {
     "antd": "^2.11.2",
     "es6-promise": "^4.1.1",
-    "eslint-config-airbnb": "^15.0.2",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
     "fluent-fetcher": "^0.2.8",
     "fractal-react-components": "^0.0.3",
     "jquery": "^3.2.1",

@@ -3,7 +3,6 @@ node_modules
 npm-debug.log
 .idea
 /dist/
-public/dll
 
 # 引入 gitignore 文件
 !/.gitignore
