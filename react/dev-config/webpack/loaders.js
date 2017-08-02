@@ -1,4 +1,5 @@
-// @flow
+/* eslint-disable */
+
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -53,8 +54,7 @@ const postCSSLoader = {
   loader: 'postcss-loader',
   options: {
     config: {
-      path:
-        '/Users/apple/Workspace/Repo/create-webpack-app/react/dev-config/tool/postcss.config.js'
+      path: path.join(__dirname, '../tool/postcss.config.js')
     }
   }
 };
