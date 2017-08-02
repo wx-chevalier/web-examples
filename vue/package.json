@@ -65,7 +65,10 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": "./dev-config/tool/.eslintrc.js"
@@ -74,8 +77,15 @@
     "extends": "./dev-config/tool/.babelrc"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
@@ -147,7 +157,8 @@
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "2.8.2",
     "webpack-dashboard": "0.4.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^2.5.0",
+    "@storybook/vue": "^3.2.2"
   },
   "dependencies": {
     "fluent-fetcher": "^0.2.8",
