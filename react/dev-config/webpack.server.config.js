@@ -1,6 +1,5 @@
-/**
- * Created by apple on 16/7/27.
- */
+/** Webpack 的服务端渲染配置 */
+
 const webpack = require("webpack");
 const path = require("path");
 const fs = require("fs");

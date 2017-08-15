@@ -1,15 +1,13 @@
-/**
- * Created by apple on 16/10/11.
- */
+// @flow
 
-const validUserToken = "123456";
+const validUserToken = '123456';
 
 /**
  * @function 验证用户令牌是否有效
  * @param userToken
  */
 export const validateUserTokenSync = () => {
-  const userToken = window.localStorage.getItem("userToken");
+  const userToken = window.localStorage.getItem('userToken');
 
   return userToken && userToken === validUserToken;
 };
@@ -33,9 +31,9 @@ export const validateUserTokenAsync = async () => {
  * @return {Promise}
  */
 export const login = async () => {
-  return new Promise((resolve, reject) => {
-    //将userToken写入到localStorage,首先判断是否为DOM环境
-    !window || window.localStorage.setItem("userToken", validUserToken);
+  return new Promise((resolve, _) => {
+    // 将userToken写入到localStorage,首先判断是否为DOM环境
+    !window || window.localStorage.setItem('userToken', validUserToken);
 
     resolve(validUserToken);
   });
@@ -46,8 +44,8 @@ export const login = async () => {
  * @return {Promise}
  */
 export const logout = async () => {
-  return new Promise((resolve, reject) => {
-    !window || window.localStorage.removeItem("userToken");
+  return new Promise((resolve, _) => {
+    !window || window.localStorage.removeItem('userToken');
 
     resolve();
   });

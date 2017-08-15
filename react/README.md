@@ -1,8 +1,7 @@
 
+![](https://www.robinwieruch.de/img/posts/minimal-react-webpack-babel-setup/banner.jpg)
 
 > [基于 Webpack 3 的 React 工程项目脚手架](https://github.com/wxyyxc1992/create-react-boilerplate)从属于笔者的[  Web 前端入门与工程实践](https://github.com/wxyyxc1992/Web-Development-And-Engineering-Practices)，算来已经是笔者 React 技术栈脚手架的第四个迭代版本。更多关于 React 或者前端开发相关的资料链接可以参考[React 学习与实践资料索引](https://parg.co/bM1)以及[ Webpack 学习与资料索引](https://parg.co/bVs)，对于其中浅薄的工程化的思考可以参考[ 2016-我的前端之路:工具化与工程化](https://zhuanlan.zhihu.com/p/24575395)。
-
-![](https://www.robinwieruch.de/img/posts/minimal-react-webpack-babel-setup/banner.jpg)
 
 # 基于 Webpack 3 的 React 工程项目脚手架
 
@@ -20,6 +19,9 @@
 ```bash
 # 下载本项目
 git clone https://github.com/wxyyxc1992/create-react-boilerplate
+
+# 进入到 react 模板项目
+cd create-react-boilerplate/react
 
 # 可以使用 yarn install & npm start 直接运行本项目
 # 仅保留 dev-config、package.json、src/client.js、src/ssr_server.js

@@ -1,9 +1,16 @@
 [ignore]
+.*/**/*.json
+
+; 常用的项目目录下忽略文件
 .*/node_modules/.*
+.*/dev-config/.*
+.*/dist/.*
+.*/public/.*
+.*/__mock__/.*
+.*/.storybook/.*
 
 [include]
-.*/src/.*
-
+.*/flow-src/.*
 
 [libs]
 

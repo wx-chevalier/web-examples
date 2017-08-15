@@ -92,6 +92,7 @@
     }
   },
   "devDependencies": {
+    "@storybook/vue": "^3.2.2",
     "autoprefixer": "7.1.1",
     "babel-core": "6.25.0",
     "babel-eslint": "^7.2.3",
@@ -157,10 +158,10 @@
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "2.8.2",
     "webpack-dashboard": "0.4.0",
-    "webpack-dev-server": "^2.5.0",
-    "@storybook/vue": "^3.2.2"
+    "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
+    "babel-preset-flow": "^6.23.0",
     "fluent-fetcher": "^0.2.8",
     "jquery": "^3.2.1",
     "vue": "^2.4.1"
