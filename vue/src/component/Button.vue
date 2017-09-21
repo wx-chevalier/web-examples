@@ -10,6 +10,7 @@
   
     methods: {
       onClick () {
+        alert('Click')
       }
     }
   }

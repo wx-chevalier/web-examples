@@ -1,10 +1,9 @@
 
-
-> [基于 Webpack 3 的 Vue.js 工程项目脚手架](https://github.com/wxyyxc1992/create-webpack-app/tree/master/vue)从属于笔者的[  Web 前端入门与工程实践](https://github.com/wxyyxc1992/Web-Development-And-Engineering-Practices)，是笔者基于兄弟项目[ React 脚手架](https://github.com/wxyyxc1992/create-webpack-app/tree/master/react)改造而来，二者在 Webpack 配置层面差异不大。更多关于 Vue.js 或者前端开发相关的资料链接可以参考[Vue.js 学习与实践资料索引](https://parg.co/byL)，[ Vue.js 与前端工程化实践](https://parg.co/bau)系列文章以及[ Webpack 学习与资料索引](https://parg.co/bVs)，对于其中浅薄的工程化的思考可以参考[ 2016-我的前端之路:工具化与工程化](https://zhuanlan.zhihu.com/p/24575395)。
+> 为了更好地与 vue-cli 集成，项目迁移到了 [vuepack](https://github.com/wxyyxc1992/vuepack)
 
 # 基于 Webpack 3 的 Vue.js 工程项目脚手架
 
-[ create-webpack-app ](https://github.com/wxyyxc1992/create-webpack-app)是笔者对于日常工作中的基于 React/Vue.js 技术栈与实践的沉淀，dev-config/* 与 package.json 构成了基础的脚手架，支持最新的开发流程与默认的生产环境优化；模板项目包含特性如下：
+[ create-webpack-app ](https://github.com/wxyyxc1992/create-webpack-app)是笔者对于日常工作中的基于 React/Vue.js 技术栈与实践的沉淀，dev-config/* 与 package.json 构成了基础的脚手架，支持最新的开发流程与默认的生产环境优化；而 Vue.js 分支中使用的技术栈为：Vue.js + vue-router + MobX + VueX，模板项目包含特性如下：
 
 - 技术栈支持：使用 ES6/ES7 语法、允许使用 CSS Modules、SCSS、Less 并且使用 PostCSS 进行自动 Polyfill、支持使用 styled-component 进行 CSS-in-JS 样式控制、使用 Flow 作为静态类型检测工具、使用 Jest 作为默认的测试框架
 - 开发环境：使用 WebpackDevServer 部署开发服务器、使用 React Hot Loader 进行组件热加载、使用 Babel 进行代码转换、使用 ESLint 进行代码检测、使用 DllPlugin 作为开发环境下公共代码提取工具以优化编译速度

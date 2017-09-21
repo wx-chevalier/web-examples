@@ -6,9 +6,8 @@ import PropTypes from 'prop-types';
 import { BrowserRouter, HashRouter, Route } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { BackTop } from 'antd';
-import { HoverablePaper } from 'fractal-react-components/dist/index.es';
 
-import logo from '../../public/assets/logo.svg';
+import logo from '../../../public/assets/logo.svg';
 import Showcase from './showcase/Showcase';
 import GithubCorner from '../component/GithubCorner';
 

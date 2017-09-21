@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "env",
+      "vue-app",
       {
         "modules": false
       }
@@ -10,9 +10,7 @@
     "flow"
   ],
   "plugins": [
-    "transform-decorators-legacy",
-    "transform-runtime",
-    "async-to-promises"
+    "transform-decorators-legacy"
   ],
   "env": {
     "test": {

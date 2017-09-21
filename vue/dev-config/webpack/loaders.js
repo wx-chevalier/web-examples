@@ -57,12 +57,7 @@ exports.wasm = {
 
 //根据不同的环境开发设置不同的样式加载的Loader
 const moduleCSSLoader = {
-  loader: 'css-loader',
-  query: {
-    modules: true,
-    importLoaders: 1,
-    localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
-  }
+  loader: 'css-loader'
 };
 
 const postCSSLoader = {

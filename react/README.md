@@ -36,9 +36,11 @@ cp src/ssr_server.js /path/to/your/project/src/
 # 安装运行依赖
 cd /path/to/your/project
 
+# 本地依赖
 yarn install / npm install
 
-npm install better-npm-run -g
+# 全局命令行依赖
+npm install rimraf better-npm-run -g
 
 # 启动项目
 npm start

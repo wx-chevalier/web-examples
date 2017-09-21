@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import MyButton from '../component/MyButton.vue';
+import MyButton from '../component/Button';
 import Welcome from './Welcome.vue';
 
 storiesOf('Welcome', module).add('to Storybook', () => ({
