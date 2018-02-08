@@ -1,0 +1,65 @@
+{
+  "name": "ReactNativeSeed",
+  "version": "1.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-eslint": "8.0.2",
+    "eslint": "4.11.0",
+    "@types/jest": "^20.0.8",
+    "@types/react": "^16.0.5",
+    "@types/react-native": "^0.47.7",
+    "@types/react-native-vector-icons": "^4.3.1",
+    "@types/react-navigation": "^1.0.19",
+    "babel-jest": "^20.0.3",
+    "babel-preset-react-native": "^3.0.1",
+    "concurrently": "^3.5.0",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1",
+    "husky": "0.14.3",
+    "ts-jest": "21.2.3",
+    "jest-expo": "23.0.0",
+    "react-native-scripts": "^1.7.0",
+    "react-test-renderer": "16.0.0"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start":
+      "npm run build && concurrently -r 'npm run watch' 'react-native-scripts start'",
+    "eject": "react-native-scripts eject",
+    "jest": "node node_modules/jest/bin/jest.js",
+    "watch": "npm run build -- -w",
+    "ios":
+      "npm run build && concurrently -r 'npm run watch' 'react-native-scripts ios'",
+    "android":
+      "npm run build && concurrently -r 'npm run watch' 'react-native-scripts android'",
+    "tsc": "tsc",
+    "clean": "rimraf artifacts",
+    "build": "npm run clean && npm run tsc --",
+    "lint": "tslint src/**/*.ts",
+    "test": "yarn jest && tslint src/**/*.tsx && eslint .",
+    "precommit": "yarn test"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|lottie-react-native|expo|react-native-maps|react-native-svg|react-native-branch|native-base-shoutem-theme|react-native-easy-grid|react-native-drawer|react-native-vector-icons|react-native-keyboard-aware-scroll-view|react-navigation|native-base|@expo|react-native-scrollable-tab-view)/)"
+    ]
+  },
+  "dependencies": {
+    "expo": "23.0.0",
+    "lodash": "4.17.4",
+    "mobx": "^3.3.1",
+    "mobx-react": "^4.3.4",
+    "native-base": "2.3.3",
+    "react": "16.0.0",
+    "react-native": "0.50.0",
+    "react-navigation": "1.0.0-beta.19"
+  }
+}

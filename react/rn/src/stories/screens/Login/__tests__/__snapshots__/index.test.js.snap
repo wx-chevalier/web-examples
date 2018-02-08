@@ -1,0 +1,340 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "height": 1334,
+    }
+  }
+  virtual={undefined}
+>
+  <View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#F8F8F8",
+            "borderBottomColor": "#a7a6ab",
+            "borderBottomWidth": 0.5,
+            "elevation": 3,
+            "flexDirection": "row",
+            "height": 64,
+            "justifyContent": "center",
+            "left": 0,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 15,
+            "right": 0,
+            "shadowColor": undefined,
+            "shadowOffset": undefined,
+            "shadowOpacity": undefined,
+            "shadowRadius": undefined,
+            "top": 0,
+          },
+          Object {
+            "height": 200,
+          },
+        ]
+      }
+      virtual={undefined}
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "center",
+              "flex": 1,
+            },
+            Object {
+              "alignItems": "center",
+            },
+          ]
+        }
+        virtual={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 12,
+              },
+              Array [
+                Object {
+                  "color": "#000",
+                  "fontSize": 30,
+                },
+                Object {
+                  "color": "#000",
+                  "fontSize": 30,
+                },
+                Object {
+                  "fontSize": 104,
+                },
+              ],
+              Object {
+                "fontFamily": "Ionicons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+          virtual={undefined}
+        >
+          
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            Object {
+              "color": "#000",
+              "fontFamily": "System",
+              "fontSize": 17,
+              "fontWeight": "600",
+              "textAlign": "center",
+            }
+          }
+          virtual={undefined}
+        >
+          ReactNativeSeed.com
+        </Text>
+        <View
+          padder={true}
+          style={
+            Object {
+              "paddingBottom": 10,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+            }
+          }
+          virtual={undefined}
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "#000",
+                  "fontFamily": "System",
+                  "fontSize": 16,
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+            uppercase={false}
+            virtual={undefined}
+          >
+            Build Something Amazing
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+  <RCTScrollView
+    automaticallyAdjustContentInsets={false}
+    contentInset={
+      Object {
+        "bottom": 0,
+      }
+    }
+    enableAutoAutomaticScroll={true}
+    enableResetScrollToCoords={true}
+    extraHeight={75}
+    extraScrollHeight={0}
+    keyboardDismissMode="interactive"
+    keyboardOpeningTime={250}
+    onScroll={[Function]}
+    resetScrollToCoords={
+      Object {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    scrollEventThrottle={0}
+    showsVerticalScrollIndicator={true}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "flex": 1,
+      }
+    }
+    virtual={undefined}
+  >
+    <View>
+      <View
+        padder={true}
+        style={
+          Object {
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 10,
+          }
+        }
+        virtual={undefined}
+      >
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityTraits={undefined}
+          accessible={true}
+          collapsable={undefined}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          nativeID={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "alignSelf": "stretch",
+              "backgroundColor": "#007aff",
+              "borderBottomWidth": null,
+              "borderColor": "#007aff",
+              "borderLeftWidth": null,
+              "borderRadius": 5,
+              "borderRightWidth": null,
+              "borderTopWidth": null,
+              "elevation": 2,
+              "flexDirection": "row",
+              "height": 45,
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 6,
+              "paddingTop": 6,
+            }
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "color": "#fff",
+                "fontFamily": "System",
+                "fontSize": 16.5,
+                "lineHeight": 19,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+              }
+            }
+            uppercase={false}
+            virtual={undefined}
+          >
+            Login
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F8F8F8",
+          "borderColor": "#cbcbcb",
+          "borderTopWidth": 0.5,
+          "elevation": 3,
+          "flexDirection": "row",
+          "height": 55,
+          "justifyContent": "center",
+          "left": 0,
+          "paddingBottom": 0,
+          "right": 0,
+        },
+        Object {
+          "backgroundColor": "#F8F8F8",
+        },
+      ]
+    }
+    virtual={undefined}
+  >
+    <View
+      style={
+        Array [
+          Object {},
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 0.5,
+          },
+        ]
+      }
+      virtual={undefined}
+    >
+      <View
+        padder={true}
+        style={
+          Object {
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 10,
+          }
+        }
+        virtual={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontFamily": "System",
+                "fontSize": 16,
+              },
+              Object {
+                "color": "#000",
+              },
+            ]
+          }
+          uppercase={false}
+          virtual={undefined}
+        >
+          Made with love at 
+        </Text>
+      </View>
+      <Image
+        source={
+          Object {
+            "uri": "https://geekyants.com/images/logo-dark.png",
+          }
+        }
+        style={
+          Object {
+            "height": 21.5,
+            "width": 105.5,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

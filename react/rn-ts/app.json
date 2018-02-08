@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "sdkVersion": "23.0.0",
+    "slug": "React-Native-Seed",
+    "loading": {
+      "hideExponentText": false,
+      "icon": "./assets/loading.png"
+    },
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "packagerOpts": {
+      "assetExts": ["ttf"]
+    },
+    "androidStatusBarColor": "#334393",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#334393"
+    }
+  }
+}

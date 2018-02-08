@@ -1,0 +1,40 @@
+{
+  "name": "irp-parcel-ts",
+  "version": "0.0.1",
+  "description": "React App with Parcel, TypeScript, MobX",
+  "main": "lib/parcel-typescript-example.js",
+  "scripts": {
+    "start": "parcel serve src/index.html",
+    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url .",
+    "watch": "parcel watch src/index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxyyxc1992/iReactPack"
+  },
+  "bugs": {
+    "url": "https://github.com/wxyyxc1992/iReactPack/issues"
+  },
+  "homepage": "https://github.com/wxyyxc1992/iReactPack",
+  "dependencies": {
+    "@types/enzyme": "^2.7.2",
+    "@types/jest": "^18.1.1",
+    "@types/node": "^7.0.5",
+    "@types/react": "^15.6.6",
+    "@types/react-dom": "^0.14.22",
+    "@types/react-redux": "^4.4.36",
+    "enzyme": "^2.7.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1",
+    "gh-pages": "^1.1.0",
+    "parcel-bundler": "^1.1.0",
+    "typescript": "^2.6.2"
+  }
+}
