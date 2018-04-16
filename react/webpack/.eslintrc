@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true,
+    "jest": true,
+    "es6": true
+  },
+  "plugins": ["jest"],
+  "rules": {
+    "function-paren-newline": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/no-unused-state": "warn"
+  }
+}

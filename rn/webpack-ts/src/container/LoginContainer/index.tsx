@@ -1,4 +1,4 @@
-// @flow
+
 import * as React from "react";
 import { Item, Input, Icon, Form, Toast } from "native-base";
 import { observer, inject } from "mobx-react/native";

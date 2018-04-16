@@ -1,0 +1,166 @@
+{
+  "errors": [
+    "./src/index.js\nModule parse failed: Unexpected token (7:7)\nYou may need an appropriate loader to handle this file type.\n| import './index.scss';\n| \n| render(<App title=\"Webpack 4 Demo\" />, document.querySelector('#root'));\n| "
+  ],
+  "warnings": [
+    "configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/"
+  ],
+  "version": "4.5.0",
+  "hash": "996ee7f446d1b204b34a",
+  "time": 321,
+  "builtAt": 1523805496062,
+  "publicPath": "",
+  "outputPath": "/Users/apple/Workspace/Repos/Github/fe-boilerplate/react/webpack/dist",
+  "assetsByChunkName": {
+    "main": "main.js"
+  },
+  "assets": [
+    {
+      "name": "main.js",
+      "size": 781,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ]
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "main.js"
+      ]
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 237,
+      "names": [
+        "main"
+      ],
+      "files": [
+        "main.js"
+      ],
+      "hash": "57752279e17f4cb8950a",
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "/Users/apple/Workspace/Repos/Github/fe-boilerplate/react/webpack/src/index.js",
+          "name": "./src/index.js",
+          "index": 0,
+          "index2": 0,
+          "size": 237,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 38,
+            "building": 10
+          },
+          "failed": true,
+          "errors": 1,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src",
+              "loc": "main"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0,
+          "source": "throw new Error(\"Module parse failed: Unexpected token (7:7)\\nYou may need an appropriate loader to handle this file type.\\n| import './index.scss';\\n| \\n| render(<App title=\\\"Webpack 4 Demo\\\" />, document.querySelector('#root'));\\n| \");"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "./src",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "/Users/apple/Workspace/Repos/Github/fe-boilerplate/react/webpack/src/index.js",
+      "name": "./src/index.js",
+      "index": 0,
+      "index2": 0,
+      "size": 237,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "profile": {
+        "factory": 38,
+        "building": 10
+      },
+      "failed": true,
+      "errors": 1,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src",
+          "loc": "main"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0,
+      "source": "throw new Error(\"Module parse failed: Unexpected token (7:7)\\nYou may need an appropriate loader to handle this file type.\\n| import './index.scss';\\n| \\n| render(<App title=\\\"Webpack 4 Demo\\\" />, document.querySelector('#root'));\\n| \");"
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}

@@ -92,7 +92,7 @@ configure(loadStories, module)
 
 我们也可以自定义 Webpack 配置，在 .storybook 中添加 webpack.config.js:
 ```javascript
-// @flow
+
 
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
@@ -133,7 +133,7 @@ module.exports = {
 ```
 同样的，也可以使用 Storybook 丰富的插件系统：
 ```javascript
-// @flow
+
 
 import { configure, setAddon } from '@storybook/react';
 import infoAddon from '@storybook/addon-info';

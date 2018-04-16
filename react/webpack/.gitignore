@@ -1,12 +1,20 @@
-.DS_Store
-node_modules
-npm-debug.log
-.idea
-/dist/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# 引入 gitignore 文件
-!/.gitignore
+# Compiled assets
+build
 
-# 引入 storybook 文件
-!/.storybook/
-/public/dll/
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+./stats.json
