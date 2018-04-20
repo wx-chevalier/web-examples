@@ -1,0 +1,27 @@
+#OS files
+.DS_Store
+
+# Editor files
+/.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+**.swp
+*.sw*
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+node_modules
+/dist/
+
+# Parcel cache
+.cache

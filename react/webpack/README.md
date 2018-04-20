@@ -2,13 +2,13 @@
 
 # React & Webpack Boilerplate
 
-尽可能地使用无异议的工具，提供直观且简洁明了的方式；相较于 create-react-app，具有更好的可配置性与适应性。支持最新的 Webpack 4 & React 16.3 版本
+尽可能地使用无异议的工具，提供直观且简洁明了的方式；相较于 create-react-app，具有更好的可配置性与适应性，适合于中长期项目。支持最新的 Webpack 4 & React 16.3 版本，如果需要引入 TypeScript 支持，可以借鉴 [react/webpack-ts](https://github.com/wxyyxc1992/fe-boilerplate) 这个模板。
 
 为了保证项目的纯粹性，将原本 React Router，Redux，MobX，也可以查阅 [Webpack CheatSheet]()，或者 []()、[]() 了解更多 Web 开发实践的知识。
 
 # 配置与使用
 
-下载或者克隆 [fe-boilerplate]()，并且进入 `react/webpack` 子目录：
+下载或者克隆 [fe-boilerplate](https://github.com/wxyyxc1992/fe-boilerplate)，并且进入 `react/webpack` 子目录：
 
 ```sh
 $ cnpm install

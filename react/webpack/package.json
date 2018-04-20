@@ -14,7 +14,7 @@
     "stats": "webpack --profile --json > stats.json",
     "clean": "rimraf build && mkdir build",
     "test": "npm test",
-    "update-deps": "npm-check -u",
+    "update": "npm-check -u",
     "lint": "eslint --ext .js,.jsx src test",
     "mock": "json-server --watch dev-config/mock/db.json --port 9091",
     "storybook": "start-storybook -p 6006",
