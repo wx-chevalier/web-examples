@@ -1,21 +1,23 @@
 /* eslint-disable no-unused-vars */
 
+import { matchPath } from 'react-router';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import express from 'express';
+import React from 'react';
+
 const fs = require('fs');
 const path = require('path');
 
-import express from 'express';
-import { StaticRouter } from 'react-router-dom';
-import { matchPath } from 'react-router';
-import App from './container/App';
 import { NoMatch } from './container/showcase/showcase_decorator';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
+import App from './container/App';
 import renderHTML from '../dev-config/server/template';
+
 //构建express实例
 const app = express();
 
 //读取静态资源
-app.use('/static', express.static(process.env.PWD + '/dist'));
+app.use('/static', express.static(process.env.PWD + '/build'));
 
 // 404 From Server
 const routes = ['/404'];

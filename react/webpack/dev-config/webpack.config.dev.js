@@ -3,8 +3,6 @@ const path = require('path');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const baseConfig = require('./webpack.config.base');
 
-console.log(baseConfig);
-
 const config = {
   ...baseConfig,
   mode: 'development',
@@ -26,7 +24,7 @@ const config = {
 
     // 如果需要启动 DLL 编译，则使用该插件
     // new webpack.DllReferencePlugin({
-    //   manifest: path.resolve(__dirname, '../../public/dll/manifest.json')
+    //   manifest: path.resolve(__dirname, '../build/dll/manifest.json')
     // }),
   ],
   devServer: {

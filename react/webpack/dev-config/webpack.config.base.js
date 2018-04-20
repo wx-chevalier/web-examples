@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-const { libraryName, dependencies } = require('../package.json');
+const { dependencies } = require('../package.json');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -29,7 +29,7 @@ const fontsOptions = {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.css']
   },
   entry: {
     app: PATHS.src,
@@ -38,10 +38,9 @@ module.exports = {
   output: {
     path: PATHS.build,
     publicPath: ASSETS_PUBLIC_PATH,
-    filename: '[name].bundle.js', // 文件名,不加chunkhash,以方便调试时使用，生产环境下可以设置为 [name].bundle.[hash:8].js
+    filename: '[name].bundle.js', // 文件名,不加 chunkhash,以方便调试时使用，生产环境下可以设置为 [name].bundle.[hash:8].js
     sourceMapFilename: '[name].bundle.map', // 映射名
-    chunkFilename: '[name].[chunkhash].chunk.js',
-    library: libraryName
+    chunkFilename: '[name].[chunkhash].chunk.js'
   },
   module: {
     rules: [
@@ -94,20 +93,15 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-        include: /node_modules/
+        include: [/node_modules/, PATHS.src]
       },
       {
         test: /\.less$/,
-        use: ['style-loader', moduleCSSLoader, 'less-loader'],
-        exclude: /antdTheme/
-      },
-      {
-        test: /antdTheme\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: ['style-loader', moduleCSSLoader, 'less-loader']
       },
       {
         test: /\.(scss|sass)$/,
-        use: ['style-loader', moduleCSSLoader, 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -157,12 +151,13 @@ module.exports = {
   ],
   // 定义非直接引用依赖
   // 定义第三方直接用Script引入而不需要打包的类库
-  // 使用方式即为var $ = require("jquery")
+  // 使用方式即为 var $ = require("jquery")
   externals: {
     window: 'window',
     jquery: '$'
   },
   extra: {
-    moduleCSSLoader
+    moduleCSSLoader,
+    PATHS
   }
 };

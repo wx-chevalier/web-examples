@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": ["airbnb", "prettier"],
   "env": {
     "browser": true,
@@ -11,6 +12,14 @@
   "rules": {
     "function-paren-newline": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/no-unused-state": "warn"
+    "react/no-unused-state": "warn",
+    "comma-dangle": "off",
+    "react/forbid-prop-types": "warn",
+    "react/no-unused-prop-types": "warn",
+    "react/prop-types": "warn",
+    "react/self-closing-comp": "warn",
+    "class-methods-use-this": "off",
+    "react/jsx-filename-extension": "off",
+    "react/prefer-stateless-function": "off"
   }
 }

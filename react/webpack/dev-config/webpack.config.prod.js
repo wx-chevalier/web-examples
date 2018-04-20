@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 const baseConfig = require('./webpack.config.base');
 
@@ -15,25 +16,13 @@ const config = {
     rules: [
       ...baseConfig.module.rules.filter(
         rule =>
-          ![
-            '/\\.css$/',
-            '/antdTheme\\.less$/',
-            '/\\.less$/',
-            '/\\.(scss|sass)$/'
-          ].includes(rule.test.toString())
+          !['/\\.css$/', '/\\.less$/', '/\\.(scss|sass)$/'].includes(
+            rule.test.toString()
+          )
       ),
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-      },
-      {
-        test: /antdTheme\.less$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'less-loader'
-        ]
       },
       {
         test: /\.less$/,
@@ -63,7 +52,8 @@ const config = {
     }),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(true)
-    })
+    }),
+    new OfflinePlugin()
 
     // 使用 Prepack 优化包体大小
     // 暂时存在 Bug,等待修复
