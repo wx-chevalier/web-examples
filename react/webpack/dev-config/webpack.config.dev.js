@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const DashboardPlugin = require('webpack-dashboard/plugin');
+
 const baseConfig = require('./webpack.config.base');
 
 const config = {
@@ -43,10 +44,12 @@ const config = {
       warnings: true,
       errors: true
     },
+    host: '0.0.0.0',
     port: 8080,
     hot: true,
     https: true,
-    disableHostCheck: true
+    disableHostCheck: true,
+    quiet: true
   },
   stats: {
     children: false

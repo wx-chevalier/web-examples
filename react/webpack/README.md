@@ -1,5 +1,7 @@
 ![](https://www.robinwieruch.de/img/posts/minimal-react-webpack-babel-setup/banner.jpg)
 
+题注：
+
 # React & Webpack Boilerplate
 
 尽可能地使用无异议的工具，提供直观且简洁明了的方式；相较于 create-react-app，具有更好的可配置性与适应性，适合于中长期项目。支持最新的 Webpack 4 & React 16.3 版本，如果需要引入 TypeScript 支持，可以借鉴 [react/webpack-ts](https://github.com/wxyyxc1992/fe-boilerplate) 这个模板。
@@ -31,6 +33,8 @@ $ npm start
 * 约束
 
 * 测试
+
+* 计算，使用 [workerize-loader](https://github.com/developit/workerize-loader) 提供便捷的 Web Worker 计算支撑，可以参考 [DOM CheatSheet]() 获取更多内容
 
 # 开发态特性
 

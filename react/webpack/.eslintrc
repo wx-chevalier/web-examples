@@ -20,6 +20,8 @@
     "react/self-closing-comp": "warn",
     "class-methods-use-this": "off",
     "react/jsx-filename-extension": "off",
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "no-console": "off",
+    "no-unused-vars": "warn"
   }
 }

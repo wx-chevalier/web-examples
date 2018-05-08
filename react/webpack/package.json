@@ -7,11 +7,17 @@
   "scripts": {
     "start": "parallelshell \"npm run mock\" \"npm run dev\"",
     "dev": "webpack-dashboard -- npm run dev:node",
-    "dev:node": "webpack-dev-server --config ./dev-config/webpack.config.dev.js --hot",
-    "build:dev": "npm run clean && webpack --config ./dev-config/webpack.config.prod.js --mode development",
-    "build": "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.prod.js --mode production",
-    "build:lib": "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.umd.js --mode production",
-    "stats": "webpack --profile --json > stats.json",
+    "dev:node":
+      "webpack-dev-server --config ./dev-config/webpack.config.dev.js --hot",
+    "build":
+      "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.prod.js --mode production",
+    "build:dev":
+      "npm run clean && webpack --config ./dev-config/webpack.config.prod.js --mode development",
+    "build:lib":
+      "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.umd.js --mode production",
+    "stats":
+      "webpack --config ./dev-config/webpack.config.prod.js --mode production --profile --json > build/stats.json",
+    "analyze": "npm run stats && webpack-bundle-analyzer build/stats.json",
     "clean": "rimraf build && mkdir build",
     "test": "npm test",
     "update": "npm-check -u",
@@ -26,10 +32,7 @@
     "url": "https://github.com/wxyyxc1992/fe-boilerplate"
   },
   "license": "MIT",
-  "keywords": [
-    "webpack",
-    "react"
-  ],
+  "keywords": ["webpack", "react"],
   "author": "wxyyxc1992@github",
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.1",
@@ -81,10 +84,12 @@
     "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "^1.0.1",
     "wasm-loader": "^1.3.0",
-    "webpack": "^4.4.1",
+    "webpack": "4.4.1",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.14",
     "webpack-dashboard": "^1.1.1",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-dev-server": "^3.1.1",
+    "workerize-loader": "^1.0.2"
   },
   "dependencies": {
     "antd": "^3.1.0",
@@ -106,15 +111,8 @@
     "styled-components": "^3.2.6"
   },
   "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "bower_components",
-      "shared"
-    ],
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories": ["node_modules", "bower_components", "shared"],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"

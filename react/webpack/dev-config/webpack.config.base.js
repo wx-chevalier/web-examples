@@ -32,15 +32,15 @@ module.exports = {
     extensions: ['.js', '.jsx', '.css']
   },
   entry: {
-    app: PATHS.src,
-    vendors: Object.keys(dependencies)
+    app: PATHS.src
   },
   output: {
     path: PATHS.build,
     publicPath: ASSETS_PUBLIC_PATH,
     filename: '[name].bundle.js', // 文件名,不加 chunkhash,以方便调试时使用，生产环境下可以设置为 [name].bundle.[hash:8].js
     sourceMapFilename: '[name].bundle.map', // 映射名
-    chunkFilename: '[name].[chunkhash].chunk.js'
+    chunkFilename: '[name].[chunkhash].chunk.js',
+    globalObject: 'this' // 避免全局使用 window
   },
   module: {
     rules: [
@@ -55,11 +55,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
-      {
-        test: /\.wasm$/,
-        exclude: /node_modules/,
-        loader: 'wasm-loader'
-      },
+
       {
         test: /\.(png|jpg|gif)$/,
         use: [
@@ -102,6 +98,15 @@ module.exports = {
       {
         test: /\.(scss|sass)$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.?worker\.js$/,
+        use: { loader: 'workerize-loader' }
+      },
+      {
+        test: /\.wasm$/,
+        exclude: /node_modules/,
+        loader: 'wasm-loader'
       }
     ]
   },
