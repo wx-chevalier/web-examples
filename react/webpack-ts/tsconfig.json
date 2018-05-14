@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
     "outDir": "build/dist",
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "ts-src",
+    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -17,7 +16,10 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "experimentalDecorators": true
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "skipLibCheck":true,
+    "baseUrl": "."
   },
   "exclude": [
     "node_modules",
@@ -26,8 +28,6 @@
     "acceptance-tests",
     "webpack",
     "jest",
-    "stories",
     "src/setupTests.ts"
-  ],
-  "types": ["typePatches"]
+  ]
 }
