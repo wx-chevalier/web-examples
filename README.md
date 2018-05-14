@@ -12,7 +12,7 @@
 
 * 部署方式：支持独立部署（HashRouter）、支持服务端部署、支持服务端渲染；
 
-# 目录索引
+# TOC | 目录索引
 
 * [builder](./builder): 基本的构建工具使用
 
@@ -49,10 +49,10 @@
 
 * [sm - State Management](./sm): 状态管理
 
-  * [redux](./sm/redux): Redux
-  * [mobx](./sm/mobx): MobX
+  * [redux](./sm/redux): Redux 典型应用
+  * [mobx](./sm/mobx): MobX 典型应用
 
-* weeek: 基于 Week 的移动跨平台项目(WIP)
+* weex: 基于 Weex 的移动跨平台项目(WIP)
 
 # 延伸阅读
 
