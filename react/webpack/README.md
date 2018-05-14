@@ -1,7 +1,5 @@
 ![](https://www.robinwieruch.de/img/posts/minimal-react-webpack-babel-setup/banner.jpg)
 
-题注：阿里南京前端团队正在招聘，欢迎关注[阿里南京技术专刊](https://zhuanlan.zhihu.com/ali-nanjing)了解更多讯息。
-
 # React & Webpack Boilerplate V4
 
 [React & Webpack Boilerplate V4](https://github.com/wxyyxc1992/fe-boilerplate/blob/master/react/webpack/README.md) 是笔者前端常用模板集锦项目 [fe-boilerplate](https://github.com/wxyyxc1992/fe-boilerplate) 的一部分，尽可能地使用无异议的工具，提供直观且简洁明了的方式；相较于 create-react-app，具有更好的可配置性与适应性，适合于中长期项目。支持最新的 Webpack 4 & React 16.3 版本，如果需要引入 TypeScript 支持，可以借鉴 [react/webpack-ts](https://github.com/wxyyxc1992/fe-boilerplate) 这个模板。
@@ -40,15 +38,13 @@ $ npm run analyze
 
 如果我们是进行的多页面应用开发，那么可以在 [webpack.config.base.js](./dev-config/webpack.config.base.js) 文件中添加更多的 Entry 与 [HtmlWebpackPlugin](https://github.com/jantimon/html-webpack-plugin) 配置。
 
-使用 Jest 作为默认的测试框架开发环境：使用 WebpackDevServer 部署开发服务器、使用 React Hot Loader 进行组件热加载、使用 Babel 进行代码转换、使用 ESLint 进行代码检测、：、使用 offline-plugin 添加简单的 PWA 特性增强部署方式：支持独立部署（Hash 方式切换路由）、支持服务端部署、支持服务端渲染
-
 # 技术栈
 
 * 样式
 
   * 支持使用 CSS Modules/SCSS/Less 等 CSS 模块化解决方案，对于潜在的类名过长导致的冗余包体等问题可以参考 [babel-plugin-jsx-nested-classname](https://parg.co/Yln)。
   * 示例代码使用了 [styled-components](https://github.com/styled-components/styled-components) 作为 CSS-in-JS 库。
-  * 使用 PostCSS 作为 CSS 代码的  后置 Polyfill 以及语法转换支持，详见 [postcss.config.js](./postcss.config.js) 中的配置。
+  * 使用 PostCSS 作为 CSS 代码的后置 Polyfill 以及语法转换支持，详见 [postcss.config.js](./postcss.config.js) 中的配置。
 
 * 约束
 
@@ -78,7 +74,7 @@ $ npm run analyze
 
 # 发布态特性
 
-* 代码分割，Webpack 4 移除了 CommonChunksPlugin，替换以 optimization 与 splitChunks 配置项， 详细配置参考 [webpack.config.prod.js](./dev-config/webpack.config.prod.js)。
+* 代码分割，Webpack 4 移除了 CommonChunksPlugin，替换以 optimization 与 splitChunks 配置项，详细配置参考 [webpack.config.prod.js](./dev-config/webpack.config.prod.js)。
 
 * PWA 特性，使用 [offline-plugin](https://github.com/NekR/offline-plugin) 添加便捷的 PWA 支持。
 
