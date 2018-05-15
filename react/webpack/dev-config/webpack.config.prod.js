@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
@@ -15,10 +14,7 @@ const config = {
   module: {
     rules: [
       ...baseConfig.module.rules.filter(
-        rule =>
-          !['/\\.css$/', '/\\.less$/', '/\\.(scss|sass)$/'].includes(
-            rule.test.toString()
-          )
+        rule => !['/\\.css$/', '/\\.less$/', '/\\.(scss|sass)$/'].includes(rule.test.toString())
       ),
       {
         test: /\.css$/,
@@ -69,14 +65,8 @@ const config = {
   ],
   optimization: {
     ...baseConfig.optimization,
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true // set to true if you want JS source maps
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ],
+    minimize: true,
+    minimizer: [new OptimizeCSSAssetsPlugin({})],
     splitChunks: {
       cacheGroups: {
         ...baseConfig.optimization.splitChunks.cacheGroups,
