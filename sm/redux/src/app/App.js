@@ -6,6 +6,7 @@ import ErrorBoundary from './ErrorBoundary';
 import SyncCounter from '../container/SyncCounter';
 import ThunkCounter from '../container/ThunkCounter';
 import PromiseCounter from '../container/PromiseCounter';
+import SagasCounter from '../container/SagasCounter';
 
 import logo from './logo.svg';
 import './App.css';
@@ -28,6 +29,7 @@ class App extends Component {
             <SyncCounter />
             <ThunkCounter />
             <PromiseCounter />
+            <SagasCounter />
           </ErrorBoundary>
         </div>
       </Provider>

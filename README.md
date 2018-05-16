@@ -1,4 +1,8 @@
-# fe-boilerplate: Boilerplates for Web Development, with React/Vue.js, Webpack/Parcel, TypeScript, Electron, etc.
+![](https://parg.co/U0a)
+
+[中文版本](./) | [English Version](./README.en.md)
+
+# fe-boilerplate
 
 [fe-boilerplate](https://github.com/wxyyxc1992/fe-boilerplate) 是笔者对于日常工作中的基于 React/Vue.js 技术栈与实践的收集(\*部分模板修改自其他项目)与沉淀，dev-config/\* 与 package.json 构成了基础的脚手架，支持最新的开发流程与默认的生产环境优化。
 
@@ -14,7 +18,7 @@
 
 # TOC | 目录索引
 
-* [builder](./builder): 基本的构建工具使用
+* [bundler](./bundler): 基本的构建工具使用
 
   * [webpack](./builder/webpack)
   * [parcel](./builder/parcel)
