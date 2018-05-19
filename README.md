@@ -51,7 +51,7 @@
   * [webpack](./electron/webpack)
   * [webpack-ts](./electron/webpack-ts)
 
-* [sm - State Management](./sm): 状态管理
+* [State Management](./state): 状态管理
 
   * [redux](./sm/redux): Redux 典型应用
   * [mobx](./sm/mobx): MobX 典型应用

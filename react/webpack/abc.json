@@ -1,8 +1,0 @@
-{
-  "assets": {
-    "type": "command",
-    "command": {
-      "cmd": ["make", "mv ./build $BUILD_DEST"]
-    }
-  }
-}

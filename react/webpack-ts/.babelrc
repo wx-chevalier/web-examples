@@ -1,0 +1,36 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "useBuiltIns": "usage"
+      }
+    ]
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "transform-react-remove-prop-types",
+          {
+            "removeImport": true
+          }
+        ]
+      ]
+    },
+    "test": {
+      "presets": ["env"]
+    }
+  }
+}

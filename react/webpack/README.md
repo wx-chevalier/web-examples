@@ -34,6 +34,9 @@ $ npm run lint
 
 # 执行包体分析
 $ npm run analyze
+
+# 执行测试
+$ npm run test
 ```
 
 如果我们是进行的多页面应用开发，那么可以在 [webpack.config.base.js](./dev-config/webpack.config.base.js) 文件中添加更多的 Entry 与 [HtmlWebpackPlugin](https://github.com/jantimon/html-webpack-plugin) 配置。
