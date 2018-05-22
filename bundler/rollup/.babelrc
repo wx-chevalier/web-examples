@@ -1,0 +1,9 @@
+{
+  "presets": [["env", { "modules": false }], "stage-2", "flow"],
+  "plugins": ["transform-runtime"],
+  "env": {
+    "test": {
+      "presets": [["env"], "stage-2", "flow"]
+    }
+  }
+}

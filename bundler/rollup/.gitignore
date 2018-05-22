@@ -1,0 +1,51 @@
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Editor directories and files
+.idea
+.vscode
+
+# Dependency directories
+node_modules
+
+# Optional
+.npm
+.node_repl_history
+
+# assets publish
+# you can ignore dist Folder if you publish your assets with CI to CDN
+
+# Project specific stuff
+temp
+typings

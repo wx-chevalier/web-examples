@@ -1,0 +1,5 @@
+build/*.js
+dist/*.js
+temp/*.js
+examples/*.js
+rollup.config.*.js
