@@ -1,0 +1,6 @@
+<template name="todo">
+  <view class="{{ 'todo ' + ( todo.isFinish ? 'isFinish' : '') }}"  data-uid="{{ todo.uid }}" bindtap="todoToggle" >
+    <text class="toggle"/>
+    {{ todo.content }}
+  </view>
+</template>

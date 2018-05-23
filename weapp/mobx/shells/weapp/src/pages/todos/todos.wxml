@@ -1,0 +1,17 @@
+<import src="templates/todo.wxml"/>
+<!--logs.wxml-->
+<!-- <view class="container log-list">
+  <block wx:for="{{items}}" wx:for-item="todo" wx:key="uid">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block>
+</view> -->
+
+<view class="app">
+  total: {{ items.length }}
+  <view class="todos" >
+    <template is="todo" data="{{ todo: todo }}" wx:for="{{ items }}" wx:for-item="todo" wx:key="uid"/>
+  </view>
+  add:
+  <input class="input" type="text" bindinput="bindinput" value="{{ todoInput }}"/>
+  <button class="button" bindtap="addTodo">添加</button>
+</view>

@@ -1,0 +1,5 @@
+node_modules
+assets
+shells/weapp/src/logics
+shells/react/dist
+shells/weapp/src/lib

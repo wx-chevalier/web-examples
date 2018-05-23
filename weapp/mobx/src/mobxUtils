@@ -1,0 +1,51 @@
+import { extendObservable, autorun, action, computed, toJS } from '../../logic/mobx';
+import { object } from '../../logic/utils';
+const { isFunction, objectAssign, objectMap } = object;
+
+export {
+  toJS
+};
+export function mobxStore(storeT) {
+    return function Store (context = {}) {
+        extendObservable(this, objectAssign({}, context,
+            objectMap(storeT.computed || {}, f => computed(f)),
+            objectMap(storeT.methods || {}, f => action(f))
+        ));
+        let data = storeT.data || {};
+
+        if (isFunction(data)) {
+            data = data.call(this);
+        }
+        extendObservable(this, data);
+
+        this.__data = Object.keys(data);
+        this.__methods = Object.keys(storeT.methods);
+        this.__computed = Object.keys(storeT.computed);
+    };
+}
+
+export function mobxPage(page, Store) {
+    Page(objectAssign({}, page, {
+        onLoad($query, ...args) {
+            if (Store) {
+                const $store = new Store({ $query });
+                $store.__methods.forEach(m => {
+                    this[m] = $store[m].bind($store)
+                });
+
+                this.$store = $store;
+                $store.__computed.concat($store.__data).forEach(m => {
+                    autorun(() => {
+                        this.setData({
+                            [m]: this.$store[m]
+                        });
+                    });
+                });
+            }
+
+            if (page.onLoad) {
+                page.onLoad.call(this, $query, ...args);
+            }
+        }
+    }));
+}

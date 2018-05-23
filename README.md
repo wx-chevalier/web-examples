@@ -56,6 +56,10 @@
   * [redux](./sm/redux): Redux 典型应用
   * [mobx](./sm/mobx): MobX 典型应用
 
+* [Weapp](./weapp): 微信小程序
+  * [mpvue](./weapp/mpvue): 基于 mpvue 的小程序模板
+  * [mobx](./weapp/mobx): MobX 模板
+
 * weex: 基于 Weex 的移动跨平台项目(WIP)
 
 # 延伸阅读

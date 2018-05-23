@@ -1,0 +1,61 @@
+.todos {
+  display: block;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #ddd;
+  box-sizing: border-box;
+  margin: 20px 10px;
+}
+.input {
+  border: 0px solid #999;
+  border-bottom-width: 1px;
+  outline: 0;
+  padding: 5px 10px;
+  display: inline-block;
+  font-size: 14px;
+}
+.button {
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+.todo {
+  position: relative;
+  margin: 0;
+  padding: 10px 5px;
+  list-style: none;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  line-height: 20px;
+  transition: background-color 0.5s;
+  cursor: pointer;
+  &:hover {
+    background-color: #f6f6f6;
+  }
+
+  .toggle {
+    display: inline-block;
+    box-sizing: border-box;
+    border: 2px solid #bbb;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 15px;
+    position: relative;
+    top: 5px;
+  }
+  &.isFinish .toggle {
+    border-color: #42B983;
+    &::before {
+      content: '';
+      display: block;
+      margin: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #42B983;
+    }
+  }
+}
