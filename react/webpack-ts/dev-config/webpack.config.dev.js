@@ -21,7 +21,6 @@ const config = {
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(false)
     }),
-
     new DashboardPlugin()
 
     // 如果需要启动 DLL 编译，则使用该插件
@@ -30,17 +29,16 @@ const config = {
     // }),
   ],
   devServer: {
-    // 设置生成的 Bundle 的默认访问路径
-    publicPath: '/assets/',
+    // 设置生成的 Bundle 的前缀路径
+    publicPath: '/',
     // assets 中资源文件默认应该还使用 assets
-    contentBase: path.resolve(__dirname, '../'),
+    contentBase: path.resolve(__dirname, '../public'),
     compress: true,
     headers: {
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY'
     },
     open: true,
-    openPage: 'assets',
     overlay: {
       warnings: true,
       errors: true

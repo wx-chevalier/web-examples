@@ -1,15 +1,23 @@
 const webpack = require('webpack');
+const path = require('path');
+
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
 const baseConfig = require('./webpack.config.base');
 
+const { PATHS } = baseConfig.extra;
+
 const config = {
   ...baseConfig,
   output: {
     ...baseConfig.output,
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].chunk.js'
   },
   module: {
     rules: [
@@ -43,13 +51,48 @@ const config = {
   },
   plugins: [
     ...baseConfig.plugins,
+    new CopyWebpackPlugin([{ from: PATHS.public, to: PATHS.build }]),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, './lib/template.ejs'),
+      title: 'Webpack React',
+      favicon: path.join(baseConfig.extra.PATHS.public, 'favicon.ico'),
+      manifest: path.join(PATHS.public, 'manifest.json'),
+      meta: [
+        { name: 'robots', content: 'noindex,nofollow' },
+        {
+          name: 'viewport',
+          content:
+            'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'
+        }
+      ],
+      appMountIds: ['root'],
+      inject: false,
+      minify: {
+        html5: true,
+        useShortDoctype: true,
+        collapseWhitespace: true,
+        conservativeCollapse: true,
+        preserveLineBreaks: true,
+        removeComments: true,
+        keepClosingSlash: true,
+        removeRedundantAttributes: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true
+      },
+      mobile: true,
+      scripts: ['./static.js']
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[chunkhash].css'
     }),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(true)
     }),
-    new OfflinePlugin()
+    new OfflinePlugin({
+      ServiceWorker: {
+        minify: false
+      }
+    })
 
     // 使用 Prepack 优化包体大小
     // 暂时存在 Bug,等待修复
@@ -64,12 +107,16 @@ const config = {
     // })
   ],
   optimization: {
-    ...baseConfig.optimization,
-    minimize: true,
-    minimizer: [new OptimizeCSSAssetsPlugin({})],
+    runtimeChunk: 'single',
+    minimizer: [new UglifyJsPlugin(), new OptimizeCSSAssetsPlugin({})],
     splitChunks: {
       cacheGroups: {
-        ...baseConfig.optimization.splitChunks.cacheGroups,
+        vendors: {
+          test: /node_modules/,
+          name: 'vendors',
+          enforce: true,
+          chunks: 'initial'
+        },
         // 将所有的样式文件打包到单个项目
         styles: {
           name: 'styles',

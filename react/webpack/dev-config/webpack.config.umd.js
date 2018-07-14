@@ -1,6 +1,7 @@
 const path = require('path');
 
 const prodConfig = require('./webpack.config.prod');
+
 const { libraryName, libraryEntry = 'index.js' } = require('../package.json');
 
 const PATHS = {

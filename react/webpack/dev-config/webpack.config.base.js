@@ -1,14 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const { dependencies } = require('../package.json');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
+  public: path.join(__dirname, '../public'),
   build: path.join(__dirname, '../build')
 };
-
-const ASSETS_PUBLIC_PATH = './';
 
 const moduleCSSLoader = {
   loader: 'css-loader',
@@ -36,10 +34,10 @@ module.exports = {
   },
   output: {
     path: PATHS.build,
-    publicPath: ASSETS_PUBLIC_PATH,
+    // 设置所有资源的默认公共路径，Webpack 会自动将 import 的资源改写为该路径
+    publicPath: './',
     filename: '[name].bundle.js', // 文件名,不加 chunkhash,以方便调试时使用，生产环境下可以设置为 [name].bundle.[hash:8].js
     sourceMapFilename: '[name].bundle.map', // 映射名
-    chunkFilename: '[name].[chunkhash].chunk.js',
     globalObject: 'this' // 避免全局使用 window
   },
   module: {
@@ -110,50 +108,7 @@ module.exports = {
       }
     ]
   },
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendors: {
-          test: /node_modules/,
-          name: 'vendors',
-          enforce: true,
-          chunks: 'initial'
-        }
-      }
-    }
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, './lib/template.ejs'),
-      title: 'Webpack React',
-      favicon: path.join(PATHS.src, 'favicon.ico'),
-      meta: [
-        { name: 'robots', content: 'noindex,nofollow' },
-        {
-          name: 'viewport',
-          content:
-            'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'
-        }
-      ],
-      appMountIds: ['root'],
-      inject: false,
-      minify: {
-        html5: true,
-        useShortDoctype: true,
-        collapseWhitespace: true,
-        conservativeCollapse: true,
-        preserveLineBreaks: true,
-        removeComments: true,
-        keepClosingSlash: true,
-        removeRedundantAttributes: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true
-      },
-      mobile: true,
-      scripts: ['./static.js']
-    })
-  ],
+  plugins: [],
   // 定义非直接引用依赖
   // 定义第三方直接用Script引入而不需要打包的类库
   // 使用方式即为 var $ = require("jquery")

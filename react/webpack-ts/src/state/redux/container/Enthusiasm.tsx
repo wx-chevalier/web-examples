@@ -1,7 +1,10 @@
-import Enthusiasm from '../component/Enthusiasm';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+
+import Enthusiasm, { Props } from '../component/Enthusiasm';
+
 import * as actions from '../action';
 import { StoreState } from '../store';
-import { connect, Dispatch } from 'react-redux';
 
 export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState) {
   return {
@@ -17,4 +20,7 @@ export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Enthusiasm);
+export default connect<Partial<Props>>(
+  mapStateToProps,
+  mapDispatchToProps
+)(Enthusiasm);

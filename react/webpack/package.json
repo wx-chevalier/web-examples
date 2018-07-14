@@ -10,11 +10,21 @@
     "url": "https://github.com/wxyyxc1992/fe-boilerplate"
   },
   "license": "MIT",
-  "keywords": ["webpack", "react"],
+  "keywords": [
+    "webpack",
+    "react"
+  ],
   "author": "wxyyxc1992@github",
   "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "<rootDir>/dev-config/mock/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/dev-config/mock/fileMock.js"
@@ -25,20 +35,19 @@
     "singleQuote": true
   },
   "lint-staged": {
-    "*.{ts,tsx,scss,less,md}": ["prettier --write", "git add"]
+    "*.{ts,tsx,scss,less,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "scripts": {
     "start": "parallelshell \"npm run mock\" \"npm run dev\"",
     "dev": "webpack-dashboard -- npm run dev:node",
     "dev:node": "webpack-dev-server --config ./dev-config/webpack.config.dev.js --hot",
-    "build":
-      "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.prod.js --mode production",
-    "build:dev":
-      "npm run clean && webpack --config ./dev-config/webpack.config.prod.js --mode development",
-    "build:lib":
-      "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.umd.js --mode production",
-    "stats":
-      "webpack --config ./dev-config/webpack.config.prod.js --mode production --profile --json > build/stats.json",
+    "build": "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.prod.js --mode production",
+    "build:dev": "npm run clean && webpack --config ./dev-config/webpack.config.prod.js --mode development",
+    "build:lib": "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.umd.js --mode production",
+    "stats": "webpack --config ./dev-config/webpack.config.prod.js --mode production --profile --json > build/stats.json",
     "analyze": "npm run stats && webpack-bundle-analyzer build/stats.json",
     "clean": "rimraf build && mkdir build",
     "test": "jest",
@@ -86,7 +95,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-runtime": "^6.26.0",
-    "copy-webpack-plugin": "^4.4.1",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.10",
     "enzyme": "^3.3.0",
     "eslint": "^4.19.1",
@@ -118,7 +127,7 @@
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
-    "uglifyjs-webpack-plugin": "^1.2.4",
+    "uglifyjs-webpack-plugin": "^1.2.7",
     "url-loader": "^1.0.1",
     "wasm-loader": "^1.3.0",
     "webpack": "4.4.1",

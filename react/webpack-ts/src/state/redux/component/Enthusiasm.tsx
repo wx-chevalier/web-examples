@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Enthusiasm';
+import './Enthusiasm.scss';
 
 export interface Props {
   name: string;

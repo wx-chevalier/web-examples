@@ -29,17 +29,16 @@ const config = {
     // }),
   ],
   devServer: {
-    // 设置生成的 Bundle 的默认访问路径
-    publicPath: '/assets/',
+    // 设置生成的 Bundle 的前缀路径
+    publicPath: '/',
     // assets 中资源文件默认应该还使用 assets
-    contentBase: path.resolve(__dirname, '../'),
+    contentBase: path.resolve(__dirname, '../public'),
     compress: true,
     headers: {
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY'
     },
     open: true,
-    openPage: 'assets',
     overlay: {
       warnings: true,
       errors: true
@@ -47,7 +46,7 @@ const config = {
     host: '0.0.0.0',
     port: 8080,
     hot: true,
-    https: true,
+    https: false,
     disableHostCheck: true,
     quiet: true
   },
