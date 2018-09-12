@@ -33,6 +33,26 @@
         ]
       ]
     },
+    "es-production": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": "commonjs",
+            "useBuiltIns": "usage"
+          }
+        ],
+        "react-optimize"
+      ],
+      "plugins": [
+        [
+          "transform-react-remove-prop-types",
+          {
+            "removeImport": true
+          }
+        ]
+      ]
+    },
     "test": {
       "presets": [["env"], "react"]
     }

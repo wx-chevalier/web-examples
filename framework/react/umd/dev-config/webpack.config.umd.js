@@ -2,7 +2,7 @@ const path = require('path');
 
 const prodConfig = require('./webpack.config.prod');
 
-const { libraryName, libraryEntry = 'index.js' } = require('../package.json');
+const { libraryName = 'umd', module: libraryEntry = 'index.umd.js' } = require('../package.json');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -11,7 +11,7 @@ const PATHS = {
 
 const umdConfig = {
   ...prodConfig,
-  entry: path.join(PATHS.src, libraryEntry),
+  entry: { index: path.join(PATHS.src, libraryEntry) },
   output: {
     filename: '[name].umd.js',
     path: PATHS.build,
@@ -20,6 +20,7 @@ const umdConfig = {
     libraryTarget: 'umd'
   },
   resolve: {
+    ...prodConfig.resolve,
     alias: {
       react: path.resolve(__dirname, './node_modules/react'),
       'react-dom': path.resolve(__dirname, './node_modules/react-dom')
