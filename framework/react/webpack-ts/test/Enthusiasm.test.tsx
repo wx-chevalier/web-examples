@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as enzyme from 'enzyme';
-import Enthusiasm from './Enthusiasm';
+import Enthusiasm from '../src/module/redux/component/Enthusiasm';
 
 it('renders the correct text when no enthusiasm level is given', () => {
   const enthusiasm = enzyme.shallow(<Enthusiasm name="Daniel" />);

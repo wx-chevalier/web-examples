@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 
-import store from '../state/redux/store/';
-import MobXTimerView from '../state/mobx/MobXTimeView';
-import Enthusiasm from '../state/redux/container/Enthusiasm';
+import store from '../module/redux/store/';
+import MobXTimerView from '../module/mobx/MobXTimeView';
+import Enthusiasm from '../module/redux/container/Enthusiasm';
 
 import './App.css';
 const logo = require('./logo.svg');

@@ -43,6 +43,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /.*ts-worker.*/,
+        use: ['workerize-loader', 'ts-loader']
+      },
+      {
         test: /\.(ts|tsx)?$/,
         loader: 'awesome-typescript-loader',
         exclude: /node_modules/,
@@ -93,10 +97,7 @@ module.exports = {
         test: /\.(scss|sass)$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       },
-      {
-        test: /\.?worker\.js$/,
-        use: { loader: 'workerize-loader' }
-      },
+
       {
         test: /\.wasm$/,
         exclude: /node_modules/,
