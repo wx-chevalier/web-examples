@@ -40,12 +40,7 @@ const config = {
       },
       {
         test: /\.(scss|sass)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          baseConfig.extra.moduleCSSLoader,
-          'postcss-loader',
-          'sass-loader'
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
       }
     ]
   },
@@ -108,7 +103,12 @@ const config = {
   ],
   optimization: {
     runtimeChunk: 'single',
-    minimizer: [new UglifyJsPlugin(), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [
+      new UglifyJsPlugin({
+        exclude: /.*ts-worker.*/
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ],
     splitChunks: {
       cacheGroups: {
         vendors: {
