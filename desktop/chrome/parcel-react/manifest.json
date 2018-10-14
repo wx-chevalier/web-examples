@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "Name of your chrome extension",
+  "description": "Description of your chrome extension.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "src/popup.html"
+  },
+
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/build/main.js"]
+    }
+  ]
+}
