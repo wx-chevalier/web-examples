@@ -18,13 +18,13 @@
 
 # TOC | 目录索引
 
-💡 [Bundler](./bundler) | 前端构建工具 💡
+## [Bundler](./bundler) | 前端构建工具
 
 - [webpack](./builder/webpack)
 - [parcel](./builder/parcel)
 - [rollup](./builder/rollup)
 
-💡 [Framework](./framework) | 前端框架 💡
+## [Framework](./framework) | 前端框架
 
 - [react](./framework/react): 基于 React 的前端项目
 
@@ -46,7 +46,7 @@
 
 - [mobx](./sm/mobx): MobX 典型应用
 
-💡 [Mobile](./mobile) | 移动应用 💡
+## [Mobile](./mobile) | 移动应用
 
 - [rn](./mobile/rn): 基于 ReactNative 的移动跨平台项目
 
@@ -60,14 +60,16 @@
 
 - [weex](./mobile/weex): 基于 Weex 的移动跨平台项目(WIP)
 
-💡 [Framework](./framework) | 桌面应用 💡
+- [Fultter](./mobile/flutter)
+
+## [Desktop](./desktop) | 桌面应用
 
 - [electron](./electron): 基于 Electron 的跨平台项目
 
   - [react](./electron/react)
   - [vue](./electron/vue)
 
-💡 [Micro Frontend](./micro-frontend) | 微前端架构 💡
+## [Micro Frontend](./micro-frontend) | 微前端架构
 
 # 延伸阅读
 
