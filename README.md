@@ -16,7 +16,11 @@
 
 - 部署方式：支持独立部署（HashRouter）、支持服务端部署、支持服务端渲染；
 
+---
+
 # TOC | 目录索引
+
+## [Micro Frontend](./micro-frontend) | 微前端架构
 
 ## [Bundler](./bundler) | 前端构建工具
 
@@ -69,7 +73,7 @@
   - [react](./electron/react)
   - [vue](./electron/vue)
 
-## [Micro Frontend](./micro-frontend) | 微前端架构
+---
 
 # 延伸阅读
 
@@ -78,3 +82,7 @@
 - [现代 JavaScript 开发：语法基础与工程实践](https://github.com/wxyyxc1992/ProgrammingLanguage-Series/tree/master/JavaScript)
 
 - [Awesome-CheatSheet/Web](https://github.com/wxyyxc1992/Awesome-CheatSheet)
+
+# About
+
+- 子项目命名方式：主体-子关键字 混合项目命名方式：框架-语言/机制-工具
