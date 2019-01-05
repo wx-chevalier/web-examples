@@ -62,8 +62,12 @@ $ cd .. & npm start
 
 - `rtw-core`
 
-- `rtw-bootstrap & rtw-*-app`
+- `rtw-bootstrap & rtw-host-app`
+
+- `rtw-redux-app & rtw-mobx-app`
+
+rtw-mobx-app 使用 10081 端口，
+
+- `Root Project | 根项目`
 
 - `indep-pkgs`
-
-- Root Project | 根项目

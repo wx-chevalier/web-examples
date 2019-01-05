@@ -35,8 +35,5 @@
   "dependencies": {},
   "files": [
     "dist/"
-  ],
-  "publishConfig": {
-    "registry": "http://registry.npm.com"
-  }
+  ]
 }
