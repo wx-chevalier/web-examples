@@ -1,11 +1,14 @@
 {
-  "lerna": "2.11.0",
   "version": "0.9.5",
   "npmClient": "yarn",
-  "packages": ["packages/*"],
+  "packages": [
+    "packages/*"
+  ],
   "command": {
     "publish": {
-      "ignore": ["*.md"],
+      "ignoreChanges": [
+        "*.md"
+      ],
       "message": "Release %s"
     }
   }

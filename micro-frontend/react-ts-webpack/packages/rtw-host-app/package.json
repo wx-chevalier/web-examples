@@ -1,0 +1,46 @@
+{
+  "author": "wxyyxc1992@github",
+  "description": "@wx/rtw-core",
+  "license": "MIT",
+  "keywords": [
+    "webpack",
+    "react"
+  ],
+  "name": "@wx/rtw-core",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxyyxc1992/fe-boilerplate"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{ts,tsx,scss,less,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run build:es && npm run build:cjs && npm run build:prod",
+    "build:es": "tsc --project ./tsconfig.es.json",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
+    "build:prod": "webpack --config ./scripts/webpack/webpack.config.prod.js"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.18"
+  },
+  "files": [
+    "dist/"
+  ]
+}

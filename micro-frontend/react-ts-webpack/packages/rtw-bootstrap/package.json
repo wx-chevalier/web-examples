@@ -1,0 +1,39 @@
+{
+  "name": "@wx/rtw-bootstrap",
+  "version": "0.0.1",
+  "description": "@wx/rtw-core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxyyxc1992/fe-boilerplate"
+  },
+  "license": "MIT",
+  "keywords": [
+    "webpack",
+    "react"
+  ],
+  "author": "wxyyxc1992@github",
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{ts,tsx,scss,less,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run build:prod",
+    "build:prod": "webpack --config ./scripts/webpack/webpack.config.prod.js"
+  },
+  "dependencies": {
+    "@wx/rtw-core": "0.0.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "files": [
+    "dist/"
+  ]
+}

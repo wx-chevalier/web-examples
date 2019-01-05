@@ -1,0 +1,42 @@
+{
+  "name": "@wx/rtw-mobx-app",
+  "version": "0.0.1",
+  "description": "@wx/rtw-core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxyyxc1992/fe-boilerplate"
+  },
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "keywords": [
+    "webpack",
+    "react"
+  ],
+  "author": "wxyyxc1992@github",
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{ts,tsx,scss,less,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run build:es && npm run build:cjs && npm run build:prod",
+    "build:es": "tsc --project ./tsconfig.es.json",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
+    "build:prod": "webpack --config ./scripts/webpack/webpack.config.prod.js"
+  },
+  "dependencies": {},
+  "files": [
+    "dist/"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npm.com"
+  }
+}

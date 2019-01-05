@@ -1,0 +1,52 @@
+{
+  "name": "@wx/rtw-core",
+  "version": "0.0.1",
+  "description": "@wx/rtw-core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxyyxc1992/fe-boilerplate"
+  },
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "keywords": [
+    "webpack",
+    "react"
+  ],
+  "author": "wxyyxc1992@github",
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{ts,tsx,scss,less,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run build:es && npm run build:cjs && npm run build:umd",
+    "build:es": "tsc --project ./tsconfig.es.json",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
+    "build:umd": "webpack --config ./scripts/webpack/webpack.config.umd.js",
+    "test": "jest --config ./scripts/jest/jest.config.js",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "npm run cleanCov && npm test -- --coverage"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.3",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "files": [
+    "dist/"
+  ]
+}
