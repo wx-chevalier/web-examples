@@ -1,3 +1,5 @@
+[中文版本](./) | [English Version](./README-en.md)
+
 # react-ts-webpack
 
 [https://github.com/wxyyxc1992/fe-boilerplate](https://github.com/wxyyxc1992/fe-boilerplate) 包含了单模块单页面、单模块多页面、(伪)多模块单页面、微前端项目等不同类型的模板，其中微前端项目与前者的区别即在于微前端中的各个模块能够独立开发，独立版本发布，独立部署，独立加载。分布式协作势必会带来协同以及开发流程上的挑战，在设计微前端项目架构的时候开发易用性也是非常重要的考量点。在[年度总结]()中我也讨论了使用 TS 面向重构编程的意义，欢迎参考 [Backend-Boilerplate/node]() 中的 `ts-*` 项目，使用 TS 进行全栈开发。
@@ -5,18 +7,35 @@
 尽可能地遵循简约、直观的原则，减少抽象/Magic Function 等；大型项目可能会抽象出专用的开发工具流，但是对于大部分项目而言，在现有框架/工具链的基础上进行适当封装会是较优选择。
 
 ```sh
+# 拉取项目
+git clone ...
+
 # 添加全局的依赖更新工具
 $ yarn global add npm-check-updates
+
+# 为各个子项目安装依赖，以及链接各个子项目
+$ lerna bootstrap
+
+# 执行预编译操作
+$ npm run build
+
+# 运行该项目
+# 进入 rtw-bootstrap 并且启动
+$ cd packages/rtw-bootstrap & npm start
+
+# 运行集成测试示例
+# 返回根目录
+$ cd .. & npm start
 ```
 
 ## Features
 
-- 非 APP 类可单独发布，发布版本可包含 ES, CJS, UMD 等；APP 类可单独运行，与发布
+- 非 APP 类可单独发布，APP 类可单独运行，与发布。发布版本可包含 ES, CJS, UMD 等，dist 目录下包含 ES/CJS 模块，build 目录下包含 APP 完整资源以及 UMD 模块。
 - 版本控制: 子应用资源不使用 Hash 方式，而是使用语义化版本，`/[cdnHost]/[projectName]/[subAppName]/[x.y.z]/index.{js,css}`
 - 样式，LESS 文件支持 CSS Modules，CSS/SCSS 使用标准 CSS
 - 状态管理，灵活支持 Redux/MobX/Dva 等不同的状态管理框架，对于 Redux 提供全局统一的 Store 声明
 
-# Structure
+# Structure | 项目结构
 
 - rtw: 根目录，examples 目录下包含了部分跨模块集成测试的代码
 
@@ -30,6 +49,7 @@ $ yarn global add npm-check-updates
 
 - rtw-mobx-app: MobX 示例应用
 - rtw-redux-app: Redux 示例应用
+- indep-pkgs/: 可独立运行的子应用
 
 扩展模块：
 
@@ -37,3 +57,13 @@ $ yarn global add npm-check-updates
 - rtw-extensions: 包含部分业务无关的通用型插件，类似于 Chrome Extension 的定位。
 
 如果希望在子应用 A 中加载子应用 B 的实例，则应该使用类似于依赖注入的方式，从统一的注册中心中获取该实例对象。
+
+# 开发模式
+
+- `rtw-core`
+
+- `rtw-bootstrap & rtw-*-app`
+
+- `indep-pkgs`
+
+- Root Project | 根项目

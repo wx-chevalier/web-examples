@@ -6,17 +6,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
 
 const baseConfig = require('./webpack.config.base');
+
+const { buildEnv } = baseConfig.extra;
 
 const config = {
   ...baseConfig,
   devtool: 'hidden-source-map',
+  mode: 'production',
   output: {
     ...baseConfig.output,
-    filename: '[name].js',
-    chunkFilename: '[name].[chunkhash].chunk.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -45,9 +46,25 @@ const config = {
   },
   plugins: [
     ...baseConfig.plugins,
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(true)
+    }),
+
+    // 使用 Prepack 优化包体大小
+    // 暂时存在 Bug,等待修复
+    // 使用前 21 - 425
+    // 使用后 21 - 433
+    // new PrepackWebpackPlugin({
+    //   mathRandomSeed: '0'
+    // }),
+
+    // 必须将 CopyWebpackPlugin 与 HtmlWebpackPlugin 添加到末尾
     new CopyWebpackPlugin([{ from: buildEnv.public, to: buildEnv.build }]),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, './lib/template.ejs'),
+      template: path.join(__dirname, '../template/template.ejs'),
       title: 'Webpack React',
       favicon: path.join(baseConfig.extra.buildEnv.public, 'favicon.ico'),
       manifest: path.join(buildEnv.public, 'manifest.json'),
@@ -75,30 +92,7 @@ const config = {
       },
       mobile: true,
       scripts: ['./static.js']
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash].css'
-    }),
-    new webpack.DefinePlugin({
-      PRODUCTION: JSON.stringify(true)
-    }),
-    new OfflinePlugin({
-      ServiceWorker: {
-        minify: false
-      }
     })
-
-    // 使用 Prepack 优化包体大小
-    // 暂时存在 Bug,等待修复
-    // 使用前 21 - 425
-    // 使用后 21 - 433
-    // new PrepackWebpackPlugin({
-    //   mathRandomSeed: '0'
-    // }),
-
-    // new BundleAnalyzerPlugin({
-    //   analyzerMode: 'static'
-    // })
   ],
   optimization: {
     runtimeChunk: 'single',
@@ -114,7 +108,7 @@ const config = {
           test: /node_modules/,
           name: 'vendors',
           enforce: true,
-          chunks: 'initial'
+          chunks: 'all'
         },
         // 将所有的样式文件打包到单个项目
         styles: {

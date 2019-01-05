@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "es6",
     "rootDir": "src",
@@ -7,5 +7,6 @@
     "declarationDir": "dist/types",
     "sourceMap": false,
     "paths": {}
-  }
+  },
+  "include": ["src/**/*"]
 }

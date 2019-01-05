@@ -7,7 +7,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
-    "allowJs": true,
+    "allowJs": false,
     "outDir": "dist",
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,

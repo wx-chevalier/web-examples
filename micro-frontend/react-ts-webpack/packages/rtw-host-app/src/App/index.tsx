@@ -12,6 +12,6 @@ export default class App extends React.Component<AppProps, AppState> {
   }
 
   public render() {
-    return <div />;
+    return <div>App</div>;
   }
 }

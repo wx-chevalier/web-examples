@@ -2,8 +2,9 @@ const path = require('path');
 const process = require('process');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TSConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const webpack = require('webpack');
 
-const rootPath = process.pwd();
+const rootPath = process.cwd();
 const packageName = require(path.resolve(rootPath, 'package.json'));
 
 const buildEnv = {
@@ -32,7 +33,15 @@ const fontsOptions = {
 
 module.exports = {
   context: rootPath,
+  entry: {
+    main: path.resolve(buildEnv.rootPath, './src/index.tsx')
+  },
   resolve: {
+    alias: {
+      // 这里用于将部分模块重定向
+      react: path.resolve(rootPath, './node_modules/react'),
+      'react-dom': path.resolve(rootPath, './node_modules/react-dom')
+    },
     extensions: ['.ts', '.tsx', '.js', '.css'],
     plugins: [new TSConfigPathsPlugin()]
   },

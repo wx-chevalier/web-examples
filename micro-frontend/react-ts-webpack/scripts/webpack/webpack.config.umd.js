@@ -1,21 +1,25 @@
 const path = require('path');
 
 const prodConfig = require('./webpack.config.prod');
-const { library, libraryEntry = 'index.js' } = require('../package.json');
+const rootPath = process.cwd();
+const { library = 'wx', libraryEntry = 'index.js' } = require(path.resolve(
+  rootPath,
+  './package.json'
+));
+
+const plugins = prodConfig.plugins;
+
+// 移除 CopyWebpackPlugin 与 HtmlWebpackPlugin
+plugins.pop();
+plugins.pop();
 
 const umdConfig = {
   ...prodConfig,
   output: {
-    filename: '[name].umd.js',
-    path: buildEnv.build,
+    filename: '[name].js',
+    path: path.resolve(rootPath, './dist'),
     library: library,
     libraryTarget: 'umd'
-  },
-  resolve: {
-    alias: {
-      react: path.resolve(__dirname, './node_modules/react'),
-      'react-dom': path.resolve(__dirname, './node_modules/react-dom')
-    }
   },
   externals: {
     // Don't bundle react or react-dom
@@ -35,7 +39,8 @@ const umdConfig = {
       commonjs: 'styled-components',
       commonjs2: 'styled-components'
     }
-  }
+  },
+  plugins
 };
 
 delete umdConfig.optimization;

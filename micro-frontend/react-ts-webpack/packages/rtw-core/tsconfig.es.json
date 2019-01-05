@@ -4,6 +4,7 @@
     "module": "es6",
     "rootDir": "src",
     "outDir": "dist/es",
+    "declaration": true,
     "declarationDir": "dist/types",
     "sourceMap": false,
     "paths": {}
