@@ -1,4 +1,6 @@
 export default {
+  '@wx/rtw-core': 'rtwCore',
+  antd: 'antd',
   react: {
     commonjs: 'react',
     commonjs2: 'react',

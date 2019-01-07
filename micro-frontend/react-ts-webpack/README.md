@@ -57,8 +57,19 @@ $ cd .. & npm start
 - rtw-extensions: 包含部分业务无关的通用型插件，类似于 Chrome Extension 的定位。
 
 如果希望在子应用 A 中加载子应用 B 的实例，则应该使用类似于依赖注入的方式，从统一的注册中心中获取该实例对象。
+所有各个模块共享的基础库，都必须以 UMD 模式加载到全局。
+
+rtw-host-app 中声明与使用需要展示哪些模块，rtw-bootstrap 中注册可提供的 UMD 子模块。
 
 # 开发模式
+
+笔者一直推崇[渐进式的工程架构]()，
+
+## 降级模式
+
+在很多的开发中，我们
+
+## 标准模式
 
 - `rtw-core`
 
@@ -71,3 +82,7 @@ rtw-mobx-app 使用 10081 端口，
 - `Root Project | 根项目`
 
 - `indep-pkgs`
+
+# Todos
+
+- [ ] 使用 webpack-merge 替代目前的朴素对象合并

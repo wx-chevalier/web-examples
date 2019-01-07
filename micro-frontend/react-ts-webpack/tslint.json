@@ -8,7 +8,6 @@
     "curly": true,
     "eofline": false,
     "forin": true,
-    "interface-name": [true, "never-prefix"],
     "jsdoc-format": true,
     "jsx-no-lambda": false,
     "jsx-no-multiline-js": false,

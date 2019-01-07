@@ -33,7 +33,7 @@
     "build:prod": "webpack --config ./scripts/webpack/webpack.config.prod.js"
   },
   "dependencies": {
-    "@wx/rtw-core": "0.0.1",
+    "@wx/rtw-core": "*",
     "@types/classnames": "^2.2.6",
     "@types/react": "^16.4.14",
     "@types/react-loadable": "^5.4.1",

@@ -38,9 +38,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      // 这里用于将部分模块重定向
-      react: path.resolve(rootPath, './node_modules/react'),
-      'react-dom': path.resolve(rootPath, './node_modules/react-dom')
+      systemjs: path.resolve(rootPath, './node_modules/systemjs/dist/system-production.js')
     },
     extensions: ['.ts', '.tsx', '.js', '.css'],
     plugins: [new TSConfigPathsPlugin()]

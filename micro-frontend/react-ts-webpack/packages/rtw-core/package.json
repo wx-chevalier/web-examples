@@ -30,7 +30,7 @@
     "build": "npm run build:es && npm run build:cjs && npm run build:umd",
     "build:es": "tsc --project ./tsconfig.es.json",
     "build:cjs": "tsc --project ./tsconfig.cjs.json",
-    "dev": "tsc -w --project ./tsconfig.es.json",
+    "dev": "tsc -w --project ./tsconfig.cjs.json",
     "build:umd": "webpack --config ./scripts/webpack/webpack.config.umd.js",
     "test": "jest --config ./scripts/jest/jest.config.js",
     "test:watch": "npm test -- --watch",
@@ -45,7 +45,8 @@
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2",
     "webpack": "^4.28.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.1.4"
   },
   "files": [
     "dist/"
