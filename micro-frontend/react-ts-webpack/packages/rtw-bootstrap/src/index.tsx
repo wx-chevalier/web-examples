@@ -4,10 +4,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { vendors } from './config/vendors';
-import { isProd } from './constant/env';
 import { init, registerModule, importApp } from './launcher';
 
-if (!isProd()) {
+declare var isProd: boolean;
+
+if (!isProd) {
   // 开发模式，会加载本地设置的开发态应用
   // 获取当前需要调试的应用列表
   const devApp = (window as any).__DEV_APP__;

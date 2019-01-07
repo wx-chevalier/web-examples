@@ -2,17 +2,19 @@ import { Spin } from 'antd';
 import cn from 'classnames';
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
-import React, { PureComponent, Suspense, lazy } from 'react';
+import * as React from 'react';
 
-import styles from './index.less';
+// import styles from './index.less';
 import Exception from '../../components/decorators/Exception';
 import { ResolvedModule } from '../../../manifest';
 
+const { PureComponent, Suspense, lazy } = React;
+
 export interface IProps extends RouteComponentProps {
-  appName: string;
+  appId: string;
   appLoader: () => Promise<ResolvedModule>;
   className?: string;
-  fallback: JSX.Element;
+  fallback?: JSX.Element;
   onAppendReducer: (reducer: { [key: string]: object | undefined }) => void;
 }
 
@@ -26,13 +28,13 @@ class AppContainer extends PureComponent<IProps> {
   };
 
   getAppComponent() {
-    const { appLoader, appName, onAppendReducer } = this.props;
+    const { appLoader, appId, onAppendReducer } = this.props;
 
     return lazy(() =>
       appLoader().then(appModule => {
         if ('reducer' in appModule) {
           onAppendReducer({
-            [appName]: appModule.reducer
+            [appId]: appModule.reducer
           });
         }
         return appModule;
@@ -51,7 +53,7 @@ class AppContainer extends PureComponent<IProps> {
   }
 
   render() {
-    const { className, fallback, appName } = this.props;
+    const { className, fallback, appId } = this.props;
     const { appError } = this.state;
 
     if (appError) {
@@ -61,9 +63,9 @@ class AppContainer extends PureComponent<IProps> {
     const AppComponent = this.getAppComponent();
 
     return (
-      <div className={cn(styles.container, className)}>
-        <Suspense fallback={fallback}>
-          <AppComponent appName={appName} />
+      <div className={cn(className)}>
+        <Suspense fallback={fallback || <Spin />}>
+          <AppComponent appId={appId} />
         </Suspense>
       </div>
     );

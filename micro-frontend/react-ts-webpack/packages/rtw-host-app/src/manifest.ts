@@ -1,4 +1,5 @@
 import { ComponentType } from 'react';
+import * as SystemJS from 'systemjs';
 
 export interface ResolvedModule {
   default: ComponentType<any>;
@@ -7,6 +8,7 @@ export interface ResolvedModule {
 
 export interface Module {
   name: string;
+  type: 'page' | 'module' | 'app' | 'widget' | 'extension';
   loader: () => Promise<ResolvedModule>;
 }
 
@@ -14,11 +16,13 @@ export interface Module {
 export const manifest: { [key: string]: Module } = {
   'page-a': {
     name: 'PageA',
+    type: 'page',
     loader: () => import(/* webpackChunkName: "page-a" */ './pages/page-a')
   },
   'redux-app': {
-    name: 'PageA',
+    name: 'Redux App',
+    type: 'app',
     // 这里在 rtw-bootstrap 中完成了注册，这里直接加载导入
-    loader: () => System.import('redux-app')
+    loader: () => SystemJS.import('http://redux-app')
   }
 };

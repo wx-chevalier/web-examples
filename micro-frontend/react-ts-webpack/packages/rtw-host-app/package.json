@@ -31,20 +31,30 @@
     "build:es": "tsc --project ./tsconfig.es.json",
     "build:cjs": "tsc --project ./tsconfig.cjs.json",
     "build:umd": "NODE_ENV=production webpack --config ./scripts/webpack/webpack.config.umd.js",
-    "dev": "tsc -w --project ./tsconfig.es.json"
+    "build:prop": "NODE_ENV=production webpack --config ./scripts/webpack/webpack.config.prod.js",
+    "dev": "webpack-dev-server --config ./scripts/webpack/webpack.config.dev.js --hot",
+    "start": "npm run dev"
   },
   "dependencies": {
-    "@wx/rtw-core": "*",
     "antd": "^3.9.3",
+    "connected-react-router": "^6.1.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "redux-actions": "^2.6.4",
+    "redux-promise-middleware": "^5.1.1",
+    "redux-thunk": "^2.3.0",
+    "smoothscroll-polyfill": "^0.4.3"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
     "@types/jest": "23.3.11",
     "@types/react-dom": "^16.0.11",
+    "@types/react-redux": "^6.0.12",
     "@types/react-router-dom": "^4.3.1",
+    "@types/redux-actions": "^2.3.1",
+    "@types/smoothscroll-polyfill": "^0.3.0",
     "@types/systemjs": "^0.20.6",
     "autoprefixer": "9.4.4",
     "awesome-typescript-loader": "^5.2.1",
@@ -85,7 +95,7 @@
     "webpack-cli": "3.2.0",
     "webpack-dashboard": "2.0.0",
     "webpack-dev-server": "^3.1.14",
-    "webpack-merge": "^4.1.4",
+    "webpack-merge": "^4.2.1",
     "workerize-loader": "^1.0.4"
   },
   "files": [

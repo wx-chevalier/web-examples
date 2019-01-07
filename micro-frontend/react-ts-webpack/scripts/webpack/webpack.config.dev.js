@@ -19,7 +19,7 @@ const config = {
 
     // 定义控制变量
     new webpack.DefinePlugin({
-      PRODUCTION: JSON.stringify(false)
+      isProd: JSON.stringify(false)
     }),
     new DashboardPlugin()
   ],

@@ -19,9 +19,20 @@ const moduleCSSLoader = {
   loader: 'css-loader',
   options: {
     modules: true,
-    sourceMap: true,
+    sourceMap: false,
     importLoaders: 2,
     localIdentName: '[path][name]__[local]__[hash:base64:5]'
+  }
+};
+
+const lessLoader = {
+  loader: 'less-loader',
+  options: {
+    modifyVars: {
+      'primary-color': '#5d4bff'
+    },
+    javascriptEnabled: true,
+    paths: [path.resolve(rootPath, './node_modules')]
   }
 };
 
@@ -102,8 +113,13 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ['style-loader', moduleCSSLoader, 'less-loader'],
-        include: [/node_modules/, buildEnv.src]
+        use: ['style-loader', moduleCSSLoader, lessLoader],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', lessLoader],
+        include: /node_modules/
       },
       {
         test: /\.wasm$/,
@@ -125,6 +141,7 @@ module.exports = {
   },
   extra: {
     moduleCSSLoader,
+    lessLoader,
     buildEnv
   }
 };

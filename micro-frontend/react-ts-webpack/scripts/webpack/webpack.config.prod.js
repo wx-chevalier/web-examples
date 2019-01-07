@@ -30,17 +30,23 @@ const config = {
       },
       {
         test: /\.less$/,
-        exclude: /antdTheme/,
+        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           baseConfig.extra.moduleCSSLoader,
           'postcss-loader',
-          'less-loader'
+          baseConfig.extra.lessLoader
         ]
       },
       {
-        test: /\.(scss|sass)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        test: /\.less$/,
+        include: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          baseConfig.extra.lessLoader
+        ]
       }
     ]
   },
@@ -50,7 +56,7 @@ const config = {
       filename: '[name].css'
     }),
     new webpack.DefinePlugin({
-      PRODUCTION: JSON.stringify(true)
+      isProd: JSON.stringify(true)
     }),
 
     // 使用 Prepack 优化包体大小

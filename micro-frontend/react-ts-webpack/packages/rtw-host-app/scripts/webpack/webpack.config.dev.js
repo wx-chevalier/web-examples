@@ -1,11 +1,13 @@
 const path = require('path');
+const merge = require('webpack-merge');
 
-const baseConfig = require('../../../../scripts/webpack/webpack.config.dev');
+const devConfig = require('../../../../scripts/webpack/webpack.config.dev');
 
-module.exports = {
-  ...baseConfig,
+module.exports = merge(devConfig, {
+  entry: {
+    main: path.resolve(__dirname, '../../src/dev')
+  },
   devServer: {
-    ...baseConfig.devServer,
     contentBase: path.resolve(__dirname, '../../public')
   }
-};
+});
