@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, Route, Redirect } from 'react-router';
 import { withRouter } from 'react-router-dom';
 
-// import styles from './index.less';
+import * as styles from './index.less';
 import { manifest, Module } from '../manifest';
 import AppContainer from '../skeleton/containers/AppContainer';
 import store from '../skeleton/redux/store';
@@ -45,7 +45,7 @@ export class App extends React.Component<IAppProps, IAppState> {
     const routes = Object.keys(manifest);
 
     return (
-      <section>
+      <section className={styles.container}>
         <Switch>
           <Route exact={true} path="/">
             <Redirect to={routes[0]} />

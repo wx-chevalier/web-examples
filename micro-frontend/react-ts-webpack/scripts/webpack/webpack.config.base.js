@@ -51,15 +51,15 @@ module.exports = {
     alias: {
       systemjs: path.resolve(rootPath, './node_modules/systemjs/dist/system-production.js')
     },
-    extensions: ['.ts', '.tsx', '.js', '.css'],
+    extensions: ['.ts', '.tsx', '.js', '.css', 'less'],
     plugins: [new TSConfigPathsPlugin()]
   },
   output: {
     path: buildEnv.build,
     // 设置所有资源的默认公共路径，Webpack 会自动将 import 的资源改写为该路径
     publicPath: '/',
-    filename: '[name].js', // 文件名,不加 chunkhash,以方便调试时使用，生产环境下可以设置为 [name].bundle.[hash:8].js
-    sourceMapFilename: '[name].map', // 映射名
+    filename: '[name].js',
+    sourceMapFilename: '[name].map',
     globalObject: 'this' // 避免全局使用 window
   },
   module: {
@@ -123,8 +123,8 @@ module.exports = {
       },
       {
         test: /\.wasm$/,
-        exclude: /node_modules/,
-        loader: 'wasm-loader'
+        loader: 'wasm-loader',
+        exclude: /node_modules/
       }
     ]
   },
