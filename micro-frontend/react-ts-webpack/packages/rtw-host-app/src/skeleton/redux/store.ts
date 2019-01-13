@@ -30,7 +30,7 @@ if (!isProd) {
   enhancers = composeEnhancers(middlewares);
 }
 
-export function configStore(initialState = {}) {
+export function configStore(initialState: object = {}) {
   const store = createStore(configReducer({})(history), initialState, enhancers);
 
   function appendReducer(asyncReducers: ReducersMapObject) {

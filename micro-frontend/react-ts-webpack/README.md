@@ -1,14 +1,15 @@
 [中文版本](./) | [English Version](./README-en.md)
 
-# react-ts-webpack
+# m-fe/react-ts-webpack
 
 [https://github.com/wxyyxc1992/fe-boilerplate](https://github.com/wxyyxc1992/fe-boilerplate) 包含了单模块单页面、单模块多页面、(伪)多模块单页面、微前端项目等不同类型的模板，其中微前端项目与前者的区别即在于微前端中的各个模块能够独立开发，独立版本发布，独立部署，独立加载。分布式协作势必会带来协同以及开发流程上的挑战，在设计微前端项目架构的时候开发易用性也是非常重要的考量点。在[年度总结]()中我也讨论了使用 TS 面向重构编程的意义，欢迎参考 [Backend-Boilerplate/node]() 中的 `ts-*` 项目，使用 TS 进行全栈开发。
 
-尽可能地遵循简约、直观的原则，减少抽象/Magic Function 等；大型项目可能会抽象出专用的开发工具流，但是对于大部分项目而言，在现有框架/工具链的基础上进行适当封装会是较优选择。
+当我们考量项目框架、模板或者脚手架的时候，首先想到的点就是希望尽可能对上层屏蔽细节，但是对于长期维护的、多人协作的中大型项目而言，如果项目的主导者直接使用了部分抽象的脚手架，不免会给未来的更新、迭代带来一定的技术负债；同时，目前也有很多成熟的工程化脚手架，因此笔者选择以项目模板的形式抽象出微前端中所需要的部分。尽可能地遵循简约、直观的原则，减少抽象/Magic Function 等；大型项目可能会抽象出专用的开发工具流，但是对于大部分项目而言，在现有框架/工具链的基础上进行适当封装会是较优选择。
 
 ```sh
-# 拉取项目
-git clone ...
+# 拉取并且提取出子项目
+git clone https://github.com/wxyyxc1992/fe-boilerplate
+cp fe-boilerplate/micro-frontend/react-ts-webpack ../
 
 # 添加全局的依赖更新工具
 $ yarn global add npm-check-updates
@@ -43,11 +44,11 @@ $ cd .. & npm start
 - Page | 页面: 页面不可单独编译，使用 Webpack SplitChunk 或其他机制进行异步加载
 - App | 应用: 应用是对模块的扩展，是实际用户可见的部分
 - Widget | 控件: 控件是特殊的模块，譬如通用的无业务组件等
-- Extension | 扩展: 扩展是特殊的应用
+- Extension | 扩展: 扩展是特殊的应用，提供了跨模块的通用功能，类似于 Chrome Extension 的定位
 
 基础模块：
 
-- rtw: 根目录，examples 目录下包含了部分跨模块集成测试的代码
+- rtw: 根目录，public 目录下包含了部分跨模块集成测试的代码
 
 核心模块：
 
@@ -59,7 +60,6 @@ $ cd .. & npm start
 
 - rtw-mobx-app: MobX 示例应用
 - rtw-redux-app: Redux 示例应用
-- indep-pkgs/: 可独立运行的子应用
 
 扩展模块：
 
@@ -80,21 +80,17 @@ rtw-host-app 中声明与使用需要展示哪些模块，rtw-bootstrap 中注�
 
 基础模式类似于(伪)多模块单页面，仅有唯一的 Host APP 作为编译与运行的入口，其他包体（譬如 rtw-core）直接打包进主包体中，不使用 SystemJS 进行独立加载。
 
-- `rtw-core`
+### `rtw-core`
 
-- `rtw-host-app`
+### `rtw-host-app`
 
 ## 标准模式
 
-- `rtw-bootstrap & rtw-host-app`
+### `rtw-bootstrap & rtw-host-app`
 
-- `rtw-redux-app & rtw-mobx-app`
+### `rtw-redux-app & rtw-mobx-app`
 
 rtw-mobx-app 使用 10081 端口，
-
-- `Root Project | 根项目`
-
-- `indep-pkgs`
 
 # Todos
 

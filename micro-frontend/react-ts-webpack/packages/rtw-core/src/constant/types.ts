@@ -9,7 +9,7 @@ export interface IBasicModule {
 
 export interface IAppModule extends IBasicModule {
   // 模块标题
-  title: string;
+  name: string;
   // 引入的 CSS 路径
   css?: string | string[];
 }

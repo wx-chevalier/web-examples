@@ -6,8 +6,7 @@ const devConfig = require('../../../../scripts/webpack/webpack.config.dev');
 
 module.exports = merge(devConfig, {
   devServer: {
-    contentBase: path.resolve(__dirname, '../../public'),
-    port: 8081
+    contentBase: path.resolve(__dirname, '../../public')
   },
   externals,
   output: {

@@ -18,6 +18,12 @@ export interface IProps extends RouteComponentProps {
   onAppendReducer: (reducer: { [key: string]: object | undefined }) => void;
 }
 
+// 应用缓存
+const appCache = {};
+
+/**
+ * 应用懒加载与容错的容器
+ */
 class AppContainer extends PureComponent<IProps> {
   defaultProps = {
     fallback: <Spin />
@@ -27,19 +33,28 @@ class AppContainer extends PureComponent<IProps> {
     appError: null
   };
 
-  getAppComponent() {
+  loadApp() {
     const { appLoader, appId, onAppendReducer } = this.props;
 
-    return lazy(() =>
+    if (appCache[appId]) {
+      return appCache[appId];
+    }
+
+    const app = lazy(() =>
       appLoader().then(appModule => {
         if ('reducer' in appModule) {
           onAppendReducer({
             [appId]: appModule.reducer
           });
         }
+
         return appModule;
       })
     );
+
+    appCache[appId] = app;
+
+    return app;
   }
 
   componentDidCatch(error: object, errorInfo: object) {
@@ -60,12 +75,12 @@ class AppContainer extends PureComponent<IProps> {
       return this.renderErrorPage();
     }
 
-    const AppComponent = this.getAppComponent();
+    const App = this.loadApp();
 
     return (
       <div className={cn(className)}>
         <Suspense fallback={fallback || <Spin />}>
-          <AppComponent appId={appId} />
+          <App appId={appId} />
         </Suspense>
       </div>
     );

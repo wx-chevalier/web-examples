@@ -27,10 +27,12 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run build:es && npm run build:cjs && npm run build:prod",
+    "build": "npm run build:es && npm run build:cjs && npm run build:umd",
     "build:es": "tsc --project ./tsconfig.es.json",
     "build:cjs": "tsc --project ./tsconfig.cjs.json",
-    "build:prod": "webpack --config ./scripts/webpack/webpack.config.prod.js"
+    "build:umd": "webpack --config ./scripts/webpack/webpack.config.umd.js",
+    "dev": "webpack-dev-server --config ./scripts/webpack/webpack.config.umd.dev.js --hot",
+    "start": "npm run dev"
   },
   "dependencies": {
     "@wx/rtw-core": "*",
@@ -85,6 +87,7 @@
     "webpack-cli": "3.2.0",
     "webpack-dashboard": "2.0.0",
     "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1",
     "workerize-loader": "^1.0.4"
   },
   "files": [

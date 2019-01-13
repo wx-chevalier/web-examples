@@ -1,5 +1,6 @@
+import { IAppModule } from '@wx/rtw-core/dist/types/constant/types';
 import { ComponentType } from 'react';
-import * as SystemJS from 'systemjs';
+import { importApp } from './index';
 
 export interface ResolvedModule {
   default: ComponentType<any>;
@@ -13,7 +14,7 @@ export interface Module {
 }
 
 // menifest 包含了所有页面、模块、应用、控件、插件加载方式的声明，在索引时并不严格区分类型，而推荐按照唯一键索引即可，方便迁移。
-export const manifest: { [key: string]: Module } = {
+const _manifest: { [key: string]: Module } = {
   'page-a': {
     name: 'PageA',
     type: 'page',
@@ -23,6 +24,23 @@ export const manifest: { [key: string]: Module } = {
     name: 'Redux App',
     type: 'app',
     // 这里在 rtw-bootstrap 中完成了注册，这里直接加载导入
-    loader: () => SystemJS.import('http://redux-app')
+    loader: () => importApp!('http://redux-app')
   }
 };
+
+declare global {
+  interface Window {
+    __DEV_APP__?: IAppModule;
+  }
+}
+
+// 判断是否定义了开发应用
+if (window.__DEV_APP__) {
+  _manifest[window.__DEV_APP__.id] = {
+    ...window.__DEV_APP__,
+    type: 'app',
+    loader: () => importApp!(window.__DEV_APP__!.module)
+  };
+}
+
+export const manifest = _manifest;

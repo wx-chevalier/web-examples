@@ -24,12 +24,16 @@ const config = {
     new DashboardPlugin()
   ],
   devServer: {
+    allowedHosts: ['0.0.0.0:8081'],
     // 设置生成的 Bundle 的前缀路径
     publicPath: '/',
     // assets 中资源文件默认应该还使用 assets
-    contentBase: path.resolve(__dirname, '../../examples'),
+    contentBase: path.resolve(__dirname, '../../public'),
     compress: true,
     headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY'
     },

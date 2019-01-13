@@ -2,12 +2,8 @@ const path = require('path');
 
 const prodConfig = require('./webpack.config.prod');
 const rootPath = process.cwd();
-const { library = 'wx', libraryEntry = 'index.js' } = require(path.resolve(
-  rootPath,
-  './package.json'
-));
 
-const plugins = prodConfig.plugins;
+const plugins = [...prodConfig.plugins];
 
 // 移除 CopyWebpackPlugin 与 HtmlWebpackPlugin
 plugins.pop();
@@ -18,7 +14,8 @@ const umdConfig = {
   output: {
     filename: '[name].js',
     path: path.resolve(rootPath, './dist'),
-    library: library,
+    // 默认不允许挂载在全局变量下
+    // library: library,
     libraryTarget: 'umd'
   },
   externals: {

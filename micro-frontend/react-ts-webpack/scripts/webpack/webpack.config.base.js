@@ -45,7 +45,7 @@ const fontsOptions = {
 module.exports = {
   context: rootPath,
   entry: {
-    main: path.resolve(buildEnv.rootPath, './src/index.tsx')
+    index: path.resolve(buildEnv.rootPath, './src/index.tsx')
   },
   resolve: {
     alias: {

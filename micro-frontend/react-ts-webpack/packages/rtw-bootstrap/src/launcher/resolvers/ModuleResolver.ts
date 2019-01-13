@@ -20,12 +20,14 @@ export class ModuleResolver {
    * @param option
    */
   constructor(option: IInitOption) {
+    // 注册所有的 Vendors
     if (option.vendors) {
       option.vendors.forEach(vendor => {
         this.registerSystemMap(vendor);
       });
     }
 
+    // 注册所有的应用
     option.apps.forEach(app => {
       this.registerSystemMap(app);
     });
