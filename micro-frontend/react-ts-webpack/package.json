@@ -26,6 +26,7 @@
     ]
   },
   "scripts": {
+    "bootstrap": "lerna clean --yes && lerna bootstrap",
     "build": "npm run clean && lerna exec -- npm run build",
     "clean": "lerna run clean --parallel",
     "cleanCov": "rimraf @coverage",
@@ -33,7 +34,6 @@
     "lint": "tslint -c tslint.json 'src/**/*.(ts|tsx)'",
     "precommit": "lint-staged",
     "prettier-all": "prettier --write 'src/**/*' '!src/{assets,datas}/**'",
-    "postinstall": "lerna clean --yes && lerna bootstrap",
     "start": "webpack-dashboard -- npm run dev",
     "test": "jest --config ./scripts/jest/jest.config.js",
     "test:watch": "npm test -- --watch",

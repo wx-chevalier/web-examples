@@ -36,8 +36,10 @@ if(!window.Promise) {
 <script>
     // 联调环境
     window.__HOST_APP__ = {id:"host", name:"HOST APP", module:"http://0.0.0.0:8081/index.js", css:"http://0.0.0.0:8081/index.css"}
+
     // 正式开发环境
     // window.__HOST_APP__ = {title:"HOST APP", module:"/release/rtw-host-app/index.js",css:"/release/rtw-host-app/index.css"}
+    
     window.__DEV_APP__ = {id:"dev", name:"DEV APP", module:"/index.js"}
 </script>
 <script src="./bootstrap/index.js" type="text/javascript"></script>

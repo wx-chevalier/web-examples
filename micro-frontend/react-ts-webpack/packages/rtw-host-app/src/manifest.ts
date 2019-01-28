@@ -1,5 +1,6 @@
-import { IAppModule } from '@wx/rtw-core/dist/types/constant/types';
+import { IAppModule } from '@wx/rtw-core';
 import { ComponentType } from 'react';
+
 import { importApp } from './index';
 
 export interface ResolvedModule {

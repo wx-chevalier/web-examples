@@ -1,7 +1,6 @@
-import { Switch } from 'antd';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { RouteComponentProps, Route, Redirect } from 'react-router';
+import { RouteComponentProps, Route, Redirect, Switch } from 'react-router';
 import { withRouter } from 'react-router-dom';
 
 import * as styles from './index.less';
@@ -53,7 +52,6 @@ export class App extends React.Component<IAppProps, IAppState> {
           {routes.map(r => this.renderRoute(r, manifest[r]))}
           <Route component={() => <Exception />} />
         </Switch>
-        {routes.map(r => this.renderRoute(r, manifest[r]))}
       </section>
     );
   }

@@ -27,12 +27,14 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run build:es && npm run build:cjs && npm run build:prod",
+    "build": "npm run build:es && npm run build:cjs && npm run build:umd",
     "build:es": "tsc --project ./tsconfig.es.json",
     "build:cjs": "tsc --project ./tsconfig.cjs.json",
-    "build:prod": "webpack --config ./scripts/webpack/webpack.config.prod.js"
+    "build:umd": "webpack --config ./scripts/webpack/webpack.config.umd.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@wx/rtw-core": "*"
+  },
   "files": [
     "dist/"
   ]
