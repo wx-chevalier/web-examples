@@ -7,7 +7,7 @@ const baseConfig = require('./webpack.config.base');
 const config = {
   ...baseConfig,
   mode: 'development',
-  devtool: 'eval',
+  devtool: 'source-map',
   plugins: [
     ...baseConfig.plugins,
 
