@@ -11,6 +11,7 @@ import GithubCorner from '../component/GithubCorner';
 import ShowcaseWelcome from '../component/ShowcaseWelcome';
 
 import './App.scss';
+import { login } from '../api/auth';
 
 // 将路由放在这边是为了方便进行热加载
 const Router = typeof __SSR__ !== 'undefined' ? BrowserRouter : HashRouter;
@@ -23,6 +24,10 @@ export default class App extends Component {
   static defaultProps = {
     serverSideMessage: 'message'
   };
+
+  async componentDidMount() {
+    await login();
+  }
 
   render() {
     const { serverSideMessage } = this.props;

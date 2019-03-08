@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const baseConfig = require('./webpack.config.base');
 
@@ -20,8 +19,7 @@ const config = {
     // 定义控制变量
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(false)
-    }),
-    new DashboardPlugin()
+    })
 
     // 如果需要启动 DLL 编译，则使用该插件
     // new webpack.DllReferencePlugin({
