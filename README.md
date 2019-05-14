@@ -18,6 +18,8 @@
 
 ---
 
+鉴于项目包含的子项目较多，建议您是要 [GitZip](https://parg.co/QjH) 工具来便捷、独立下载所需的项目。
+
 # TOC | 目录索引
 
 ## [Micro Frontend](./micro-frontend) | 微前端架构
