@@ -1,0 +1,63 @@
+.day-main {
+    background-size: 100% 120%;
+    .list-top {
+        font-size: 26rpx;
+        padding: 20rpx;
+        background-color: white;
+        border-top-left-radius:20rpx;
+        border-top-right-radius:20rpx;
+        border-bottom:1px solid gainsboro;
+        .iconfont {
+            font-size: 24rpx;
+            border: 1px solid;
+            padding: 8rpx;
+            border-radius: 100%;
+            margin-right: 20rpx;
+        }
+    }
+}
+
+.day {
+    position: relative;
+    color: white;
+    padding: 20rpx;
+    .iconfont {
+        font-size: 180rpx;
+    }
+    .day-data {
+        position: absolute;
+        font-size: 80rpx;
+        top: 50%;
+        left: 110rpx;
+        transform: translate(-50%, -50%)
+    }
+    .day-info {
+        font-size: 20rpx;
+        color: gainsboro;
+    }
+}
+
+.m-list {
+    display: flex;
+    justify-content: space-between;
+    margin: 10rpx;
+    .m-img {
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 6rpx;
+    }
+    .m-arts {
+        flex: 1;
+        margin-left: 20px;
+        .m-name {
+            font-size: 28rpx;
+        }
+        .m-ars {
+            font-size: 24rpx;
+            color: gray;
+        }
+    }
+    .iconfont {
+        font-size: 48rpx;
+    }
+}

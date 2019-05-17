@@ -1,0 +1,212 @@
+
+@import '../../../assets/css/mixin.less';
+@import '../../../assets/css/theme.less';
+
+.shop-row {
+  padding: 30px 0;
+  background-color: @fill-body;
+  position: relative;
+  transform: translate3d(0,0,0);
+  .bottom-line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+  }
+  .info-wrapper {
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    .img {
+      flex: 0 0 130px;
+      height: 130px;
+      box-sizing: border-box;
+      position: relative;
+      font-size: 0px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .desc {
+        width: 130px;
+        height: 27px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: @badge-color-open;
+        overflow: hidden;
+        &::after {
+          position: absolute;
+          top: 2px;
+          left: 50%;
+          content: attr(content) !important;
+          text-align: center;
+          color: #fff;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          transform: scale(.7) translateX(-50%);
+          transform-origin: 0;
+          white-space: nowrap;
+        }
+      }
+    }
+    .describe {
+      flex: 1;
+      padding-left: 20px;
+      .name {
+        font-size: @font-size-medium;
+        font-weight: 500;
+        height: 42px;
+        line-height: 42px;
+        color: @color-title;
+        .no-wrap;
+      }
+      .rate-wrapper {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .rate {
+          flex: 0 0 110px;
+          width: 110px;
+          height: 20px;
+          font-size: @font-size-small;
+          .rate-style {
+            transform: scale(.8);
+            transform-origin: 0 0;
+          }
+        }
+        .text {
+          margin-right: 8px;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          color: @color-base;
+        }
+        .delivery {
+          position: absolute;
+          width: 84px;
+          height: 26px;
+          right: 0;
+          top: 2px;
+          background-image: linear-gradient(90deg, @primary-color, @primary-color-light);
+        }
+      }
+
+      .price-info {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .delivery, .address {
+          span {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 0;
+          }
+          .line {
+            width: 1px;
+            height: 26px;
+            margin: 0 10px;
+          }
+          .text {
+            line-height: 40px;
+            font-size: @font-size-small;
+            font-weight: @font-weight-small;
+            color: @color-base;
+          }
+        }
+      }
+
+      .koubei {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 34px;
+        margin-top: 10px;
+        .img {
+          flex: 0 0 24px;
+          width: 24px;
+          height: 24px;
+          margin-right: 10px;
+          img {
+            width: 100%;
+          }
+        }
+        span {
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+        }
+      }
+
+      .dash-line {
+        display: block;
+        margin-top: 20px;
+        width: 100%;
+        height: 1px;
+      }
+
+      .activities {
+        display: flex;
+        margin-top: 20px;
+        .item-wrapper {
+          flex: 1;
+          width: 0;
+          .item {
+            display: flex;
+            align-items: center;
+            height: 36px;
+            font-size: 0;
+            .icon {
+              position: relative;
+              min-width: 32px;
+              height: 32px;
+              border-radius: 4px;
+              margin-right: 10px;
+            }
+            .tips {
+              font-weight: @font-weight-small;
+              font-size: @font-size-small;
+              color: @color-base;
+              transform-origin: 0;
+              transform: scale(.9);
+              .no-wrap;
+            }
+          }
+        }
+        .active-wrapper {
+          flex: 0 0 120px;
+          width: 120px;
+          line-height: 36px;
+          text-align: right;
+          font-size: 0;
+          .text {
+            vertical-align: middle;
+            display: inline-block;
+            font-weight: @font-weight-small;
+            font-size: @font-size-small;
+            color: @color-base;
+            margin-right: 6px;
+            transform-origin: 0;
+            transform: scale(.9);
+          }
+          .down {
+            vertical-align: middle;
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            fill: @color-base;
+            transition: all .3s ease;
+            &.active {
+              transform-origin: center;
+              transform: rotate(180deg)
+            }
+          }
+        }
+      }
+    }
+  }
+}

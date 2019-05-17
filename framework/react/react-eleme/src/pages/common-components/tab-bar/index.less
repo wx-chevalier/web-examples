@@ -1,0 +1,55 @@
+
+@import '../../../assets/css/mixin.less';
+@import '../../../assets/css/theme.less';
+
+.root {
+  position: fixed;
+  .position-full;
+  overflow: hidden;
+  z-index: 1;
+  background-color: @fill-body;
+  padding-bottom: @tab-height;
+  padding-bottom: calc(@tab-height + constant(safe-area-inset-bottom));
+  padding-bottom: calc(@tab-height + env(safe-area-inset-bottom));
+}
+
+.tab-wrapper {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  height: @tab-height;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  background-color: @tab-theme;
+  box-shadow: 0 -0.5px 2px rgba(0,0,0,.1);
+  .flex-center;
+  .item {
+    flex: 1;
+    flex-direction: column;
+    .flex-center;
+    .icon {
+      width: 44px;
+      height: 44px;
+      fill: @color-base;
+      &.scale {
+        transform: scale(1.67);
+        transform-origin: center;
+      }
+    }
+    .text {
+      font-weight: @font-weight-small;
+      font-size: @font-size-small-s;
+      color: @color-base;
+      margin-top: 8px;
+    }
+    &.active {
+      .icon {
+        fill: @primary-color;
+      }
+      .text {
+        color: @primary-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+
+@import '../../../assets/css/mixin.less';
+@import '../../../assets/css/theme.less';
+
+.order-row {
+  background-color: @fill-body;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 28px 0 0 30px;
+
+  .line {
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+  }
+
+  .order-body {
+    display: flex;
+    .shop-img {
+      flex: 0 0 64px;
+      width: 64px;
+      margin-right: 24px;
+      img {
+        width: 100%;
+      }
+    }
+    .info-wrapper {
+      flex: 1;
+      .shop-info {
+        display: flex;
+        height: 48px;
+        box-sizing: border-box;
+        padding-right: 30px;
+        align-items: center;
+        .shop {
+          flex: 1;
+          font-size: 0;
+          .name {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 300px;
+            .no-wrap;
+            font-size: @font-size-medium-x;
+            color: @color-title;
+          }
+          .icon {
+            display: inline-block;
+            vertical-align: middle;
+            color: @color-base;
+            font-size: @font-size-small-s;
+          }
+        }
+        .status {
+          flex: 0 0 260px;
+          width: 260px;
+          .no-wrap;
+          text-align: right;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          color: @color-title;
+        }
+      }
+      .time {
+        margin: 8px 0 0;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: @color-base;
+        transform: scale(.8);
+        transform-origin: 0;
+      }
+
+      .order-detail {
+        display: flex;
+        height: 80px;
+        line-height: 80px;
+        padding-right: 30px;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: space-between;
+        .desc {
+          flex: 1;
+          width: 0;
+          .no-wrap;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          color: @color-base;
+          margin-right: 40px;
+        }
+        .price {
+          font-size: @font-size-small;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .order-footer {
+    display: flex;
+    height: 100px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-end;
+    .more {
+      padding: 0;
+      display: block;
+      background-color: #fff;
+      border-radius: 4px;
+      outline: none;
+      border: none;
+      width: 146px;
+      height: 60px;
+      line-height: 60px;
+      font-size: @font-size-small;
+      font-weight: @font-weight-small;
+      border: 1px solid @primary-color-light;
+      color: @primary-color;
+    }
+  }
+}

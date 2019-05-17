@@ -1,0 +1,66 @@
+.my-music{
+    font-size:28rpx;
+    .user-info{
+        display: flex;
+        align-items: center;
+        margin:0 20rpx;
+        padding:20rpx;
+        border-bottom-left-radius:20rpx;
+        border-bottom-right-radius:20rpx;
+        box-shadow:0 8rpx 10rpx rgba(0,0,0,.1);
+        .user-avator{
+            width:100rpx;
+            height:100rpx;
+            border-radius: 50%;
+        }
+        .user-name{
+            margin-left:10rpx;
+            flex-grow:1;
+        }
+        .open-vip{
+            color:red;
+            border:1px solid currentColor;
+            height: 46rpx;
+            line-height: 46rpx;
+            border-radius:46rpx;
+            padding:4rpx 20rpx;
+        }
+    }
+    .lists{
+        margin-top:40rpx;
+        .music-sub-title {
+            background-color: gainsboro;
+            font-size: 24rpx;
+            padding: 4rpx 10rpx;
+            display: flex;
+            justify-content: space-between;
+        }
+        .list-music {
+            display: flex;
+            padding: 10rpx;
+            .list-img {
+                width: 100rpx;
+                height: 100rpx;
+                border-radius: 6rpx;
+            }
+            .list-info {
+                margin-left: 20rpx;
+                .list-name {
+                    font-size: 24rpx;
+                    margin-top: 10rpx;
+                }
+                .list-count {
+                    font-size: 20rpx;
+                    color: gray;
+                    margin: 10rpx 0;
+                }
+            }
+        }
+    }
+    .user-list{
+        margin-top:30rpx;
+        .iconfont{
+            color:red;
+        }
+    }
+}

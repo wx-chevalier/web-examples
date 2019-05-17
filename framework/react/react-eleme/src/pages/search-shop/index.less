@@ -1,0 +1,93 @@
+
+
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+.search {
+  position: fixed;
+  .position-full;
+  background-color: @fill-body;
+
+  .search-bar {
+    height: 88px;
+    box-sizing: border-box;
+    padding: 20px 30px 4px 30px;
+    display: flex;
+    align-items: center;
+    .input {
+      flex: 1;
+      box-sizing: border-box;
+      border-radius: 4px;
+      overflow: hidden;
+      background-color: #f5f5f5;
+      border: 1px solid @border-color;
+      height: 58px;
+      line-height: 58px;
+      box-sizing: border-box;
+      padding: 0 20px 0 60px;
+      position: relative;
+      .icon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: @font-size-medium;
+        color: @color-base;
+      }
+      input {
+        display: block;
+        background-color: transparent;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: @color-base;
+        outline: none;
+        width: 100%;
+        line-height: 58px;
+      }
+    }
+    .btn {
+      flex: 0 0 120px;
+      width: 120px;
+      height: 58px;
+      margin-left: 20px;
+      background-color: @primary-color-light;
+      color: #fff;
+      font-size: @font-size-medium;
+      line-height: 58px;
+      border-radius: 4px;
+      outline: none;
+      border: none;
+    }
+  }
+
+  .hot {
+    padding: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    .title {
+      font-size: @font-size-medium;
+      color: @color-title;
+    }
+    .badge {
+      display: inline-block;
+      padding: 15px 20px;
+      background-color: @fill-body-darken;
+      font-size: @font-size-medium;
+      font-weight: @font-weight-small;
+      line-height: 40px;
+      color: @color-base;
+      border-radius: 4px;
+      margin-top: 20px;
+      margin-right: 20px;
+    }
+  }
+}
+
+.shops {
+  position: fixed;
+  top: @bar-height + 88px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: @fill-body;
+}

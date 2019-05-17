@@ -1,0 +1,63 @@
+.cmt-main {
+    padding: 5Px 10Px;
+    font-size: 24rpx;
+    .info-main{
+        display: flex;
+        justify-content: space-between;
+        .info-img{
+            width: 140rpx;
+            height: 140rpx;
+            border-radius: 3Px;
+            margin-left: 10rpx;
+        }
+        .info-right{
+            flex-grow: 1;
+            margin-left:10Px;
+            padding:10Px;
+            .info-name{
+                font-size: 32rpx;
+            }
+            .info-username{
+                margin-top: 5Px;
+                color:lightseagreen;
+            }
+        }
+    }
+    .cmt-type{
+        padding: 5px 0;
+        margin-bottom:5px;
+        background-color: #eeeeee;
+        font-size:20rpx;
+    }
+    .cmt-list {
+        display: flex;
+        justify-content: space-between;
+        padding: 5Px 0;
+        .cmt-avator{
+            width:70rpx;
+            height:70rpx;
+            border-radius: 100%;
+        }
+        .cmt-top{
+            flex-grow: 1;
+            margin-left:20rpx;
+            border-bottom: 1px solid gainsboro;
+            padding-bottom: 10rpx;
+            .cmt-user{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom:10rpx;
+                .cmt-time{
+                    font-size: 20rpx;
+                    color:gray;
+                }
+                .cmt-like{
+                    color:gray;
+                    .iconfont{
+                        font-size:28rpx;
+                    }
+                }
+            }
+        }
+    }
+}

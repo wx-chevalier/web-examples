@@ -1,0 +1,40 @@
+
+
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+.root {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  .scroll {
+    z-index: 1;
+    overflow: visible;
+  }
+  .entry-wrapper {
+    background-color: @fill-body;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    .item {
+      width: 20vw;
+      margin-top: 22px;
+      .flex-center;
+      flex-direction: column;
+      .img {
+        width: 90px;
+        height: 90px;
+        img {
+          width: 100%;
+        }
+      }
+      .name {
+        margin-top: 10px;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: @color-base;
+      }
+    }
+  }
+}

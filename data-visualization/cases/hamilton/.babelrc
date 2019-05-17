@@ -1,0 +1,39 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "useBuiltIns": "usage"
+      }
+    ],
+    "stage-1",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "presets": ["react-optimize"],
+      "plugins": [
+        [
+          "transform-react-remove-prop-types",
+          {
+            "removeImport": true
+          }
+        ]
+      ]
+    },
+    "test": {
+      "presets": [["env"], "react"]
+    }
+  }
+}

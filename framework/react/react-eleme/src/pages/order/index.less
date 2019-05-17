@@ -1,0 +1,24 @@
+
+
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+.order {
+  width: 100%;
+  height: 100%;
+  background-color: @fill-body-darken;
+  position: relative;
+  z-index: 1;
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  .scroll {
+    overflow: visible;
+    top: @bar-height;
+    z-index: 1;
+    background-color: @fill-body-darken;
+  }
+}

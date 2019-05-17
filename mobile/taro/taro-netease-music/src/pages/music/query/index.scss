@@ -1,0 +1,14 @@
+.hots{
+    display: flex;
+    flex-wrap:wrap;
+    font-size:26rpx;
+    margin-top:20rpx;
+    text{
+        padding: 4rpx 20rpx;
+        height:60rpx;
+        line-height: 60rpx;
+        border-radius: 40rpx;
+        margin:0 10rpx 10rpx;
+        background: gainsboro;
+    }
+}

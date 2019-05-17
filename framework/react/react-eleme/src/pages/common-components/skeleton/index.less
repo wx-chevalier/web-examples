@@ -1,0 +1,110 @@
+
+
+@import '../../../assets/css/mixin.less';
+@import '../../../assets/css/theme.less';
+
+.entry {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  .item {
+    width: 20vw;
+    margin-top: 22px;
+    .flex-center;
+    flex-direction: column;
+    .circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 100%;
+      background-color: @skeleton-color;
+    }
+    .desc {
+      width: 50px;
+      height: 20px;
+      margin-top: 10px;
+      background-color: @skeleton-color;
+    }
+  }
+}
+
+
+.row {
+  display: flex;
+  padding: 30px 20px;
+  .left {
+    flex: 0 0 130px;
+    width: 130px;
+    height: 130px;
+    background-color: @skeleton-color;
+    margin-right: 20px;
+  }
+  .right {
+    flex: 1;
+    .desc {
+      height: 20px;
+      background-image: linear-gradient(
+                          to right,
+                          @skeleton-color 8%,
+                          #eee 18%,
+                          @skeleton-color 33%
+                        );
+      margin: 10px 0;
+      animation: progress 2s linear infinite;
+    }
+    .desc:nth-child(1) {
+      width: 90%;
+    }
+    .desc:nth-child(2) {
+      width: 90%;
+    }
+    .desc:nth-child(3) {
+      width: 80%
+    }
+    .desc:nth-child(4) {
+      width: 70%
+    }
+
+  }
+}
+
+.recommend {
+  display: inline-block;
+  border: 1px solid @border-color;
+  margin: 1vw;
+  width: 46vw;
+  background-color: @fill-body;
+  transform: translate3d(0,0,0);
+  .pic {
+    width: 100%;
+    height: 46vw;
+    background-color: @skeleton-color;
+  }
+  .desc {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px 8px 20px;
+    .placeholder {
+      width: 100%;
+      height: 20px;
+      background-image: linear-gradient(
+                          to right,
+                          @skeleton-color 8%,
+                          #eee 18%,
+                          @skeleton-color 33%
+                        );
+      margin: 10px 0;
+      animation: progress 3s linear infinite;
+    }
+    .placeholder:nth-child(2) {
+      width: 90%;
+    }
+    .placeholder:nth-child(3) {
+      width: 80%;
+    }
+  }
+}
+
+@keyframes progress{
+  from { background-position: -400px 0 }
+  to { background-position: 400px 0 }
+}

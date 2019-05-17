@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>An Interactive Visualization of Every Line in Hamilton</title>
+    <meta property="og:title" content="An Interactive Visualization of Every Line in Hamilton">
+    <meta property="og:description" content="When I first heard of Hamilton, I was doubtful...but from the moment I sat down to listen the whole way through, I was done for...">
+    <meta property="og:site_name" content="The Pudding">
+    <meta property="og:url" content="https://pudding.cool/2017/03/index.html">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://pudding.cool/2017/03/hamilton/meta.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1245">
+    <meta property="og:image:height" content="708">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="https://pudding.cool">
+    <meta name="twitter:creator" content="@sxywu">
+    <meta name="twitter:title" content="An Interactive Visualization of Every Line in Hamilton">
+    <meta name="twitter:description" content="Analyzing 21,000 words for relational and thematic insights">
+    <meta name="twitter:image:src" content="https://pudding.cool/2017/03/hamilton/meta.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/kennethormandy/utility-opentype/master/css/utility-opentype.min.css" rel="stylesheet">
+
+    <style>
+      header {
+        position: absolute;
+        top: 1.5em;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        zoom:1;
+        z-index: 100;
+      }
+
+      header .logo {
+        display: inline-block;
+        height: 36px
+      }
+
+      header .logo .logo__part {
+        display: inline-block;
+        float: left;
+        line-height: 36px;
+        padding: 0 2px;
+        margin: 0;
+        font-size: 10px;
+        font-weight: 400;
+        color: grey
+      }
+
+      header .logo .logo__polygraph {
+        width: 126px;
+        height: 36px;
+        fill: #2a2a2a
+      }
+    </style>
+
+    <!-- analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-90567923-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+  </head>
+
+  <header>
+
+    <a href="https://pudding.cool" target="_blank" class="logo">
+			<svg xmlns="http://www.w3.org/2000/svg" width="296.91" height="47.52" viewBox="19.42 11.31 296.911 47.518" aria-labelledby="logo-title" role="img">
+      	<title id="logo-title">The Pudding</title>
+        	<path d="M47.77 56.8c-2.5-.2-15.5-.2-18 0v-.44l2.05-.3c1.8-.25 2.5-1.35 2.5-9.35V15.1h-1.9c-3.6 0-5.5 1.75-9.7 9.4l-2.8 5.25h-.5c.3-3.2 1-13.24 1.1-16.6l.1-.04c1.8.2 9.3.5 11.1.5h17.5c2.3 0 11.1-1.4 13.2-2.1l.1.1v15.8h.27l1-1.1c2.9-3.3 5.3-4.4 8-4.4 4.4 0 7 2.4 7 7.5v11.5c0 7.7.7 8.9 2.6 9.2l1.1.2v.5c-2.4-.2-12.4-.2-14.8 0v-.4l.5-.1c1.6-.4 2.3-1.3 2.3-9.2v-11c0-2.5-.9-3.4-3.1-3.4-.8 0-1.8.2-3.2.7l-1.8.6v12.9c0 7.9.6 8.8 2.2 9.3l.56.2v.5c-2.38-.2-12.4-.2-14.78 0v-.4l1.03-.2c1.97-.3 2.7-1.5 2.7-9.2V21c-2.43-4.6-5.13-5.75-8.63-5.75h-2.1v31.6c0 8 .6 9.07 2.4 9.37l1.9.3v.46l-.1-.18zm3.25-.64h55.7v.65H51v-.6zm45-5.1c-8.5 0-12.3-4.55-12.3-13.8v-1.7c0-8.86 4.3-13.76 13.28-13.76 7.66 0 11.1 3.26 11.1 12.36v1.8H92.97v3.2c0 7.1 1.9 9 6 9 2.45 0 5-1.25 7.4-2.9l2-1.35.1 1.4-1.6 1.5c-2.95 2.7-6.75 4.4-10.85 4.4v-.1zm-3-16.6h7.4v-2.7c0-6.75-1-7.95-3.7-7.95-2.6 0-3.7 1.2-3.7 9.3v1.4zm35.2 22.35c-2.5-.2-15.7-.2-18.2 0v-.4l1.9-.3c1.8-.3 2.4-1.3 2.4-9.3V23.5c0-8.04-.6-9.14-2.4-9.4l-1.8-.24v-.45c1.36.1 7.8.2 9 .2 1.46 0 8.06-.1 9.3-.1 10.36 0 14.96 5.1 14.96 12.8v1.5c0 7.8-4.55 12.8-14.9 12.8h-2.2V39c.55.04 1.1.04 1.5.04 3.8 0 5.35-2.9 5.35-10.44v-3.3c0-7.54-1.54-10.44-5.44-10.44-.4 0-2.6 0-4.1.05v31.8c0 8 .7 9.1 2.5 9.4l2.3.3v.5l-.3-.1zm3.3-.6H282.3v.7H131.5v-.7zm22.6-5c-4.4 0-7-2.4-7-7.5V33.2c0-7-.4-8.56-1.8-9l-.6-.2v-.4c1.8-.2 8.4-1.1 10.7-1.66v20.9c0 2.5.9 3.4 3.1 3.4.74 0 1.7-.24 3.1-.64l1.84-.5V33.2c0-6.9-.8-8.2-2.7-8.86l-1.1-.34v-.4c2.1-.2 9.7-1.1 12-1.66v17.9c0 6.86.75 8.2 2.65 8.8l1.1.36v.45c-2.1.16-9.2 1.06-11.5 1.66l-.3-5.4h-.2l-1 1.1c-2.9 3.3-5.3 4.4-8.1 4.4zm32 0c-5.4 0-9-4.4-9-13.6v-2.2c0-9.5 4.3-13.6 11.1-13.6 2.4 0 4.24.5 6.14 2.2l.8.7h.24v-2.6c0-6.5-.76-7.7-2.66-8.3l-1.1-.3v-.4c2.14-.2 9.44-1.1 11.74-1.6v28.2c0 7 .8 8.5 2.7 9.1l1.05.4v.5c-2.1.2-8.95 1.1-11.25 1.7l-.35-5.4h-.27l-1 1.1c-2.95 3.3-5.4 4.4-8.1 4.4l-.05-.2zm7.7-5.6l1.6-.5V33.9c0-6.96-1.36-8.8-4.6-8.8-3.3 0-4.66 2.6-4.66 9.54v3.7c0 6.2 1.44 7.9 4.5 7.9.84 0 1.84-.2 3.2-.64h-.05zm24.1 5.6c-5.46 0-9-4.4-9-13.6v-2.2c0-9.5 4.2-13.6 11-13.6 2.44 0 4.2.6 6.14 2.2l.84.7h.24v-2.6c0-6.5-.8-7.6-2.7-8.3l-1.06-.3v-.4c2.1-.2 9.45-1.1 11.75-1.6v28.2c0 7 .75 8.5 2.65 9.1l1.1.4v.5c-2.15.2-9 1.1-11.3 1.7l-.36-5.4h-.27l-1 1.1c-2.95 3.3-5.35 4.4-8.1 4.4l.06-.2zm7.64-5.6l1.6-.5V33.9c0-6.96-1.36-8.8-4.66-8.8-3.26 0-4.6 2.6-4.6 9.54v3.7c0 6.2 1.4 7.9 4.44 7.9.84 0 1.84-.2 3.2-.64h.02zm28.1 5.1c-2.16-.2-11.56-.2-13.76 0v-.4l.54-.1c1.6-.4 2.2-1.3 2.2-9.2v-7.7c0-6.9-.76-8.2-2.66-8.8l-1.1-.3v-.4c2.15-.2 9.7-1.1 12-1.6V41c0 7.9.7 8.8 2.24 9.27l.5.14v.5l.03-.1zm-12.1-35.3c0-2.6 1.6-4.1 5.1-4.1 3.54 0 5.1 1.5 5.1 4.1 0 2.6-1.56 4.1-5.1 4.1-3.5 0-5.1-1.5-5.1-4.1zm45.13 35.3c-2.4-.2-12.4-.2-14.8 0v-.4l.5-.1c1.5-.4 2.2-1.3 2.2-9.2V30.1c0-2.5-.9-3.4-3.1-3.4-.8 0-1.8.2-3.2.66l-1.8.55v12.9c0 7.9.6 8.8 2.2 9.3l.53.2v.5c-2.35-.2-12.4-.2-14.75 0v-.4l1.07-.2c1.92-.3 2.7-1.5 2.7-9.2v-7.7c0-6.9-.8-8.2-2.7-8.8l-1.1-.3v-.4c2.1-.2 9.2-1.1 11.5-1.6l.33 5.4h.28l1-1.1c2.94-3.2 5.4-4.4 8.1-4.4 4.44 0 7.04 2.4 7.04 7.5V41c0 7.7.77 8.9 2.67 9.2l1.1.2v.5l.1-.15zm15.6 7.9h-4.7c-10.5 0-12.3-1.3-12.3-3.4V55c0-1.85 2.5-4.35 7.3-4.35h.2V54c0 1.8 1 2.6 4.7 2.6h4.6c5.02 0 6.82-1.3 6.82-3.2V53c0-1.8-.85-3.2-3.5-3.2h-13.3c-2.75 0-4.2-1.3-4.2-3.7v-.16c0-1.94 1.2-3.54 4.75-5.4l3-1.54v-.5c-5.64-1-8.2-3.46-8.2-7.86v-.24c0-5.55 4.16-8.55 13.1-8.55 2.46 0 4.46.26 6.46.8l.16-.34c1.7-3.4 3.93-5 8-5h.9v5.4h-5.6c-.5 0-1.9.1-2.27.2l-.36.1v.5c3.8 1.1 5.76 3.6 5.76 7.1v.3c0 5.6-4.13 8.6-13.03 8.6-1.3 0-2.5-.1-3.7-.2l-.9 1.1c-.85 1-1.05 1.5-1.05 1.8 0 .4.2.5.6.5h11.62c5.8 0 8.9 3 8.9 7.4v.4c0 5.28-5.9 8.5-14 8.5l.1-.2zm2.5-27.7v-.7c0-4.7-.9-6.3-4.1-6.3-3.3 0-4.1 1.6-4.1 6.3v.8c0 4.7.9 6.3 4.1 6.3 3.2 0 4-1.6 4-6.3v-.1z"></path>
+      </svg>
+  	</a>
+
+  </header>
+
+  <body>
+    <div id="root"></div>
+    <div class="thankyou">
+      <h1>💖</h1>
+      Thank you to <strong>Matt+Pudding</strong> for letting me work on this labor of love,
+      <strong>to Taia</strong>, my ultimate Hamilton expert, for all the feedback and encouragement,
+      and <strong>to Alex</strong>, my Eliza, who teaches me to <em>look around</em> and reminds me of <em>what would be enough</em>.
+
+      <p>
+        Made with 💕 by <a href='http://twitter.com/sxywu' target='_new'>Shirley Wu</a> for <a href='http://polygraph.cool' target='_new'>Pudding</a> and <a href='http://www.datasketch.es/' target='_new'>Datasketch|es</a>.
+      </p>
+    </div>
+
+
+    <script src='https://pudding.cool/assets/scripts/pudding-footer.js' async></script>
+  </body>
+</html>

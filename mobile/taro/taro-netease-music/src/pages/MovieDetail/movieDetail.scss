@@ -1,0 +1,113 @@
+#detail,
+.rightView,
+.movieInfo {
+    display: flex;
+}
+
+#detail,
+.movieInfo {
+    flex-direction: column;
+}
+
+.movieInfo {
+    font-size: 28rpx;
+    color: gray;
+    .movieRate{
+        .totalComt {
+            float: right;
+            margin-right: 20rpx;
+        }
+    }
+
+}
+
+.movieImage {
+    width: 220rpx;
+    height: 300rpx;
+}
+
+#detail {
+    font-size: 24rpx;
+    .title {
+        font-size: 35rpx
+    }
+    .rightView {
+        image {
+            flex-grow: 2;
+        }
+    }
+    .views {
+        margin: 30rpx 0;
+    }
+    .grayText {
+        font-size: 28rpx;
+        color: gray;
+        display: block;
+        margin-bottom: 15rpx;
+    }
+    .tag {
+        border: 1rpx solid green;
+        border-radius: 50rpx;
+        background-color: #67c23a66;
+        display: inline-block;
+        padding: 5rpx 10rpx;
+        font-size: 22rpx;
+        margin: 3rpx 10rpx;
+    }
+    .moviePeople {
+        display: flex;
+        overflow-x: auto;
+        .peoS {
+            text-align: center;
+            margin-right: 10rpx;
+            image {
+                width: 200rpx;
+                height: 220rpx;
+            }
+        }
+    }
+    .videoView {
+        display: flex;
+        overflow-x: auto;
+        width: 100%;
+        .videoCont {
+            text-align: center;
+            .videos {
+                width: 450rpx;
+                height: 240rpx;
+                margin-right: 10rpx
+            }
+        }
+    }
+    .shortComt {
+        display: flex;
+        margin: 20rpx 0;
+        .comentView {
+            padding: 0;
+            border:none;
+        }
+    }
+    .comentImg {
+        width: 80rpx;
+        height: 80rpx;
+        border-radius: 50%;
+        margin-right: 10rpx;
+    }
+    .comentView {
+        display: flex;
+        flex-direction: column;
+        padding: 20rpx 0;
+        border-bottom:1px solid gray;
+        .comentTitle {
+            font-size: 30rpx;
+        }
+        .comentPeople {
+            font-size: 24rpx;
+            margin: 10rpx 0 5rpx 0;
+        }
+        .comentCont {
+            font-size: 24rpx;
+            color: gray;
+        }
+    }
+}

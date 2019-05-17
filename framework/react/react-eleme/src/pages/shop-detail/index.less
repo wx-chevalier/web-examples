@@ -1,0 +1,230 @@
+
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+@header-height: 424px;                // 商家信息
+@nav-header: @bar-height - 11px;      // 头部导航
+@tab-height: 80px;                    // tab高度
+// @shop-cart-height: 120px;
+
+
+.shop {
+  background: @fill-body;
+  position: fixed;
+  .position-full;
+  z-index: 1;
+  .scroll {
+    z-index: 1;
+  }
+  /*********导航条*************/
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: @nav-header;
+    .icon {
+      float: left;
+      width: @nav-header;
+      height: @nav-header;
+      font-size: @font-size-large-x;
+      color: #fff;
+      text-align: center;
+      line-height: @nav-header;
+    }
+    .content {
+      position: absolute;
+      .position-full;
+      z-index: -1;
+      text-align: center;
+      background-image: linear-gradient(-90deg, @primary-color, @primary-color-light);
+      line-height: @nav-header;
+      font-size: @font-size-medium-x;
+      color: #fff;
+      transform: translateY(-100%);
+      will-change: transform;
+    }
+  }
+  /*********商家信息*************/
+  .header {
+    width: 100%;
+    height: @header-height;
+    background-color: @fill-body;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    .mask {
+      position: absolute;
+      .position-full;
+      background-color: rgba(0,0,0,.6);
+      z-index: 1;
+    }
+    .imgBg {
+      position: absolute;
+      .position-full;
+      z-index: 1;
+      filter: blur(0);
+      transform: translateZ(0);
+      .img {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+    .avatar {
+      transform: translateZ(0);
+      position: relative;
+      z-index: 2;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto;
+      margin-top: 80px;
+      border-radius: 4px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .info {
+      transform: translateZ(0);
+      width: 100%;
+      box-sizing: border-box;
+      padding: 30px 30px 0 30px;
+      position: relative;
+      z-index: 2;
+      .name {
+        font-size: 0;
+        text-align: center;
+        .text, .icon {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .text {
+          max-width: 300px;
+          color: #fff;
+          font-size: @font-size-large;
+          .no-wrap;
+          margin-right: 10px;
+        }
+        .icon {
+          font-size: @font-size-large;
+          color: #fff;
+        }
+      }
+      .desc {
+        text-align: center;
+        font-size: 0;
+        margin-top: 14px;
+        span {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          color: #fff;
+          margin-right: 20px;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      .promotion {
+        text-align: center;
+        margin-top: 14px;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: #fff;
+        .no-wrap;
+      }
+    }
+    .activities {
+      margin-top: 10px;
+      width: 100%;
+      height: 48px;
+      box-sizing: border-box;
+      padding: 0 120px;
+      display: flex;
+      position: relative;
+      z-index: 2;
+      .flex-center;
+      .slide {
+        flex: 1;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        .item {
+          display: flex;
+          align-items: center;
+          height: 48px;
+          font-size: 0;
+          .icon {
+            position: relative;
+            min-width: 32px;
+            padding: 0 12px;
+            height: 32px;
+            border-radius: 4px;
+            margin-right: 10px;
+          }
+          .tips {
+            font-weight: @font-weight-small;
+            font-size: @font-size-small;
+            color: #fff;
+            height: 32px;
+            line-height: 32px;
+            transform-origin: 0;
+            transform: scale(.9);
+            .no-wrap;
+          }
+        }
+      }
+      .sum {
+        flex: 0 0 100px;
+        text-align: right;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        transform: scale(.8);
+        transform-origin: center;
+        color: #fff;
+      }
+    }
+  }
+  /*********标签*************/
+  .tab {
+    width: 100%;
+    height: @tab-height;
+    background-color:  @fill-body;
+    border-bottom: 1px solid @border-color;
+    will-change: transform;
+    display: flex;
+    .item {
+      flex: 1;
+      text-align: center;
+      line-height: @tab-height;
+      font-size: @font-size-medium;
+      font-weight: @font-weight-small;
+      color: @color-base;
+      &.active {
+        color: @primary-color-light;
+      }
+    }
+  }
+  /*********主体内容*************/
+  .body {
+    width: 100%;
+    height: calc(100vh - (@tab-height + @nav-header));
+    box-sizing: border-box;
+    background-color: @fill-body;
+    overflow: hidden;
+  }
+  .footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    height: @shop-cart-height;
+  }
+}

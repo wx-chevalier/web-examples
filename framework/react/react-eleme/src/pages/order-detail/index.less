@@ -1,0 +1,117 @@
+
+
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+.detail {
+  position: fixed;
+  z-index: 1;
+  .position-full;
+  background-color: @fill-body-darken;
+  .scroll {
+    top: @bar-height;
+    background-color: @fill-body-darken;
+    margin: 30px;
+    overflow: visible;
+    z-index: -1;
+    .content {
+      box-sizing: border-box;
+      padding: 0 20px;
+      box-shadow: 0 3px 5px rgba(0,0,0,.05);
+      background-color: @fill-body;
+      .item {
+        display: flex;
+        min-height: 88px;
+        align-items: center;
+        box-shadow: 0 1px 1px -1px @border-color;
+        .img {
+          flex: 0 0 40px;
+          height: 40px;
+          border-radius: 40px;
+          background-color: @fill-body-darken;
+          margin-right: 20px;
+          img {
+            width: 100%;
+            border-radius: 100%;
+          }
+        }
+        .text {
+          flex: 1;
+          width: 0;
+          .no-wrap;
+          font-size: @font-size-medium;
+          font-weight: @font-weight-small;
+          line-height: 40px;
+          color: @color-title;
+        }
+        .num,.price {
+          text-align: right;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          line-height: 40px;
+          color: @color-title;
+          &.red {
+            color: #ff5339;
+          }
+        }
+        .num {
+          flex: 0 0 80px;
+          width: 60px;
+        }
+        .price {
+          flex: 0 0 130px;
+          width: 100px;
+        }
+      }
+      .total {
+        text-align: right;
+        font-size: @font-size-large;
+        color: @color-base;
+        line-height: 100px;
+      }
+    }
+    .info {
+      margin-top: 30px;
+      box-shadow: 0 3px 5px rgba(0,0,0,.05);
+      background-color: @fill-body;
+      .title {
+        box-sizing: border-box;
+        padding: 0 30px;
+        box-shadow: 0 1px 1px -1px @border-color;
+        line-height: 88px;
+        font-size: @font-size-medium;
+        font-weight: @font-weight-small;
+        color: @color-title;
+      }
+      .desc {
+        box-sizing: border-box;
+        padding-left: 30px;
+        .item {
+          display: flex;
+          min-height: 68px;
+          padding: 10px 0;
+          align-items: center;
+          box-shadow: 0 1px 1px -1px @border-color;
+          .label {
+            flex: 0 0 130px;
+            width: 130px;
+            margin-right: 20px;
+            font-size: @font-size-small;
+            font-weight: @font-weight-small;
+            line-height: 40px;
+            color: @color-title;
+          }
+          .text {
+            flex: 1;
+            width: 0;
+            font-size: @font-size-small;
+            font-weight: @font-weight-small;
+            line-height: 40px;
+            color: @color-base;
+            .no-wrap;
+          }
+        }
+      }
+    }
+  }
+}

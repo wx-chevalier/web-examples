@@ -1,0 +1,25 @@
+
+
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+.place-order {
+  position: fixed;
+  .position-full;
+  z-index: 2;
+  background-color: @fill-body;
+  .content {
+    text-align: center;
+    img {
+      width: 300px;
+      height: 300px;
+      content: none !important;
+    }
+    p {
+      text-align: center;
+      font-weight: @font-weight-small;
+      color: @color-title;
+      margin: 20px;
+    }
+  }
+}

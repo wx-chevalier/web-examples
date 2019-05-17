@@ -1,0 +1,47 @@
+body {
+  background: rgba(241, 226, 215, 0.2);
+  background: #29363b;
+  overflow: hidden;
+}
+
+.atom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.electron {
+  position: absolute;
+  margin-left: -52px;
+  margin-top: -52px;
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 50% 0px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 99;
+}
+
+.atom-path-1 {
+  stroke: deeppink;
+}
+
+.atom-path-2 {
+  stroke: #ffe202;
+}
+
+.atom-path-3 {
+  stroke: cyan;
+}
+
+.atom-path-4 {
+  stroke: #49f2cc;
+}
+
+path[class^='orbit-'] {
+  stroke: rgba(255, 255, 255, 0.1);
+}

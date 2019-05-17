@@ -1,0 +1,84 @@
+
+@import '../../../assets/css/theme.less';
+@import '../../../assets/css/mixin.less';
+
+@search-height: 72px;
+
+.header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 28px;
+  background-image: linear-gradient(-90deg, @primary-color, @primary-color-light);
+  transition: all .3s ease;
+  .location {
+    width: 100%;
+    height: @bar-height;
+    font-size: 0;
+    transition: all .3s ease;
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      width: 42px;
+      height: 100%;
+      fill: #fff;
+      margin-right: 6px;
+    }
+    .address {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: @font-size-medium-x;
+      margin-top: 2px;
+      color: #fff;
+      max-width: 330px;
+      margin-right: 16px;
+      .no-wrap;
+    }
+    .down {
+      display: inline-block;
+      vertical-align: middle;
+      width: 16px;
+      height: 100%;
+      fill: #fff;
+    }
+  }
+  .search {
+    width: 100%;
+    height: @search-height;
+    line-height: @search-height;
+    margin-bottom: (@bar-height - @search-height) / 2;
+    background-color: @fill-body;
+    font-size: 0;
+    text-align: center;
+    transition: all .3s ease;
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      width: 32px;
+      height: 100%;
+      fill: @color-base;
+      margin-right: 6px;
+    }
+    .desc {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: @font-size-medium;
+      color: @color-base;
+      font-weight: @font-weight-small;
+    }
+  }
+
+  &.shrink {
+    .location {
+      height: 0;
+      opacity: 0;
+    }
+    .search {
+      margin-top: (@bar-height - @search-height) / 2;
+      border-radius: @bar-height;
+    }
+  }
+}

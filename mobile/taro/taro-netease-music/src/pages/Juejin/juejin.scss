@@ -1,0 +1,24 @@
+.post-info{
+    display:flex;
+    color:gray;
+    align-items:center;
+    font-size:14Px;
+    .post-create {
+        margin:0 10Px;
+    }
+}
+.post-title{
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    font-size:16Px;
+    margin: 5Px 0 10Px 0;
+}
+.post-icons{
+    .center-icon{
+        margin: 0 10Px;
+    }
+}
+.iconfont{
+    font-size: 28rpx;
+}

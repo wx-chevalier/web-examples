@@ -1,0 +1,51 @@
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+@btn-height: 100px;
+
+.address {
+  width: 100%;
+  height: 100%;
+  background-color: @fill-body-darken;
+  position: relative;
+  z-index: 1;
+  .list {
+    position: fixed;
+    top: @bar-height;
+    left: 0;
+    right: 0;
+    bottom: @btn-height;
+    .scroll {
+      background-color: @fill-body-darken;
+    }
+  }
+  .add {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: @btn-height;
+    line-height: @btn-height;
+    background-color: @fill-body;
+    box-sizing: border-box;
+    padding: 0;
+    border: none;
+    border-top: 1px solid @border-color;
+    font-size: 0;
+    color: @primary-color-light;
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: @font-size-large;
+      margin-right: 8px;
+      margin-top: -4px;
+    }
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: @font-size-medium-x;
+      font-weight: @font-weight-small;
+    }
+  }
+}

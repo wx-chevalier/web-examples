@@ -1,0 +1,16 @@
+#movieType {
+    commen {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center;
+    }
+    view {
+        width: 200rpx;
+        margin-left: 20rpx;
+        margin-bottom:20rpx;
+    }
+    image {
+        width: 200rpx;
+        height: 270rpx;
+    }
+}

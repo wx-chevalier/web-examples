@@ -1,0 +1,196 @@
+
+
+@import '../../../assets/css/theme.less';
+@import '../../../assets/css/mixin.less';
+
+@notice-height: 40px;
+.cart {
+  width: 100%;
+  height: @shop-cart-height;
+  box-sizing: border-box;
+  .notice {
+    width: 100%;
+    height: @notice-height;
+    line-height: @notice-height;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: @font-size-small;
+    font-weight: @font-weight-small;
+    color: @color-title;
+    background-color: #fffad6;
+  }
+  .body {
+    width: 100%;
+    height: 100%;
+    background-color: #505052;
+    display: flex;
+    .cart {
+      flex: 0 0 158px;
+      width: 158px;
+      height: 100%;
+      position: relative;
+      .icon-wrapper {
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -20px;
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        background-color: #363636;
+        border: 10px solid #444;
+        text-align: center;
+        line-height: 80px;
+        .icon {
+          color: #666669;
+          font-size: @font-size-large-x + 8;
+        }
+        &.active {
+          background-color: #318fe9;
+          .icon {
+            color: #fff;
+          }
+        }
+        .count {
+          height: 30px;
+          min-width: 30px;
+          line-height: 30px;
+          border-radius: 100%;
+          padding: 4px;
+          color: #fff;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          background-color: #f60;
+          position: absolute;
+          top: -14px;
+          right: -10px;
+        }
+      }
+    }
+    .content {
+      flex: 1;
+      width: 0;
+      height: 100%;
+      margin: 0 10px;
+      .price {
+        line-height: 40px;
+        margin: 10px 0 8px 0;
+        span {
+          font-size: @font-size-medium-x;
+          font-weight: @font-weight-small;
+          color: #fff;
+          margin-right: 10px;
+        }
+        .old {
+          font-size: @font-size-medium;
+          text-decoration: line-through;
+          opacity: .8;
+        }
+      }
+      .desc {
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: #999;
+      }
+    }
+    .button {
+      flex: 0 0 210px;
+      width: 210px;
+      height: 100%;
+      background-color: #676767;
+      line-height: @shop-cart-height - @notice-height;
+      text-align: center;
+      font-size: @font-size-medium;
+      color: #fff;
+      &.active {
+        background-color: #4cd964;
+      }
+    }
+  }
+
+  .cart-list {
+    position: fixed;
+    z-index: 3;
+    .position-full;
+    .mask {
+      position: absolute;
+      .position-full;
+      z-index: 2;
+      background-color: rgba(0,0,0,.5);
+    }
+    .content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      .header {
+        width: 100%;
+        height: 80px;
+        box-sizing: border-box;
+        padding: 0 30px;
+        background-color: #edeff1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+          border-left: 4px solid @primary-color;
+          font-size: @font-size-medium;
+          font-weight: @font-weight-small;
+          color: @color-base;
+          padding-left: 20px;
+          line-height: 34px;
+        }
+        .icon {
+          font-size: @font-size-medium-x;
+          color: @color-base;
+        }
+      }
+      .list {
+        box-sizing: border-box;
+        max-height: 500px;
+        overflow: scroll;
+        padding: 30px 0 30px 30px;
+        background-color: @fill-body;
+        .item {
+          height: 90px;
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          padding: 10px 30px 10px 0;
+          border-bottom: 1px solid @border-color;
+          &:last-child {
+            border-bottom: none;
+          }
+          .desc {
+            flex: 1;
+            width: 0;
+            .name, .attr {
+              font-size: @font-size-medium;
+              font-weight: @font-weight-small;
+              color: @color-title;
+              .no-wrap;
+            }
+            .attr {
+              font-size: @font-size-small;
+              color: @color-base;
+              line-height: 40px;
+            }
+          }
+          .price {
+            flex:  0 0 100px;
+            width: 100px;
+            text-align: right;
+            color: #f60;
+          }
+          .stepper {
+            flex: 0 0 180px;
+            width: 180px;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}

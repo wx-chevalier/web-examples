@@ -4,7 +4,7 @@
 
 # fe-boilerplate
 
-[fe-boilerplate](https://github.com/wxyyxc1992/fe-boilerplate) 是笔者对于日常工作中的基于 React/Vue.js 技术栈与实践的收集(\*部分模板修改自其他项目)与沉淀，dev-config/\* 与 package.json 构成了基础的脚手架，支持最新的开发流程与默认的生产环境优化。
+[fe-boilerplate](https://github.com/wxyyxc1992/fe-boilerplate) 是笔者对于日常工作中的基于 React/Vue.js 技术栈与实践的收集(部分模板修改自其他项目)与沉淀，`dev-config/` 与 package.json 构成了基础的脚手架，支持最新的开发流程与默认的生产环境优化。
 
 为了方便不同级别/熟练程度的开发者使用，笔者将模板尽可能地泛化为多个项目，包含了从入门级到生产环境，微前端等多个不同层次/复杂度的模板项目。其中，模板特性可能包括或不限于以下：
 

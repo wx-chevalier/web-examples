@@ -1,0 +1,20 @@
+
+@import '../../../assets/css/theme.less';
+
+.badge {
+  background-color: @badge-color-open;
+  overflow: hidden;
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: attr(content) !important;
+    text-align: center;
+    color: #fff;
+    font-size: @font-size-small;
+    font-weight: @font-weight-small;
+    transform: scale(.8) translate3D(-50%, -50%, 0);
+    transform-origin: 0 0;
+    white-space: nowrap;
+  }
+}

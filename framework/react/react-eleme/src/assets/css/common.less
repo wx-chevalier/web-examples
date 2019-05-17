@@ -1,0 +1,34 @@
+
+@import './theme.less';
+
+:global {
+  .hairline-h {
+    position: relative;
+    border: none;
+    &:after {
+      content: '' !important;
+      position: absolute;
+      left: 0;
+      background: @hairline-color;
+      width: 100%;
+      height: 1px;
+      transform: scaleY(0.5);
+      transform-origin: 0 0;
+    }
+  }
+
+  .hairline-v {
+    position: relative;
+    border: none;
+    &:after {
+      content: '' !important;
+      position: absolute;
+      left: 0;
+      background: @hairline-color;
+      height: 100%;
+      width: 1px;
+      transform: scaleX(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}

@@ -1,0 +1,123 @@
+@import '../../icon.scss';
+
+.at-list__item {
+    font-size: 26rpx !important;
+    padding: 15rpx 24rpx !important;
+}
+.at-list__item .item-content__info-note {
+    font-size: 20rpx !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.at-list__item-extra {
+    flex: 0 0 auto !important;
+    .iconfont{
+        font-size:28rpx;
+    }
+}
+.at-action-sheet-item{
+    text-align: left !important;
+    .iconfont{
+        font-size: 16Px;
+        color:red;
+        margin-right: 10Px;
+    }
+}
+.music-list {
+    font-size: 14Px;
+    
+    .list-top-main{
+        position: relative;
+    }
+    .list-bgimg{
+        position: absolute;
+        width:100%;
+        height:100%;
+        background-size:200%;
+        background-position:center;
+        filter:blur(7Px);
+        z-index:-1;
+    }
+    .list-info {
+        display: flex;
+        padding: 20rpx;
+        .list-img-count {
+            position: relative;
+            .list-img {
+                width: 120Px;
+                height: 120Px;
+                border-radius: 5Px;
+            }
+            .list-count-view{
+                position: absolute;
+                top:3Px;
+                right:5Px;
+                color:white;
+                font-size:24rpx;
+                .iconfont {
+                    font-size:24rpx;
+                }
+            }
+        }
+        .list-user {
+            flex-grow: 1;
+            padding-left:20rpx;
+            padding-top:20rpx;
+            color:white;
+            .list-name{
+                font-size: 34rpx;
+                font-weight: bold;
+            }
+            .list-user-info{
+                display: flex;
+                align-items: center;
+                margin-top:40rpx;
+                image{
+                    margin-right: 5Px;
+                }
+            }
+        }
+        .list-avator {
+            width: 30Px;
+            height: 30Px;
+            border-radius: 100%;
+        }
+    }
+    .list-action{
+        color:white;
+        font-size: 30rpx;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        view{
+            text-align: center;
+        }
+        .iconfont{
+            font-size: 34rpx;
+            margin-bottom:3Px;
+        }
+    }
+    .list-total-sub{
+        display:flex;
+        justify-content:space-between;
+        margin-top:5Px;
+        font-size : 30rpx;
+        background-color:white;
+        border-top-left-radius:15Px;
+        border-top-right-radius:15Px;
+        .iconfont{
+           font-size : 32rpx;
+        }
+        .list-total{
+            flex-grow: 1;
+        }
+        .list-sub{
+            background-color: red;
+            border-top-right-radius:15Px;
+        }
+        view{
+            padding:10Px 20Px;
+        }
+    }
+}

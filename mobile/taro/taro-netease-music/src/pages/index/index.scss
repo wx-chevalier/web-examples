@@ -1,0 +1,46 @@
+.userInfo {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    .userTitle {
+        height: 90rpx;
+        width: 90rpx;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+}
+
+$myBord:1px solid gray;
+.titleView {
+    display: flex;
+    justify-content: space-between;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.mainView {
+    overflow-x: hidden;
+    margin: 20rpx 0;
+}
+
+.typeItem {
+    display: inline-block;
+    padding: 20rpx;
+    width: 44%;
+    font-size: 26rpx;
+    color: green;
+    border-top: $myBord;
+    &:nth-child(odd) {
+        border-right: $myBord;
+    }
+    &:nth-last-of-type(2),
+    &:last-child {
+        border-bottom: $myBord;
+    }
+    .iconfont {
+        font-size: 28rpx;
+        color: gray;
+        float: right;
+        margin-top: 1px;
+    }
+}

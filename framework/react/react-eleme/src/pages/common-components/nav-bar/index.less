@@ -1,0 +1,35 @@
+
+
+@import '../../../assets/css/mixin.less';
+@import '../../../assets/css/theme.less';
+
+.nav {
+  width: 100%;
+  height: @bar-height;
+  background-image: linear-gradient(-90deg, @primary-color, @primary-color-light);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  .icon {
+    flex: 0 0 @bar-height;
+    width: @bar-height;
+    height: @bar-height;
+    display: flex;
+    .flex-center;
+    font-size: @font-size-large-x;
+    color: #fff;
+  }
+  .title {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: @bar-height;
+    line-height: @bar-height;
+    font-size: @font-size-medium-x;
+    transform: translateX(-50%);
+    color: #fff;
+    text-align: center;
+  }
+}

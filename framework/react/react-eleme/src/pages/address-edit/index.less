@@ -1,0 +1,113 @@
+
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+.badge {
+  display: inline-block;
+  width: 126px;
+  height: 54px;
+  line-height: 54px;
+  background-color: @fill-body;
+  border: 1px solid @border-color;
+  text-align: center;
+  font-size: @font-size-medium;
+  font-weight: @font-weight-small;
+  color: @color-title;
+  margin-right: 10px;
+  border-radius: 6px;
+  &.active {
+    border-color: @primary-color-light;
+    color: @primary-color-light;
+    background-color: #eef7ff;
+  }
+}
+
+.address {
+  width: 100%;
+  height: 100%;
+  background-color: @fill-body-darken;
+  position: relative;
+  z-index: 1;
+
+  .form {
+    width: 100%;
+    padding-left: 30px;
+    background-color: @fill-body;
+    box-sizing: border-box;
+    .item {
+      display: flex;
+      position: relative;
+      align-items: center;
+      .line {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+      }
+      .label {
+        align-self: flex-start;
+        flex: 0 0 140px;
+        width: 140px;
+        line-height: 38px;
+        padding: 28px 0;
+        font-size: @font-size-medium;
+        color: @color-title;
+      }
+      .control {
+        flex: 1;
+        width: 0;
+        position: relative;
+        .line {
+          position: static;
+          height: 1px;
+        }
+        .placeholder-color(#c4c4c4);
+        .input, .textarea {
+          margin: 28px 0;
+          width: 100%;
+          font-size: @font-size-medium;
+          font-weight: @font-weight-small;
+          color: @color-base;
+          line-height: 38px;
+          outline: none;
+        }
+        .textarea {
+          padding: 0;
+          margin: 28px 0;
+          resize: none;
+          border: none;
+        }
+        .tag-wrapper {
+          padding: 28px 0;
+        }
+      }
+
+      .icon {
+        margin: 0 20px;
+        flex: 0 0 40px;
+        width: 40px;
+        font-size: @font-size-large-x;
+        color: #999;
+      }
+    }
+  }
+
+  .btn {
+    margin: 0 auto;
+    display: block;
+    background-color: #4cd96f;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    width: 90%;
+    height: 84px;
+    line-height: 84px;
+    margin-top: 30px;
+    font-size: @font-size-medium-x;
+    font-weight: @font-weight-small;
+    color:#fff;
+  }
+}
+

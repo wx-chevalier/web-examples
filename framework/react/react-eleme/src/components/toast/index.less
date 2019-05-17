@@ -1,0 +1,76 @@
+
+
+@maskIndex: 1000;
+@noticeIndex: 1100;
+@toast-bg-color: rgba(0, 0, 0, .7);
+@font-size: 28px;
+@line-height: 34px;
+
+.mask {
+  position: fixed;
+  z-index: @maskIndex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.notification-container {
+  .notification-box {
+    .notice-container {
+      position: absolute;
+      z-index: @noticeIndex;
+      top: 30%;
+      left: 50%;
+      padding: 20px 30px;
+      max-width: 500px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      background-color: @toast-bg-color;
+      color: #fff;
+      font-size: @font-size;
+      line-height: @line-height;
+      text-align: center;
+      border-radius: 10px;
+
+      transition: all .3s;
+      transform: translate3D(-50%, -50%, 0) scale(1, 1);
+
+      animation: slideInFromBottom .3s linear;
+      &.leave {
+        transform: translate3D(-50%, -100%, 0);
+        opacity: 0;
+      }
+
+      .notice {
+        .icon {
+          width: 60px;
+          height: 60px;
+          fill: #fff;
+          margin-bottom: 12px;
+          &.loading {
+            animation: rotation 1s linear infinite;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 从底部滑入
+@keyframes slideInFromBottom {
+  0% {
+    transform: translate(-50%, 0%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}

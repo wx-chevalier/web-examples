@@ -1,0 +1,68 @@
+.itemOwner,
+.items,
+.itemInfo,
+.itemCont {
+    display: flex;
+}
+
+// .checkBtn {
+//     position: absolute;
+//     padding: 30rpx 20rpx;
+//     font-size: 24rpx;
+//     border-radius: 50%;
+//     bottom: 100rpx;
+//     right: 100rpx;
+//     background-color: rgba(160, 207, 255, 0.54);
+// }
+.itemsView {
+    margin-top: 20rpx;
+    .items {
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid;
+        border-radius: 10rpx;
+        margin-bottom: 30rpx;
+        padding: 10rpx;
+        height: 200rpx;
+        align-items: center;
+        box-shadow: 3rpx 0 5rpx #888888, 0 -3rpx 5rpx #888888, 0 3rpx 5rpx #888888, -3rpx 0 5rpx #888888;
+        .itemCont {
+            width: 100%;
+            .itemInfo {
+                flex-direction: column;
+                flex-grow: 1;
+                padding-right: 10rpx;
+                .itemDesc {
+                    font-size: 28rpx;
+                    height: 80rpx;
+                    margin-top: 15rpx;
+                    overflow: hidden;
+                }
+            }
+        }
+        .itemStars {
+            width:100%;
+            font-size:28rpx;
+            display: flex;
+            view{
+                margin-right: 20rpx;
+            }
+            .iconfont {
+                font-size:28rpx;
+            }
+        }
+        .itemOwner {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .owner {
+                font-size: 24rpx;
+            }
+            .ownerImg {
+                width: 150rpx;
+                border-radius: 10rpx;
+                height: 150rpx;
+            }
+        }
+    }
+}

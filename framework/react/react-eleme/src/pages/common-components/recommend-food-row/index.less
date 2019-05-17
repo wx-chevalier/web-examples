@@ -1,0 +1,105 @@
+
+@import '../../../assets/css/mixin.less';
+@import '../../../assets/css/theme.less';
+
+.row {
+  display: inline-block;
+  border: 1px solid @border-color;
+  margin: 1vw;
+  width: 46vw;
+  background-color: @fill-body;
+  transform: translate3d(0,0,0);
+  .pic {
+    width: 100%;
+    height: 46vw;
+    position: relative;
+    background-color: @fill-body-darken;
+    img {
+      width: 100%;
+      height: 46vw;
+      content: none !important;
+    }
+    .tip {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background-color: rgba(0,0,0,.7);
+      span {
+        display: inline-block;
+        line-height: 40px;
+        transform: scale(.8);
+        transform-origin: center;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: #fff;
+      }
+    }
+  }
+
+  .desc {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px 8px 20px;
+    background-color: @fill-body-darken;
+    .title {
+      .no-wrap;
+      font-size: @font-size-medium;
+      color: @color-title;
+      text-align: left;
+      line-height: 40px;
+      margin: 4px 0;
+    }
+    .sell {
+      .no-wrap;
+      font-size: @font-size-small;
+      font-weight: @font-weight-small;
+      color: @color-base;
+      text-align: left;
+      line-height: 30px;
+      transform: scale(.8);
+      transform-origin: 0 0;
+    }
+    .amount {
+      font-size: 0;
+      text-align: left;
+      margin: 4px 0 10px 0;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: @font-size-medium;
+        color: #ff6000;
+      }
+      .unit {
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        margin-right: 4px;
+      }
+    }
+
+    .shop {
+      font-size: 0;
+      text-align: left;
+      height: 40px;
+      line-height: 40px;
+      border-top: 1px dashed @border-color;
+      padding-top: 4px;
+      .icon, .name{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: @color-base;
+      }
+      .icon {
+        font-size: @font-size-large;
+      }
+      .name {
+        margin-left: 10px;
+        width: 260px;
+        .no-wrap;
+      }
+    }
+  }
+}

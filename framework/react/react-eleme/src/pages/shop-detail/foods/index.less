@@ -1,0 +1,217 @@
+
+
+@import '../../../assets/css/theme.less';
+@import '../../../assets/css/mixin.less';
+
+.line {
+  width: 100%;
+  height: 1px;
+}
+
+.food-wrapper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-bottom:  @shop-cart-height;
+  display: flex;
+  .menu {
+    flex: 0 0 160px;
+    width: 160px;
+    height: 100%;
+    margin-right: 20px;
+    background-color: @fill-body-darken;
+  }
+  .food {
+    flex: 1;
+    width: 0;
+    background-color: @fill-body;
+    position: relative;
+    z-index: 1;
+    .wrapper {
+      transform: translate3d(0,0,0);
+      .title {
+        font-size: 0;
+        padding: 15px 60px 15px 0;
+        .tip, .desc {
+          display: inline-block;
+          vertical-align: middle;
+          .no-wrap;
+        }
+        .tip {
+          font-size: @font-size-small;
+          color: @color-title;
+        }
+        .desc {
+          max-width: 200px;
+          .no-wrap;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          transform: scale(.8);
+          transform-origin: 0;
+          margin-left: 20px;
+        }
+      }
+      .item {
+        display: flex;
+        box-sizing: border-box;
+        padding: 20px 20px 20px 0;
+        .img {
+          flex: 0 0 150px;
+          width: 150px;
+          height: 150px;
+          margin-right: 20px;
+          img {
+            width: 100%;
+          }
+        }
+        .content {
+          flex: 1;
+          width: 0;
+          .name {
+            .no-wrap;
+            font-size: @font-size-medium;
+            color: @color-title;
+            line-height: 34px;
+            margin-bottom: 6px;
+          }
+          .description {
+            font-size: @font-size-small;
+            font-weight: @font-weight-small;
+            transform: scale(.8);
+            transform-origin: 0;
+            color: @color-base;
+            line-height: 32px;
+            .no-wrap;
+          }
+          .info {
+            font-size: 0;
+            span {
+              display: inline-block;
+              vertical-align: middle;
+              font-size: @font-size-small;
+              font-weight: @font-weight-small;
+              color: @color-base;
+              transform: scale(.9);
+              margin: 4px 8px 4px -6px;
+            }
+          }
+          .sales-info {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding-right: 20px;
+            min-height: 50px;
+            .price {
+              font-size: @font-size-medium;
+              font-weight: @font-weight-small;
+              color: #f60;
+              line-height: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.food-menu {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .scroll {
+    background-color: @fill-body-darken;
+  }
+  .item {
+    padding: 30px 15px;
+    border-top: 1px solid @border-color;
+    &:first-child {
+      border-top: none;
+    }
+    .text {
+      font-size: @font-size-small;
+      font-weight: @font-weight-small;
+      color: @color-base;
+    }
+    &.active {
+      background-color: @fill-body;
+      position: relative;
+      &:after {
+        content: '' !important;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background-color: @badge-color-open;
+      }
+      .text {
+        color: @color-title;
+        font-weight: @font-weight-medium;
+      }
+    }
+  }
+
+}
+
+.food-modal {
+  position: fixed;
+  .position-full;
+  z-index: 1;
+  &:after {
+    display: block;
+    content: '' !important;
+    position: fixed;
+    .position-full;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1;
+  }
+  .body{
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    transform: translate3d(-50%, -50%, 0);
+    .img {
+      width: 100%;
+      display: block;
+    }
+    .content {
+      background-color: @fill-body;
+      box-sizing: border-box;
+      padding: 20px;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 3px 6px rgba(0,0,0,.3);
+      .name {
+        .no-wrap;
+        font-size: @font-size-medium;
+        color: @color-title;
+        line-height: 34px;
+        margin-bottom: 6px;
+      }
+      .description {
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        transform: scale(.8);
+        transform-origin: 0;
+        color: @color-base;
+        line-height: 32px;
+      }
+      .info {
+        font-size: 0;
+        span {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          color: @color-base;
+          transform: scale(.9);
+          margin: 4px 8px 4px -6px;
+        }
+      }
+    }
+  }
+}

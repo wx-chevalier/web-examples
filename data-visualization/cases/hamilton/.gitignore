@@ -1,0 +1,10 @@
+build/
+node_modules/
+.DS_Store
+*.psd
+.cache
+*.mp3
+*.png
+*.txt
+./processed/*.json
+dist/

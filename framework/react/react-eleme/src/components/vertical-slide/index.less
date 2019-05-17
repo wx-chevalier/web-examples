@@ -1,0 +1,29 @@
+
+.slide {
+  min-height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  .slide-group {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    .slide-item {
+      box-sizing: border-box;
+      overflow: hidden;
+      a {
+        display: block;
+        height: 100%;
+        overflow: hidden;
+        text-decoration: none;
+      }
+      img {
+        display: block;
+        height: 100%;
+      }
+    }
+  }
+}

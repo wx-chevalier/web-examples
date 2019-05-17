@@ -1,0 +1,93 @@
+
+
+@import '../../../assets/css/theme.less';
+@import '../../../assets/css/mixin.less';
+
+.shop-info {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-bottom:  @shop-cart-height;
+  background-color: @fill-body-darken;
+  position: relative;
+  z-index: 1;
+  .scroll {
+    background-color: @fill-body-darken;
+    bottom: @shop-cart-height;
+  }
+
+  .card {
+    background-color: @fill-body;
+    margin-bottom: 20px;
+    padding: 30px;
+    .title {
+      font-weight: bold;
+      color: #000;
+      font-size: @font-size-medium;
+      margin-bottom: 20px;
+    }
+    .desc {
+      font-size: @font-size-small;
+      font-weight: @font-weight-small;
+      color: @color-base;
+      line-height: 40px;
+    }
+
+    .img {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+      margin-top: 10px;
+      width: 140px;
+      height: 140px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .activities {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .icon {
+        flex: 0 0 60px;
+        width: 60px;
+        height: 30px;
+        color: #fff;
+        position: relative;
+      }
+      .tips {
+        flex: 1;
+        margin-left: 10px;
+        line-height: 30px;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: @color-base;
+      }
+    }
+
+    .item {
+      display: flex;
+      border-bottom: 1px solid @border-color;
+      padding: 30px 0;
+      justify-content: space-between;
+      .label {
+        flex: 0 0 110px;
+        width: 110px;
+        font-size: @font-size-small;
+        color: #000;
+      }
+      .value {
+        flex: 1;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: @color-base;
+        text-align: right;
+      }
+    }
+  }
+}

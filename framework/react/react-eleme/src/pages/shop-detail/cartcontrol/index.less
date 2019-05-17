@@ -1,0 +1,190 @@
+
+
+@import '../../../assets/css/theme.less';
+@import '../../../assets/css/mixin.less';
+
+.stepper {
+  font-size: 0;
+  .btn {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    line-height: 20px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid @primary-color-light;
+    font-size: @font-size-medium;
+    color: @primary-color-light;
+    background-color: transparent;
+    .extend-click;
+    &.fill {
+      background-color: @primary-color-light;
+      color: #fff;
+    }
+  }
+  .count {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    line-height: 40px;
+    text-align: center;
+    font-size: @font-size-small;
+    font-weight: @font-weight-small;
+    color: @color-base;
+  }
+}
+
+
+.specs {
+  .wrapper {
+    font-size: 0;
+    .decrease {
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+      line-height: 30px;
+      text-align: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      border: 1px solid @primary-color-light;
+      font-size: @font-size-medium;
+      color: @primary-color-light;
+      background-color: transparent;
+      &.disable {
+        background-color: transparent;
+        border-color: #ddd;
+        color: #ddd;
+      }
+    }
+    .count {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+      line-height: 40px;
+      text-align: center;
+      font-size: @font-size-small;
+      font-weight: @font-weight-small;
+      color: @color-base;
+    }
+    .btn {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+      line-height: 40px;
+      height: 40px;
+      border-radius: 40px;
+      padding: 0 16px;
+      font-size: @font-size-small;
+      font-weight: @font-weight-small;
+      color: #fff;
+      background-color: @primary-color-light;
+    }
+  }
+}
+
+.specs-modal {
+  position: fixed;
+  z-index: 1;
+  .position-full;
+  .mask {
+    position: absolute;
+    .position-full;
+    z-index: 2;
+    background-color: rgba(0,0,0,.5);
+  }
+  .body {
+    position: absolute;
+    width: 600px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background-color: @fill-body;
+    z-index: 3;
+    .title {
+      font-size: @font-size-medium;
+      color: @color-title;
+      line-height: 40px;
+      margin: 10px 0;
+      padding-top: 30px;
+      text-align: center;
+    }
+    .close {
+      font-size: @font-size-large-x;
+      color: @color-base;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      border-radius: 100%;
+    }
+    .content {
+      padding: 0 30px;
+      box-sizing: border-box;
+      max-height: 500px;
+      overflow: scroll;
+    }
+    .container {
+      .title {
+        text-align: left;
+        line-height: 30px;
+        margin: 0;
+        font-weight: @font-weight-small;
+        color: @color-base;
+      }
+      .wrapper {
+        margin-bottom: 30px;
+      }
+      .item {
+        display: inline-block;
+        text-align: center;
+        line-height: 44px;
+        height: 44px;
+        border-radius: 44px;
+        padding: 0 30px;
+        border: 1px solid @border-color;
+        font-size: @font-size-small;
+        font-weight: @font-weight-small;
+        color: @color-title;
+        margin-right: 20px;
+        margin-top: 20px;
+        &.active {
+          background-color: #f6fbff;
+          color: @primary-color-light;
+          border-color: @primary-color-light;
+        }
+      }
+    }
+    .footer {
+      background-color: @fill-body-darken;
+      box-sizing: border-box;
+      padding: 30px;
+      border-radius: 0 0 6px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .price {
+        font-size: @font-size-large;
+        color: #ff6000;
+      }
+      .btn {
+        margin: 0;
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        background-color: @primary-color-light;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,178 @@
+.user-main {
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        padding: 60rpx 20rpx 30rpx;
+        color: white;
+        font-size: 24rpx;
+        .user-avator {
+            width: 140rpx;
+            height: 140rpx;
+            border-radius: 100%;
+            margin-bottom: 20rpx;
+        }
+        .user-name {
+            font-size: 32rpx;
+            font-weight: bold;
+        }
+        .user-level {
+            font-style: initial;
+            font-size: 20rpx;
+            padding: 4rpx 10rpx;
+            margin-left: 10rpx;
+            border-radius: 24rpx;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .user-shu {
+            margin: 0 10rpx;
+        }
+        .user-info-item {
+            margin: 5rpx 0;
+        }
+    }
+    .user-scroll-view {
+        white-space: nowrap;
+        display: inline-block;
+        overflow-x: auto;
+        position: relative;
+        margin-top:80rpx;
+    }
+    #active,
+    #about,
+    #followed,#follower {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .item-thumb__info{
+        border-radius:50%;
+    }
+
+    #active,#about,#follower{
+        padding: 0 10rpx;
+        width:calc(100vw - 10rpx);
+        position: absolute;
+    }
+    
+    #active{
+        margin-left: 100vw;
+    }
+    #about{
+        margin-left: 200vw;
+    }
+    .user-music {
+        background-color: white;
+        border-top-left-radius: 16rpx;
+        border-top-right-radius: 16rpx;
+        margin-top: 80rpx;
+        flex-shrink: 2;
+        overflow: auto;
+        
+        .user-nav {
+            display: flex;
+            justify-content: space-around;
+            font-size: 26rpx;
+            position: fixed;
+            width: 100%;
+            height: 48rpx;
+            padding: 10rpx 0;
+            background-color: white;
+            z-index: 222;
+            border-top-left-radius: 16rpx;
+            border-top-right-radius: 16rpx;
+            text {
+                padding-bottom: 10rpx;
+            }
+            .active {
+                color: red;
+                border-bottom: 1px solid currentColor;
+            }
+        }
+        .lists {
+            margin-top: 65rpx;
+        }
+        .user-event {
+            position: absolute;
+            top: 48rpx;
+            background-color: white;
+            right: -1000rpx;
+            animation: slideIn 2s linear forwards;
+            ;
+        }
+        .slideInRight {
+            animation: slideIn 2s linear forwards;
+            ;
+        }
+        .noactive {
+            right: -1000rpx;
+        }
+    }
+    .e-main {
+        display: flex;
+        border-bottom: 1px solid gainsboro;
+        .e-user {
+            width: 100rpx;
+            height: 100rpx;
+            border-radius: 100%;
+        }
+        .e-info {
+            flex-grow: 1;
+            font-size: 28rpx;
+            margin-left: 20rpx;
+            overflow: hidden;
+            .e-date {
+                font-size: 24rpx;
+                color: gray;
+                margin-top: 10rpx;
+            }
+            .e-title {
+                margin-top: 20rpx;
+            }
+        }
+    }
+}
+
+@keyframes slideIn {
+    from {
+        right: 0;
+    }
+    to {
+        left: 0;
+    }
+}
+
+.log-form {
+    padding: 0 20rpx;
+    .bg-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        filter: blur(60Px);
+        z-index: -1;
+    }
+    .log {
+        text-align: center;
+        margin: 80rpx 0;
+        .iconfont {
+            font-size: 90rpx;
+            padding: 20rpx;
+            color: white;
+            background-color: red;
+            border-radius: 10rpx;
+        }
+    }
+    .login-btn {
+        text-align: center;
+        margin-top: 40rpx;
+        border: 1px solid currentColor;
+        border-radius: 10rpx;
+        color: red;
+    }
+}

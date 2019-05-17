@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>eleme</title>
+  <link rel="stylesheet" href="/static/css/reset.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script src="//webapi.amap.com/maps?v=1.4.3&key=51b48771e71efce7d5be04bead9dd9a4&plugin=AMap.Geolocation"></script>
+  <script src="//as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+  <script src="//g.alicdn.com/fdilab/lib3rd/viewport-units-buggyfill/0.6.2/??viewport-units-buggyfill.hacks.min.js,viewport-units-buggyfill.min.js"></script>
+  <script>
+    window.viewportUnitsBuggyfill.init({ hacks: window.viewportUnitsBuggyfillHacks });
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+      }, false);
+    }
+  </script>
+</body>
+</html>

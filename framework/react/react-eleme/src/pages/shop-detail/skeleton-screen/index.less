@@ -1,0 +1,85 @@
+
+
+@import '../../../assets/css/theme.less';
+@import '../../../assets/css/mixin.less';
+
+@header-height: 424px;                // 商家信息
+
+.skeleton {
+  position: fixed;
+  .position-full;
+  background-color: @fill-body;
+  overflow: hidden;
+  .header {
+    width: 100%;
+    height: @header-height;
+    background-color: @skeleton-color;
+    display: flex;
+    flex-direction: column;
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto;
+      margin-top: 80px;
+      margin-bottom: 30px;
+      border-radius: 4px;
+      background-color: @skeleton-color-darken;
+    }
+    .desc {
+      width: 80%;
+      height: 20px;
+      background-color: @skeleton-color-darken;
+      margin: 10px auto;
+      &:nth-child(3) {
+        width: 70%;
+      }
+      &:nth-child(4) {
+        width: 80%;
+      }
+    }
+  }
+
+  .body {
+    width: 100%;
+    height: calc(100vh - @header-height);
+    display: flex;
+    .left {
+      flex: 0 0 160px;
+      width: 160px;
+      height: 100%;
+      margin-right: 20px;
+      background-color: @fill-body-darken;
+
+      .item {
+        padding: 30px 15px;
+        border-top: 1px solid @border-color;
+        &:first-child {
+          border-top: none;
+        }
+        .text {
+          font-size: @font-size-small;
+          font-weight: @font-weight-small;
+          color: @color-base;
+          min-height: 20px;
+          width: 80px;
+          display: block;
+          background-color: @skeleton-color-darken;
+        }
+      }
+    }
+    .right {
+      flex: 1;
+    }
+  }
+
+  .footer {
+    position: absolute;
+    z-index: 2;
+    height: @shop-cart-height;
+    background-color: @skeleton-color-darken;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

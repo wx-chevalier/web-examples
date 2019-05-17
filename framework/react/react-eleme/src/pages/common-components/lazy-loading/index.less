@@ -1,0 +1,20 @@
+
+@import '../../../assets/css/theme.less';
+@import '../../../assets/css/mixin.less';
+
+.loading {
+  position: fixed;
+  .position-full;
+  background-color: @fill-body-darken;
+  .icon {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    img {
+      width: 100%;
+    }
+  }
+}

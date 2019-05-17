@@ -1,0 +1,37 @@
+
+@import '../../assets/css/theme.less';
+@import '../../assets/css/mixin.less';
+
+.list-wrapper {
+  position: absolute;
+  .position-full;
+  overflow: hidden;
+  background-color: @fill-body;
+  .scroll-content {
+    position: relative;
+    z-index: 10;
+  }
+  .pullup-wrapper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .flex-center;
+  }
+  .after-trigger,.before-trigger,.refresh-txt {
+    .flex-center;
+    span {
+      padding: 5px 0;
+      font-size: @font-size-medium;
+      font-weight: @font-weight-small;
+      color: @color-base;
+    }
+  }
+  .pulldown-wrapper {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    .flex-center;
+    transition: all
+  }
+}

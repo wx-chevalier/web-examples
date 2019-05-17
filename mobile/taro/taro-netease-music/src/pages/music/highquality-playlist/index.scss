@@ -1,0 +1,68 @@
+.m-main {
+    padding: 10rpx;
+    .m-cont {
+        display: inline-block;
+        font-size: 24rpx;
+        margin-bottom: 10rpx;
+        display: flex;
+        .m-item {
+            position: relative;
+            font-weight: bold;
+            .m-img {
+                height: 240rpx;
+                width: 240rpx;
+                border-radius: 6rpx;
+            }
+            .right-top {
+                border-width: 40rpx 40rpx 40rpx 0px;
+                border-style: solid;
+                border-color: orange transparent transparent transparent;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .iconfont {
+                font-size: 32rpx;
+            }
+            .hg {
+                position: absolute;
+                top: 0;
+                z-index: 1;
+                color: white;
+                transform: rotate(-45deg);
+                font-size: 22rpx;
+                left: 0;
+                font-weight: bolder;
+            }
+            .m-playcount {
+                position: absolute;
+                color: white;
+                top: 6rpx;
+                right: 6rpx;
+            }
+        }
+        .m-info {
+            padding-left: 20rpx;
+            border-bottom: 1px solid gainsboro;
+            view {
+                margin: 10rpx 0 20rpx;
+            }
+            .m-username {
+                height: 40rpx;
+                .iconfont {
+                    font-size: 22rpx;
+                    color: orange;
+                }
+            }
+            .m-cpwrite {
+                font-size: 20rpx;
+                .m-tag {
+                    font-size:18rpx;
+                    margin-right:4rpx;
+                    color: red;
+                    border: 1px solid red;
+                }
+            }
+        }
+    }
+}

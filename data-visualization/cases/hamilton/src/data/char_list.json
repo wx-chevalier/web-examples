@@ -1,0 +1,23 @@
+{
+  "1": ["Aaron Burr", "M", "individual", true, "rgb(149,65,200)"],
+  "2": ["Alexander Hamilton", "M", "individual", true, "rgb(53,169,147)"],
+  "3": ["George Washington", "M", "individual", true, "rgb(0,91,157)"],
+  "4": ["John Laurens", "M", "individual", true, "rgb(81,182,201)"],
+  "5": ["Marquis de Lafayette", "M", "individual", true, "rgb(0,134,152)"],
+  "6": ["Hercules Mulligan", "M", "individual", true, "rgb(0,89,106)"],
+  "7": ["Eliza Schuyler", "F", "individual", true, "rgb(81,173,223)"],
+  "8": ["Angelica Schuyler", "F", "individual", true, "rgb(204,119,170)"],
+  "9": ["Peggy Schuyler", "F", "individual", false, "rgb(220,201,107)"],
+  "10": ["Thomas Jefferson", "M", "individual", true, "rgb(224,118,90)"],
+  "11": ["James Madison", "M", "individual", true, "rgb(241,155,111)"],
+  "12": ["King George III", "M", "individual", false, "rgb(204,55,60)"],
+  "13": ["Samuel Seabury", "M", "individual", false, "rgb(100,0,0)"],
+  "14": ["Charles Lee", "M", "individual", false, "rgb(182,232,111)"],
+  "15": ["Phillip Hamilton", "M", "individual", true, "rgb(109,219,196)"],
+  "16": ["Maria Reynolds", "F", "individual", true, "rgb(164,23,80)"],
+  "17": ["James Reynolds", "M", "individual", false, "rgb(169,219,99)"],
+  "18": ["George Eacker", "M", "individual", false, "rgb(157,207,87)"],
+  "21": ["Women", "F", "group", false, "rgb(204,54,98)"],
+  "22": ["Men", "M", "group", false, "rgb(70,129,206)"],
+  "24": ["Company", "F/M", "group", true, "rgb(247,215,131)"]
+}

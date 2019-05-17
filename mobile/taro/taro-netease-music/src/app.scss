@@ -1,0 +1,18 @@
+@import './icon.scss';
+
+page {
+    height: 100%;
+    padding:0;
+    box-sizing:border-box;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+    #index {
+        display: flex;
+        flex-direction:column;
+        padding-bottom:10rpx;
+        overflow: hidden;
+        commen {
+            display: flex;
+            overflow-x: auto;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+#music {
+    .swiper {
+        image {
+            width: 100%;
+        }
+    }
+    .iconGroup {
+        display: flex;
+        justify-content: space-around;
+        height: 200rpx;
+        align-items: center;
+        .iconTitle {
+            font-size: 24rpx;
+            display: block;
+            margin-top: 25rpx;
+            text-align: center;
+        }
+    }
+}
+
+.iconfont {
+    font-size: 64rpx;
+    color: white;
+    padding: 20rpx;
+    background-color: red;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.listMain {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .listView {
+        margin-bottom: 20rpx;
+        .listImage {
+            width: 230rpx;
+            height: 230rpx;
+            border-radius:8rpx;
+        }
+        .listTitle,.listTitleNoWrap {
+            display: block;
+            font-size: 20rpx;
+            width: 230rpx;
+        }
+        .listTitleNoWrap{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+}

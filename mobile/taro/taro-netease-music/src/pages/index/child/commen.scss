@@ -1,0 +1,27 @@
+.innerView {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    width: 250px;
+    image {
+        width: 250px;
+        height: 350px;
+        background-size: 250px;
+    }
+    text {
+        text-align: center;
+    }
+    .movieTitle {
+        font-size: 24rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .movieRate {
+        font-size: 20rpx;
+        color: gray;
+        .start {
+            font-size: 20px;
+        }
+    }
+}

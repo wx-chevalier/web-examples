@@ -1,0 +1,47 @@
+
+
+@import '../../../assets/css/theme.less';
+@import '../../../assets/css/mixin.less';
+
+.row {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px;
+  background-color: @fill-body;
+  border-bottom: 1px solid @border-color;
+  display: flex;
+  .desc {
+    flex: 1;
+    width: 0;
+    .info {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      line-height: 50px;
+      .name {
+        font-size: @font-size-medium-x;
+        color: @color-title;
+      }
+      .sex {
+        margin: 0 10px;
+      }
+      .sex,.phone {
+        font-size: @font-size-medium;
+      }
+    }
+    .address {
+      font-size: @font-size-small;
+      font-weight: @font-weight-small;
+      line-height: 34px;
+    }
+  }
+  .edit {
+    flex: 0 0 100px;
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: @font-size-large-x;
+    color: #999;
+  }
+}
