@@ -5649,9 +5649,9 @@ lodash.words@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
-lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.2, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0:
-  version "4.17.11"
-  resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.2, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.13, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0:
+  version "4.17.13"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.13.tgz#0bdc3a6adc873d2f4e0c4bac285df91b64fc7b93"
 
 log-symbols@^2.2.0:
   version "2.2.0"
