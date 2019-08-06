@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "webpack-dashboard -- npm run dev:node",
-    "dev": "parallelshell \"npm run mock\" \"npm run dev\"",
+    "dev": "parallelshell \"npm run mock\" \"npm run start\"",
     "dev:node": "webpack-dev-server --config ./dev-config/webpack.config.dev.js --hot",
     "build": "npm run clean && BABEL_ENV=production webpack --config ./dev-config/webpack.config.prod.js --mode production",
     "build:dev": "npm run clean && webpack --config ./dev-config/webpack.config.prod.js --mode development",
