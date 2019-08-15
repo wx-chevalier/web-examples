@@ -3,7 +3,7 @@ const path = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -103,8 +103,13 @@ const config = {
   optimization: {
     runtimeChunk: 'single',
     minimizer: [
-      new UglifyJsPlugin({
-        exclude: /.*ts-worker.*/
+      new TerserPlugin({
+        exclude: /.*ts-worker.*/,
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
       }),
       new OptimizeCSSAssetsPlugin({})
     ],
