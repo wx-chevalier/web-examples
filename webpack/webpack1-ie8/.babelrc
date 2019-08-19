@@ -1,0 +1,10 @@
+{ // https://babeljs.io/docs/en/babel-preset-env#usebuiltins
+	"presets": ["env", "react", "stage-0"],
+	"plugins": [
+		"transform-decorators-legacy",
+		"react-hot-loader/babel",
+		"transform-runtime",
+		// 启用按需引入时会导致cdn引入无效,代码会被重复打包
+		["import", { "libraryName": "antd", "style": false }]
+	]
+}

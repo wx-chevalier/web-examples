@@ -1,0 +1,121 @@
+@font-face {
+	font-family: "Coding Number";
+	src: local("DejaVu Sans Mono"), local("Source Code Variable"), local("Monaco"), local("Menlo"), local("Consolas");
+	unicode-range: U+30-39;
+}
+@font-face {
+	font-family: "Chinese Quote";
+	src: local("PingFang SC"), local("Microsoft YaHei");
+	unicode-range: U+2018, U+2019, U+201c, U+201d;
+}
+@viewport {
+	width: device-width;
+}
+body {
+	/* 苹方 冬青黑体 微软雅黑 文泉驿微米黑(Ubuntu) 兰亭黑 微软黑体 无衬线字体 */
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Lantinghei SC", "Microsoft Sans Serif", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	color: #666;
+	font-size: 12px;
+	line-height: 1.5;
+	touch-action: manipulation;
+	-ms-overflow-style: scrollbar;
+	-webkit-overflow-scrolling: touch;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+}
+.fixed-scroll-lock {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+.flexible * {
+	/* 基于 rem 来实现弹性布局 html{font-size:100px;} */
+	/* 基于 em 来实现弹性布局 相对于 .flexible 容器 */
+	font-size: inherit;
+}
+.monospace {
+	/* 等宽字体 常用字体颜色 #333 #666 #999 #ccc #fff */
+	font-family: "DejaVu Sans Mono", "Source Code Variable", Monaco, Menlo, Consolas, monospace;
+}
+/* *** 常规链接按钮 *** */
+@c-linkx: #409eff; // 链接文字颜色
+@c-linkh: #66b1ff; // 链接文字颜色hover
+@c-errox: #f56c6c; // 危险文字颜色
+@c-erroh: #f78989; // 危险文字颜色hover
+a, :focus {
+	outline: none;
+}
+a, .anchor, .danger {
+	cursor: pointer;
+	text-decoration: none;
+}
+a, .anchor {
+	color: @c-linkx;
+	&:hover {
+		color: @c-linkh;
+	}
+}
+.danger {
+	color: @c-errox;
+	&:hover {
+		color: @c-erroh;
+	}
+}
+.clear:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: "";
+	clear: both;
+	height: 0;
+}
+.limited {
+	cursor: not-allowed;
+	color: #999;
+	background-color: #ddd;
+}
+.disabled {
+	cursor: not-allowed;
+	color: #bbb;
+	border-color: #ccc;
+	background-color: #eee;
+}
+.ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.n-ellipsis {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: N;
+	-webkit-box-orient: vertical;
+}
+.scrollbar {
+	::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+	::-webkit-scrollbar-thumb {
+		outline: none;
+		border-radius: 3px;
+		background-color: fade(#000, 20%);
+		&:hover {
+			background-color: fade(#000, 25%);
+		}
+	}
+	::-webkit-scrollbar-track {
+		background-color: fade(#000, 10%);
+		&:hover {
+			background-color: fade(#000, 15%);
+		}
+	}
+	::-webkit-scrollbar-track-piece {
+		background-color: transparent;
+	}
+}

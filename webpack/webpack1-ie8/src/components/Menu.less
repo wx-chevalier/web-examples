@@ -1,0 +1,86 @@
+@c-btntx: #3ab4e2; // 按钮文字颜色
+@c-btnth: #89d2ee; // 按钮文字颜色hover
+@c-btnwx: #ff7373; // 示警按钮颜色
+@c-btnwh: #ffa7a0; // 示警按钮颜色hover
+.title-bar-wrap {
+	position: relative;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 5px 15px;
+	height: 30px;
+	background-color: #fff;
+	box-shadow: 0 1px 9px #ccc;
+	.ant-breadcrumb {
+		line-height: 0;
+		>span {
+			font-size: 14px;
+			.ant-breadcrumb-separator {
+				color: #ccc;
+				font-size: 14px;
+			}
+			a {
+				color: #666;
+				&:hover {
+					color: @c-btntx;
+				}
+			}
+			&:last-child {
+				font-weight: bold;
+			}
+		}
+	}
+	.right-btns {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		>.right-btn {
+			color: @c-btntx;
+			.btn-icon {
+				background-color: @c-btntx;
+			}
+			&:hover {
+				color: @c-btnth;
+				.btn-icon {
+					background-color: @c-btnth;
+				}
+			}
+		}
+		>.danger {
+			color: @c-btnwx;
+			.btn-icon {
+				background-color: @c-btnwx;
+			}
+			&:hover {
+				color: @c-btnwh;
+				.btn-icon {
+					background-color: @c-btnwh;
+				}
+			}
+		}
+		.btn-icon {
+			margin-right: 6px;
+			width: 20px;
+			height: 20px;
+			border: 0 solid transparent;
+			border-radius: 50%;
+			color: #fff;
+			text-align: center;
+			i {
+				font-size: 14px;
+				line-height: 20px;
+			}
+		}
+		.right-btn {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			margin-left: 20px;
+			height: 20px;
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+}

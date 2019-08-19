@@ -1,0 +1,60 @@
+.ant-menu-submenu-horizontal {
+	>.ant-menu-submenu-title:after {
+		margin-left: 1em;
+		content: "\E60B";
+		font-family: "anticon";
+	}
+	&.ant-menu-submenu-open>.ant-menu-submenu-title:after {
+		content: "\E60A";
+	}
+	.ant-menu-submenu-vertical>.ant-menu {
+		min-width: auto;
+		width: 100%;
+	}
+}
+.ant-input-group-addon .ant-select-selection__rendered {
+	padding-right: 1em;
+}
+.ant-table-placeholder {
+	z-index: auto;
+}
+.ant-table {
+	.ant-table-placeholder {
+		z-index: auto;
+	}
+	table {
+		border-collapse: collapse;
+	}
+	th {
+		font-weight: bold;
+	}
+	th,
+	td {
+		overflow: hidden;
+		padding: 8px;
+		min-width: 130px;
+		max-width: 130px;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		line-height: 30px;
+		.anticon {
+			margin-left: 6px;
+			vertical-align: middle;
+			font-size: 22px;
+		}
+	}
+}
+.main {
+	padding: 20px;
+}
+.offset {
+	display: inline-block;
+	margin: 0 8px;
+}
+.wd120 {
+	width: 120px;
+}
+.wd200 {
+	width: 200px;
+}

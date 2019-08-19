@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1" />
+	<meta http-equiv="cache-control" content="no-transform" />
+	<meta http-equiv="cache-control" content="no-siteapp" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta charset="utf-8" />
+	<meta name="renderer" content="webkit" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="format-detection" content="telephone=no,email=no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+	<title><%= title %></title>
+	<link rel="shortcut icon" href="<%= ico %>" />
+	<% for (const v of css||[]) { %><link rel="stylesheet" href="<%= v %>" /><% } %>
+</head>
+<body>
+	<div id="app"></div>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="<%= p %>js/ie.lib.js"></script>
+	<script type="text/javascript">window.onerror=function(){var data={};var args=arguments;function transfer(key,value){if(value==null||typeof value!=="object"){data[key]=value;}else{Object.getOwnPropertyNames(value).forEach(function(v){data[key+"-"+v]=value[v];});}}try{["message","source","rowNo","colNo","detail"].forEach(function(v,i){transfer(v,args[i]);});$.post("/api/error",data);console.error(data);}catch(error){}return true;};</script>
+	<![endif]-->
+	<script type="text/javascript">/*Fix Safari innerHeight is 0 in iframe*/document.body.clientHeight;</script>
+	<% for (const v of js||[]) { %><script type="text/javascript" src="<%= v %>"></script><% } %>
+</body>
+</html>
