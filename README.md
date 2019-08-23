@@ -22,61 +22,17 @@
 
 # TOC | 目录索引
 
-## [Micro Frontend](./micro-frontend) | 微前端架构
+## 项目索引
 
-## [WebAssembly](./wasm)
+- Bundler 前端构建工具：[Webpack](./webpack), [Parcel](./webpack), [Rollup](./rollup)。
 
-## [Bundler](./bundler) | 前端构建工具
+- Web 框架：[React](./react), [Vue](./vue)
 
-- [webpack](./builder/webpack)
-- [parcel](./builder/parcel)
-- [rollup](./builder/rollup)
+- 跨端框架：[Electron](./electron)
 
-## [Framework](./framework) | 前端框架
+## 关联子项目
 
-- [react](./framework/react): 基于 React 的前端项目
-
-  - [webpack](./framework/react/webpack): 基于 Webpack 的生产环境项目模板
-  - [webpack-ts](./framework/react/webpack-ts): 基于 Webpack & TypeScript 的生产环境项目模板
-  - [parcel](./framework/react/parcel): 基于 Parcel 的应用模板
-  - [parcel-ts](./framework/react/parcel-ts): 基于 Parcel & TypeScript 的应用模板
-  - [jest](./framework/react/jest): 基于 Jest 的单元测试与组件测试
-  - [rrv4](./framework/react/rrv4): React Router V4 应用详解
-  - [graphql](./framework/react/graphql): GraphQL 客户端实例
-  - [umd](./framework/react/umd): 可发布的 React 组件项目库模板
-
-- [vue](./framework/vue): 基于 Vue.js 的前端项目
-
-  - [webpack](./framework/vue/webpack)
-  - [parcel](./framework/vue/parcel)
-
-- [redux](./sm/redux): Redux 典型应用
-
-- [mobx](./sm/mobx): MobX 典型应用
-
-## [Mobile](./mobile) | 移动应用
-
-- [rn](./mobile/rn): 基于 ReactNative 的移动跨平台项目
-
-  - [webpack](./mobile/rn/webpack)
-  - [webpack-ts](./mobile/rn/webpack-ts)
-
-- [Weapp](./mobile/weapp): 微信小程序
-
-  - [mpvue](./mobile/weapp/mpvue): 基于 mpvue 的小程序模板
-  - [mobx](./mobile/weapp/mobx): MobX 模板
-
-- [weex](./mobile/weex): 基于 Weex 的移动跨平台项目(WIP)
-
-- [Fultter](./mobile/flutter)
-
-## [Desktop](./desktop) | 桌面应用
-
-- [electron](./electron): 基于 Electron 的跨平台项目
-
-  - [react](./electron/react)
-  - [vue](./electron/vue)
-
+- [mf-rtw](https://github.com/wx-chevalier/mf-rtw): Micro-Frontend boilerplate with React & TypeScript & Webpack, for complicated cooperative applications. | 微前端项目模板
 
 # Home & More | 延伸阅读
 
