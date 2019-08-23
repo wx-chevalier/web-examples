@@ -34,6 +34,8 @@
 
 - [mf-rtw](https://github.com/wx-chevalier/mf-rtw): Micro-Frontend boilerplate with React & TypeScript & Webpack, for complicated cooperative applications. | 微前端项目模板
 
+- [react-snippets](https://github.com/wx-chevalier/react-snippets): React Snippets(.ts/.tsx), about design patterns/techniques used while developing with React and TypeScript.  
+
 # Home & More | 延伸阅读
 
 ![](https://i.postimg.cc/59QVkFPq/image.png)
