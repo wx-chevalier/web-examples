@@ -1,4 +1,4 @@
-![](https://parg.co/U0a)
+![](https://s2.ax1x.com/2019/09/03/nANfVH.png)
 
 [中文版本](./) | [English Version](./README.en.md)
 
