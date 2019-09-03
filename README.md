@@ -32,6 +32,8 @@
 
 - [react-snippets](https://github.com/wx-chevalier/react-snippets): React Snippets(.ts/.tsx), about design patterns/techniques used while developing with React and TypeScript.  
 
+- [vue-snippets](https://github.com/wx-chevalier/vue-snippets): Vue Snippets(.js/.ts), about design patterns/techniques used while developing with Vue and JavaScript/TypeScript.  
+
 # Home & More | 延伸阅读
 
 ![](https://i.postimg.cc/59QVkFPq/image.png)
