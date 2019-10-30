@@ -1,0 +1,24 @@
+{
+  "name": "@pyoner/svelte-types",
+  "version": "3.4.4-2",
+  "description": "Typescript definitions for Svelte v3 (*.d.ts)",
+  "keywords": [
+    "svelte",
+    "svelte3",
+    "typescript",
+    "types"
+  ],
+  "types": "types/svelte/index.d.ts",
+  "author": "Jungle <devex.soft@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pyoner/svelte-typescript"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "svelte": "3.4.4"
+  }
+}
