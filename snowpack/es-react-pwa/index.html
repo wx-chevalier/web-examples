@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>es-react-pwa</title>
+    <base href="/">
+    <script defer src="/src/web_modules/es-module-shims.js"></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script type="importmap-shim" src="./src/web_modules/import-map.json"></script>
+    <script defer src="./src/index.js" type="module-shim"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./src/sw.js').then(() => {
+            console.log('ServiceWorker registered!');
+          }, (err) => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+
+      To begin development, run `npx servor` from the project root
+    -->
+  </head>
+  <body></body>
+</html>

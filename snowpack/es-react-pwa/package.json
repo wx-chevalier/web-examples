@@ -1,0 +1,38 @@
+{
+  "name": "es-react-pwa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -rf src/web_modules && rm yarn.lock",
+    "prepare": "snowpack --dest \"dist/web_modules/\" --include \"src/**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "optimize": "snowpack --dest \"dist/web_modules/\" --include \"src/**/*.js\" --optimize",
+    "pwa": "workbox generateSW workbox-config.js",
+    "pwa:init": "workbox wizard"
+  },
+  "precommit": [
+    "optimize",
+    "pwa"
+  ],
+  "snowpack": {
+    "webDependencies": [
+      "es-module-shims",
+      "kv-storage-polyfill"
+    ]
+  },
+  "author": "Matt Hoffner",
+  "license": "ISC",
+  "devDependencies": {
+    "snowpack": "^1.0.0",
+    "workbox-cli": "latest"
+  },
+  "dependencies": {
+    "es-module-shims": "^0.4.6",
+    "htm": "^2.2.1",
+    "kv-storage-polyfill": "^2.0.0",
+    "react": "yarn:@reactesm/react@^0.1.0",
+    "react-dom": "yarn:@reactesm/react-dom@^0.1.1",
+    "styled-components": "^4.4.1"
+  }
+}
