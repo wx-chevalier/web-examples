@@ -1,0 +1,64 @@
+.replies {
+  margin-bottom: 50px;
+}
+
+.reply {
+  display: flex;
+}
+
+.main-content {
+  font-size: 26px;
+  border-bottom: 1px solid #f1f1f1;
+  padding: 20px 15px;
+}
+
+.main-content .line {
+  margin: 5px 0;
+}
+
+.main-content .img {
+  max-width: 100%;
+  height: auto;
+}
+
+.main-tent .hr {
+  width: 50%;
+}
+
+.avatar {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  margin: 10px;
+  margin-top: 15px;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  border-bottom: 1px solid #f1f1f1;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.main .author {
+  font-size: 24px;
+}
+
+.main .time {
+  font-size: 18px;
+  color: darkgray;
+}
+
+.main .content {
+  font-size: 24px;
+  margin: 10px;
+  margin-left: 0;
+}
+
+.main .floor {
+  color: darkgray;
+  font-size: 20px;
+  margin-bottom: 10px;
+}

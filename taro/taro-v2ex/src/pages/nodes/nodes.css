@@ -1,0 +1,27 @@
+.title {
+  font-size: 32px;
+  border-left: 5px solid #333333;
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.nodes {
+  margin-left: 15px;
+}
+
+.nodes .tag {
+  display: inline-block;
+  font-size: 24px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: #eeeeee;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  vertical-align: middle;
+}

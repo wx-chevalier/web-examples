@@ -1,0 +1,7 @@
+{
+  "extends": ["taro"],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }]
+  },
+  "parser": "typescript-eslint-parser"
+}

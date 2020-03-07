@@ -1,0 +1,62 @@
+.thread {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #f1f1f1;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+  height: 65px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.info .author {
+  font-size: 28px;
+}
+
+.bold {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.avatar {
+  max-width: 65px;
+  max-height: 65px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.middle {
+  flex: 1;
+  display: flex;
+  margin-left: 10px;
+  flex-direction: column;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.info .replies {
+  font-size: 20px;
+  color: darkgray;
+}
+
+.node {
+  float: right;
+}
+
+.node .tag {
+  font-size: 24px;
+  padding: 5px 15px;
+  float: right;
+  background-color: #eeeeee;
+  border-radius: 5px;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 30px;
+}
