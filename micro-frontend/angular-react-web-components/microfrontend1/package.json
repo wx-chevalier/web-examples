@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.5.8",
+    "angular": "^1.8.0",
     "webcomponents-lite": "^0.6.0"
   },
   "devDependencies": {
