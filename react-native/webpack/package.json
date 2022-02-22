@@ -33,7 +33,7 @@
     ]
   },
   "dependencies": {
-    "lodash": "4.17.4",
+    "lodash": "4.17.21",
     "native-base": "2.3.3",
     "react": "16.0.0",
     "react-native": "0.50.0",
