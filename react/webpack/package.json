@@ -66,7 +66,7 @@
     "class-names": "^1.0.0",
     "mobx": "5.9.0",
     "mobx-react": "^5.4.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
