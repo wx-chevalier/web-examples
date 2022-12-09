@@ -22,7 +22,7 @@
   "homepage": "https://github.com/react-cosmos/parcel-example#readme",
   "dependencies": {
     "concurrently": "^4.0.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "fs-extra": "^7.0.0",
     "nodemon": "^1.18.4",
     "parcel-bundler": "^1.9.7",
