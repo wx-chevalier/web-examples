@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>RealTime Client</title>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'
+          integrity='sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor' crossorigin='anonymous'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<div class='container'>
+    <header class='d-flex justify-content-between py-1 mb-4 border-bottom'>
+        <div class='p-2'>
+            <a href='/client/static' class='text-dark text-decoration-none'>
+                <span class='fs-3'>Realtime Client</span>
+            </a>
+        </div>
+
+        <div class='p-2'>
+            <button id="websocket" type="button" class="btn btn-outline-dark">WebSocket</button>
+            <button id="webrtc" type="button" class="btn btn-outline-dark">WebRTC</button>
+            <button id="webtransport" type="button" class="btn btn-outline-dark">WebTransport</button>
+        </div>
+    </header>
+
+</div>
+
+<div class='container d-flex justify-content-between'>
+    <canvas id="panelCanvas" class='card' height="520" width="520" style="background-color: beige">
+    </canvas>
+
+    <div class="card" style="height: 500px; width: 550px;">
+        <div class="card-body">
+            <h5 class="card-title">Stats</h5>
+            <canvas id="chartCanvas"></canvas>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src='js/websocket.js' type="module"></script>
+<script src='js/webtransport.js' type="module"></script>
+<script src='js/webrtc.js' type="module"></script>
+</html>
