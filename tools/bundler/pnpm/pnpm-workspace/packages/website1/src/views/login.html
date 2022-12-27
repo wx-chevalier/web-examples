@@ -1,0 +1,28 @@
+<template>
+  <smp-hello-world message="This is aurelia"></smp-hello-world>
+  <form submit.trigger="submit($event)">
+    <section>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        value.bind="credentials.email"
+        required
+      >
+    </section>
+    <section>
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        value.bind="credentials.password"
+        required
+      >
+    </section>
+    <section>
+      <button type="submit">Sign in.</button>
+    </section>
+  </form>
+</template>

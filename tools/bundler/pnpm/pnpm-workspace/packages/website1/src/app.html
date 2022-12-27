@@ -1,0 +1,16 @@
+<template>
+  <require from="bootstrap/dist/css/bootstrap.min.css"></require>
+  <require from="font-awesome/css/font-awesome.min.css"></require>
+  <require from="./styles.css"></require>
+
+  <require from="./nav-bar.html"></require>
+
+  <nav-bar
+    router.bind="router"
+    authenticated.bind="authenticated"
+  ></nav-bar>
+
+  <div class="page-host">
+    <router-view></router-view>
+  </div>
+</template>

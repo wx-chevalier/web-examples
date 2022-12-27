@@ -1,0 +1,16 @@
+.Lazy__container{
+
+  display: flex;
+  flex-direction: column;
+
+  .Lazy__buttons{
+
+    padding: 1% 2%;
+
+    // 控制第一个子元素与右边的距离
+    > :first-child{
+      margin-right: 2em;
+    }
+
+  }
+}

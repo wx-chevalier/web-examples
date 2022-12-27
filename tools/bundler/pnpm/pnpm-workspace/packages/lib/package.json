@@ -1,0 +1,19 @@
+{
+  "name": "@monosample/lib",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Types and Typescript shared library",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "postinstall": "pnpm run build",
+    "build": "tsc -p .",
+    "build:watch": "tsc -p . --watch"
+  },
+  "author": "Angel D. Munoz",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "~3.6.4"
+  }
+}

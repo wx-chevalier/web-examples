@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sub-html子应用开发环境</title>
+    <style>
+      .container{
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      纯原生HTML子应用, 当前处于 <code id="current-env">独立运行</code> 环境。
+    </div>
+
+
+    <!-- 开发环境的相对路径引用方式 -->
+    <script src="./js/main.js"></script>
+
+    <!-- 由于没有webpack自动构建，线上path需要根据部署路径手动更换，本项目把html文件分开管理，线上环境的html放在 public 文件夹 -->
+    <!-- <script src="/subapp/sub-html/js/main.js"></script> -->
+  </body>
+</html>

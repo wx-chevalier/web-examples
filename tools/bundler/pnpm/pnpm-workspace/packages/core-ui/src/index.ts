@@ -1,0 +1,1 @@
+import './smp-hello-world';

@@ -1,0 +1,18 @@
+{
+  "type": "postgres",
+  "host": "127.0.0.1",
+  "port": 5432,
+  "username": "admin",
+  "password": "Admin123",
+  "database": "monosample",
+  "schema": "public",
+  "entities": [
+    "entity/*.ts"
+  ],
+  "migrations": [
+    "migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "migrations"
+  }
+}

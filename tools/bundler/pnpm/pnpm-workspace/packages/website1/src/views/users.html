@@ -1,0 +1,12 @@
+<template>
+  <require from="./users.css"></require>
+  Current Users:
+  <p>
+    <ul>
+      <li
+        repeat.for="user of users"
+        class="preserve-lines"
+      >${getFullProfile(user)}</li>
+    </ul>
+  </p>
+</template>

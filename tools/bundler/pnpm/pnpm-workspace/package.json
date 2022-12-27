@@ -1,0 +1,27 @@
+{
+  "name": "monosample",
+  "version": "0.0.1",
+  "description": "A sample monorepo for your projects",
+  "scripts": {
+    "build:lib": "pnpm run build --filter @monosample/lib",
+    "build:lib:watch": "pnpm run build:watch --filter @monosample/lib",
+    "dev:api2:website1": "concurrently \"pnpm run dev --filter @monosample/api2\" \"pnpm run start --filter @monosample/website1\"",
+    "dev:api2:website2": "concurrently \"pnpm run dev --filter @monosample/api2\" \"pnpm run serve --filter @monosample/website2\"",
+    "dev:api2:website3": "concurrently \"pnpm run dev --filter @monosample/api2\" \"pnpm run start --filter @monosample/website3\"",
+    "migrations:up": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migrations:down": "ts-node ./node_modules/typeorm/cli.js migration:revert"
+  },
+  "devDependencies": {
+    "typeorm": "0.2.32",
+    "pg": "7.12.1",
+    "ts-node": "8.3.0",
+    "typescript": "~3.6.4",
+    "concurrently": "5.0.0"
+  },
+  "keywords": [
+    "monorepo",
+    "typescript"
+  ],
+  "author": "Angel D. Munoz",
+  "license": "MIT"
+}
