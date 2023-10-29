@@ -1,0 +1,39 @@
+{
+  "name": "@monosample/api1",
+  "version": "0.0.1",
+  "description": "Small Koa Skeleton",
+  "main": "./dist/app.js",
+  "scripts": {
+    "prestart": "tsc -p .",
+    "dev": "concurrently \"tsc -p .\" \"node --inspect dist/app.js\"",
+    "start": "node dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "jsonwebtoken": "8.5.1",
+    "koa": "2.7.0",
+    "koa-bodyparser": "4.2.1",
+    "koa-helmet": "4.2.0",
+    "koa-jwt": "3.5.1",
+    "koa-router": "7.4.0",
+    "moment": "2.24.0",
+    "winston": "3.2.1",
+    "knex": "0.19.5",
+    "pg": "7.12.1",
+    "@monosample/lib": "1.0.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/koa": "2.0.48",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-helmet": "^3.1.2",
+    "@types/koa-router": "^7.0.41",
+    "@types/node": "12.0.8",
+    "eslint": "6.5.1",
+    "typescript": "~3.6.4"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@monosample/website2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "@monosample/lib": "workspace:1.0.0",
+    "@monosample/core-ui": "workspace:1.0.0",
+    "axios": "0.21.1",
+    "core-js": "^3.1.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6",
+    "jwt-decode": "2.2.0",
+    "cache-loader": "4.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/jwt-decode": "^2.2.1",
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-router": "^4.0.0",
+    "@vue/cli-plugin-typescript": "^4.0.0",
+    "@vue/cli-plugin-unit-jest": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "typescript": "~3.6.4",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

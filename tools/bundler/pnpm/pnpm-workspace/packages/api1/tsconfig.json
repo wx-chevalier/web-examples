@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es2017",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "incremental": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "esModuleInterop": true
+  },
+  "inclure": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

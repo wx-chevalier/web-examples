@@ -1,0 +1,17 @@
+{
+  "name": "sub-html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env PUBLIC_PATH=/ http-server ./ -p 7799 --cors",
+    "build": "bash ./scripts/build.sh"
+  },
+  "author": "fengxianqi",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "http-server": "^13.0.0"
+  }
+}

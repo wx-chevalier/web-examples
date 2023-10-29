@@ -1,0 +1,15 @@
+{
+  "name": "virtualdom-demo",
+  "version": "0.0.1",
+  "description": "Demo For Virtual DOM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "王下邀月熊",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-react": "^6.5.0"
+  }
+}

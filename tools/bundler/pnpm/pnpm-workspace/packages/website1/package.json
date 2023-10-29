@@ -1,0 +1,121 @@
+{
+  "name": "@monosample/website1",
+  "description": "An Aurelia client application.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "???",
+    "url": "???"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@monosample/lib": "workspace:1.0.0",
+    "@monosample/core-ui": "workspace:1.0.0",
+    "@types/jwt-decode": "^2.2.1",
+    "aurelia-animator-css": "^1.0.4",
+    "aurelia-bootstrapper": "^2.3.2",
+    "aurelia-fetch-client": "^1.0.0",
+    "aurelia-framework": "1.3.1",
+    "aurelia-router": "1.7.1",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.3.1",
+    "jwt-decode": "^2.2.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.9",
+    "@types/lodash": "^4.14.117",
+    "@types/node": "^10.11.6",
+    "@types/webpack": "^4.4.15",
+    "app-settings-loader": "^1.0.2",
+    "aurelia-cli": "^1.0.2",
+    "aurelia-loader-nodejs": "^1.0.1",
+    "aurelia-pal-nodejs": "^1.2.0",
+    "aurelia-testing": "^1.0.0",
+    "aurelia-tools": "^2.0.0",
+    "aurelia-webpack-plugin": "^3.0.0",
+    "autoprefixer": "^9.4.8",
+    "clean-webpack-plugin": "^1.0.1",
+    "copy-webpack-plugin": "^5.0.0",
+    "css-loader": "^1.0.0",
+    "cssnano": "^4.1.10",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
+    "expose-loader": "^0.7.5",
+    "file-loader": "^2.0.0",
+    "gulp": "^4.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "jest": "^24.1.0",
+    "jest-cli": "^24.1.0",
+    "jest-transform-stub": "^2.0.0",
+    "json-loader": "^0.5.7",
+    "mini-css-extract-plugin": "^0.4.3",
+    "minimatch": "^3.0.4",
+    "postcss-loader": "^3.0.0",
+    "promise-polyfill": "^8.1.0",
+    "style-loader": "^0.23.1",
+    "through2": "^3.0.0",
+    "tree-kill": "^1.2.1",
+    "ts-jest": "^24.0.0",
+    "ts-loader": "^5.2.1",
+    "ts-node": "^7.0.1",
+    "typescript": "~3.6.4",
+    "url-loader": "^1.1.2",
+    "vinyl-fs": "^3.0.3",
+    "webpack": "^4.27.0",
+    "webpack-bundle-analyzer": "^3.0.4",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "build": "webpack --env.production --extractCss",
+    "start": "webpack-dev-server --extractCss",
+    "build:dev": "webpack --extractCss",
+    "analyze": "webpack --env.production --analyze",
+    "test": "au test"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^aurelia-binding$": "<rootDir>/node_modules/aurelia-binding"
+    },
+    "modulePaths": [
+      "<rootDir>/src",
+      "<rootDir>/node_modules"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.(css|less|sass|scss|styl|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "jest-transform-stub",
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "\\.spec\\.(ts|js)$",
+    "setupFiles": [
+      "<rootDir>/test/jest-pretest.ts"
+    ],
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}",
+      "!**/*.spec.{js,ts}",
+      "!**/node_modules/**",
+      "!**/test/**"
+    ],
+    "coverageDirectory": "<rootDir>/test/coverage-jest",
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+<mat-card>
+  <smp-hello-world message="This is angular"></smp-hello-world>
+  <form
+    #loginForm="ngForm"
+    (ngSubmit)="submit(loginForm)"
+  >
+    <input
+      placeholder="Email"
+      id="email"
+      name="email"
+      type="email"
+      ngModel
+      required
+    >
+
+    <input
+      placeholder="Password"
+      id="password"
+      name="password"
+      type="password"
+      ngModel
+      required
+    >
+    <mat-card-actions>
+      <button
+        mat-button
+        [disabled]="!loginForm.form.valid"
+      >Sign in.</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

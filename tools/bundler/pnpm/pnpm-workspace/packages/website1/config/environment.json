@@ -1,0 +1,5 @@
+{
+  "debug": true,
+  "testing": true,
+  "baseUrl": "http://localhost:5001/"
+}

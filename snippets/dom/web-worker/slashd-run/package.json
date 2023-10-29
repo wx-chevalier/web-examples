@@ -1,0 +1,43 @@
+{
+  "name": "@slashd/run",
+  "version": "0.0.8",
+  "description": "Run user-provided code in a Web Worker",
+  "homepage": "https://slashd.cc",
+  "unpkg": "dist/slashd-run.min.js",
+  "module": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "BUNDLE_VERSION=development rollup -c --watch",
+    "bump_pre": "git add -u && git commit -m \"bump release\" && npm version patch",
+    "bump": "npm run bump_pre && BUNDLE_VERSION=production rollup -c && git push && npm publish",
+    "test": "browser-sync start -s -f \"dist/*, test/*\" --startPath test --cors true"
+  },
+  "files": [
+    "dist/slashd-run.min.js",
+    "src/index.js"
+  ],
+  "globals": {
+    "module": false,
+    "console": false,
+    "exports": false
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "standard": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "browser-sync": "^2.27.11",
+    "eslint": "^8.33.0",
+    "rollup": "^3.2.3",
+    "standard": "^17.0.0"
+  }
+}
